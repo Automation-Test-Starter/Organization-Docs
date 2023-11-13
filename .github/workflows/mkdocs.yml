@@ -37,6 +37,8 @@ jobs:
 
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v2
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Save build cache
       uses: actions/cache/save@v3
