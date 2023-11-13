@@ -1,10 +1,11 @@
 # Project information
-site_name: Material for MkDocs
-site_url: https://squidfunk.github.io/mkdocs-material/
-site_author: Martin Donath
+site_name: Automation Test Starter
+site_url: https://automation-test-starter.pages.dev//
+site_author: Automation Test Starter
 site_description: >-
-  Write your documentation in Markdown and create a professional static site in
-  minutes – searchable, customizable, in 60+ languages, for all devices
+  An organization made by QA, for QA.
+
+  A QUICKSTART project for QA automation testing, including common test frameworks and tools, as well as some common test demo.
 
 docs_dir: docs
 
@@ -16,11 +17,11 @@ nav:
   - SuperTest.zh.md
 
 # Repository
-repo_name: squidfunk/mkdocs-material
-repo_url: https://github.com/squidfunk/mkdocs-material
+repo_name: Automation-Test-Starter/Organization-Docs
+repo_url: https://github.com/Automation-Test-Starter/Organization-Docs
 
 # Copyright
-copyright: Copyright &copy; 2016 - 2023 Martin Donath
+copyright: Copyright &copy; 2016 - 2023 Automation Test Starter
 
 # Configuration
 theme:
