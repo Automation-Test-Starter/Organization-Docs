@@ -25,12 +25,21 @@ jobs:
     # 如果你的项目依赖其他 Python 包，可以在这里安装它们
 
     - name: Build MkDocs site
-      run: mkdocs build
+      run: |
+        mkdocs build --clean
+        mkdocs --version
     # 如果你的 MkDocs 配置文件不在根目录，使用 -f 选项指定文件路径，例如：mkdocs build -f path/to/mkdocs.yml
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Upload to GitHub Pages
+      uses: actions/upload-pages-artifact@v2
       with:
-        github_token: ${{ secrets.ACTION_TOKEN }}
-        publish_dir: site
-    # 将生成的站点部署到 GitHub Pages
+        path: site
+
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v2
+
+    - name: Save build cache
+      uses: actions/cache/save@v3
+      with:
+        key: mkdocs-material-${{ hashfiles('.cache/**') }}
+        path: .cache
