@@ -38,7 +38,9 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v2
       with:
-          github_token: ${{ secrets.ACTION_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          path: site
+          permissions: write:packages # 添加所需的权限
 
     - name: Save build cache
       uses: actions/cache/save@v3
