@@ -1,0 +1,53 @@
+# Project information
+site_name: Material for MkDocs
+site_url: https://squidfunk.github.io/mkdocs-material/
+site_author: Martin Donath
+site_description: >-
+  Write your documentation in Markdown and create a professional static site in
+  minutes – searchable, customizable, in 60+ languages, for all devices
+
+docs_dir: docs
+
+nav:
+- index.md
+- index.zh.md
+- API Automation Testing:
+  - SuperTest.md
+  - SuperTest.zh.md
+
+# Repository
+repo_name: squidfunk/mkdocs-material
+repo_url: https://github.com/squidfunk/mkdocs-material
+
+# Copyright
+copyright: Copyright &copy; 2016 - 2023 Martin Donath
+
+# Configuration
+theme:
+  name: material
+
+extra:
+  search:
+    language: 'en, zh'
+  i18n:
+    languages:
+      zh: "中文"
+      en: "English"
+    default_language: 'en'
+  translate_nav:
+    zh:
+      API Automation Testing: "API自动化测试"
+    en:
+      API Automation Testing: "API Automation Testing"
+
+  alternate:
+    - name: "English (Home)"
+      link: ""
+      lang: en
+
+    - name: "中文 (首页)"
+      link: index.zh/
+      lang: zh
+
+
+
