@@ -20,7 +20,7 @@ jobs:
 
   - name: Install dependencies
     run: |
-      pip install mkdocs
+      pip install -r requirements.txt
       mkdocs --version
     # 如果你的项目依赖其他 Python 包，可以在这里安装它们
 
