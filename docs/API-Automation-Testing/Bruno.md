@@ -75,7 +75,7 @@ Mac computer recommended brew command download
 
 ### Default main interface
 
-![homepage](/readme_pictures/homepage.png)
+![homepage](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/homepage.png)
 
 ### API collection
 
@@ -93,7 +93,7 @@ Mac computer recommended brew command download
 
 - Click Create button to finish creating the API request set and display it on the interface (the list of newly created API request set will be displayed on the left side).
 
-![create-collection](/readme_pictures/create-collection.png)
+![create-collection](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/create-collection.png)
 
 #### Open API collection
 
@@ -106,7 +106,7 @@ Mac computer recommended brew command download
 - On the popup window, select the link of the corresponding format, and then select the path of the existing file of the corresponding format.
 - Click open to complete the selection and display it on the interface (the collection list on the left side will display the information of the selected API collection).
 
-![import-collection](/readme_pictures/import-collection.png)
+![import-collection](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/import-collection.png)
 
 #### RUN API collection
 
@@ -220,7 +220,7 @@ Value: provider
 - Click the right button after the API url edit box to finish running the API request and display it on the interface (the Request tab on the right side will display the information of the running API request).
 - Switch to the Tests tab to display the Tests information of the API request, which also includes the Assert information of the request.
 
-![assert-demo](/readme_pictures/assert-demo.png)
+![assert-demo](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/assert-demo.png)
 
 #### API request Tests
 
@@ -267,7 +267,7 @@ expect(data.title).to.contains('provident');
 - Click the right button after the API url edit box to finish running the API request and display it on the interface (the Request tab on the right side will display the information of the running API request).
 - Switch to the Tests tab, it will show the Tests information of the API request, which will also include the requested Tests information.
 
-![tests-demo](/readme_pictures/tests-demo.png)
+![tests-demo](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tests-demo.png)
 
 ## environment variables
 
@@ -288,7 +288,7 @@ expect(data.title).to.contains('provident');
 - Click the Create Environment button on the popup window, enter the name of the environment variable demo, and click the create button to create the environment variable demo.
 - Select the demo environment variable, and then click Add Variable button on the page, enter the key of the environment variable as host and the value as <https://jsonplaceholder.typicode.com>, and click Save button to add the environment variable.
 - As shown in the following figure
-! [env-intro](/readme_pictures/env-intro.png)
+! [env-intro](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/env-intro.png)
 
 ### Using Environment Variables
 
@@ -335,7 +335,7 @@ bruno-test   //项目主文件夹
 
 - The result is as follows
 
-![cli-demo](/readme_pictures/cli-demo.png)
+![cli-demo](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/cli-demo.png)
 
 ## CI/CD Integration
 
@@ -375,7 +375,7 @@ jobs:
 - [x] submit code to github, will automatically trigger github action
 - [x] View the result of the github action, as shown in the example:
 
-![cli-demo1](/readme_pictures/cli-demo1.png)
+![cli-demo1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/cli-demo1.png)
 > The code for this project can be pulled for reference:<https://github.com/dengnao-tw/Bruno-API-Test-Starter>
 
 ## Test report---TODO
@@ -390,8 +390,8 @@ jobs:
 - Click on the Select Postman Collection link and select the path to an existing Postman request collection file.
 - Then you can import Postman request collection.
 - However, only API requests can be imported, not test scripts, as shown in the figure (but it doesn't affect the request invocation).
-![postman1](/readme_pictures/postman1.png)
-![bruno1](/readme_pictures/bruno1.png)
+![postman1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/postman1.png)
+![bruno1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bruno1.png)
 
 ### Environment Variable Migration
 
@@ -401,8 +401,8 @@ jobs:
 - Click on the 'Postman Environment' link to open the Import Environment popup window Click on the 'Postman Environment' link and select the path to an existing Postman environment file
 - You can import Postman environment variables.
 
-![postman2](/readme_pictures/postman2.png)
-![bruno2](/readme_pictures/bruno2.png)
+![postman2](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/postman2.png)
+![bruno2](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bruno2.png)
 
 ### Test Script Migration Reference
 
