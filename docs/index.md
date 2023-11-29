@@ -1,4 +1,3 @@
-
 <!-- markdownlint-disable MD033 -->
 <h1 align="center">Hi 👋, welcome!</h1>
 <h3 align="center">This is the Automation-Test-Starter organization home page.</h3>
