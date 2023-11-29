@@ -74,7 +74,7 @@ Mac 电脑推荐 brew 命令下载
 
 ### 默认主界面
 
-![homepage](/readme_pictures/homepage.png)
+![homepage](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/homepage.png)
 
 ### API 请求集
 
@@ -92,7 +92,7 @@ Mac 电脑推荐 brew 命令下载
 
 - 点击 Create 按钮即可完成 API 请求集的创建，并展示在界面上 (左侧 请求集列表会展示新建的 API 请求集的信息)
 
-![create-collection](/readme_pictures/create-collection.png)
+![create-collection](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/create-collection.png)
 
 #### 打开 API 请求集
 
@@ -105,7 +105,7 @@ Mac 电脑推荐 brew 命令下载
 - 弹窗上选择对应格式的的链接，再选在已存在的对应格式的文件路径
 - 点击 open 即可完成选择，并展示在界面上 (左侧 collection 列表会展示选择的 API collection 信息)
 
-![import-collection](/readme_pictures/import-collection.png)
+![import-collection](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/import-collection.png)
 
 #### 本地运行 API collection
 
@@ -219,7 +219,7 @@ Value：provident
 - 点击 API url 编辑框后的向右按钮即可完成 API 请求的运行，并展示在界面上 (右侧 Request tab 会展示运行的 API 请求的信息)
 - 切换到 Tests tab，会展示 API 请求的 Tests 信息，里面也会包括请求的 Assert 信息
 
-![assert-demo](/readme_pictures/assert-demo.png)
+![assert-demo](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/assert-demo.png)
 
 #### API 请求 Tests
 
@@ -266,7 +266,7 @@ expect(data.title).to.contains('provident');
 - 点击 API url 编辑框后的向右按钮即可完成 API 请求的运行，并展示在界面上 (右侧 Request tab 会展示运行的 API 请求的信息)
 - 切换到 Tests tab，会展示 API 请求的 Tests 信息，里面也会包括请求的 Tests 信息
 
-![tests-demo](/readme_pictures/tests-demo.png)
+![tests-demo](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tests-demo.png)
 
 ## 环境变量
 
@@ -287,7 +287,7 @@ expect(data.title).to.contains('provident');
 - 弹窗上点击 Create Environment 按钮，输入环境变量的名字 demo，点击 create 按钮即可创建环境变量 demo
 - 选择 demo 环境变量，然后在页面上点击 Add Variable 按钮，输入环境变量的 key 为 host，value 为 <https://jsonplaceholder.typicode.com> ，点击 Save 按钮即可添加环境变量
 - 如下图所示
-![env-intro](/readme_pictures/env-intro.png)
+![env-intro](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/env-intro.png)
 
 ### 使用环境变量
 
@@ -334,7 +334,7 @@ bruno-test   //项目主文件夹
 
 - 运行结果如下
 
-![cli-demo](/readme_pictures/cli-demo.png)
+![cli-demo](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/cli-demo.png)
 
 ## 接入 CI
 
@@ -374,7 +374,7 @@ jobs:
 - [x] 提交代码到 github，会自动触发 github action
 - [x] 查看 github action 运行结果，如图示例：
 
-![cli-demo1](/readme_pictures/cli-demo1.png)
+![cli-demo1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/cli-demo1.png)
 > 可拉取本项目代码进行参考：<https://github.com/dengnao-tw/Bruno-API-Test-Starter>
 
 ## 测试报告---TODO
@@ -389,8 +389,8 @@ jobs:
 - 点击选择 Postman Collection 的链接，再选在已存在的 Postman 请求集文件路径
 - 即可导入 Postman 的请求集
 - 但是目前只支持导入 API 请求，无法导入测试脚本，如图所示（但不影响请求调用）
-![postman1](/readme_pictures/postman1.png)
-![bruno1](/readme_pictures/bruno1.png)
+![postman1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/postman1.png)
+![bruno1](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bruno1.png)
 
 ### 环境变量迁移
 
@@ -399,8 +399,8 @@ jobs:
 - 点击‘Import Environment’链接，打开导入 Environment 的弹窗
 - 点击选择 Postman Environment 的链接，再选在已存在的 Postman 环境变量文件路径
 - 即可导入 Postman 的环境变量
-![postman2](/readme_pictures/postman2.png)
-![bruno2](/readme_pictures/bruno2.png)
+![postman2](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/postman2.png)
+![bruno2](https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bruno2.png)
 
 ### 测试脚本迁移参考
 

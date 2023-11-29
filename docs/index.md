@@ -19,8 +19,8 @@ Currently it includes API automation testing and performance testing, and other 
 - [x] Bruno <https://github.com/Automation-Test-Starter/Bruno-API-Test-Starter>
 - [x] RestAssured <https://github.com/Automation-Test-Starter/RestAssured-API-Test-Starter>
 - [x] SuperTest <https://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter>
-- [ ] Postman
-- [ ] Pytest
+- [x] Postman <https://github.com/Automation-Test-Starter/Postman-API-Test-Starter>
+- [x] Pytest <https://github.com/Automation-Test-Starter/Pytest-API-Test-Starter>
 - [ ] ?
 
 ## Performance testing
@@ -52,6 +52,8 @@ If you want to add another type of startup project, you can do so in the issue o
 - Bruno: <https://github.com/Automation-Test-Starter/Bruno-API-Test-Starter>
 - RestAssured: <https://github.com/Automation-Test-Starter/RestAssured-API-Test-Starter>
 - SuperTest: <https://github.com/Automation-Test-Starter/SuperTest-API-Test-Starter>
+- Pytest: <https://github.com/Automation-Test-Starter/Pytest-API-Test-Starter>
+- Postman: <https://github.com/Automation-Test-Starter/Postman-API-Test-Starter>
 
 ## Performance testing starter project
 

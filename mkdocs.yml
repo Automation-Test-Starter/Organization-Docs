@@ -1,6 +1,6 @@
 # Project information
 site_name: Automation Test Starter
-site_url: https://automation-test-starter.pages.dev//
+site_url: https://automation-test-starter.pages.dev/
 site_author: Automation Test Starter
 site_description: >-
   An organization made by QA, for QA.
@@ -12,9 +12,11 @@ docs_dir: docs
 nav:
 - Home: index.md
 - API Automation Testing:
-  - Bruno: API-Automation-Testing/Bruno.md
   - SuperTest: API-Automation-Testing/SuperTest.md
   - RestAssured: API-Automation-Testing/RestAssured.md
+  - Pytest: API-Automation-Testing/Pytest.md
+  - Bruno: API-Automation-Testing/Bruno.md
+  - Postman: API-Automation-Testing/Postman.md
 
 - Performance Testing:
   - Performance-Testing/Gatling.md
