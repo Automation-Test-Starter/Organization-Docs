@@ -50,7 +50,9 @@ extra:
   search:
     language: 'en, zh'
     extra:
-  analytics: 
+  analytics:
+    provider: google
+    property: G-K091G8C97F
     feedback:
       title: Was this page helpful?
       ratings:
@@ -65,8 +67,6 @@ extra:
           note: >- 
             Thanks for your feedback! Help us improve this page by
             using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
-    provider: google
-    property: G-K091G8C97F
 
 
 plugins:
