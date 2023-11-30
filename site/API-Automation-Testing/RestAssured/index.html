@@ -1,0 +1,3198 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An organization made by QA, for QA.
+A QUICKSTART project for QA automation testing, including common test frameworks and tools, as well as some common test demo.">
+      
+      
+        <meta name="author" content="Automation Test Starter">
+      
+      
+        <link rel="canonical" href="https://automation-test-starter.pages.dev/API-Automation-Testing/RestAssured/">
+      
+      
+        <link rel="prev" href="../SuperTest/">
+      
+      
+        <link rel="next" href="../Pytest/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>RestAssured - Automation Test Starter</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-K091G8C97F"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-K091G8C97F",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-K091G8C97F",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#restassured" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Automation Test Starter" class="md-header__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Automation Test Starter
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RestAssured
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../zh/API-Automation-Testing/RestAssured/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../SuperTest/" class="md-tabs__link">
+          
+  
+  API Automation Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Performance-Testing/Gatling/" class="md-tabs__link">
+          
+  
+  Performance Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Automation Test Starter" class="md-nav__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Automation Test Starter
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API Automation Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Automation Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SuperTest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SuperTest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    RestAssured
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    RestAssured
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-of-restassured" class="md-nav__link">
+    Introduction of RestAssured
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    Project structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Project structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradle-built-versions" class="md-nav__link">
+    Gradle-built versions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maven-built-versions" class="md-nav__link">
+    Maven-built versions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-dependency" class="md-nav__link">
+    Project dependency
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-rest-assured-api-test-project-from-0-to-1" class="md-nav__link">
+    Building a REST Assured API test project from 0 to 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Building a REST Assured API test project from 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradle-version" class="md-nav__link">
+    Gradle version
+  </a>
+  
+    <nav class="md-nav" aria-label="Gradle version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialize-an-empty-gradle-project" class="md-nav__link">
+    Initialize an empty Gradle project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-buildgradle" class="md-nav__link">
+    Configuration build.gradle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testngxml-configuration" class="md-nav__link">
+    testng.xml configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradle-build-project-and-initialize" class="md-nav__link">
+    gradle build project and initialize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-project-directory" class="md-nav__link">
+    initialization project directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-of-demo-test-api" class="md-nav__link">
+    Introduction of demo test API
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction of demo test API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-api" class="md-nav__link">
+    Get API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-api" class="md-nav__link">
+    Post API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-cases" class="md-nav__link">
+    Writing Test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-test-cases" class="md-nav__link">
+    Debugging test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-test-reports" class="md-nav__link">
+    Viewing Test Reports
+  </a>
+  
+    <nav class="md-nav" aria-label="Viewing Test Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-line-report" class="md-nav__link">
+    Command Line Report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testng-html-report" class="md-nav__link">
+    testng html Report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maven-version" class="md-nav__link">
+    Maven version
+  </a>
+  
+    <nav class="md-nav" aria-label="Maven version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialize-an-empty-maven-project" class="md-nav__link">
+    Initialize an empty Maven project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-pomxml" class="md-nav__link">
+    Configuration pom.xml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-testngxml" class="md-nav__link">
+    Configuration testng.xml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-maven-project-directory" class="md-nav__link">
+    initialization maven project directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-api-used-by-demo" class="md-nav__link">
+    The api used by Demo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-cases_1" class="md-nav__link">
+    Writing Test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-test-cases_1" class="md-nav__link">
+    Debugging test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-test-reports_1" class="md-nav__link">
+    Viewing Test Reports
+  </a>
+  
+    <nav class="md-nav" aria-label="Viewing Test Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminal-report" class="md-nav__link">
+    terminal report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testng-html-report_1" class="md-nav__link">
+    testng html report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verifying-response-data" class="md-nav__link">
+    Verifying Response Data
+  </a>
+  
+    <nav class="md-nav" aria-label="Verifying Response Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-body-assertion" class="md-nav__link">
+    response body assertion
+  </a>
+  
+    <nav class="md-nav" aria-label="response body assertion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json-assertion" class="md-nav__link">
+    json assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml-assertion" class="md-nav__link">
+    XML assertion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie-assertion" class="md-nav__link">
+    Cookie assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-code-assertion" class="md-nav__link">
+    Status Code Assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#header-assertion" class="md-nav__link">
+    Header Assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-type-assertion" class="md-nav__link">
+    Content-Type Assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-bodycontent-matching-assertion" class="md-nav__link">
+    Full body/content matching Assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measuring-response-time" class="md-nav__link">
+    Measuring Response Time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-upload" class="md-nav__link">
+    File Upload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    Logging
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-logging-configuration" class="md-nav__link">
+    Global logging configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Global logging configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-add-global-logging-configuration" class="md-nav__link">
+    Steps to add global logging configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-logging-code-example" class="md-nav__link">
+    Global Logging Code Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-global-log-output" class="md-nav__link">
+    Viewing Global Log Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localized-logging-configuration" class="md-nav__link">
+    Localized logging configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Localized logging configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-add-localized-logging-configuration" class="md-nav__link">
+    Steps to add Localized logging configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-localized-log-output" class="md-nav__link">
+    Viewing Localized Log Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logconfig-configuration-description" class="md-nav__link">
+    LogConfig Configuration Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-logging" class="md-nav__link">
+    Request Logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-logging" class="md-nav__link">
+    Response Logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-if-validation-fails" class="md-nav__link">
+    Log if validation fails
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#header-blacklist-configuration" class="md-nav__link">
+    Header Blacklist Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    Filters
+  </a>
+  
+    <nav class="md-nav" aria-label="Filters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordered-filters" class="md-nav__link">
+    Ordered Filters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-builder" class="md-nav__link">
+    Response Builder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    CI/CD integration
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-github-action" class="md-nav__link">
+    integration github action
+  </a>
+  
+    <nav class="md-nav" aria-label="integration github action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-gradle-version-integration-github-action" class="md-nav__link">
+    The Gradle version integration github action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-maven-version-integration-github-action" class="md-nav__link">
+    The Maven version integration github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrating-allure-test-reports" class="md-nav__link">
+    Integrating allure test reports
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrating allure test reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allure-introduction" class="md-nav__link">
+    allure Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-steps" class="md-nav__link">
+    Integration steps
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-maven-version-integration-of-allure" class="md-nav__link">
+    The Maven version integration of allure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-gradle-version-of-allure-integration" class="md-nav__link">
+    The Gradle version of allure integration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pytest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pytest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bruno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bruno
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Postman/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Performance Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Performance Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Performance-Testing/Gatling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gatling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-of-restassured" class="md-nav__link">
+    Introduction of RestAssured
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    Project structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Project structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradle-built-versions" class="md-nav__link">
+    Gradle-built versions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maven-built-versions" class="md-nav__link">
+    Maven-built versions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-dependency" class="md-nav__link">
+    Project dependency
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-rest-assured-api-test-project-from-0-to-1" class="md-nav__link">
+    Building a REST Assured API test project from 0 to 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Building a REST Assured API test project from 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradle-version" class="md-nav__link">
+    Gradle version
+  </a>
+  
+    <nav class="md-nav" aria-label="Gradle version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialize-an-empty-gradle-project" class="md-nav__link">
+    Initialize an empty Gradle project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-buildgradle" class="md-nav__link">
+    Configuration build.gradle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testngxml-configuration" class="md-nav__link">
+    testng.xml configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradle-build-project-and-initialize" class="md-nav__link">
+    gradle build project and initialize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-project-directory" class="md-nav__link">
+    initialization project directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-of-demo-test-api" class="md-nav__link">
+    Introduction of demo test API
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction of demo test API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-api" class="md-nav__link">
+    Get API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-api" class="md-nav__link">
+    Post API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-cases" class="md-nav__link">
+    Writing Test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-test-cases" class="md-nav__link">
+    Debugging test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-test-reports" class="md-nav__link">
+    Viewing Test Reports
+  </a>
+  
+    <nav class="md-nav" aria-label="Viewing Test Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-line-report" class="md-nav__link">
+    Command Line Report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testng-html-report" class="md-nav__link">
+    testng html Report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maven-version" class="md-nav__link">
+    Maven version
+  </a>
+  
+    <nav class="md-nav" aria-label="Maven version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialize-an-empty-maven-project" class="md-nav__link">
+    Initialize an empty Maven project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-pomxml" class="md-nav__link">
+    Configuration pom.xml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-testngxml" class="md-nav__link">
+    Configuration testng.xml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-maven-project-directory" class="md-nav__link">
+    initialization maven project directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-api-used-by-demo" class="md-nav__link">
+    The api used by Demo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-cases_1" class="md-nav__link">
+    Writing Test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-test-cases_1" class="md-nav__link">
+    Debugging test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-test-reports_1" class="md-nav__link">
+    Viewing Test Reports
+  </a>
+  
+    <nav class="md-nav" aria-label="Viewing Test Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminal-report" class="md-nav__link">
+    terminal report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testng-html-report_1" class="md-nav__link">
+    testng html report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verifying-response-data" class="md-nav__link">
+    Verifying Response Data
+  </a>
+  
+    <nav class="md-nav" aria-label="Verifying Response Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-body-assertion" class="md-nav__link">
+    response body assertion
+  </a>
+  
+    <nav class="md-nav" aria-label="response body assertion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#json-assertion" class="md-nav__link">
+    json assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml-assertion" class="md-nav__link">
+    XML assertion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie-assertion" class="md-nav__link">
+    Cookie assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-code-assertion" class="md-nav__link">
+    Status Code Assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#header-assertion" class="md-nav__link">
+    Header Assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#content-type-assertion" class="md-nav__link">
+    Content-Type Assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-bodycontent-matching-assertion" class="md-nav__link">
+    Full body/content matching Assertion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measuring-response-time" class="md-nav__link">
+    Measuring Response Time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-upload" class="md-nav__link">
+    File Upload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    Logging
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-logging-configuration" class="md-nav__link">
+    Global logging configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Global logging configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-add-global-logging-configuration" class="md-nav__link">
+    Steps to add global logging configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-logging-code-example" class="md-nav__link">
+    Global Logging Code Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-global-log-output" class="md-nav__link">
+    Viewing Global Log Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localized-logging-configuration" class="md-nav__link">
+    Localized logging configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Localized logging configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-add-localized-logging-configuration" class="md-nav__link">
+    Steps to add Localized logging configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-localized-log-output" class="md-nav__link">
+    Viewing Localized Log Output
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logconfig-configuration-description" class="md-nav__link">
+    LogConfig Configuration Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-logging" class="md-nav__link">
+    Request Logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-logging" class="md-nav__link">
+    Response Logging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-if-validation-fails" class="md-nav__link">
+    Log if validation fails
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#header-blacklist-configuration" class="md-nav__link">
+    Header Blacklist Configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    Filters
+  </a>
+  
+    <nav class="md-nav" aria-label="Filters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordered-filters" class="md-nav__link">
+    Ordered Filters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-builder" class="md-nav__link">
+    Response Builder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    CI/CD integration
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-github-action" class="md-nav__link">
+    integration github action
+  </a>
+  
+    <nav class="md-nav" aria-label="integration github action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-gradle-version-integration-github-action" class="md-nav__link">
+    The Gradle version integration github action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-maven-version-integration-github-action" class="md-nav__link">
+    The Maven version integration github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrating-allure-test-reports" class="md-nav__link">
+    Integrating allure test reports
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrating allure test reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allure-introduction" class="md-nav__link">
+    allure Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-steps" class="md-nav__link">
+    Integration steps
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-maven-version-integration-of-allure" class="md-nav__link">
+    The Maven version integration of allure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-gradle-version-of-allure-integration" class="md-nav__link">
+    The Gradle version of allure integration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="restassured">RestAssured</h1>
+<p>Introductory documentation for a quick-start project on API testing with RestAssured.</p>
+<h2 id="introduction-of-restassured">Introduction of RestAssured</h2>
+<p>REST Assured is a Java testing framework for testing RESTful APIs that enables developers/testers to easily write and execute API tests. It is designed to make API testing simple and intuitive, while providing rich functionality and flexibility. The following are some of the key features and uses of REST Assured:</p>
+<ol>
+<li>
+<p>Initiating HTTP requests: REST Assured allows you to easily build and initiate HTTP GET, POST, PUT, DELETE and other types of requests. You can specify the request's URL, headers, parameters, body, and other information.</p>
+</li>
+<li>
+<p>Chained Syntax: REST Assured uses chained syntax to make test code more readable and easy to write. You can describe your test cases in a natural way without writing tons of code.</p>
+</li>
+<li>
+<p>Assertions and Checksums: REST Assured provides a rich set of checksums that can be used to validate API response status codes, response bodies, response headers, and so on. You can add multiple assertions according to your testing needs.</p>
+</li>
+<li>
+<p>Support for multiple data formats: REST Assured supports a variety of data formats, including JSON, XML, HTML, Text and so on. You can use appropriate methods to handle different formats of response data.</p>
+</li>
+<li>
+<p>Integration with BDD (Behavior-Driven Development): REST Assured can be used in conjunction with BDD frameworks (such as Cucumber), allowing you to better describe and manage test cases.</p>
+</li>
+<li>
+<p>Simulate HTTP Server: REST Assured also includes a simulation of an HTTP server, allowing you to simulate the behavior of an API for end-to-end testing.</p>
+</li>
+<li>
+<p>Extensibility: REST Assured can be customized with plug-ins and extensions to meet specific testing needs.</p>
+</li>
+</ol>
+<p>Overall, REST Assured is a powerful and easy-to-use API testing framework that helps you easily perform RESTful API testing and provides many tools to verify the correctness and performance of an API. Whether you are a beginner or an experienced developer/tester, REST Assured is a valuable tool for quickly getting started with API automation testing.</p>
+<h2 id="project-structure">Project structure</h2>
+<h3 id="gradle-built-versions">Gradle-built versions</h3>
+<pre><code class="language-text">- src
+  - main
+    - java
+      - (The main source code of the application)
+  - test
+    - test
+      - api
+        - (REST Assured test code)
+          - UsersAPITest.java
+          - ProductsAPITest.java
+        - TestConfig.java
+          - TestConfig.java
+    - resources
+      - (configuration files, test data, etc.)
+  - (other project files and resources)
+- build.gradle (Gradle project configuration file)
+</code></pre>
+<p>In this example directory structure:</p>
+<ul>
+<li>src/test/java/api directory is used to hold REST Assured test classes, each of which typically involves tests for one or more related API endpoints. For example, UsersAPITest.java and ProductsAPITest.java could contain tests for user management and product management.</li>
+<li>The src/test/java/util directory can be used to store tool classes that are shared among tests, such as TestConfig.java for configuring REST Assured.</li>
+<li>The src/test/resources directory can contain test data files, configuration files, and other resources that can be used in tests.</li>
+<li>build.gradle is the gradle project's configuration file, which is used to define the project's dependencies, build configuration, and other project settings.</li>
+</ul>
+<h3 id="maven-built-versions">Maven-built versions</h3>
+<pre><code class="language-text">- src
+  - main
+    - java
+      - (The main source code of the application)
+  - test
+    - java
+      - api
+        - (REST Assured test code)
+          - UsersAPITest.java
+          - ProductsAPITest.java
+        - util
+          - TestConfig.java
+    - resources
+      - (configuration files, test data, etc.)
+  - (other project files and resources)
+- pom.xml (Maven project configuration file)
+</code></pre>
+<p>In this example directory structure:</p>
+<ul>
+<li>src/test/java/api directory is used to hold REST Assured test classes, each of which typically involves tests for one or more related API endpoints. For example, UsersAPITest.java and ProductsAPITest.java could contain tests for user management and product management.</li>
+<li>The src/test/java/util directory can be used to store tool classes that are shared among tests, such as TestConfig.java for configuring REST Assured.</li>
+<li>The src/test/resources directory can contain test data files, configuration files, and other resources that can be used in the tests.</li>
+<li>pom.xml is a Maven project configuration file that is used to define project dependencies, build configurations, and other project settings.</li>
+</ul>
+<h2 id="project-dependency">Project dependency</h2>
+<ul>
+<li>JDK 1.8+, I'm using JDK 19</li>
+<li>Gradle 6.0+ or Maven 3.0+, I'm using Gradle 8.44 and Maven 3.9.5</li>
+<li>RestAssured 4.3.3+, I'm using the latest version 5.3.2</li>
+</ul>
+<h2 id="building-a-rest-assured-api-test-project-from-0-to-1">Building a REST Assured API test project from 0 to 1</h2>
+<p>REST Assured supports both Gradle and Maven build tools, you can choose one of them according to your preference. Below is a description of the initialization process for Gradle and Maven build tools.</p>
+<p>This project is built using Gradle 8.44 and Maven 3.9.5, if you are using other versions, it may be different.</p>
+<h3 id="gradle-version">Gradle version</h3>
+<p>See the demo project at <a href="https://github.com/Automation-Test-Starter/RestAssured-gradle-demo">https://github.com/Automation-Test-Starter/RestAssured-gradle-demo</a>.</p>
+<h4 id="initialize-an-empty-gradle-project">Initialize an empty Gradle project</h4>
+<pre><code class="language-bash">mkdir RestAssured-gradle-demo
+cd RestAssured-gradle-demo
+gradle init
+</code></pre>
+<h4 id="configuration-buildgradle">Configuration build.gradle</h4>
+<p>The demo project introduces the testNG testing framework. For reference only.</p>
+<ul>
+<li>Create a build.gradle file in the project root directory to configure the project.</li>
+<li>For reference, the following is a sample configuration</li>
+</ul>
+<pre><code class="language-groovy">// plugins configuration
+plugins {
+    id 'java' // use java plugin
+}
+
+// repositories configuration
+repositories {
+  mavenCentral() // user maven central repository
+}
+
+// dependencies configuration
+dependencies {
+    testImplementation 'io.rest-assured:rest-assured:5.3.1' // add rest-assured dependency
+    testImplementation 'org.testng:testng:7.8.0' // add testng testing framework dependency
+    implementation 'org.uncommons:reportng:1.1.4' // add testng reportng dependency
+    implementation 'org.slf4j:slf4j-api:2.0.9' // add slf4j dependency for test logging
+    implementation 'org.slf4j:slf4j-simple:2.0.9' // add slf4j dependency for test logging
+    implementation group: 'com.google.inject', name: 'guice', version: '7.0.0'
+}
+
+// test configuration
+test {
+    reports.html.required = false // set gradle html report to false
+    reports.junitXml.required = false // set gradle junitXml report to false
+    // use testng testing framework
+    useTestNG() {
+        useDefaultListeners = true
+        suites 'src/test/resources/testng.xml' // set testng.xml file path
+    }
+    testLogging.showStandardStreams = true // output test log to console
+    testLogging.events &quot;passed&quot;, &quot;skipped&quot;, &quot;failed&quot; // deny output test log to console
+}
+</code></pre>
+<blockquote>
+<p>You can copy the contents of the build.gradle file in this project. For more configuration refer to <a href="https://github.com/rest-assured/rest-assured/wiki/GettingStarted#rest-assured">Official Documentation</a></p>
+</blockquote>
+<h4 id="testngxml-configuration">testng.xml configuration</h4>
+<ul>
+<li>
+<p>Create a resources directory under the src/test directory to store test configuration files.</p>
+</li>
+<li>
+<p>Create a testng.xml file in the resources directory to configure the TestNG test framework.</p>
+</li>
+<li>
+<p>For reference, the following is a sample configuration</p>
+</li>
+</ul>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;restAssured-gradleTestSuite&quot;&gt;
+&lt;test thread-count=&quot;1&quot; name=&quot;Demo&quot;&gt;
+    &lt;classes&gt;
+        &lt;class name=&quot;com.example.TestDemo&quot;/&gt; &lt;!-- test case class--&gt;
+    &lt;/classes&gt;
+&lt;/test&gt; &lt;!-- Test --&gt;
+&lt;/suite&gt; &lt;!-- Suite --&gt;
+</code></pre>
+<h4 id="gradle-build-project-and-initialize">gradle build project and initialize</h4>
+<ul>
+<li>Open the Terminal window of the project with an editor and execute the following command to confirm that the project build was successful</li>
+</ul>
+<pre><code class="language-bash">gradle build
+</code></pre>
+<ul>
+<li>Initialization complete: After completing the wizard, Gradle will generate a basic Gradle project structure in the project directory</li>
+</ul>
+<h4 id="initialization-project-directory">initialization project directory</h4>
+<p>The directory structure can be found in &gt;&gt; <a href="#project-structure">Project structure</a></p>
+<p>Create a new test class in the project's test source directory. By default, Gradle usually places the test source code in the src/test/java directory. You can create a package of test classes in that directory and create a new test class in the package</p>
+<p>To create a test class for TestDemo, you can create files with the following structure</p>
+<pre><code class="language-text">src
+└── test
+    └── java
+        └── com
+            └── example
+                └── TestDemo.java
+</code></pre>
+<h4 id="introduction-of-demo-test-api">Introduction of demo test API</h4>
+<h5 id="get-api">Get API</h5>
+<ul>
+<li>HOST: https://jsonplaceholder.typicode.com</li>
+<li>API path: /posts/1</li>
+<li>Request method: GET</li>
+<li>Request Parameters: None</li>
+<li>Request header: "Content-Type": "application/json; charset=utf-8"</li>
+<li>Request Body: None</li>
+<li>Response status code: 200</li>
+<li>Response header: "Content-Type": "application/json; charset=utf-8"</li>
+<li>Response body:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;userId&quot;: 1,
+    &quot;id&quot;: 1,
+    &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+    &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+}
+</code></pre>
+<h5 id="post-api">Post API</h5>
+<ul>
+<li>HOST: https://jsonplaceholder.typicode.com</li>
+<li>API path:/posts</li>
+<li>Request method: POST</li>
+<li>Request Parameters: None</li>
+<li>Request header:"Content-Type": "application/json; charset=utf-8"</li>
+<li>Request Body:raw json format</li>
+<li>Request Body:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;title&quot;: &quot;foo&quot;,
+    &quot;body&quot;: &quot;bar&quot;,
+    &quot;userId&quot;: 1
+}
+</code></pre>
+<ul>
+<li>Response status code: 201</li>
+<li>Response header:"Content-Type": "application/json; charset=utf-8"</li>
+<li>Response body:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;title&quot;: &quot;foo&quot;,
+    &quot;body&quot;: &quot;bar&quot;,
+    &quot;userId&quot;: 1,
+    &quot;id&quot;: 101
+}
+</code></pre>
+<h4 id="writing-test-cases">Writing Test cases</h4>
+<ul>
+<li>
+<p>Open the TestDemo.java file and start writing the test script.</p>
+</li>
+<li>
+<p>The example script is as follows. For reference</p>
+</li>
+</ul>
+<pre><code class="language-java">package com.example;
+
+import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+public class TestDemo {
+
+ @Test(description = &quot;Verify that the Get Post API returns correctly&quot;)
+ public void verifyGetAPI() {
+
+  // Given
+  given()
+    .baseUri(&quot;https://jsonplaceholder.typicode.com&quot;)
+             .header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+
+  // When
+  .when()
+    .get(&quot;/posts/1&quot;)
+
+  // Then
+  .then()
+    .statusCode(200)
+    // To verify correct value
+    .body(&quot;userId&quot;, equalTo(1))
+    .body(&quot;id&quot;, equalTo(1))
+    .body(&quot;title&quot;, equalTo(&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;))
+    .body(&quot;body&quot;, equalTo(&quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;));
+ }
+ @Test(description = &quot;Verify that the publish post API returns correctly&quot;)
+ public void verifyPostAPI() {
+
+  // Given
+  given()
+    .baseUri(&quot;https://jsonplaceholder.typicode.com&quot;)
+    .header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+
+    // When
+    .when()
+    .body(&quot;{\&quot;title\&quot;: \&quot;foo\&quot;, \&quot;body\&quot;: \&quot;bar\&quot;, \&quot;userId\&quot;: 1\n}&quot;)
+    .post(&quot;/posts&quot;)
+
+    // Then
+    .then()
+    .statusCode(201)
+    // To verify correct value
+    .body(&quot;userId&quot;, equalTo(1))
+    .body(&quot;id&quot;, equalTo(101))
+    .body(&quot;title&quot;, equalTo(&quot;foo&quot;))
+    .body(&quot;body&quot;, equalTo(&quot;bar&quot;));
+ }
+}
+</code></pre>
+<h4 id="debugging-test-cases">Debugging test cases</h4>
+<ul>
+<li>Open the Terminal window for this project and run the test script by executing the following command</li>
+</ul>
+<pre><code class="language-bash">gradle test
+</code></pre>
+<h4 id="viewing-test-reports">Viewing Test Reports</h4>
+<h5 id="command-line-report">Command Line Report</h5>
+<p><img alt="gradle-test-report1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/gradle-report1.png" /></p>
+<h5 id="testng-html-report">testng html Report</h5>
+<ul>
+<li>Open the project build/reports/tests/test directory.</li>
+<li>Click on the index.html file to view the test report.</li>
+</ul>
+<p><img alt="gradle-test-report2" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/gradle-report2.png" /></p>
+<h3 id="maven-version">Maven version</h3>
+<p>See the demo project at <a href="https://github.com/Automation-Test-Starter/RestAssured-maven-demo">https://github.com/Automation-Test-Starter/RestAssured-maven-demo</a></p>
+<h4 id="initialize-an-empty-maven-project">Initialize an empty Maven project</h4>
+<pre><code class="language-bash">mvn archetype:generate -DgroupId=com.example -DartifactId=RestAssured-maven-demo -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+</code></pre>
+<p>Initialization complete: After completing the wizard, Maven will create a new project directory and a basic Maven project structure</p>
+<h4 id="configuration-pomxml">Configuration pom.xml</h4>
+<p>Add the following to the pom.xml file in your project</p>
+<blockquote>
+<p>You can copy the contents of the pom.xml file in this project. For more information on configuration, please refer to the <a href="https://github.com/rest-assured/rest-assured/wiki/GettingStarted#rest-assured">official documentation</a>.</p>
+</blockquote>
+<pre><code class="language-xml">&lt;!-- dependencies config --&gt;
+  &lt;dependencies&gt;
+    &lt;!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;io.rest-assured&lt;/groupId&gt;
+      &lt;artifactId&gt;rest-assured&lt;/artifactId&gt;
+      &lt;version&gt;5.3.1&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;!-- https://mvnrepository.com/artifact/org.testng/testng --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.testng&lt;/groupId&gt;
+      &lt;artifactId&gt;testng&lt;/artifactId&gt;
+      &lt;version&gt;7.8.0&lt;/version&gt;
+      &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+  &lt;!-- plugin config --&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+        &lt;version&gt;3.2.1&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;suiteXmlFiles&gt;
+            &lt;suiteXmlFile&gt;src/test/resources/testng.xml&lt;/suiteXmlFile&gt;
+          &lt;/suiteXmlFiles&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+</code></pre>
+<h4 id="configuration-testngxml">Configuration testng.xml</h4>
+<ul>
+<li>
+<p>Create a resources directory under the src/test directory to store test configuration files.</p>
+</li>
+<li>
+<p>Create a testng.xml file in the resources directory to configure the TestNG test framework.</p>
+</li>
+<li>
+<p>For reference, the following is a sample configuration</p>
+</li>
+</ul>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;restAssured-gradleTestSuite&quot;&gt;
+&lt;test thread-count=&quot;1&quot; name=&quot;Demo&quot;&gt;
+    &lt;classes&gt;
+        &lt;class name=&quot;com.example.TestDemo&quot;/&gt; &lt;!-- test case class--&gt;
+    &lt;/classes&gt;
+&lt;/test&gt; &lt;!-- Test --&gt;
+&lt;/suite&gt; &lt;!-- Suite --&gt;
+</code></pre>
+<h4 id="initialization-maven-project-directory">initialization maven project directory</h4>
+<p>The directory structure can be found in &gt;&gt; <a href="#project-structure">Project structure</a></p>
+<p>Create a new test class in the project's test source directory. By default, Gradle usually places the test source code in the src/test/java directory. You can create a package of test classes in that directory and create a new test class in the package</p>
+<p>To create a test class for TestDemo, you can create files with the following structure</p>
+<pre><code class="language-text">src
+└── test
+    └── java
+        └── com
+            └── example
+                └── TestDemo.java
+</code></pre>
+<h4 id="the-api-used-by-demo">The api used by Demo</h4>
+<p>referable to &gt;&gt; <a href="#introduction-of-demo-test-api">Introduction of demo test API</a></p>
+<h4 id="writing-test-cases_1">Writing Test cases</h4>
+<ul>
+<li>
+<p>Open the TestDemo.java file and start writing the test script.</p>
+</li>
+<li>
+<p>The example script is as follows. For reference</p>
+</li>
+</ul>
+<pre><code class="language-java">package com.example;
+
+import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+public class TestDemo {
+
+ @Test(description = &quot;Verify that the Get Post API returns correctly&quot;)
+ public void verifyGetAPI() {
+
+  // Given
+  given()
+    .baseUri(&quot;https://jsonplaceholder.typicode.com&quot;)
+             .header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+
+  // When
+  .when()
+    .get(&quot;/posts/1&quot;)
+
+  // Then
+  .then()
+    .statusCode(200)
+    // To verify correct value
+    .body(&quot;userId&quot;, equalTo(1))
+    .body(&quot;id&quot;, equalTo(1))
+    .body(&quot;title&quot;, equalTo(&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;))
+    .body(&quot;body&quot;, equalTo(&quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;));
+ }
+ @Test(description = &quot;Verify that the publish post API returns correctly&quot;)
+ public void verifyPostAPI() {
+
+  // Given
+  given()
+    .baseUri(&quot;https://jsonplaceholder.typicode.com&quot;)
+    .header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+
+    // When
+    .when()
+    .body(&quot;{\&quot;title\&quot;: \&quot;foo\&quot;, \&quot;body\&quot;: \&quot;bar\&quot;, \&quot;userId\&quot;: 1\n}&quot;)
+    .post(&quot;/posts&quot;)
+
+    // Then
+    .then()
+    .statusCode(201)
+    // To verify correct value
+    .body(&quot;userId&quot;, equalTo(1))
+    .body(&quot;id&quot;, equalTo(101))
+    .body(&quot;title&quot;, equalTo(&quot;foo&quot;))
+    .body(&quot;body&quot;, equalTo(&quot;bar&quot;));
+ }
+}
+</code></pre>
+<h4 id="debugging-test-cases_1">Debugging test cases</h4>
+<ul>
+<li>Open the Terminal window for this project and run the test script by executing the following command</li>
+</ul>
+<pre><code class="language-bash">mvn test
+</code></pre>
+<h4 id="viewing-test-reports_1">Viewing Test Reports</h4>
+<h5 id="terminal-report">terminal report</h5>
+<p><img alt="maven-test-report1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/maven-report1.png" /></p>
+<h5 id="testng-html-report_1">testng html report</h5>
+<ul>
+<li>Open the project target/surefire-reports directory.</li>
+<li>Click on the index.html file to view the test report.</li>
+</ul>
+<p><img alt="maven-test-report2" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/maven-report2.png" /></p>
+<h2 id="advanced-usage">Advanced Usage</h2>
+<h3 id="verifying-response-data">Verifying Response Data</h3>
+<p>You can verify Response status code, Response status line, Response cookies, Response headers, Response content type and Response body.</p>
+<h4 id="response-body-assertion">response body assertion</h4>
+<h5 id="json-assertion">json assertion</h5>
+<p>Assume that the GET request (to <a href="http://localhost:8080/lotto">http://localhost:8080/lotto</a>) returns JSON as:</p>
+<pre><code class="language-json">{
+&quot;lotto&quot;:{
+ &quot;lottoId&quot;:5,
+ &quot;winning-numbers&quot;:[2,45,34,23,7,5,3],
+ &quot;winners&quot;:[{
+   &quot;winnerId&quot;:23,
+   &quot;numbers&quot;:[2,45,34,23,3,5]
+ },{
+   &quot;winnerId&quot;:54,
+   &quot;numbers&quot;:[52,3,12,11,18,22]
+ }]
+}
+}
+</code></pre>
+<p>REST assured makes it easy to make get requests and process response messages.</p>
+<ul>
+<li>Asserts whether the value of lottoId is equal to 5. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/lotto&quot;).then().body(&quot;lotto.lottoId&quot;, equalTo(5));
+</code></pre>
+<ul>
+<li>Assertion The values for winnerId include 23 and 54. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/lotto&quot;).then().body(&quot;lotto.winners.winnerId&quot;, hasItems(23, 54));
+</code></pre>
+<blockquote>
+<p>Note: <code>equalTo</code> and <code>hasItems</code> are Hamcrest matchers which you should statically import from <code>org.hamcrest.Matchers</code>.</p>
+</blockquote>
+<h5 id="xml-assertion">XML assertion</h5>
+<p>XML can be verified in a similar way. Imagine that a POST request to <a href="http://localhost:8080/greetXML">http://localhost:8080/greetXML</a> returns:</p>
+<pre><code class="language-xml">&lt;greeting&gt;
+   &lt;firstName&gt;{params(&quot;firstName&quot;)}&lt;/firstName&gt;
+   &lt;lastName&gt;{params(&quot;lastName&quot;)}&lt;/lastName&gt;
+&lt;/greeting&gt;
+</code></pre>
+<ul>
+<li>Asserts whether the firstName is returned correctly. For example:</li>
+</ul>
+<pre><code class="language-java">given().
+         parameters(&quot;firstName&quot;, &quot;John&quot;, &quot;lastName&quot;, &quot;Doe&quot;).
+when().
+         post(&quot;/greetXML&quot;).
+then().
+         body(&quot;greeting.firstName&quot;, equalTo(&quot;John&quot;)).
+</code></pre>
+<ul>
+<li>Assert that firstname and lastname are returned correctly. For example:</li>
+</ul>
+<pre><code class="language-java">given().
+         parameters(&quot;firstName&quot;, &quot;John&quot;, &quot;lastName&quot;, &quot;Doe&quot;).
+when().
+         post(&quot;/greetXML&quot;).
+then().
+         body(&quot;greeting.firstName&quot;, equalTo(&quot;John&quot;)).
+         body(&quot;greeting.lastName&quot;, equalTo(&quot;Doe&quot;));
+</code></pre>
+<pre><code class="language-java">with().parameters(&quot;firstName&quot;, &quot;John&quot;, &quot;lastName&quot;, &quot;Doe&quot;).when().post(&quot;/greetXML&quot;).then().body(&quot;greeting.firstName&quot;, equalTo(&quot;John&quot;), &quot;greeting.lastName&quot;, equalTo(&quot;Doe&quot;));
+</code></pre>
+<h4 id="cookie-assertion">Cookie assertion</h4>
+<ul>
+<li>Asserts whether the value of the cookie is equal to cookieValue. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().assertThat().cookie(&quot;cookieName&quot;, &quot;cookieValue&quot;)
+</code></pre>
+<ul>
+<li>Asserts whether the value of multiple cookies is equal to the cookieValue at the same time. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().assertThat().cookies(&quot;cookieName1&quot;, &quot;cookieValue1&quot;, &quot;cookieName2&quot;, &quot;cookieValue2&quot;)
+</code></pre>
+<ul>
+<li>Asserts whether the value of the cookie contains a cookieValue. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().assertThat().cookies(&quot;cookieName1&quot;, &quot;cookieValue1&quot;, &quot;cookieName2&quot;, containsString(&quot;Value2&quot;))
+</code></pre>
+<h4 id="status-code-assertion">Status Code Assertion</h4>
+<ul>
+<li>Assertion Whether the status code is equal to 200. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().assertThat().statusCode(200)
+</code></pre>
+<ul>
+<li>Assertion Whether the status line is something. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().assertThat().statusLine(&quot;something&quot;)
+</code></pre>
+<ul>
+<li>Assertion Whether the status line contains some. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().assertThat().statusLine(containsString(&quot;some&quot;))
+</code></pre>
+<h4 id="header-assertion">Header Assertion</h4>
+<ul>
+<li>Asserts whether the value of Header is equal to HeaderValue. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().assertThat().header(&quot;headerName&quot;, &quot;headerValue&quot;)
+</code></pre>
+<ul>
+<li>Asserts whether the value of multiple Headers is equal to HeaderValue at the same time. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().assertThat().headers(&quot;headerName1&quot;, &quot;headerValue1&quot;, &quot;headerName2&quot;, &quot;headerValue2&quot;)
+</code></pre>
+<ul>
+<li>Asserts whether the value of the Header contains a HeaderValue. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().assertThat().headers(&quot;headerName1&quot;, &quot;headerValue1&quot;, &quot;headerName2&quot;, containsString(&quot;Value2&quot;))
+</code></pre>
+<ul>
+<li>Assert that the "Content-Length" of the Header is less than 1000. For example:</li>
+</ul>
+<blockquote>
+<p>The header can be first converted to int using the mapping function, and then asserted using the "integer" matcher before validation with Hamcrest:</p>
+</blockquote>
+<pre><code class="language-java">get(&quot;/something&quot;).then().assertThat().header(&quot;Content-Length&quot;, Integer::parseInt, lessThan(1000));
+</code></pre>
+<h4 id="content-type-assertion">Content-Type Assertion</h4>
+<ul>
+<li>Asserts whether the value of Content-Type is equal to application/json. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().assertThat().contentType(ContentType.JSON)
+</code></pre>
+<h4 id="full-bodycontent-matching-assertion">Full body/content matching Assertion</h4>
+<ul>
+<li>Assertion Whether the response body is exactly equal to something. For example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().assertThat().body(equalTo(&quot;something&quot;))
+</code></pre>
+<h4 id="measuring-response-time">Measuring Response Time</h4>
+<blockquote>
+<p>As of version 2.8.0 REST Assured has support measuring response time. For example:</p>
+</blockquote>
+<pre><code class="language-java">long timeInMs = get(&quot;/lotto&quot;).time()
+</code></pre>
+<p>or using a specific time unit:</p>
+<pre><code class="language-java">long timeInSeconds = get(&quot;/lotto&quot;).timeIn(SECONDS);
+
+</code></pre>
+<p>where 'SECONDS' is just a standard 'TimeUnit'. You can also validate it using the validation DSL:</p>
+<pre><code class="language-java">when().
+      get(&quot;/lotto&quot;).
+then().
+      time(lessThan(2000L)); // Milliseconds
+</code></pre>
+<p>or</p>
+<pre><code class="language-java">when().
+      get(&quot;/lotto&quot;).
+then().
+      time(lessThan(2L), SECONDS);
+</code></pre>
+<p>Note that you can only referentially correlate these measurements to server request processing times (as response times will include HTTP roundtrips, REST Assured processing times, etc., and cannot be very accurate).</p>
+<h3 id="file-upload">File Upload</h3>
+<p>Often we use the multipart form data technique when transferring large amounts of data to the server, such as files.
+rest-assured provides a <code>multiPart</code> method to recognize whether this is a file, a binary sequence, an input stream, or uploaded text.</p>
+<ul>
+<li>Upload only one file in the form. For example:</li>
+</ul>
+<pre><code class="language-java">given().
+        multiPart(new File(&quot;/path/to/file&quot;)).
+when().
+        post(&quot;/upload&quot;);
+</code></pre>
+<ul>
+<li>Uploading a file in the presence of a control name. For example:</li>
+</ul>
+<pre><code class="language-java">given().
+        multiPart(&quot;controlName&quot;, new File(&quot;/path/to/file&quot;)).
+when().
+        post(&quot;/upload&quot;);
+</code></pre>
+<ul>
+<li>Multiple "multi-parts" entities in the same request. For example:</li>
+</ul>
+<pre><code class="language-java">byte[] someData = ..
+given().
+        multiPart(&quot;controlName1&quot;, new File(&quot;/path/to/file&quot;)).
+        multiPart(&quot;controlName2&quot;, &quot;my_file_name.txt&quot;, someData).
+        multiPart(&quot;controlName3&quot;, someJavaObject, &quot;application/json&quot;).
+when().
+        post(&quot;/upload&quot;);
+</code></pre>
+<ul>
+<li>MultiPartSpecBuilder use cases. For example:</li>
+</ul>
+<blockquote>
+<p>For more usage references<a href="http://static.javadoc.io/io.rest-assured/rest-assured/3.0.1/io/restassured/builder/MultiPartSpecBuilder.html">MultiPartSpecBuilder</a>：</p>
+</blockquote>
+<pre><code class="language-java">Greeting greeting = new Greeting();
+greeting.setFirstName(&quot;John&quot;);
+greeting.setLastName(&quot;Doe&quot;);
+
+given().
+        multiPart(new MultiPartSpecBuilder(greeting, ObjectMapperType.JACKSON_2)
+                .fileName(&quot;greeting.json&quot;)
+                .controlName(&quot;text&quot;)
+                .mimeType(&quot;application/vnd.custom+json&quot;).build()).
+when().
+        post(&quot;/multipart/json&quot;).
+then().
+        statusCode(200);
+</code></pre>
+<ul>
+<li>MultiPartConfig use cases. For example:</li>
+</ul>
+<blockquote>
+<p><a href="http://static.javadoc.io/io.rest-assured/rest-assured/3.0.1/io/restassured/config/MultiPartConfig.html">MultiPartConfig</a>You can specify the default control name and file name.</p>
+</blockquote>
+<pre><code class="language-java">given().config(config().multiPartConfig(multiPartConfig().defaultControlName(&quot;something-else&quot;)))  
+</code></pre>
+<blockquote>
+<p>By default, the control name is configured as "something-else" instead of "file".
+For more usage references <a href="http://blog.jayway.com/2011/09/15/multipart-form-data-file-uploading-made-simple-with-rest-assured/">blog introduction</a></p>
+</blockquote>
+<h3 id="logging">Logging</h3>
+<p>When we are writing interface test scripts, we may need to print some logs during the test process so that we can view the request and response information of the interface and some other information during the test process.RestAssured provides some methods to print logs.</p>
+<ul>
+<li>
+<p>RestAssured provides a global logging configuration method that allows you to configure logging before the test starts and then print the logs during the test. This method is applicable to all test cases, but it can only print request and response information, not other information.</p>
+</li>
+<li>
+<p>RestAssured also provides a localized log configuration method that prints logs during the test. This method prints request and response information as well as other information.</p>
+</li>
+</ul>
+<h4 id="global-logging-configuration">Global logging configuration</h4>
+<h5 id="steps-to-add-global-logging-configuration">Steps to add global logging configuration</h5>
+<ul>
+<li>Importing logging-related dependency classes</li>
+</ul>
+<pre><code class="language-java">import io.restassured.config.LogConfig;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+</code></pre>
+<ul>
+<li>Adding logging configuration to the setup() method</li>
+</ul>
+<blockquote>
+<p>Use LogConfig configuration to enable logging of requests and responses, as well as to enable nice output formatting. Enabled logging filters for requests and responses, which will log details of requests and responses.</p>
+</blockquote>
+<pre><code class="language-java">// Setting the Global Request and Response Logging Configuration
+        RestAssured.config = RestAssured.config()
+                .logConfig(LogConfig.logConfig()
+                        .enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
+                        .enablePrettyPrinting(true));
+</code></pre>
+<ul>
+<li>Enabled global logging filters in the setup() method</li>
+</ul>
+<pre><code class="language-java">// Enable global request and response logging filters
+    RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+</code></pre>
+<h5 id="global-logging-code-example">Global Logging Code Example</h5>
+<pre><code class="language-java">package com.example;
+
+import io.restassured.RestAssured;
+// Importing logging-related dependency classes
+import io.restassured.config.LogConfig;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+public class TestDemo {
+
+    @BeforeClass
+    public void setup() {
+        // Setting the Global Request and Response Logging Configuration
+        RestAssured.config = RestAssured.config()
+                .logConfig(LogConfig.logConfig()
+                        .enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
+                        .enablePrettyPrinting(true));
+        // Enable global request and response logging filters
+        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+    }
+
+    @Test(description = &quot;Verify that the Get Post API returns correctly&quot;)
+    public void verifyGetAPI() {
+      // Test cases have been omitted, refer to the demo
+    }
+
+    @Test(description = &quot;Verify that the publish post API returns correctly&quot;)
+    public void verifyPostAPI() {
+      // Test cases have been omitted, refer to the demo
+    }
+}
+</code></pre>
+<h5 id="viewing-global-log-output">Viewing Global Log Output</h5>
+<ul>
+<li>Open the Terminal window for this project and run the test script by executing the following command</li>
+<li>Viewing Log Output</li>
+</ul>
+<p><img alt="log-sceenshot1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/9Mh9Z8.png" /></p>
+<h4 id="localized-logging-configuration">Localized logging configuration</h4>
+<p>In RestAssured, you can make localized logging configurations to enable or disable logging for specific test methods or requests without affecting the global configuration.</p>
+<h5 id="steps-to-add-localized-logging-configuration">Steps to add Localized logging configuration</h5>
+<ul>
+<li>Add logging configuration is enabled in the test method for which you want to print logs</li>
+</ul>
+<pre><code class="language-java">    @Test(description = &quot;Verify that the Get Post API returns correctly&quot;)
+    public void verifyGetAPI() {
+
+        // Given
+        given()
+                .log().everything(true)  // Output request-related logs
+                .baseUri(&quot;https://jsonplaceholder.typicode.com&quot;)
+                .header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+
+                // When
+                .when()
+                .get(&quot;/posts/1&quot;)
+
+                // Then
+                .then()
+                .log().everything(true)  // Output response-related logs
+                .statusCode(200)
+    }
+</code></pre>
+<h5 id="viewing-localized-log-output">Viewing Localized Log Output</h5>
+<ul>
+<li>Open the Terminal window for this project and run the test script by executing the following command</li>
+<li>Viewing Log Output</li>
+</ul>
+<p><img alt="report1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/GxZyyG.png" /></p>
+<h4 id="logconfig-configuration-description">LogConfig Configuration Description</h4>
+<p>In Rest-Assured, you can use the <code>LogConfig</code> class to configure logging of requests and responses. The <code>LogConfig</code> allows you to define the level of logging detail, the output format, the location of the output, and so on. The following are some common <code>LogConfig</code> configuration examples:</p>
+<ol>
+<li><strong>Enable logging of requests and responses:</strong></li>
+</ol>
+<p><code>java
+   RestAssured.config = RestAssured.config()
+       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL));;</code></p>
+<p>This will enable logging of requests and responses only if validation fails.</p>
+<ol>
+<li><strong>Configure the output level:</strong></li>
+</ol>
+<p><code>java
+   RestAssured.config = RestAssured.config()
+       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.HEADERS));;</code></p>
+<p>This will log only the request and response headers.</p>
+<ol>
+<li><strong>Configure the location of the output:</strong></li>
+</ol>
+<p><code>java
+   RestAssured.config = RestAssured.config()
+       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
+           .enablePrettyPrinting(true)
+           .defaultStream(FileOutputStream("log.txt"))); ;enablePrettyPrinting(true).enablePrettyPrinting(true)</code></p>
+<p>This outputs the log records to a file named "log.txt".</p>
+<ol>
+<li><strong>Configure the nice output format:</strong></li>
+</ol>
+<p><code>java
+   RestAssured.config = RestAssured.config()
+       .logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL)
+           .enablePrettyPrinting(true));</code></p>
+<p>This will enable nice output formatting and make the logs easier to read.</p>
+<p>You can combine these configuration options according to your specific needs and set it to <code>RestAssured.config</code> to configure global request and response logging. This will help log and review requests and responses in RestAssured for debugging and analyzing issues.</p>
+<h4 id="request-logging">Request Logging</h4>
+<p>Starting with version 1.5, REST Assured supports logging request specifications before they are sent to the server using RequestLoggingFilter. Note that HTTP Builder and HTTP Client may add headers other than what is printed in the log. The filter will only log the details specified in the request specification. That is, you cannot consider the details logged by the RequestLoggingFilter to be the details actually sent to the server. In addition, subsequent filters may change the request after logging has occurred. If you need to log what is actually sent over the network, see the HTTP Client Logging documentation or use an external tool such as fiddler.</p>
+<p>Examples：</p>
+<pre><code class="language-java">given().log().all() // Log all request specification details including parameters, headers and body
+given().log().params() // Log only the parameters of the request
+given().log().body() // Log only the request body
+given().log().headers()  // Log only the request headers
+given().log().cookies()  // Log only the request cookies
+given().log().method()  // Log only the request method
+given().log().path()  // Log only the request path
+</code></pre>
+<h4 id="response-logging">Response Logging</h4>
+<ul>
+<li>Wanting to print only the body of the response, regardless of the status code, you can do the following.
+, for example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().log().body()
+</code></pre>
+<ul>
+<li>The response body will be printed whether or not an error occurs. If only interested in printing the response body when an error occurs, for example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().log().ifError()
+</code></pre>
+<ul>
+<li>Record all details in the response, including status lines, headers, and cookies, for example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().log().all()   
+</code></pre>
+<ul>
+<li>Record only the status line, header, or cookie in the response, for example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().log().statusLine()  // Only log the status line
+get(&quot;/x&quot;).then().log().headers()  // Only log the response headers
+get(&quot;/x&quot;).then().log().cookies()   // Only log the response cookies
+</code></pre>
+<ul>
+<li>Configured to log a response only when the status code matches a value. for example:</li>
+</ul>
+<pre><code class="language-java">get(&quot;/x&quot;).then().log().ifStatusCodeIsEqualTo(302)   // Only log if the status code is equal to 302
+get(&quot;/x&quot;).then().log().ifStatusCodeMatches(matcher)   // Only log if the status code matches the supplied Hamcrest matcher
+</code></pre>
+<h4 id="log-if-validation-fails">Log if validation fails</h4>
+<ul>
+<li>Since REST Assured 2.3.1 you can log the request or response only if the validation fails. To log the request do. for example:</li>
+</ul>
+<pre><code class="language-java">given().log().ifValidationFails()
+</code></pre>
+<ul>
+<li>To log the response. for example:</li>
+</ul>
+<pre><code class="language-java">then().log().ifValidationFails()
+</code></pre>
+<ul>
+<li>It can be enabled for both requests and responses using LogConfig, for example:</li>
+</ul>
+<pre><code class="language-java">given().config(RestAssured.config().logConfig(logConfig().enableLoggingOfRequestAndResponseIfValidationFails(HEADERS)))
+</code></pre>
+<blockquote>
+<p>If authentication fails, the log only records the request header.</p>
+</blockquote>
+<ul>
+<li>Another shortcut to enable request and response logging for all requests if authentication fails, for example:</li>
+</ul>
+<pre><code class="language-java">RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+</code></pre>
+<ul>
+<li>Starting with version 4.5.0, you can also use specify the message that will be displayed if the onFailMessage test fails, for example:</li>
+</ul>
+<pre><code class="language-java">when().
+      get().
+then().
+      onFailMessage(&quot;Some specific message&quot;).
+      statusCode(200);
+</code></pre>
+<h4 id="header-blacklist-configuration">Header Blacklist Configuration</h4>
+<p>Starting with REST Assured 4.2.0, it is possible to blacklist headers so that they do not show up in request or response logs. Instead, the header value will be replaced with [ BLACKLISTED ] . You can enable this feature on a per-header basis using LogConfig, for example:</p>
+<pre><code class="language-java">given().config(config().logConfig(logConfig().blacklistHeader(&quot;Accept&quot;)))  
+</code></pre>
+<h3 id="filters">Filters</h3>
+<p>In RestAssured, you can use filters to modify requests and responses. Filters allow you to modify requests and responses at different stages of the request and response process. For example, you can modify the request before the request or the response after the response. You can use filters to add request headers, request parameters, request bodies, response headers, response bodies, and so on.</p>
+<p>Filters can be used to implement custom authentication schemes, session management, logging, and so on. To create a filter, you need to implement the io.restassured.filter.Filter interface. To use a filter, you can do the following:</p>
+<pre><code class="language-java">given().filter(new MyFilter())  
+</code></pre>
+<p>There are a couple of filters provided by REST-Assured that are ready to use:</p>
+<ul>
+<li><code>io.restassured.filter.log.RequestLoggingFilter</code>: A filter that'll print the request specification details.</li>
+<li><code>io.restassured.filter.log.ResponseLoggingFilter</code>: A filter that'll print the response details if the response matches a given status code.</li>
+<li><code>io.restassured.filter.log.ErrorLoggingFilter</code>: A filter that'll print the response body if an error occurred (status code is between 400 and 500).</li>
+</ul>
+<h4 id="ordered-filters">Ordered Filters</h4>
+<p>As of REST Assured 3.0.2 you can implement the <code>io.restassured.filter.OrderedFilter</code> interface if you need to control the filter ordering. Here you implement the getOrder method to return an integer representing the precedence of the filter. A lower value gives higher precedence. The highest precedence you can define is Integer.MIN_VALUE and the lowest precedence is Integer.MAX_VALUE. Filters not implementing <code>io.restassured.filter.OrderedFilter</code> will have a default precedence of 1000.</p>
+<p><a href="https://github.com/rest-assured/rest-assured/blob/master/examples/rest-assured-itest-java/src/test/java/io/restassured/itest/java/OrderedFilterITest.java">examples</a></p>
+<h4 id="response-builder">Response Builder</h4>
+<p>If you need to change the Response from a filter you can use the ResponseBuilder to create a new Response based on the original response. For example if you want to change the body of the original response to something else you can do:</p>
+<pre><code class="language-java">Response newResponse = new ResponseBuilder().clone(originalResponse).setBody(&quot;Something&quot;).build();
+</code></pre>
+<h3 id="cicd-integration">CI/CD integration</h3>
+<h4 id="integration-github-action">integration github action</h4>
+<p>Use github action as an example, and other CI tools similarly</p>
+<h5 id="the-gradle-version-integration-github-action">The Gradle version integration github action</h5>
+<p>See the demo at <a href="https://github.com/Automation-Test-Starter/RestAssured-gradle-demo">https://github.com/Automation-Test-Starter/RestAssured-gradle-demo</a></p>
+<ul>
+<li>
+<p>Create the .github/workflows directory: In your GitHub repository, create a directory called .github/workflows. This will be where the GitHub Actions workflow files will be stored.</p>
+</li>
+<li>
+<p>Create a workflow file: Create a YAML-formatted workflow file, such as gradle.yml, in the .github/workflows directory.</p>
+</li>
+<li>
+<p>Edit the gradle.yml file: Copy the following into the file</p>
+</li>
+</ul>
+<pre><code class="language-yaml">name: Gradle and REST Assured Tests
+
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+  pull_request:
+    branches: [ &quot;main&quot; ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - name: Build and Run REST Assured Tests with Gradle
+        uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
+        with:
+          arguments: build
+
+      - name: Archive REST-Assured results
+        uses: actions/upload-artifact@v2
+        with:
+          name: REST-Assured-results
+          path: build/reports/tests/test
+
+      - name: Upload REST-Assured results to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          name: REST-Assured-results
+          path: build/reports/tests/test
+</code></pre>
+<ul>
+<li>Commit the code: Add the gradle.yml file to your repository and commit.</li>
+<li>View test reports: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the Gradle and REST Assured Tests workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.</li>
+</ul>
+<p><img alt="gradle-test-report3" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/gradle-report3.png" /></p>
+<h5 id="the-maven-version-integration-github-action">The Maven version integration github action</h5>
+<p>See the demo at <a href="https://github.com/Automation-Test-Starter/RestAssured-maven-demo">https://github.com/Automation-Test-Starter/RestAssured-maven-demo</a></p>
+<ul>
+<li>
+<p>Create the .github/workflows directory: In your GitHub repository, create a directory called .github/workflows. This will be where the GitHub Actions workflow files will be stored.</p>
+</li>
+<li>
+<p>Create a workflow file: Create a YAML-formatted workflow file, such as maven.yml, in the .github/workflows directory.</p>
+</li>
+<li>
+<p>Edit the maven.yml file: Copy the following into the file</p>
+</li>
+</ul>
+<pre><code class="language-yaml">name: Maven and REST Assured Tests
+
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+  pull_request:
+    branches: [ &quot;main&quot; ]
+
+jobs:
+  Run-Rest-Assured-Tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build and Run REST Assured Tests with Maven
+      run: mvn test
+
+    - name: Archive REST-Assured results
+      uses: actions/upload-artifact@v3
+      with:
+        name: REST-Assured-results
+        path: target/surefire-reports
+
+    - name: Upload REST-Assured results to GitHub
+      uses: actions/upload-artifact@v3
+      with:
+        name: REST-Assured-results
+        path: target/surefire-reports
+</code></pre>
+<ul>
+<li>Commit the code: Add the maven.yml file to the repository and commit.</li>
+<li>View test reports: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the Maven and REST Assured Tests workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.</li>
+</ul>
+<p><img alt="maven-test-report3" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/maven-report3.png" /></p>
+<h3 id="integrating-allure-test-reports">Integrating allure test reports</h3>
+<h4 id="allure-introduction">allure Introduction</h4>
+<p>Allure is an open source testing framework for generating beautiful, interactive test reports. It can be used with a variety of testing frameworks (e.g. JUnit, TestNG, Cucumber, etc.) and a variety of programming languages (e.g. Java, Python, C#, etc.).</p>
+<p>Allure test reports have the following features:</p>
+<ul>
+<li>Aesthetically pleasing and interactive: Allure test reports present test results in an aesthetically pleasing and interactive way, including graphs, charts and animations. This makes test reports easier to read and understand.</li>
+<li>Multi-language support: Allure supports multiple programming languages, so you can write tests in different languages and generate uniform test reports.
+Test case level details: Allure allows you to add detailed information to each test case, including descriptions, categories, labels, attachments, historical data, and more. This information helps provide a more complete picture of the test results.</li>
+<li>Historical Trend Analysis: Allure supports test historical trend analysis, which allows you to view the historical performance of test cases, identify issues and improve test quality.</li>
+<li>Categories and Tags: You can add categories and tags to test cases to better organize and categorize test cases. This makes reporting more readable.</li>
+<li>Attachments and Screenshots: Allure allows you to attach files, screenshots, and other attachments to better document information during testing.</li>
+<li>Integration: Allure seamlessly integrates with a variety of testing frameworks and build tools (e.g. Maven, Gradle), making it easy to generate reports.</li>
+<li>Open Source Community Support: Allure is an open source project with an active community that provides extensive documentation and support. This makes it the tool of choice for many automated testing teams.</li>
+</ul>
+<p>The main goal of Allure test reports is to provide a clear, easy-to-read way to present test results to help development teams better understand the status and quality of their tests, quickly identify problems, and take the necessary action. Whether you are a developer, tester, or project manager, Allure test reports provide you with useful information to improve software quality and reliability.</p>
+<p>Official Website: <a href="https://docs.qameta.io/allure/">https://docs.qameta.io/allure/</a></p>
+<h4 id="integration-steps">Integration steps</h4>
+<h5 id="the-maven-version-integration-of-allure">The Maven version integration of allure</h5>
+<ul>
+<li>Add allure dependency in POM.xml</li>
+</ul>
+<blockquote>
+<p>Copy the contents of the pom.xml file in this project</p>
+</blockquote>
+<pre><code class="language-xml">    &lt;!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;io.qameta.allure&lt;/groupId&gt;
+      &lt;artifactId&gt;allure-testng&lt;/artifactId&gt;
+      &lt;version&gt;2.24.0&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-rest-assured --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;io.qameta.allure&lt;/groupId&gt;
+      &lt;artifactId&gt;allure-rest-assured&lt;/artifactId&gt;
+      &lt;version&gt;2.24.0&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre>
+<ul>
+<li>Add allure plugin to POM.xml</li>
+</ul>
+<pre><code class="language-xml">      &lt;plugin&gt;
+        &lt;groupId&gt;io.qameta.allure&lt;/groupId&gt;
+        &lt;artifactId&gt;allure-maven&lt;/artifactId&gt;
+        &lt;version&gt;2.12.0&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;resultsDirectory&gt;../allure-results&lt;/resultsDirectory&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+</code></pre>
+<ul>
+<li>Create test code for testing the REST API under src/test/java.</li>
+</ul>
+<blockquote>
+<p>The following is an example of a demo, see the project for details: <a href="https://github.com/Automation-Test-Starter/RestAssured-maven-demo">https://github.com/Automation-Test-Starter/RestAssured-maven-demo</a>.</p>
+</blockquote>
+<pre><code class="language-java">package com.example;
+
+import io.qameta.allure.*;
+import io.qameta.allure.restassured.AllureRestAssured;
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+@Epic(&quot;REST API Regression Testing using TestNG&quot;)
+@Feature(&quot;Verify that the Get and POST API returns correctly&quot;)
+public class TestDemo {
+
+    @Test(description = &quot;To get the details of post with id 1&quot;, priority = 1)
+    @Story(&quot;GET Request with Valid post id&quot;)
+    @Severity(SeverityLevel.NORMAL)
+    @Description(&quot;Test Description : Verify that the GET API returns correctly&quot;)
+    public void verifyGetAPI() {
+
+        // Given
+        given()
+                .filter(new AllureRestAssured()) // Set up the AllureRestAssured filter to display request and response information in the test report
+                .baseUri(&quot;https://jsonplaceholder.typicode.com&quot;)
+                .header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+
+                // When
+                .when()
+                .get(&quot;/posts/1&quot;)
+
+                // Then
+                .then()
+                .statusCode(200)
+                // To verify correct value
+                .body(&quot;userId&quot;, equalTo(1))
+                .body(&quot;id&quot;, equalTo(1))
+                .body(&quot;title&quot;, equalTo(&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;))
+                .body(&quot;body&quot;, equalTo(&quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;));
+    }
+
+    @Test(description = &quot;To create a new post&quot;, priority = 2)
+    @Story(&quot;POST Request&quot;)
+    @Severity(SeverityLevel.NORMAL)
+    @Description(&quot;Test Description : Verify that the post API returns correctly&quot;)
+    public void verifyPostAPI() {        // Given
+        given()
+                .filter(new AllureRestAssured()) // Set up the AllureRestAssured filter to display request and response information in the test report
+                .baseUri(&quot;https://jsonplaceholder.typicode.com&quot;)
+                .header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+
+                // When
+                .when()
+                .body(&quot;{\&quot;title\&quot;: \&quot;foo\&quot;, \&quot;body\&quot;: \&quot;bar\&quot;, \&quot;userId\&quot;: 1\n}&quot;)
+                .post(&quot;/posts&quot;)
+
+                // Then
+                .then()
+                .statusCode(201)
+                // To verify correct value
+                .body(&quot;userId&quot;, equalTo(1))
+                .body(&quot;id&quot;, equalTo(101))
+                .body(&quot;title&quot;, equalTo(&quot;foo&quot;))
+                .body(&quot;body&quot;, equalTo(&quot;bar&quot;));
+    }
+
+}
+</code></pre>
+<ul>
+<li>Run tests and generate Allure reports</li>
+</ul>
+<pre><code class="language-bash">mvn clean test
+</code></pre>
+<blockquote>
+<p>The generated Allure report is in the allure-results file in the project root directory.</p>
+</blockquote>
+<ul>
+<li>Preview of the Allure Report</li>
+</ul>
+<pre><code class="language-bash">mvn allure:serve
+</code></pre>
+<blockquote>
+<p>Running the command automatically opens a browser to preview the Allure report.</p>
+</blockquote>
+<p><img alt="allure-report" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/JsHrOQ.png" /></p>
+<p><img alt="allure-report1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ZXgnOD.png" /></p>
+<h5 id="the-gradle-version-of-allure-integration">The Gradle version of allure integration</h5>
+<ul>
+<li>Add the allure plugin to your build.gradle.</li>
+</ul>
+<blockquote>
+<p>Copy the contents of the build.gradle file in this project</p>
+</blockquote>
+<pre><code class="language-groovy">id(&quot;io.qameta.allure&quot;) version &quot;2.11.2&quot;
+</code></pre>
+<ul>
+<li>Add allure dependency to build.gradle</li>
+</ul>
+<blockquote>
+<p>Copy the contents of the build.gradle file in this project</p>
+</blockquote>
+<pre><code class="language-groovy">    implementation 'io.qameta.allure:allure-testng:2.24.0' // Add allure report dependency
+    implementation 'io.qameta.allure:allure-rest-assured:2.24.0' // Add allure report dependency
+</code></pre>
+<ul>
+<li>Create test code for testing the REST API under src/test/java.</li>
+</ul>
+<blockquote>
+<p>The following is an example of a demo, see the project for details: <a href="https://github.com/Automation-Test-Starter/RestAssured-gradle-demo">https://github.com/Automation-Test-Starter/RestAssured-gradle-demo</a>.</p>
+</blockquote>
+<pre><code class="language-java">package com.example;
+
+import io.qameta.allure.*;
+import io.qameta.allure.restassured.AllureRestAssured;
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+@Epic(&quot;REST API Regression Testing using TestNG&quot;)
+@Feature(&quot;Verify that the Get and POST API returns correctly&quot;)
+public class TestDemo {
+
+    @Test(description = &quot;To get the details of post with id 1&quot;, priority = 1)
+    @Story(&quot;GET Request with Valid post id&quot;)
+    @Severity(SeverityLevel.NORMAL)
+    @Description(&quot;Test Description : Verify that the GET API returns correctly&quot;)
+    public void verifyGetAPI() {
+
+        // Given
+        given()
+                .filter(new AllureRestAssured()) // Set up the AllureRestAssured filter to display request and response information in the test report
+                .baseUri(&quot;https://jsonplaceholder.typicode.com&quot;)
+                .header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+
+                // When
+                .when()
+                .get(&quot;/posts/1&quot;)
+
+                // Then
+                .then()
+                .statusCode(200)
+                // To verify correct value
+                .body(&quot;userId&quot;, equalTo(1))
+                .body(&quot;id&quot;, equalTo(1))
+                .body(&quot;title&quot;, equalTo(&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;))
+                .body(&quot;body&quot;, equalTo(&quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;));
+    }
+
+    @Test(description = &quot;To create a new post&quot;, priority = 2)
+    @Story(&quot;POST Request&quot;)
+    @Severity(SeverityLevel.NORMAL)
+    @Description(&quot;Test Description : Verify that the post API returns correctly&quot;)
+    public void verifyPostAPI() {        // Given
+        given()
+                .filter(new AllureRestAssured())                 .filter(new AllureRestAssured()) // Set up the AllureRestAssured filter to display request and response information in the test report
+                .baseUri(&quot;https://jsonplaceholder.typicode.com&quot;)
+                .header(&quot;Content-Type&quot;, &quot;application/json&quot;)
+
+                // When
+                .when()
+                .body(&quot;{\&quot;title\&quot;: \&quot;foo\&quot;, \&quot;body\&quot;: \&quot;bar\&quot;, \&quot;userId\&quot;: 1\n}&quot;)
+                .post(&quot;/posts&quot;)
+
+                // Then
+                .then()
+                .statusCode(201)
+                // To verify correct value
+                .body(&quot;userId&quot;, equalTo(1))
+                .body(&quot;id&quot;, equalTo(101))
+                .body(&quot;title&quot;, equalTo(&quot;foo&quot;))
+                .body(&quot;body&quot;, equalTo(&quot;bar&quot;));
+    }
+
+}
+</code></pre>
+<ul>
+<li>Run the test and generate the Allure report</li>
+</ul>
+<pre><code class="language-bash">gradle clean test 
+``
+
+&gt; The generated Allure report is in the build/allure-results file in the project root directory.
+
+- Preview the Allure report
+
+```bash
+gradle allureServe
+</code></pre>
+<blockquote>
+<p>Running the command automatically opens a browser to preview the Allure report.</p>
+</blockquote>
+<p><img alt="allure-report" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/JsHrOQ.png" /></p>
+<p><img alt="allure-report1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ZXgnOD.png" /></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>
+<p>Rest assured official documentation: <a href="https://rest-assured.io/">https://rest-assured.io/</a></p>
+</li>
+<li>
+<p>Rest assured official github:<a href="https://github.com/rest-assured/rest-assured">https://github.com/rest-assured/rest-assured</a></p>
+</li>
+<li>
+<p>Rest assured official docs in Chinese: <a href="https://github.com/RookieTester/rest-assured-doc">https://github.com/RookieTester/rest-assured-doc</a></p>
+</li>
+</ul>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Automation Test Starter
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>

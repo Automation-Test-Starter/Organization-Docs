@@ -1,0 +1,2756 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An organization made by QA, for QA.
+A QUICKSTART project for QA automation testing, including common test frameworks and tools, as well as some common test demo.">
+      
+      
+        <meta name="author" content="Automation Test Starter">
+      
+      
+        <link rel="canonical" href="https://automation-test-starter.pages.dev/API-Automation-Testing/Pytest/">
+      
+      
+        <link rel="prev" href="../RestAssured/">
+      
+      
+        <link rel="next" href="../Bruno/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>Pytest - Automation Test Starter</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-K091G8C97F"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-K091G8C97F",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-K091G8C97F",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pytest-api-automation-testing-quickstart-project" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Automation Test Starter" class="md-header__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Automation Test Starter
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pytest
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../zh/API-Automation-Testing/Pytest/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../SuperTest/" class="md-tabs__link">
+          
+  
+  API Automation Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Performance-Testing/Gatling/" class="md-tabs__link">
+          
+  
+  Performance Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Automation Test Starter" class="md-nav__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Automation Test Starter
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API Automation Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Automation Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SuperTest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SuperTest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RestAssured/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RestAssured
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Pytest
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Pytest
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introducing-pytest" class="md-nav__link">
+    Introducing Pytest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-python-virtual-environments" class="md-nav__link">
+    Introduction to python virtual environments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-dependencies" class="md-nav__link">
+    Project dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-directory-structure" class="md-nav__link">
+    Project directory structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-a-pytest-api-automation-test-project-from-0-to-1" class="md-nav__link">
+    Build a Pytest API Automation Test Project from 0 to 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Build a Pytest API Automation Test Project from 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-a-project-directory" class="md-nav__link">
+    1. Create a project directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2project-initialization" class="md-nav__link">
+    2.Project initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3install-project-dependencies" class="md-nav__link">
+    3.Install project dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-new-test-files-and-test-cases" class="md-nav__link">
+    4. Create new test files and test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-writing-test-cases" class="md-nav__link">
+    5. Writing Test Cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6run-test-cases" class="md-nav__link">
+    6.Run test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7view-test-report" class="md-nav__link">
+    7.View test report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8integration-pytest-html-reporter-test-report" class="md-nav__link">
+    8.Integration pytest-html-reporter test report
+  </a>
+  
+    <nav class="md-nav" aria-label="8.Integration pytest-html-reporter test report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-pytest-html-reporter-dependency" class="md-nav__link">
+    Install pytest-html-reporter dependency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-test-report-parameters" class="md-nav__link">
+    Configuring Test Report Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-test-cases" class="md-nav__link">
+    Run test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-test-report" class="md-nav__link">
+    Viewing the test report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    CI/CD integration
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-github-action" class="md-nav__link">
+    Integration github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-assertions" class="md-nav__link">
+    Common Assertions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-driven" class="md-nav__link">
+    Data-driven
+  </a>
+  
+    <nav class="md-nav" aria-label="Data-driven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-the-test-configuration-file" class="md-nav__link">
+    Create the test configuration file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-configuration-files" class="md-nav__link">
+    Writing Test Configuration Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-test-data-file" class="md-nav__link">
+    Create the test data file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-data-files" class="md-nav__link">
+    Writing test data files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-test-cases-to-support-data-driving" class="md-nav__link">
+    Updating test cases to support data driving
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-test-case-to-confirm-the-data-driver-is-working" class="md-nav__link">
+    Run the test case to confirm the data driver is working
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-environment-support" class="md-nav__link">
+    Multi-environment support
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-environment support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-test-configuration-files-for-different-environments" class="md-nav__link">
+    New test configuration files for different environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-different-environment-test-profiles" class="md-nav__link">
+    Writing different environment test profiles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-different-environment-test-data-file" class="md-nav__link">
+    New Different Environment Test Data File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-data-files-for-different-environments" class="md-nav__link">
+    Writing test data files for different environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-fixture-to-support-multiple-environments" class="md-nav__link">
+    Configure fixture to support multiple environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-test-case-to-support-multi-environment" class="md-nav__link">
+    Update test case to support multi environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-this-test-case-to-confirm-that-multi-environment-support-is-in-effect" class="md-nav__link">
+    Run this test case to confirm that multi-environment support is in effect
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-with-allure-reporting" class="md-nav__link">
+    Integration with allure reporting
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with allure reporting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-allure-pytest-library" class="md-nav__link">
+    Install allure-pytest library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-allure-pytest-library" class="md-nav__link">
+    Configuration allure-pytest library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-test-cases-to-support-allure-reporting" class="md-nav__link">
+    Adjusting test cases to support allure reporting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-test-cases-to-generate-allure-reports" class="md-nav__link">
+    Run test cases to generate allure reports
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-allure-report" class="md-nav__link">
+    View allure report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapting-cicd-processes-to-support-allure-reporting" class="md-nav__link">
+    Adapting CI/CD processes to support allure reporting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-github-action-allure-report" class="md-nav__link">
+    View github action allure report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrent-testing-and-distributed-testing" class="md-nav__link">
+    concurrent testing and distributed testing
+  </a>
+  
+    <nav class="md-nav" aria-label="concurrent testing and distributed testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytest-xdist-feature-introduction" class="md-nav__link">
+    pytest-xdist Feature Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-pytest-xdist-dependency" class="md-nav__link">
+    Installing pytest-xdist dependency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-of-running-a-test-case-concurrently" class="md-nav__link">
+    Example of running a test case concurrently
+  </a>
+  
+    <nav class="md-nav" aria-label="Example of running a test case concurrently">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execute-test-cases-concurrently-with-3-workers" class="md-nav__link">
+    Execute test cases concurrently with 3 workers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrently-executes-the-test-cases-with-3-workers-and-each-worker-prints-the-progress-of-the-test-cases" class="md-nav__link">
+    concurrently executes the test cases with 3 workers, and each worker prints the progress of the test cases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-testing-example" class="md-nav__link">
+    Distributed testing example
+  </a>
+  
+    <nav class="md-nav" aria-label="Distributed testing example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distributed-test-where-each-node-runs-a-set-of-tests" class="md-nav__link">
+    Distributed test where each node runs a set of tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-testing-where-each-node-runs-a-set-of-tests-and-each-worker-prints-the-progress-of-the-test-cases" class="md-nav__link">
+    Distributed testing, where each node runs a set of tests and each worker prints the progress of the test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-testing-each-node-runs-a-set-of-tests-and-each-worker-prints-the-progress-of-the-test-cases-as-well-as-the-output-of-the-test-logs" class="md-nav__link">
+    Distributed testing, each node runs a set of tests, and each worker prints the progress of the test cases, as well as the output of the test logs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-test-case-execution" class="md-nav__link">
+    Filtering test case execution
+  </a>
+  
+    <nav class="md-nav" aria-label="Filtering test case execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-pytest-markers" class="md-nav__link">
+    Defining Pytest Markers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#marking-test-cases" class="md-nav__link">
+    Marking Test Cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-test-case-execution_1" class="md-nav__link">
+    Filtering Test Case Execution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bruno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bruno
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Postman/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Performance Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Performance Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Performance-Testing/Gatling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gatling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introducing-pytest" class="md-nav__link">
+    Introducing Pytest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-python-virtual-environments" class="md-nav__link">
+    Introduction to python virtual environments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-dependencies" class="md-nav__link">
+    Project dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-directory-structure" class="md-nav__link">
+    Project directory structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-a-pytest-api-automation-test-project-from-0-to-1" class="md-nav__link">
+    Build a Pytest API Automation Test Project from 0 to 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Build a Pytest API Automation Test Project from 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-a-project-directory" class="md-nav__link">
+    1. Create a project directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2project-initialization" class="md-nav__link">
+    2.Project initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3install-project-dependencies" class="md-nav__link">
+    3.Install project dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-new-test-files-and-test-cases" class="md-nav__link">
+    4. Create new test files and test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-writing-test-cases" class="md-nav__link">
+    5. Writing Test Cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6run-test-cases" class="md-nav__link">
+    6.Run test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7view-test-report" class="md-nav__link">
+    7.View test report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8integration-pytest-html-reporter-test-report" class="md-nav__link">
+    8.Integration pytest-html-reporter test report
+  </a>
+  
+    <nav class="md-nav" aria-label="8.Integration pytest-html-reporter test report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-pytest-html-reporter-dependency" class="md-nav__link">
+    Install pytest-html-reporter dependency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-test-report-parameters" class="md-nav__link">
+    Configuring Test Report Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-test-cases" class="md-nav__link">
+    Run test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-test-report" class="md-nav__link">
+    Viewing the test report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    CI/CD integration
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-github-action" class="md-nav__link">
+    Integration github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-assertions" class="md-nav__link">
+    Common Assertions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-driven" class="md-nav__link">
+    Data-driven
+  </a>
+  
+    <nav class="md-nav" aria-label="Data-driven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-the-test-configuration-file" class="md-nav__link">
+    Create the test configuration file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-configuration-files" class="md-nav__link">
+    Writing Test Configuration Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-test-data-file" class="md-nav__link">
+    Create the test data file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-data-files" class="md-nav__link">
+    Writing test data files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-test-cases-to-support-data-driving" class="md-nav__link">
+    Updating test cases to support data driving
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-test-case-to-confirm-the-data-driver-is-working" class="md-nav__link">
+    Run the test case to confirm the data driver is working
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-environment-support" class="md-nav__link">
+    Multi-environment support
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-environment support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-test-configuration-files-for-different-environments" class="md-nav__link">
+    New test configuration files for different environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-different-environment-test-profiles" class="md-nav__link">
+    Writing different environment test profiles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-different-environment-test-data-file" class="md-nav__link">
+    New Different Environment Test Data File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-data-files-for-different-environments" class="md-nav__link">
+    Writing test data files for different environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-fixture-to-support-multiple-environments" class="md-nav__link">
+    Configure fixture to support multiple environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-test-case-to-support-multi-environment" class="md-nav__link">
+    Update test case to support multi environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-this-test-case-to-confirm-that-multi-environment-support-is-in-effect" class="md-nav__link">
+    Run this test case to confirm that multi-environment support is in effect
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-with-allure-reporting" class="md-nav__link">
+    Integration with allure reporting
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with allure reporting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-allure-pytest-library" class="md-nav__link">
+    Install allure-pytest library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-allure-pytest-library" class="md-nav__link">
+    Configuration allure-pytest library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-test-cases-to-support-allure-reporting" class="md-nav__link">
+    Adjusting test cases to support allure reporting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-test-cases-to-generate-allure-reports" class="md-nav__link">
+    Run test cases to generate allure reports
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-allure-report" class="md-nav__link">
+    View allure report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapting-cicd-processes-to-support-allure-reporting" class="md-nav__link">
+    Adapting CI/CD processes to support allure reporting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-github-action-allure-report" class="md-nav__link">
+    View github action allure report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrent-testing-and-distributed-testing" class="md-nav__link">
+    concurrent testing and distributed testing
+  </a>
+  
+    <nav class="md-nav" aria-label="concurrent testing and distributed testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytest-xdist-feature-introduction" class="md-nav__link">
+    pytest-xdist Feature Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-pytest-xdist-dependency" class="md-nav__link">
+    Installing pytest-xdist dependency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-of-running-a-test-case-concurrently" class="md-nav__link">
+    Example of running a test case concurrently
+  </a>
+  
+    <nav class="md-nav" aria-label="Example of running a test case concurrently">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execute-test-cases-concurrently-with-3-workers" class="md-nav__link">
+    Execute test cases concurrently with 3 workers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrently-executes-the-test-cases-with-3-workers-and-each-worker-prints-the-progress-of-the-test-cases" class="md-nav__link">
+    concurrently executes the test cases with 3 workers, and each worker prints the progress of the test cases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-testing-example" class="md-nav__link">
+    Distributed testing example
+  </a>
+  
+    <nav class="md-nav" aria-label="Distributed testing example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distributed-test-where-each-node-runs-a-set-of-tests" class="md-nav__link">
+    Distributed test where each node runs a set of tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-testing-where-each-node-runs-a-set-of-tests-and-each-worker-prints-the-progress-of-the-test-cases" class="md-nav__link">
+    Distributed testing, where each node runs a set of tests and each worker prints the progress of the test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-testing-each-node-runs-a-set-of-tests-and-each-worker-prints-the-progress-of-the-test-cases-as-well-as-the-output-of-the-test-logs" class="md-nav__link">
+    Distributed testing, each node runs a set of tests, and each worker prints the progress of the test cases, as well as the output of the test logs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-test-case-execution" class="md-nav__link">
+    Filtering test case execution
+  </a>
+  
+    <nav class="md-nav" aria-label="Filtering test case execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-pytest-markers" class="md-nav__link">
+    Defining Pytest Markers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#marking-test-cases" class="md-nav__link">
+    Marking Test Cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-test-case-execution_1" class="md-nav__link">
+    Filtering Test Case Execution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="pytest-api-automation-testing-quickstart-project">Pytest API Automation Testing QuickStart Project</h1>
+<p>An introductory QuickStart project document on API automation testing with Pytest.</p>
+<h2 id="introduction">Introduction</h2>
+<h3 id="introducing-pytest">Introducing Pytest</h3>
+<p>Pytest is a popular Python testing framework for writing, organizing, and running various types of automated tests. It provides a rich set of features that make it easy to write and manage test cases, as well as generate detailed test reports. Here are some of the key features and benefits of Pytest:</p>
+<ol>
+<li>
+<p><strong>Simple and easy to use</strong>: Pytest is designed to make writing test cases simple and easy to understand. You can write test assertions using Python's standard <code>assert</code> statement without having to learn a new assertion syntax.</p>
+</li>
+<li>
+<p><strong>Automatic Discovery of Test Cases</strong>: Pytest can automatically discover and run test cases in your project without explicitly configuring the test suite. Test case files can be named <code>test_*.py</code> or <code>*_test.py</code>, or use a specific test function naming convention.</p>
+</li>
+<li>
+<p><strong>Rich plugin ecosystem</strong>: Pytest can be extended with plugins. There are many third-party plug-ins available to meet different testing needs, such as Allure reporting, parameterization, coverage analysis, and so on.</p>
+</li>
+<li>
+<p><strong>Parameterized Testing</strong>: Pytest supports parameterized testing, which allows you to run the same test case multiple times, but with different parameters. This reduces code duplication and improves test coverage.</p>
+</li>
+<li>
+<p><strong>Exception and fault localization</strong>: Pytest provides detailed error and exception information that helps you locate and resolve problems more easily. It also provides detailed traceback information.</p>
+</li>
+<li>
+<p><strong>Parallel Test Execution</strong>: Pytest supports parallel execution of test cases, which increases the speed of test execution, especially in large projects.</p>
+</li>
+<li>
+<p><strong>Multiple Report Formats</strong>: Pytest supports multiple test report formats, including terminal output, JUnit XML, HTML reports and Allure reports. These reports can help you visualize test results.</p>
+</li>
+<li>
+<p><strong>Command Line Options</strong>: Pytest provides a rich set of command line options to customize the behavior of test runs, including filtering, retrying, coverage analysis, and more.</p>
+</li>
+<li>
+<p><strong>Integration</strong>: Pytest can be easily integrated with other testing frameworks and tools (e.g. Selenium, Django, Flask, etc.) as well as continuous integration systems (e.g. Jenkins, Travis CI, etc.).</p>
+</li>
+<li>
+<p><strong>Active Community</strong>: Pytest has an active community with extensive documentation and tutorials for learning and reference. You can also get support and solve problems in the community.</p>
+</li>
+</ol>
+<p>In short, Pytest is a powerful and flexible testing framework for projects of all sizes and types. Its ease of use, automation capabilities, and rich set of plugins make it one of the go-to tools in Python testing.</p>
+<p>Official website: <a href="https://docs.pytest.org/en/latest/">https://docs.pytest.org/en/latest/</a></p>
+<h3 id="introduction-to-python-virtual-environments">Introduction to python virtual environments</h3>
+<p>A Python virtual environment is a mechanism for creating and managing multiple isolated development environments within a single Python installation. Virtual environments help resolve dependency conflicts between different projects by ensuring that each project can use its own independent Python packages and libraries without interfering with each other. Here are the steps on how to create and use a Python virtual environment:</p>
+<ol>
+<li><strong>Install the Virtual Environment Tool</strong>.
+   Before you begin, make sure you have installed Python's virtual environment tools. In Python 3.3 and later, the <code>venv</code> module is built-in and can be used to create virtual environments. If you're using an older version of Python, you can install the <code>virtualenv</code> tool.</li>
+</ol>
+<p>For Python 3.3+, the <code>venv</code> tool is built-in and does not require additional installation.</p>
+<p>For Python 2.x, you can install the <code>virtualenv</code> tool with the following command:</p>
+<p><code>bash
+   pip install virtualenv</code></p>
+<ol>
+<li><strong>Creating a virtual environment</strong>.
+   Open a terminal, move to the directory where you wish to create the virtual environment, and run the following command to create the virtual environment:</li>
+</ol>
+<p>Use <code>venv</code> (for Python 3.3+):</p>
+<p><code>bash
+   python -m venv myenv</code></p>
+<p>Use <code>virtualenv</code> (for Python 2.x):</p>
+<p><code>bash
+   virtualenv myenv</code></p>
+<p>In the above command, <code>myenv</code> is the name of the virtual environment and you can customize the name.</p>
+<ol>
+<li>
+<p><strong>Activate virtual environment</strong>.
+   To start using the virtual environment, you need to activate it. The activation command is slightly different for different operating systems:</p>
+</li>
+<li>
+<p>on macOS and Linux:</p>
+<p><code>bash
+ source myenv/bin/activate</code></p>
+</li>
+<li>
+<p>On Windows (using Command Prompt):</p>
+<p><code>bash
+ myenv\Scripts\activate</code></p>
+</li>
+<li>
+<p>On Windows (using PowerShell):</p>
+<p><code>bash
+ .\myenv\Scripts\Activate.ps1</code></p>
+</li>
+</ol>
+<p>Once the virtual environment is activated, you will see the name of the virtual environment in front of the terminal prompt, indicating that you are in the virtual environment.</p>
+<ol>
+<li><strong>Installing dependencies in a virtual environment</strong>.
+   In a virtual environment, you can use <code>pip</code> to install any Python packages and libraries required by your project, and these dependencies will be associated with that virtual environment. Example:</li>
+</ol>
+<p><code>bash
+   pip install requests</code></p>
+<ol>
+<li>
+<p><strong>Using a virtual environment</strong>.
+   When working in a virtual environment, you can run Python scripts and use packages installed in the virtual environment. This ensures that your project runs in a separate environment and does not conflict with the global Python installation.</p>
+</li>
+<li>
+<p><strong>Exiting the virtual environment</strong>.
+   To exit the virtual environment, simply run the following command in a terminal:</p>
+</li>
+</ol>
+<p><code>bash
+   deactivate</code></p>
+<p>This returns you to the global Python environment.</p>
+<p>By using a virtual environment, you can maintain clean dependencies between projects and ensure project stability and isolation. This is a good practice in Python development.</p>
+<h2 id="project-dependencies">Project dependencies</h2>
+<blockquote>
+<p>The following environments need to be installed in advance</p>
+</blockquote>
+<ul>
+<li>[x] python, demo 版本为 v3.11.6</li>
+</ul>
+<blockquote>
+<p>Just install python 3.x or higher.</p>
+</blockquote>
+<h2 id="project-directory-structure">Project directory structure</h2>
+<p>The following is an example of the directory structure of a Pytest interface automation test project:</p>
+<blockquote>
+<p>Subsequent demo projects will introduce allure reports, so there will be an additional allure-report directory.</p>
+</blockquote>
+<pre><code class="language-text">Pytest-allure-demo/
+    ├── tests/                  # test case files
+    │   ├── test_login.py       # Example test case file
+    │   ├── test_order.py       # Example test case file
+    │   └── ...
+    ├── data/                   # test data files (e.g. JSON, CSV, etc.)
+    │   ├── dev_test_data.json      #  Test data file for development environment.
+    │   ├── prod_test_data.json      #  Test data file for prod environment.
+    │   ├── ...
+    ├── config/
+    │   ├── dev_config.json  # Development environment configuration file
+    │   ├── prod_config.json  # Production environment configuration file
+    │   ├── ...
+    ├── conftest.py             # Pytest's global configuration file
+    ├── pytest.ini              # Pytest configuration file
+    ├── requirements.txt        # Project dependencies file
+    └── allure-report/          # Allure reports
+</code></pre>
+<h2 id="build-a-pytest-api-automation-test-project-from-0-to-1">Build a Pytest API Automation Test Project from 0 to 1</h2>
+<h3 id="1-create-a-project-directory">1. Create a project directory</h3>
+<pre><code class="language-shell">mkdir Pytest-API-Testing-Demo
+</code></pre>
+<h3 id="2project-initialization">2.Project initialization</h3>
+<pre><code class="language-shell">// Go to the project folder
+cd Pytest-API-Testing-Demo
+// Create the project python project virtual environment
+python -m venv .env
+// Enable the project python project virtual environment
+source .env/bin/activate
+</code></pre>
+<h3 id="3install-project-dependencies">3.Install project dependencies</h3>
+<pre><code class="language-shell">// Install the requests package
+pip install requests
+// Install the pytest package
+pip install pytest
+// Save the project dependencies to the requirements.txt file.
+pip freeze &gt; requirements.txt
+</code></pre>
+<h3 id="4-create-new-test-files-and-test-cases">4. Create new test files and test cases</h3>
+<pre><code class="language-shell">// Create a new tests folder
+mkdir tests
+// Create a new test case file
+cd tests
+touch test_demo.py
+</code></pre>
+<h3 id="5-writing-test-cases">5. Writing Test Cases</h3>
+<blockquote>
+<p>The test API can be referred to the demoAPI.md file in the project.</p>
+</blockquote>
+<pre><code class="language-python">import requests
+
+
+class TestPytestDemo:
+
+    def test_get_demo(self):
+        base_url = &quot;https://jsonplaceholder.typicode.com&quot;
+        # SEND REQUEST
+        response = requests.get(f&quot;{base_url}/posts/1&quot;)
+        # ASSERT
+        assert response.status_code == 200
+        assert response.json()['userId'] == 1
+        assert response.json()['id'] == 1
+
+    def test_post_demo(self):
+        base_url = &quot;https://jsonplaceholder.typicode.com&quot;
+        requests_data = {
+            &quot;title&quot;: &quot;foo&quot;,
+            &quot;body&quot;: &quot;bar&quot;,
+            &quot;userId&quot;: 1
+        }
+        # SEND REQUEST
+        response = requests.post(f&quot;{base_url}/posts&quot;, requests_data)
+        # ASSERT
+        assert response.status_code == 201
+        print(response.json())
+        assert response.json()['userId'] == '1'
+        assert response.json()['id'] == 101
+</code></pre>
+<h3 id="6run-test-cases">6.Run test cases</h3>
+<pre><code class="language-shell">pytest
+</code></pre>
+<h3 id="7view-test-report">7.View test report</h3>
+<p><img alt="CsoB4y" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/CsoB4y.png" /></p>
+<h3 id="8integration-pytest-html-reporter-test-report">8.Integration pytest-html-reporter test report</h3>
+<blockquote>
+<p><a href="https://github.com/prashanth-sams/pytest-html-reporter">https://github.com/prashanth-sams/pytest-html-reporter</a></p>
+</blockquote>
+<h4 id="install-pytest-html-reporter-dependency">Install pytest-html-reporter dependency</h4>
+<pre><code class="language-shell">pip install pytest-html-reporter 
+</code></pre>
+<h4 id="configuring-test-report-parameters">Configuring Test Report Parameters</h4>
+<ul>
+<li>Create a new pytest.ini file in the project root directory.</li>
+<li>Add the following</li>
+</ul>
+<pre><code class="language-ini">[pytest]
+addopts = -vs -rf --html-report=./report --title='PYTEST REPORT' --self-contained-html
+</code></pre>
+<h4 id="run-test-cases">Run test cases</h4>
+<pre><code class="language-shell">pytest
+</code></pre>
+<h4 id="viewing-the-test-report">Viewing the test report</h4>
+<p>The report is located in the report directory in the project root directory, use your browser to open the pytest_html_report.html file to view it.</p>
+<p><img alt="8JdxbA" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8JdxbA.png" /></p>
+<h2 id="advanced-usage">Advanced Usage</h2>
+<h3 id="cicd-integration">CI/CD integration</h3>
+<h4 id="integration-github-action">Integration github action</h4>
+<p>Use github action as an example, and other CI tools similarly</p>
+<p>See the demo at <a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo">https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo</a></p>
+<ul>
+<li>
+<p>Create the .github/workflows directory: In your GitHub repository, create a directory called .github/workflows. This will be where the GitHub Actions workflow files will be stored.</p>
+</li>
+<li>
+<p>Create a workflow file: Create a YAML-formatted workflow file, such as pytest.yml, in the .github/workflows directory.</p>
+</li>
+<li>
+<p>Edit the pytest.yml file: Copy the following into the file</p>
+</li>
+</ul>
+<pre><code class="language-yaml"># This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Pytest API Testing
+
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+  pull_request:
+    branches: [ &quot;main&quot; ]
+
+permissions:
+  contents: read
+
+jobs:
+  Pytes-API-Testing:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: &quot;3.10&quot;
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Test with pytest
+      run: |
+        pytest
+
+    - name: Archive Pytest test report
+      uses: actions/upload-artifact@v3
+      with:
+        name: SuperTest-test-report
+        path: report
+
+    - name: Upload Pytest report to GitHub
+      uses: actions/upload-artifact@v3
+      with:
+        name: Pytest-test-report
+        path: report
+</code></pre>
+<ul>
+<li>Commit the code: Add the pytest.yml file to your repository and commit.</li>
+<li>View test reports: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the Pytest API Testing workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.</li>
+</ul>
+<p><img alt="yE65LO" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yE65LO.png" /></p>
+<h3 id="common-assertions">Common Assertions</h3>
+<p>Using Pytest During the writing of interface automation test cases, we need to use various assertions to verify the expected results of the tests.</p>
+<p>Pytest provides more assertions and a flexible library of assertions to fulfill various testing needs.</p>
+<p>The following are some of the commonly used Pytest interface automation test assertions:</p>
+<ul>
+<li><strong>Equality assertion</strong>: checks whether two values are equal.</li>
+</ul>
+<p><code>python
+   assert actual_value == expected_value</code></p>
+<ul>
+<li><strong>Unequality Assertion</strong>: checks if two values are not equal.</li>
+</ul>
+<p><code>python
+   assert actual_value != expected_value</code></p>
+<ul>
+<li><strong>Containment assertion</strong>: checks whether a value is contained in another value, usually used to check whether a string contains a substring.</li>
+</ul>
+<p><code>python
+   assert substring in full_string</code></p>
+<ul>
+<li><strong>Membership Assertion</strong>: checks whether a value is in a collection, list, or other iterable object.</li>
+</ul>
+<p><code>python
+   assert item in iterable</code></p>
+<ul>
+<li><strong>Truth Assertion</strong>: checks whether an expression or variable is true.</li>
+</ul>
+<p><code>python
+   assert expression</code></p>
+<p>OR</p>
+<p><code>python
+   assert variable</code></p>
+<ul>
+<li><strong>False Value Assertion</strong>: checks whether an expression or variable is false.</li>
+</ul>
+<p><code>python
+   assert not expression</code></p>
+<p>OR</p>
+<p><code>python
+   assert not variable</code></p>
+<ul>
+<li><strong>Greater Than, Less Than, Greater Than Equal To, Less Than Equal To Assertion</strong>: checks whether a value is greater than, less than, greater than equal to, or less than equal to another value.</li>
+</ul>
+<p><code>python
+   assert value &gt; other_value
+   assert value &lt; other_value
+   assert value &gt;= other_value
+   assert value &lt;= other_value</code></p>
+<ul>
+<li><strong>Type Assertion</strong>: checks that the type of a value is as expected.</li>
+</ul>
+<p><code>python
+   assert isinstance(value, expected_type)</code></p>
+<p>For example, to check if a value is a string:</p>
+<p><code>python
+   assert isinstance(my_string, str)</code></p>
+<ul>
+<li><strong>Exception Assertion</strong>: checks to see if a specific type of exception has been raised in a block of code.</li>
+</ul>
+<p><code>python
+   with pytest.raises(ExpectedException):
+       # Block of code that is expected to raise an ExpectedException.</code></p>
+<ul>
+<li><strong>Approximate Equality Assertion</strong>: checks whether two floating-point numbers are equal within some margin of error.</li>
+</ul>
+<p><code>python
+   assert math.isclose(actual_value, expected_value, rel_tol=1e-9)</code></p>
+<ul>
+<li><strong>List Equality Assertion</strong>: checks if two lists are equal.</li>
+</ul>
+<p><code>python
+   assert actual_list == expected_list</code></p>
+<ul>
+<li><strong>Dictionary Equality Assertion</strong>: checks if two dictionaries are equal.</li>
+</ul>
+<p><code>python
+   assert actual_dict == expected_dict</code></p>
+<ul>
+<li><strong>Regular Expression Match Assertion</strong>: checks if a string matches the given regular expression.</li>
+</ul>
+<p>```python
+   import re</p>
+<p>assert re.match(pattern, string)
+   ```</p>
+<ul>
+<li><strong>Null Assertion</strong>: checks whether a value is <code>None</code>。</li>
+</ul>
+<p><code>python
+   assert value is None</code></p>
+<ul>
+<li><strong>Non-null value assertion</strong>: checks if a value is not <code>None</code>。</li>
+</ul>
+<p><code>python
+   assert value is not None</code></p>
+<ul>
+<li><strong>Boolean Assertion</strong>: checks whether a value of <code>True</code> or <code>False</code>。</li>
+</ul>
+<p><code>python
+   assert boolean_expression</code></p>
+<ul>
+<li><strong>Empty Container Assertion</strong>: checks if a list, collection or dictionary is empty.</li>
+</ul>
+<p><code>python
+   assert not container  # Check if the container is empty</code></p>
+<ul>
+<li><strong>Contains Subset Assertion</strong>: checks whether a set contains another set as a subset.</li>
+</ul>
+<p><code>python
+   assert subset &lt;= full_set</code></p>
+<ul>
+<li>
+<p><strong>String Beginning or End Assertion</strong>: checks whether a string begins or ends with the specified prefix or suffix.</p>
+<p><code>python
+assert string.startswith(prefix)
+assert string.endswith(suffix)</code></p>
+</li>
+<li>
+<p><strong>Quantity Assertion</strong>: checks the number of elements in a list, collection, or other iterable object.</p>
+<p><code>python
+assert len(iterable) == expected_length</code></p>
+</li>
+<li>
+<p><strong>Range Assertion</strong>: checks if a value is within the specified range.</p>
+<p><code>python
+assert lower_bound &lt;= value &lt;= upper_bound</code></p>
+</li>
+<li>
+<p><strong>Document Existence Assertion</strong>: checking whether a document exists or not。</p>
+<p>```python
+import os</p>
+<p>assert os.path.exists(file_path)
+```</p>
+</li>
+</ul>
+<p>These are some common Pytest assertions, but depending on your specific testing needs, you may want to use other assertions or combine multiple assertions to more fully validate your test results.
+Detailed documentation on assertions can be found on the official Pytest website at:<a href="https://docs.pytest.org/en/latest/reference.html#pytest">Pytest - Built-in fixtures, marks, and nodes</a></p>
+<h3 id="data-driven">Data-driven</h3>
+<p>In the process of API automation testing. The use of data-driven is a regular testing methodology where the input data and expected output data of the test cases are stored in data files, and the testing framework executes multiple tests based on these data files to validate various aspects of the API.</p>
+<p>The test data can be easily modified without modifying the test case code.</p>
+<p>Data-driven testing helps you cover multiple scenarios efficiently and ensures that the API works properly with a variety of input data.</p>
+<p>Refer to the demo:<a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo">https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo</a></p>
+<h4 id="create-the-test-configuration-file">Create the test configuration file</h4>
+<blockquote>
+<p>Configuration file will be stored in json format for example, other formats such as YAML, CSV, etc. are similar, can be referred to.</p>
+</blockquote>
+<pre><code class="language-bash">// create a new config folder
+mkdir config
+// enter the config folder
+cd config
+// create a new configuration file
+touch config.json
+</code></pre>
+<h4 id="writing-test-configuration-files">Writing Test Configuration Files</h4>
+<p>The configuration file stores the configuration information of the test environment, such as the URL of the test environment, database connection information, and so on.</p>
+<p>The contents of the test configuration file in the demo are as follows:</p>
+<ul>
+<li>Configure host information</li>
+<li>Configure the getAPI interface information.</li>
+<li>Configure the postAPI interface information.</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;host&quot;: &quot;https://jsonplaceholder.typicode.com&quot;,
+  &quot;getAPI&quot;: &quot;/posts/1&quot;,
+  &quot;postAPI&quot;:&quot;/posts&quot;
+}
+</code></pre>
+<h4 id="create-the-test-data-file">Create the test data file</h4>
+<p>The request data file and the response data file store the request data and the expected response data of the test case, respectively.</p>
+<pre><code class="language-bash">// create a new data folder
+mkdir data
+// enter the data folder
+cd data
+// create a new request data file
+touch request_data.json
+// create a new response data file
+touch response_data.json
+</code></pre>
+<h4 id="writing-test-data-files">Writing test data files</h4>
+<ul>
+<li>Writing the request data file</li>
+</ul>
+<blockquote>
+<p>The request data file is configured with the request data for the getAPI API and the request data for the postAPI API.</p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;getAPI&quot;: &quot;&quot;,
+  &quot;postAPI&quot;:{
+    &quot;title&quot;: &quot;foo&quot;,
+    &quot;body&quot;: &quot;bar&quot;,
+    &quot;userId&quot;: 1
+  }
+}
+</code></pre>
+<ul>
+<li>Writing the response data file</li>
+</ul>
+<blockquote>
+<p>The request data file is configured with the response data for the getAPI API and the response data for the postAPI API.</p>
+</blockquote>
+<pre><code class="language-json">{
+    &quot;getAPI&quot;: {
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 1,
+      &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+      &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+    },
+    &quot;postAPI&quot;:{
+      &quot;title&quot;: &quot;foo&quot;,
+      &quot;body&quot;: &quot;bar&quot;,
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 101
+    }
+}
+</code></pre>
+<h4 id="updating-test-cases-to-support-data-driving">Updating test cases to support data driving</h4>
+<blockquote>
+<p>To differentiate, here is a new test case file named test_demo_data_driving.py</p>
+</blockquote>
+<pre><code class="language-python">import requests
+import json
+
+# get the test configuration information from the configuration file
+with open(&quot;config/config.json&quot;, &quot;r&quot;) as json_file:
+    config = json.load(json_file)
+
+# get the request data from the test data file
+with open('data/request_data.json', 'r') as json_file:
+    request_data = json.load(json_file)
+
+# get the response data from the test data file
+with open('data/response_data.json', 'r') as json_file:
+    response_data = json.load(json_file)
+
+
+class TestPytestDemo:
+
+    def test_get_demo(self):
+        host = config.get(&quot;host&quot;)
+        get_api = config.get(&quot;getAPI&quot;)
+        get_api_response_data = response_data.get(&quot;getAPI&quot;)
+        # send request
+        response = requests.get(host+get_api)
+        # assert
+        assert response.status_code == 200
+        assert response.json() == get_api_response_data
+
+    def test_post_demo(self):
+        host = config.get(&quot;host&quot;)
+        post_api = config.get(&quot;postAPI&quot;)
+        post_api_request_data = request_data.get(&quot;postAPI&quot;)
+        post_api_response_data = response_data.get(&quot;postAPI&quot;)
+        # send request
+        response = requests.post(host + post_api, post_api_request_data)
+        # assert
+        assert response.status_code == 201
+        assert response.json() == post_api_response_data
+</code></pre>
+<h4 id="run-the-test-case-to-confirm-the-data-driver-is-working">Run the test case to confirm the data driver is working</h4>
+<blockquote>
+<p>If you run the data driver support test case with demo project: test_demo_data_driving.py, it is recommended to block other test cases first, otherwise it may report errors.</p>
+</blockquote>
+<pre><code class="language-shell">  pytest tests/test_demo_data_driving.py
+</code></pre>
+<p><img alt="XQIPLf" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/XQIPLf.png" /></p>
+<h3 id="multi-environment-support">Multi-environment support</h3>
+<p>In the actual API automation testing process, we need to run test cases in different environments to ensure that the API works properly in each environment.</p>
+<p>By using Pytest's fixture feature, we can easily support multiple environments.</p>
+<p>Refer to the demo:<a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo">https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo</a></p>
+<h4 id="new-test-configuration-files-for-different-environments">New test configuration files for different environments</h4>
+<blockquote>
+<p>Configuration file will be stored in json format for example, other formats such as YAML, CSV, etc. are similar, can refer to the</p>
+</blockquote>
+<pre><code class="language-bash">// Create a new test configuration folder
+mkdir config
+// Go to the test configuration folder 
+cd config
+// Create a new test configuration file for the development environment
+touch dev_config.json
+// Create a new test configuration file for the production environment
+touch prod_config.json
+</code></pre>
+<h4 id="writing-different-environment-test-profiles">Writing different environment test profiles</h4>
+<ul>
+<li>Writing Development Environment Test Profiles</li>
+</ul>
+<blockquote>
+<p>Configure the development environment test profiles according to the actual situation.</p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;host&quot;: &quot;https://jsonplaceholder.typicode.com&quot;,
+  &quot;getAPI&quot;: &quot;/posts/1&quot;,
+  &quot;postAPI&quot;:&quot;/posts&quot;
+}
+</code></pre>
+<ul>
+<li>Configuring Production Environment Test Profiles</li>
+</ul>
+<blockquote>
+<p>Configure production environment test profiles according to the actual situation</p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;host&quot;: &quot;https://jsonplaceholder.typicode.com&quot;,
+  &quot;getAPI&quot;: &quot;/posts/1&quot;,
+  &quot;postAPI&quot;:&quot;/posts&quot;
+}
+</code></pre>
+<h4 id="new-different-environment-test-data-file">New Different Environment Test Data File</h4>
+<blockquote>
+<p>The different environments request data file and the response data file store the different environments request data and the different environments expected response data for the test cases, respectively.</p>
+</blockquote>
+<pre><code class="language-bash">// Create a new test data folder
+mkdir data
+// Go to the test data folder
+cd data
+// Create a new dev request data file
+touch dev_request_data.json
+// Create a new dev response data file
+touch dev_response_data.json 
+// Create a new request data file for the production environment
+touch prod_request_data.json 
+// Create a new production response data file
+touch prod_response_data.json 
+</code></pre>
+<h4 id="writing-test-data-files-for-different-environments">Writing test data files for different environments</h4>
+<ul>
+<li>Write the dev environment request data file</li>
+</ul>
+<blockquote>
+<p>The dev environment request data file is configured with the request data for the getAPI API and the request data for the postAPI API.</p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;getAPI&quot;: &quot;&quot;,
+  &quot;postAPI&quot;:{
+    &quot;title&quot;: &quot;foo&quot;,
+    &quot;body&quot;: &quot;bar&quot;,
+    &quot;userId&quot;: 1
+  }
+}
+</code></pre>
+<ul>
+<li>Writing the dev Environment Response Data File</li>
+</ul>
+<blockquote>
+<p>The dev environment response data file is configured with the response data for the getAPI API and the response data for the postAPI API.</p>
+</blockquote>
+<pre><code class="language-json">{
+    &quot;getAPI&quot;: {
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 1,
+      &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+      &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+    },
+    &quot;postAPI&quot;:{
+      &quot;title&quot;: &quot;foo&quot;,
+      &quot;body&quot;: &quot;bar&quot;,
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 101
+    }
+}
+</code></pre>
+<ul>
+<li>Write the prod environment request data file</li>
+</ul>
+<blockquote>
+<p>The prod environment request data file is configured with the request data for the getAPI API and the request data for the postAPI API.</p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;getAPI&quot;: &quot;&quot;,
+  &quot;postAPI&quot;:{
+    &quot;title&quot;: &quot;foo&quot;,
+    &quot;body&quot;: &quot;bar&quot;,
+    &quot;userId&quot;: 1
+  }
+}
+</code></pre>
+<ul>
+<li>Writing the prod Environment Response Data File</li>
+</ul>
+<blockquote>
+<p>The prod environment response data file is configured with the response data for the getAPI API and the response data for the postAPI API.</p>
+</blockquote>
+<pre><code class="language-json">{
+    &quot;getAPI&quot;: {
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 1,
+      &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+      &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+    },
+    &quot;postAPI&quot;:{
+      &quot;title&quot;: &quot;foo&quot;,
+      &quot;body&quot;: &quot;bar&quot;,
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 101
+    }
+}
+</code></pre>
+<h4 id="configure-fixture-to-support-multiple-environments">Configure fixture to support multiple environments</h4>
+<p>The &gt; fixture will be stored in the conftest.py file as an example, other formats such as YAML, CSV, etc. are similar.</p>
+<ul>
+<li>Create a new conftest.py file in the project root directory.</li>
+</ul>
+<pre><code class="language-bash"> mkdrir conftest.py
+</code></pre>
+<ul>
+<li>Writing the conftest.py file</li>
+</ul>
+<pre><code class="language-python">
+import pytest
+import json
+import json
+import os
+
+
+@pytest.fixture(scope=&quot;session&quot;)
+def env_config(request):
+    # get config file from different env
+    env = os.getenv('ENV', 'dev')
+    with open(f'config/{env}_config.json', 'r') as config_file:
+        config = json.load(config_file)
+    return config
+
+
+@pytest.fixture(scope=&quot;session&quot;)
+def env_request_data(request):
+    # get request data file from different env
+    env = os.getenv('ENV', 'dev')
+    with open(f'data/{env}_request_data.json', 'r') as request_data_file:
+        request_data = json.load(request_data_file)
+    return request_data
+
+
+@pytest.fixture (scope=&quot;session&quot;)
+def env_response_data(request):
+    # get response data file from different env
+    env = os.getenv('ENV', 'dev')
+    with open(f'data/{env}_response_data.json', 'r') as response_data_file:
+        response_data = json.load(response_data_file)
+    return response_data
+</code></pre>
+<h4 id="update-test-case-to-support-multi-environment">Update test case to support multi environment</h4>
+<blockquote>
+<p>To make a distinction, here is a new test case file named test_demo_multi_environment.py</p>
+</blockquote>
+<pre><code class="language-python">import requests
+import json
+
+
+class TestPytestMultiEnvDemo:
+
+    def test_get_demo_multi_env(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        get_api = env_config[&quot;getAPI&quot;]
+        get_api_response_data = env_response_data[&quot;getAPI&quot;]
+        # send request
+        response = requests.get(host+get_api)
+        # assert
+        assert response.status_code == 200
+        assert response.json() == get_api_response_data
+
+    def test_post_demo_multi_env(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        post_api = env_config[&quot;postAPI&quot;]
+        post_api_request_data = env_request_data[&quot;postAPI&quot;]
+        post_api_response_data = env_response_data[&quot;postAPI&quot;]
+        # send request
+        response = requests.post(host + post_api, post_api_request_data)
+        # assert
+        assert response.status_code == 201
+        assert response.json() == post_api_response_data
+</code></pre>
+<h4 id="run-this-test-case-to-confirm-that-multi-environment-support-is-in-effect">Run this test case to confirm that multi-environment support is in effect</h4>
+<ul>
+<li>Run the dev environment test case</li>
+</ul>
+<pre><code class="language-shell">ENV=dev pytest test_case/test_demo_multi_environment.py
+</code></pre>
+<p><img alt="Wb0owW" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Wb0owW.png" /></p>
+<ul>
+<li>Run the prod environment test case</li>
+</ul>
+<pre><code class="language-shell">ENV=prod pytest test_case/test_demo_multi_environment.py
+</code></pre>
+<p><img alt="2kITJT" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2kITJT.png" /></p>
+<h3 id="integration-with-allure-reporting">Integration with allure reporting</h3>
+<p>allure is a lightweight, flexible, and easily extensible test reporting tool that provides a rich set of report types and features to help you better visualize your test results.</p>
+<p>allure reports can be integrated with Pytest to generate detailed test reports.</p>
+<p>Refer to the demo:<a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo">https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo</a></p>
+<h4 id="install-allure-pytest-library">Install allure-pytest library</h4>
+<pre><code class="language-shell">pip install allure-pytest
+</code></pre>
+<blockquote>
+<p>To avoid conflicts between the previously installed pytest-html-reporter and the allure-pytest package, it is recommended to uninstall the pytest-html-reporter package first.</p>
+</blockquote>
+<pre><code class="language-shell">pip uninstall pytest-html-reporter
+</code></pre>
+<h4 id="configuration-allure-pytest-library">Configuration allure-pytest library</h4>
+<p>Update the pytest.ini file to specify where allure reports are stored</p>
+<pre><code class="language-ini">[pytest]
+# allure
+addopts = --alluredir ./allure-results
+</code></pre>
+<h4 id="adjusting-test-cases-to-support-allure-reporting">Adjusting test cases to support allure reporting</h4>
+<blockquote>
+<p>To differentiate, create a new test case file here, named test_demo_allure.py</p>
+</blockquote>
+<pre><code class="language-python">import allure
+import requests
+
+
+@allure.feature(&quot;Test example API&quot;)
+class TestPytestAllureDemo:
+
+    @allure.story(&quot;Test example get endpoint&quot;)
+    @allure.title(&quot;Verify the get API&quot;)
+    @allure.description(&quot;verify the get API response status code and data&quot;)
+    @allure.severity(&quot;blocker&quot;)
+    def test_get_example_endpoint_allure(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        get_api = env_config[&quot;getAPI&quot;]
+        get_api_request_data = env_request_data[&quot;getAPI&quot;]
+        get_api_response_data = env_response_data[&quot;getAPI&quot;]
+        # send get request
+        response = requests.get(host + get_api)
+        # assert
+        print(&quot;response status code is&quot; + str(response.status_code))
+        assert response.status_code == 200
+        print(&quot;response data is&quot; + str(response.json()))
+        assert response.json() == get_api_response_data
+
+    @allure.story(&quot;Test example POST API&quot;)
+    @allure.title(&quot;Verify the POST API&quot;)
+    @allure.description(&quot;verify the POST API response status code and data&quot;)
+    @allure.severity(&quot;Critical&quot;)
+    def test_post_example_endpoint_allure(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        post_api = env_config[&quot;postAPI&quot;]
+        post_api_request_data = env_request_data[&quot;postAPI&quot;]
+        post_api_response_data = env_response_data[&quot;postAPI&quot;]
+        # send request
+        response = requests.post(host + post_api, json=post_api_request_data)
+        # assert
+        print(&quot;response status code is&quot; + str(response.status_code))
+        assert response.status_code == 201
+        print(&quot;response data is&quot; + str(response.json()))
+        assert response.json() == post_api_response_data
+</code></pre>
+<h4 id="run-test-cases-to-generate-allure-reports">Run test cases to generate allure reports</h4>
+<pre><code class="language-shell">ENV=dev pytest test_case/test_demo_allure.py
+</code></pre>
+<h4 id="view-allure-report">View allure report</h4>
+<p>Run the following command to view the allure report in the browser</p>
+<pre><code class="language-shell">allure serve allure-results
+</code></pre>
+<p><img alt="Pr1E3W" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Pr1E3W.png" /></p>
+<p><img alt="OsUO2e" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/OsUO2e.png" /></p>
+<h4 id="adapting-cicd-processes-to-support-allure-reporting">Adapting CI/CD processes to support allure reporting</h4>
+<blockquote>
+<p>Github action is an example, other CI tools are similar.</p>
+</blockquote>
+<p>Update the contents of the .github/workflows/pytest.yml file to upload allure reports to GitHub.</p>
+<pre><code class="language-yaml">name: Pytest API Testing
+
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+  pull_request:
+    branches: [ &quot;main&quot; ]
+
+permissions:
+  contents: read
+
+jobs:
+  Pytes-API-Testing:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: &quot;3.10&quot;
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Test with pytest
+      run: |
+        ENV=dev pytest
+
+    - name: Archive Pytest allure test report
+      uses: actions/upload-artifact@v3
+      with:
+        name: Pytest-allure-report
+        path: allure-results
+
+    - name: Upload Pytest allure report to GitHub
+      uses: actions/upload-artifact@v3
+      with:
+        name: Pytest-allure-report
+        path: allure-results
+</code></pre>
+<h4 id="view-github-action-allure-report">View github action allure report</h4>
+<p>In GitHub, navigate to your repository. Click the Actions tab at the top, and then click the Pytest API Testing workflow on the left. You should see the workflow running, wait for the execution to complete, and then you can view the results.</p>
+<p><img alt="Lz2pPh" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Lz2pPh.png" /></p>
+<h3 id="concurrent-testing-and-distributed-testing">concurrent testing and distributed testing</h3>
+<p>In the daily process of API automation testing, concurrent execution of test cases is required to improve testing efficiency.</p>
+<p>Sometimes it is also necessary to introduce distributed testing in order to run test cases on multiple machines at the same time, which can also better improve testing efficiency.</p>
+<p><code>pytest-xdist</code> is a plugin for Pytest that provides some corresponding functionality, mainly for supporting concurrent and distributed testing.</p>
+<h4 id="pytest-xdist-feature-introduction"><code>pytest-xdist</code> Feature Introduction</h4>
+<ol>
+<li><strong>Concurrently run tests</strong>:</li>
+<li>Use the <code>-n</code> option: <code>pytest -n NUM</code> allows running tests concurrently, where <code>NUM</code> is the number of concurrent workers. This can speed up test execution, especially on computers with multiple CPU cores.</li>
+</ol>
+<p><code>bash
+   pytest -n 3  # Start 3 concurrent workers to execute the test</code></p>
+<ol>
+<li><strong>Distributed testing</strong>:</li>
+<li>Use <code>pytest --dist=loadscope</code>: allows tests to be executed on multiple nodes and test runs can be completed faster with distributed testing.</li>
+</ol>
+<p><code>bash
+   pytest --dist=loadscope</code></p>
+<ul>
+<li>Use <code>pytest --dist=each</code>: run a set of tests per node, for distributed testing.</li>
+</ul>
+<p><code>bash
+   pytest --dist=each</code></p>
+<ol>
+<li><strong>Parameterized tests and Concurrency</strong>:</li>
+<li>Use of <code>pytest.mark.run</code>: In conjunction with the <code>pytest.mark.run</code> tag, tests with different tags can optionally be run on different processes or nodes.</li>
+</ol>
+<p><code>python
+   @pytest.mark.run(processes=2)
+   def test_example():
+       pass</code></p>
+<ol>
+<li><strong>Distributed environment setup</strong>:</li>
+<li>Use <code>pytest_configure_node</code>: you can configure the tests before running them on the node.</li>
+</ol>
+<p><code>python
+   def pytest_configure_node(node):
+       node.slaveinput['my_option'] = 'some value'</code></p>
+<ul>
+<li>Use <code>pytest_configure_node</code>: you can configure the tests before running them on the node.</li>
+</ul>
+<p><code>python
+   def pytest_configure_node(node):
+       node.slaveinput['my_option'] = 'some value'</code></p>
+<ol>
+<li><strong>Distributed test environment destruction</strong>:</li>
+<li>Use <code>pytest_configure_node</code>: you can clean up after running tests on a node.</li>
+</ol>
+<p>```python
+   def pytest_configure_node(node):
+       # Configure the node
+       yield</p>
+<pre><code>   # Perform cleanup after running tests on nodes
+   print("Cleaning up after test run on node %s" % node.gateway.id)
+</code></pre>
+<p>```</p>
+<p>These are some of the features provided by <code>pytest-xdist</code> that can help you perform concurrent and distributed tests more efficiently to speed up test execution and increase efficiency. Be sure to consult the <code>pytest-xdist</code> documentation for more detailed information and usage examples before using it.</p>
+<h4 id="installing-pytest-xdist-dependency">Installing <code>pytest-xdist</code> dependency</h4>
+<pre><code class="language-shell">pip install pytest-xdist
+</code></pre>
+<h4 id="example-of-running-a-test-case-concurrently">Example of running a test case concurrently</h4>
+<h5 id="execute-test-cases-concurrently-with-3-workers">Execute test cases concurrently with 3 workers</h5>
+<p>Run the following commands to see how long the test cases take to execute</p>
+<ul>
+<li>Concurrent Execution</li>
+</ul>
+<pre><code class="language-shell">pytest -n 3
+</code></pre>
+<p><img alt="LKHRct" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/LKHRct.png" /></p>
+<ul>
+<li>Default Parallel Execution</li>
+</ul>
+<pre><code class="language-shell">pytest
+</code></pre>
+<p><img alt="5y442s" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5y442s.png" /></p>
+<p><code>Parallel execution took 9.81s</code> while <code>Concurrent execution took 1.63s</code>, you can see that concurrent execution of test cases can greatly improve the Parallel of testing.</p>
+<h5 id="concurrently-executes-the-test-cases-with-3-workers-and-each-worker-prints-the-progress-of-the-test-cases">concurrently executes the test cases with 3 workers, and each worker prints the progress of the test cases</h5>
+<pre><code class="language-shell">pytest -n 3 -v
+</code></pre>
+<p><img alt="5krJia" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5krJia.png" /></p>
+<p>The progress of the test is printed in the test results, which provides a better understanding of the execution of the test cases.</p>
+<h4 id="distributed-testing-example">Distributed testing example</h4>
+<h5 id="distributed-test-where-each-node-runs-a-set-of-tests">Distributed test where each node runs a set of tests</h5>
+<pre><code class="language-shell">pytest --dist=each
+</code></pre>
+<p><img alt="W1akqS" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/W1akqS.png" /></p>
+<p>Distributed testing allows for faster test runs.</p>
+<h5 id="distributed-testing-where-each-node-runs-a-set-of-tests-and-each-worker-prints-the-progress-of-the-test-cases">Distributed testing, where each node runs a set of tests and each worker prints the progress of the test cases</h5>
+<pre><code class="language-shell">pytest --dist=each -v
+</code></pre>
+<p><img alt="sMlawH" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sMlawH.png" /></p>
+<p>The progress of the test will be printed in the test results, so you can better understand the execution of the test cases.</p>
+<h5 id="distributed-testing-each-node-runs-a-set-of-tests-and-each-worker-prints-the-progress-of-the-test-cases-as-well-as-the-output-of-the-test-logs">Distributed testing, each node runs a set of tests, and each worker prints the progress of the test cases, as well as the output of the test logs</h5>
+<pre><code class="language-shell">pytest --dist=each -v --capture=no
+</code></pre>
+<p><img alt="RkNSDb" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/RkNSDb.png" /></p>
+<p>The output of the test log is printed in the test results, which gives a better understanding of the execution of the test cases.</p>
+<h3 id="filtering-test-case-execution">Filtering test case execution</h3>
+<p>In the daily API testing process, we need to selectively execute test cases according to the actual situation in order to improve the testing efficiency.</p>
+<p>Generally, when we use allure test reports, we can use the Allure tag feature to filter the use cases corresponding to the tag to execute the test, but the Pytest framework does not directly support running tests based on Allure tags. However, the Pytest framework does not directly support running tests based on Allure tags, so you can use Pytest markers to accomplish this.</p>
+<p>Pytest provides a <code>marks</code> tagging feature that can be used to tag different types of test cases and then filter them for execution.</p>
+<p>The general process is that you can mark tests with custom markers (e.g. Regression/Smoke) and then use pytest's -m option to run only those tests.</p>
+<h4 id="defining-pytest-markers">Defining Pytest Markers</h4>
+<p>Edit the pytest.ini file and add the following: customize the type of markers</p>
+<ul>
+<li>Regression: Marks the use case for regression testing.</li>
+<li>Smoke: mark it as a use case for smoke testing</li>
+</ul>
+<pre><code class="language-ini">markers =
+    Regression: marks tests as Regression
+    Smoke: marks tests as Smoke
+</code></pre>
+<h4 id="marking-test-cases">Marking Test Cases</h4>
+<p>The operation steps are:</p>
+<ul>
+<li>Introduce pytest</li>
+<li>Mark the test case with <code>@pytest.mark</code>.</li>
+</ul>
+<blockquote>
+<p>To differentiate, create a new test case file named test_demo_filter.py.</p>
+</blockquote>
+<pre><code class="language-python">import pytest
+import requests
+import json
+
+
+class TestPytestMultiEnvDemo:
+
+    @pytest.mark.Regression  # mark the test case as regression
+    def test_get_demo_filter(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        get_api = env_config[&quot;getAPI&quot;]
+        get_api_response_data = env_response_data[&quot;getAPI&quot;]
+        # send request
+        response = requests.get(host+get_api)
+        # assert
+        assert response.status_code == 200
+        assert response.json() == get_api_response_data
+
+    @pytest.mark.Smoke  # mark the test case as smoke
+    def test_post_demo_filter(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        post_api = env_config[&quot;postAPI&quot;]
+        post_api_request_data = env_request_data[&quot;postAPI&quot;]
+        print(&quot;make the request&quot;)
+        post_api_response_data = env_response_data[&quot;postAPI&quot;]
+        # Your test code here
+        response = requests.post(host + post_api, json=post_api_request_data)
+        print(&quot;verify the response status code&quot;)
+        assert response.status_code == 201
+        print(&quot;verify the response data&quot;)
+        assert response.json() == post_api_response_data
+</code></pre>
+<h4 id="filtering-test-case-execution_1">Filtering Test Case Execution</h4>
+<ul>
+<li>Running Regression-tagged test cases</li>
+</ul>
+<pre><code class="language-shell">pytest -m Regression
+</code></pre>
+<p>This command tells pytest to run only the tests labeled Regression.</p>
+<p><img alt="d8dMGa" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/d8dMGa.png" /></p>
+<ul>
+<li>Running Smoke-tagged test cases</li>
+</ul>
+<pre><code class="language-shell">pytest -m Smoke
+</code></pre>
+<p>This command tells pytest to run only the tests labeled Smoke.</p>
+<p><img alt="2023112014VOVT3v" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112014VOVT3v.png" /></p>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Automation Test Starter
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>

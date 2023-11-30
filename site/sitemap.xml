@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://automation-test-starter.pages.dev/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/API-Automation-Testing/Bruno/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/API-Automation-Testing/Bruno/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Bruno/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/API-Automation-Testing/Postman/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/API-Automation-Testing/Postman/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Postman/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/API-Automation-Testing/Pytest/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/API-Automation-Testing/Pytest/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Pytest/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/API-Automation-Testing/RestAssured/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/API-Automation-Testing/RestAssured/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/RestAssured/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/API-Automation-Testing/SuperTest/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/API-Automation-Testing/SuperTest/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/SuperTest/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/Performance-Testing/Gatling/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/Performance-Testing/Gatling/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/Performance-Testing/Gatling/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/zh/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Bruno/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Bruno/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/API-Automation-Testing/Bruno/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Postman/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Postman/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/API-Automation-Testing/Postman/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Pytest/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Pytest/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/API-Automation-Testing/Pytest/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/RestAssured/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/RestAssured/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/API-Automation-Testing/RestAssured/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/SuperTest/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/SuperTest/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/API-Automation-Testing/SuperTest/"/>
+    </url>
+    <url>
+        <loc>https://automation-test-starter.pages.dev/zh/Performance-Testing/Gatling/</loc>
+        <lastmod>2023-11-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://automation-test-starter.pages.dev/zh/Performance-Testing/Gatling/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://automation-test-starter.pages.dev/Performance-Testing/Gatling/"/>
+    </url>
+</urlset>

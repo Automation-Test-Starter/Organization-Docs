@@ -1,0 +1,2652 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An organization made by QA, for QA.
+A QUICKSTART project for QA automation testing, including common test frameworks and tools, as well as some common test demo.">
+      
+      
+        <meta name="author" content="Automation Test Starter">
+      
+      
+        <link rel="canonical" href="https://automation-test-starter.pages.dev/API-Automation-Testing/SuperTest/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../RestAssured/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>SuperTest - Automation Test Starter</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-K091G8C97F"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-K091G8C97F",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-K091G8C97F",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#supertest" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Automation Test Starter" class="md-header__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Automation Test Starter
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SuperTest
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../zh/API-Automation-Testing/SuperTest/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  API Automation Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Performance-Testing/Gatling/" class="md-tabs__link">
+          
+  
+  Performance Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Automation Test Starter" class="md-nav__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Automation Test Starter
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API Automation Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Automation Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SuperTest
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    SuperTest
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-of-supertest" class="md-nav__link">
+    Introduction of SuperTest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-of-jest" class="md-nav__link">
+    Introduction of Jest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-of-mocha" class="md-nav__link">
+    Introduction of Mocha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-of-chai" class="md-nav__link">
+    Introduction of CHAI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-dependencies" class="md-nav__link">
+    Project dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    Project Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-a-supertest-api-automation-test-project-from-0-to-1" class="md-nav__link">
+    Build a SuperTest API automation test project from 0 to 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Build a SuperTest API automation test project from 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mocha-version" class="md-nav__link">
+    Mocha version
+  </a>
+  
+    <nav class="md-nav" aria-label="Mocha version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project-folder" class="md-nav__link">
+    Create a new project folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-initialization" class="md-nav__link">
+    Project Initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-dependencies" class="md-nav__link">
+    Install dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-new-test-folder-and-test-cases" class="md-nav__link">
+    Create new test folder and test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-cases" class="md-nav__link">
+    Writing Test Cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-mocha-config-files" class="md-nav__link">
+    Configuring mocha config files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-test-scripts-for-mocha" class="md-nav__link">
+    Updating test scripts for mocha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-test-cases" class="md-nav__link">
+    Running test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-report" class="md-nav__link">
+    Test Report
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminal-test-report" class="md-nav__link">
+    Terminal Test Report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrated-mochawesome-test-report" class="md-nav__link">
+    Integrated mochawesome test report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jest-version" class="md-nav__link">
+    Jest version
+  </a>
+  
+    <nav class="md-nav" aria-label="Jest version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-jest-project-folder" class="md-nav__link">
+    Create a new jest project folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jest-demo-project-initialization" class="md-nav__link">
+    Jest demo project initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jest-demo-install-dependencies" class="md-nav__link">
+    Jest demo install dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-new-jest-demo-project-test-folder-and-test-cases" class="md-nav__link">
+    Create new Jest demo project test folder and test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-jest-demo-test-cases" class="md-nav__link">
+    Writing Jest demo Test Cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-jest-config-files" class="md-nav__link">
+    Configuring Jest config files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapting-jest-test-scripts" class="md-nav__link">
+    Adapting Jest Test Scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runing-test-case" class="md-nav__link">
+    Runing test case
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jest-test-report" class="md-nav__link">
+    Jest test report
+  </a>
+  
+    <nav class="md-nav" aria-label="Jest test report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jest-terminal-test-report" class="md-nav__link">
+    Jest terminal Test Report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrating-jest-html-reporters-test-reports" class="md-nav__link">
+    Integrating jest-html-reporters test reports
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    CI/CD integration
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-github-action" class="md-nav__link">
+    Integration github action
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration github action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-mocha-version-integration-github-action" class="md-nav__link">
+    The mocha version integration github action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-jest-version-integration-github-action" class="md-nav__link">
+    The jest version integration github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-assertions" class="md-nav__link">
+    Common Assertions
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Assertions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supertests-built-in-assertions" class="md-nav__link">
+    SuperTest's built-in assertions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-assertions-for-chai" class="md-nav__link">
+    Common Assertions for CHAI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-assertions-for-jest" class="md-nav__link">
+    Common Assertions for Jest
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-driven" class="md-nav__link">
+    Data Driven
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Driven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-test-configuration-files" class="md-nav__link">
+    Create test configuration files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-test-configuration-files" class="md-nav__link">
+    Edit test configuration files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-test-data-files" class="md-nav__link">
+    Create test data files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-test-data-files" class="md-nav__link">
+    Edit test data files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-test-cases-to-support-data-driven" class="md-nav__link">
+    Update test cases to support data-driven
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-test-case-to-check-whether-the-data-driver-is-effective" class="md-nav__link">
+    Run the test case to check whether the data driver is effective.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-environment-support" class="md-nav__link">
+    Multiple Environment Support
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple Environment Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-multi-environment-test-configuration-file" class="md-nav__link">
+    Create Multi-Environment Test Configuration File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-multi-environment-test-configuration-file" class="md-nav__link">
+    Edit Multi-Environment Test Configuration File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-multi-environment-test-data-file" class="md-nav__link">
+    Create Multi-Environment Test Data File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-multi-environment-test-data-file" class="md-nav__link">
+    Edit Multi-Environment Test Data File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-test-cases-to-support-multiple-environments" class="md-nav__link">
+    Update test cases to support multiple environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-test-scripts-to-support-multiple-environments" class="md-nav__link">
+    Update test scripts to support multiple environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-test-case-to-check-if-the-multi-environment-support-is-working" class="md-nav__link">
+    Run the test case to check if the multi environment support is working.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RestAssured/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RestAssured
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pytest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pytest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bruno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bruno
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Postman/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Performance Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Performance Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Performance-Testing/Gatling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gatling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-of-supertest" class="md-nav__link">
+    Introduction of SuperTest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-of-jest" class="md-nav__link">
+    Introduction of Jest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-of-mocha" class="md-nav__link">
+    Introduction of Mocha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-of-chai" class="md-nav__link">
+    Introduction of CHAI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-dependencies" class="md-nav__link">
+    Project dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    Project Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-a-supertest-api-automation-test-project-from-0-to-1" class="md-nav__link">
+    Build a SuperTest API automation test project from 0 to 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Build a SuperTest API automation test project from 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mocha-version" class="md-nav__link">
+    Mocha version
+  </a>
+  
+    <nav class="md-nav" aria-label="Mocha version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project-folder" class="md-nav__link">
+    Create a new project folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-initialization" class="md-nav__link">
+    Project Initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-dependencies" class="md-nav__link">
+    Install dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-new-test-folder-and-test-cases" class="md-nav__link">
+    Create new test folder and test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-test-cases" class="md-nav__link">
+    Writing Test Cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-mocha-config-files" class="md-nav__link">
+    Configuring mocha config files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-test-scripts-for-mocha" class="md-nav__link">
+    Updating test scripts for mocha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-test-cases" class="md-nav__link">
+    Running test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-report" class="md-nav__link">
+    Test Report
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminal-test-report" class="md-nav__link">
+    Terminal Test Report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrated-mochawesome-test-report" class="md-nav__link">
+    Integrated mochawesome test report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jest-version" class="md-nav__link">
+    Jest version
+  </a>
+  
+    <nav class="md-nav" aria-label="Jest version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-jest-project-folder" class="md-nav__link">
+    Create a new jest project folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jest-demo-project-initialization" class="md-nav__link">
+    Jest demo project initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jest-demo-install-dependencies" class="md-nav__link">
+    Jest demo install dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-new-jest-demo-project-test-folder-and-test-cases" class="md-nav__link">
+    Create new Jest demo project test folder and test cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-jest-demo-test-cases" class="md-nav__link">
+    Writing Jest demo Test Cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-jest-config-files" class="md-nav__link">
+    Configuring Jest config files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adapting-jest-test-scripts" class="md-nav__link">
+    Adapting Jest Test Scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#runing-test-case" class="md-nav__link">
+    Runing test case
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jest-test-report" class="md-nav__link">
+    Jest test report
+  </a>
+  
+    <nav class="md-nav" aria-label="Jest test report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jest-terminal-test-report" class="md-nav__link">
+    Jest terminal Test Report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrating-jest-html-reporters-test-reports" class="md-nav__link">
+    Integrating jest-html-reporters test reports
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    CI/CD integration
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-github-action" class="md-nav__link">
+    Integration github action
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration github action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-mocha-version-integration-github-action" class="md-nav__link">
+    The mocha version integration github action
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-jest-version-integration-github-action" class="md-nav__link">
+    The jest version integration github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-assertions" class="md-nav__link">
+    Common Assertions
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Assertions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supertests-built-in-assertions" class="md-nav__link">
+    SuperTest's built-in assertions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-assertions-for-chai" class="md-nav__link">
+    Common Assertions for CHAI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-assertions-for-jest" class="md-nav__link">
+    Common Assertions for Jest
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-driven" class="md-nav__link">
+    Data Driven
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Driven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-test-configuration-files" class="md-nav__link">
+    Create test configuration files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-test-configuration-files" class="md-nav__link">
+    Edit test configuration files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-test-data-files" class="md-nav__link">
+    Create test data files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-test-data-files" class="md-nav__link">
+    Edit test data files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-test-cases-to-support-data-driven" class="md-nav__link">
+    Update test cases to support data-driven
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-test-case-to-check-whether-the-data-driver-is-effective" class="md-nav__link">
+    Run the test case to check whether the data driver is effective.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-environment-support" class="md-nav__link">
+    Multiple Environment Support
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple Environment Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-multi-environment-test-configuration-file" class="md-nav__link">
+    Create Multi-Environment Test Configuration File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-multi-environment-test-configuration-file" class="md-nav__link">
+    Edit Multi-Environment Test Configuration File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-multi-environment-test-data-file" class="md-nav__link">
+    Create Multi-Environment Test Data File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-multi-environment-test-data-file" class="md-nav__link">
+    Edit Multi-Environment Test Data File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-test-cases-to-support-multiple-environments" class="md-nav__link">
+    Update test cases to support multiple environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-test-scripts-to-support-multiple-environments" class="md-nav__link">
+    Update test scripts to support multiple environments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-test-case-to-check-if-the-multi-environment-support-is-working" class="md-nav__link">
+    Run the test case to check if the multi environment support is working.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="supertest">SuperTest</h1>
+<p>An introductory QuickStart project document on API automation testing with SuperTest.</p>
+<h2 id="introduction">Introduction</h2>
+<p>This project is a quick start tutorial for API automation testing using SuperTest, and will use Jest or Mocha as the testing framework for demo demonstration.</p>
+<p>We will introduce SuperTest, Jest and Mocha in turn, so that you can understand the basic usage of these tools in advance.</p>
+<h3 id="introduction-of-supertest">Introduction of SuperTest</h3>
+<p>"Supertest" is a popular JavaScript library for testing Node.js applications. It is primarily used for end-to-end testing, also known as integration testing, to make sure that your application works properly across different components.Supertest is typically used in conjunction with testing frameworks such as Mocha, Jasmine or Jest to write and run test cases.</p>
+<p>Here are some of the key features and uses of Supertest:</p>
+<ul>
+<li>Initiating HTTP requests: Supertest allows you to easily simulate HTTP requests such as GET, POST, PUT, DELETE, etc. to test your application's routing and endpoints.</li>
+<li>Chained Syntax: Supertest provides a chained syntax that allows you to build and execute multiple requests in a single test case, which helps simulate different user actions in your application.</li>
+<li>Assertions and Expectations: You can use Supertest in conjunction with assertion libraries such as Chai to examine the content of the response, status codes, headers, etc. to ensure the expected behavior of your application.</li>
+<li>Authentication Testing: Supertest can be used to test endpoints that require authentication to ensure that user login and authorization functions properly.</li>
+<li>Asynchronous support: Supertest can handle asynchronous operations, such as waiting for a response to return before executing further test code.</li>
+<li>Easy Integration: Supertest can be easily used with different Node.js frameworks (e.g. Express, Koa, Hapi, etc.), so you can test all types of applications.</li>
+</ul>
+<p>Using Supertest can help you verify that your application is working as expected, as well as quickly catch potential problems when changes are made to your application. Typically, you need to install Supertest and the testing framework in your project, and then write test cases to simulate different requests and check responses. This helps improve code quality and maintainability and ensures that your application remains stable as it evolves.</p>
+<p>Official documentation: <a href="https://github.com/ladjs/supertest">https://github.com/ladjs/supertest</a></p>
+<blockquote>
+<p>Note: Supertest can be used not only for API testing, but also for unit and integration testing.</p>
+</blockquote>
+<p>code examples:</p>
+<pre><code class="language-javascript">// import supertest
+const request = require('supertest');
+
+request({URL}) // request(url) or request(app)
+.get() or .put() or.post() // http methods
+.set() // http options
+.send() // http body
+.expect() // http assertions
+.end() // end the request
+</code></pre>
+<h3 id="introduction-of-jest">Introduction of Jest</h3>
+<p>Jest is a popular JavaScript testing framework for writing and running unit, integration and end-to-end tests for JavaScript applications. Its goal is to provide simple, fast and easy-to-use testing tools for a wide variety of JavaScript applications, both front-end and back-end.</p>
+<p>Here are some of the key features and uses of Jest:</p>
+<ul>
+<li>Built-in Assertion Library: Jest includes a powerful assertion library that makes it easy to write assertions to verify that code behaves as expected.</li>
+<li>Automated mocks: Jest automatically creates mocks that help you simulate functions, modules, and external dependencies, making testing easier and more manageable.</li>
+<li>Fast and Parallel: Jest saves time by intelligently selecting which tests to run and executing them in parallel, allowing you to run a large number of test cases quickly.</li>
+<li>Comprehensive Test Suite: Jest supports unit, integration and end-to-end testing and can test a wide range of application types such as JavaScript, TypeScript, React, Vue, Node.js and more.</li>
+<li>Snapshot testing: Jest has a snapshot testing feature that can be used to capture UI changes by checking if the rendering of a UI component matches a previous snapshot.</li>
+<li>Automatic Watch Mode: Jest has a watch mode that automatically re-runs tests as code changes are made, supporting developers in continuous testing.</li>
+<li>Rich Ecosystem: Jest has a rich set of plug-ins and extensions that can be used to extend its functionality, such as coverage reporting, test reporting, and integration with other tools.</li>
+<li>Community Support: Jest is a popular testing framework with a large community that provides extensive documentation, tutorials and support resources.</li>
+</ul>
+<p>Jest is often used in conjunction with other tools such as Babel (for transcoding JavaScript), Enzyme (for React component testing), Supertest (for API testing), etc. to achieve comprehensive test coverage and ensure code quality. Whether you're writing front-end or back-end code, Jest is a powerful testing tool that can help you catch potential problems and improve code quality and maintainability.</p>
+<p>Official Documentation: <a href="https://jestjs.io/docs/zh-Hans/getting-started">https://jestjs.io/docs/zh-Hans/getting-started</a></p>
+<p>Code examples:</p>
+<pre><code class="language-javascript">// import jest
+const jest = require('jest');
+
+describe(): // test scenarios
+
+it(): // detailed test case, it() is in the describe()
+
+before(): // this action is before all test cases
+
+after(): // this action is after all test cases
+</code></pre>
+<h3 id="introduction-of-mocha">Introduction of Mocha</h3>
+<p>Mocha is a popular JavaScript testing framework for writing and running a variety of tests for JavaScript applications, including unit tests, integration tests, and end-to-end tests.Mocha provides flexibility and extensibility, allowing developers to easily customize the test suite to meet the needs of their projects.</p>
+<p>Here are some of the key features and uses of Mocha:</p>
+<ul>
+<li>Multiple Test Styles: Mocha supports multiple test styles including BDD (Behavior Driven Development) and TDD (Test Driven Development). This allows developers to write test cases according to their preferences.</li>
+<li>Rich Assertion Library: Mocha does not include an assertion library by itself, but it can be used in conjunction with a variety of assertion libraries (e.g., Chai, Should.js, Expect.js, etc.), allowing you to write tests using your favorite assertion style.</li>
+<li>Asynchronous Testing: Mocha has built-in support for asynchronous testing, allowing you to test asynchronous code, Promises, callback functions, etc. to ensure that your code is correct in asynchronous scenarios.</li>
+<li>Parallel Testing: Mocha allows you to run test cases in your test suite in parallel, improving the efficiency of test execution.</li>
+<li>Rich Plug-ins and Extensions: Mocha has a rich ecosystem of plug-ins that can be used to extend its functionality, such as test coverage reporting, test report generation, and so on.</li>
+<li>Easy to Integrate: Mocha can be used with various assertion libraries, test runners (such as Karma and Jest), browsers (using the browser test runner), etc. to suit different project and testing needs.</li>
+<li>Command Line Interface: Mocha provides an easy-to-use command line interface for running test suites, generating reports, and other test-related operations.</li>
+<li>Continuous Integration Support: Mocha can be easily integrated into Continuous Integration (CI) tools such as Jenkins, Travis CI, CircleCI, etc. to ensure that code is tested after every commit.</li>
+</ul>
+<p>Mocha's flexibility and extensibility make it a popular testing framework for a variety of JavaScript projects, including front-end and back-end applications. Developers can choose the testing tools, assertion libraries, and other extensions to meet the requirements of their projects based on their needs and preferences. Whether you are writing browser-side code or server-side code, Mocha is a powerful testing tool to help you ensure code quality and reliability.</p>
+<p>Official documentation: <a href="https://mochajs.org/">https://mochajs.org/</a></p>
+<p>Code examples:</p>
+<pre><code class="language-javascript">// import mocha
+const mocha = require('mocha');
+
+describe(): // test scenarios
+
+it(): // detailed test case, it() is in the describe()
+
+before(): // this action is before all test cases
+
+after(): // this action is after all test cases
+</code></pre>
+<h3 id="introduction-of-chai">Introduction of CHAI</h3>
+<p>Chai is a JavaScript assertion library for assertion and expectation validation when writing and running test cases. It is a popular testing tool that is often used in conjunction with testing frameworks (e.g. Mocha, Jest, etc.) to help developers write and execute various types of tests, including unit tests and integration tests.</p>
+<p>Here are some of the key features and uses of Chai:</p>
+<ul>
+<li>Readable Assertion Syntax: Chai provides an easy to read and write assertion syntax that makes test cases easier to understand. It supports natural language assertion styles such as expect(foo).to.be.a('string') or expect(bar).to.equal(42).</li>
+<li>Multiple Assertion Styles: Chai provides a number of different assertion styles to suit different developer preferences. The main styles include BDD (Behavior-Driven Development) style, TDD (Test-Driven Development) style and assert style.</li>
+<li>Plugin extensions: Chai can be extended with plugins to support more assertion types and features. This allows Chai to fulfill a variety of testing needs, including asynchronous testing, HTTP request testing, and more.</li>
+<li>Easy Integration: Chai can be easily integrated with various testing frameworks such as Mocha, Jest, Jasmine etc. This makes it a powerful tool for writing test cases.</li>
+<li>Chained Assertions Support: Chai allows you to chain calls to multiple assertions to make complex testing and validation easier.</li>
+</ul>
+<p>Official documentation: <a href="https://www.chaijs.com/">https://www.chaijs.com/</a></p>
+<p>Code examples:</p>
+<pre><code class="language-javascript">// import chai
+const chai = require('chai');
+const expect = chai.expect;
+
+// demo assertions
+.expect(&lt;actual result&gt;).to.{assert}(&lt;expected result&gt;) // Asserts that the target is strictly equal to value.
+
+.expect(‘hello').to.equal('hello'); // Asserts that the target is strictly equal to value.
+
+.expect({ foo: 'bar' }).to.not.equal({ foo: 'bar' }); // Asserts that the target is not strictly equal to value.
+
+.expect('foobar').to.contain('foo'); // Asserts that the target contains the given substring.
+
+.expect(foo).to.exist; // Asserts that the target is neither null nor undefined.
+
+.expect(5).to.be.at.most(5); // Asserts that the target is less than or equal to value.
+</code></pre>
+<h2 id="project-dependencies">Project dependencies</h2>
+<blockquote>
+<p>The following environments need to be installed in advance</p>
+</blockquote>
+<ul>
+<li>[x] nodejs, demo version v21.1.0</li>
+</ul>
+<h2 id="project-structure">Project Structure</h2>
+<p>The following is the file structure of a SuperTest Interface Automation Test project, which contains test configuration files, test case files, test tool files, and test report files. It can be used for reference.</p>
+<pre><code class="language-Text">SuperTest-Jest-demo
+├── README.md
+├── package.json
+├── package-lock.json
+├── Config // Test configuration 
+│   └── config.js
+├── Specs // Test case 
+│   └── test.spec.js
+├── Utils // Test tool 
+│   └── utils.js
+├── Report // Test report 
+│   └── report.html
+├── .gitignore
+└── node_modules // Project dependencies
+    ├── ...
+    └── ...
+</code></pre>
+<h2 id="build-a-supertest-api-automation-test-project-from-0-to-1">Build a SuperTest API automation test project from 0 to 1</h2>
+<p>The following is a demo of building a SuperTest interface automation test project from 0 to 1, using either Jest or Mocha as the test framework.</p>
+<h3 id="mocha-version">Mocha version</h3>
+<p>You can refer to the demo project at <a href="https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo">https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo</a>.</p>
+<h4 id="create-a-new-project-folder">Create a new project folder</h4>
+<pre><code class="language-bash">mkdir SuperTest-Mocha-demo
+</code></pre>
+<h4 id="project-initialization">Project Initialization</h4>
+<pre><code class="language-bash">// enter the project folder
+cd SuperTest-Mocha-demo
+// nodejs project initialization
+npm init -y
+</code></pre>
+<h4 id="install-dependencies">Install dependencies</h4>
+<pre><code class="language-bash">// install supertest library
+npm install supertest --save-dev
+// install mocha test framework
+npm install mocha --save-dev
+// install chai assertion library
+npm install chai --save-dev
+</code></pre>
+<h4 id="create-new-test-folder-and-test-cases">Create new test folder and test cases</h4>
+<pre><code class="language-bash">// create test folder
+mkdir Specs
+// create test case file
+cd Specs
+touch test.spec.js
+</code></pre>
+<h4 id="writing-test-cases">Writing Test Cases</h4>
+<blockquote>
+<p>The test API can be found in the demoAPI.md file in the project.</p>
+</blockquote>
+<pre><code class="language-javascript">// Test: test.spec.js
+const request = require('supertest'); // import supertest
+const chai = require('chai'); // import chai
+const expect = require('chai').expect; // import expect
+
+// Test Suite
+describe('Verify that the Get and POST API returns correctly', function(){
+        // Test case 1
+        it('Verify that the GET API returns correctly', function(done){
+            request('https://jsonplaceholder.typicode.com') // Test endpoint
+                .get('/posts/1') // API endpoint
+                .expect(200) // expected response status code
+                .expect(function (res) {
+                    expect(res.body.id).to.equal(1  )
+                    expect(res.body.userId).to.equal(1)
+                    expect(res.body.title).to.equal(&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;)
+                    expect(res.body.body).to.equal(&quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;)
+                }) // expected response body
+                .end(done) // end the test case
+
+        });
+        // Test case 2
+        it('Verify that the POST API returns correctly', function(done){
+            request('https://jsonplaceholder.typicode.com') // Test endpoint
+                .post('/posts') // API endpoint
+                .send({
+                    &quot;title&quot;: &quot;foo&quot;,
+                    &quot;body&quot;: &quot;bar&quot;,
+                    &quot;userId&quot;: 1
+                }) // request body
+                .expect(201) // expected response status code
+                .expect(function (res) {
+                    expect(res.body.id).to.equal(101  )
+                    expect(res.body.userId).to.equal(1)
+                    expect(res.body.title).to.equal(&quot;foo&quot;)
+                    expect(res.body.body).to.equal(&quot;bar&quot;)
+                }) // expected response body
+                .end(done) // end the test case
+        });
+});
+</code></pre>
+<h4 id="configuring-mocha-config-files">Configuring mocha config files</h4>
+<ul>
+<li>Create a new mocha configuration file</li>
+</ul>
+<pre><code class="language-bash">// create configuration file in the project root directory
+touch .mocharc.js
+</code></pre>
+<ul>
+<li>Updating configuration files</li>
+</ul>
+<pre><code class="language-javascript">// mocha config
+module.exports = {
+    timeout: 5000, // set the default timeout for test cases (milliseconds)
+    spec: ['Specs/**/*.js'], // specify the location of the test file
+};
+</code></pre>
+<h4 id="updating-test-scripts-for-mocha">Updating test scripts for mocha</h4>
+<p>Add test scripts to the package.json file</p>
+<pre><code class="language-json">&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;mocha&quot;
+  },
+</code></pre>
+<h4 id="running-test-cases">Running test cases</h4>
+<pre><code class="language-bash">// run test cases
+npm run test
+</code></pre>
+<h4 id="test-report">Test Report</h4>
+<h5 id="terminal-test-report">Terminal Test Report</h5>
+<p><img alt="RbdVs7" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/RbdVs7.png" /></p>
+<h5 id="integrated-mochawesome-test-report">Integrated mochawesome test report</h5>
+<ul>
+<li>Install mochawesome library</li>
+</ul>
+<pre><code class="language-bash">npm install --save-dev mochawesome
+</code></pre>
+<ul>
+<li>Updating mocha configuration files</li>
+</ul>
+<blockquote>
+<p>You can refer to the demo project at<a href="https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo">https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo</a></p>
+</blockquote>
+<pre><code class="language-javascript">// mocha config
+module.exports = {
+    timeout: 5000, // Set the default timeout for test cases (milliseconds)
+    reporter: 'mochawesome', // Use mochawesome as the test report generator
+    'reporter-option': [
+        'reportDir=Report', // Report directory
+        'reportFilename=[status]_[datetime]-[name]-report', //Report file name
+        'html=true', // enable html report
+        'json=false', // disable json report
+        'overwrite=false', // disable report file overwrite
+        'timestamp=longDate', // add timestamp to report file name
+
+    ], // mochawesome report generator options
+    spec: ['Specs/**/*.js'], // Specify the location of the test file
+};
+</code></pre>
+<ul>
+<li>Running test cases</li>
+</ul>
+<pre><code class="language-bash">// Run test cases
+npm run test
+</code></pre>
+<ul>
+<li>View test report</li>
+</ul>
+<blockquote>
+<p>Test report folder: Report, click to open the latest html report file with your browser</p>
+</blockquote>
+<p><img alt="BseOQ8" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/BseOQ8.png" /></p>
+<h3 id="jest-version">Jest version</h3>
+<p>You can refer to the demo project at<a href="https://github.com/Automation-Test-Starter/SuperTest-Jest-demo">https://github.com/Automation-Test-Starter/SuperTest-Jest-demo</a></p>
+<h4 id="create-a-new-jest-project-folder">Create a new jest project folder</h4>
+<pre><code class="language-bash">mkdir SuperTest-Jest-demo
+</code></pre>
+<h4 id="jest-demo-project-initialization">Jest demo project initialization</h4>
+<pre><code class="language-bash">// enter the project folder
+cd SuperTest-Mocha-demo
+// nodejs project initialization
+npm init -y
+</code></pre>
+<h4 id="jest-demo-install-dependencies">Jest demo install dependencies</h4>
+<pre><code class="language-bash">// install supertest library
+npm install supertest --save-dev
+// install jest test framework
+npm install jest --save-dev
+</code></pre>
+<h4 id="create-new-jest-demo-project-test-folder-and-test-cases">Create new Jest demo project test folder and test cases</h4>
+<pre><code class="language-bash">// create test folder
+mkdir Specs
+// enter test folder and create test case file
+cd Specs
+touch test.spec.js
+</code></pre>
+<h4 id="writing-jest-demo-test-cases">Writing Jest demo Test Cases</h4>
+<blockquote>
+<p>The test API can be found in the demoAPI.md file in the project.</p>
+</blockquote>
+<pre><code class="language-javascript">const request = require('supertest');
+
+// Test Suite
+describe('Verify that the Get and POST API returns correctly', () =&gt; {
+    // Test case 1
+    it('Verify that the GET API returns correctly', async () =&gt; {
+        const res = await request('https://jsonplaceholder.typicode.com') // Test endpoint
+            .get('/posts/1') // API endpoint
+            .send() // request body
+            .expect(200); // use supertest's expect to verify that the status code is 200
+        // user jest's expect to verify the response body
+        expect(res.status).toBe(200); // Verify that the status code is 200
+        expect(res.body.id).toEqual(1); // Verify that the id is 1
+        expect(res.body.userId).toEqual(1); // Verify that the userId is 1
+        expect(res.body.title).toEqual(&quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;);
+        expect(res.body.body).toEqual(&quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;);
+    });
+
+    // Test case 2
+    it('Verify that the POST API returns correctly', async() =&gt;{
+        const res = await request('https://jsonplaceholder.typicode.com') // Test endpoint
+            .post('/posts') // API endpoint
+            .send({
+                &quot;title&quot;: &quot;foo&quot;,
+                &quot;body&quot;: &quot;bar&quot;,
+                &quot;userId&quot;: 1
+            }) // request body
+            .expect(201); // use supertest's expect to verify that the status code is 201
+        // user jest's expect to verify the response body
+        expect(res.statusCode).toBe(201);
+        expect(res.body.id).toEqual(101);
+        expect(res.body.userId).toEqual(1);
+        expect(res.body.title).toEqual(&quot;foo&quot;);
+        expect(res.body.body).toEqual(&quot;bar&quot;);
+    });
+}); 
+</code></pre>
+<h4 id="configuring-jest-config-files">Configuring Jest config files</h4>
+<ul>
+<li>Creating a new configuration file</li>
+</ul>
+<pre><code class="language-bash">// Create a new configuration file in the project root directory
+touch jest.config.js
+</code></pre>
+<ul>
+<li>Updating configuration files</li>
+</ul>
+<pre><code class="language-javascript">// Desc: Jest configuration file
+module.exports = {
+    // Specify the location of the test file
+    testMatch: ['**/Specs/*.spec.js'],
+};
+</code></pre>
+<h4 id="adapting-jest-test-scripts">Adapting Jest Test Scripts</h4>
+<p>Add the test script to the package.json file</p>
+<pre><code class="language-json">&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;jest&quot;
+  },
+</code></pre>
+<h4 id="runing-test-case">Runing test case</h4>
+<pre><code class="language-bash">// run test case
+npm run test
+</code></pre>
+<h4 id="jest-test-report">Jest test report</h4>
+<h5 id="jest-terminal-test-report">Jest terminal Test Report</h5>
+<p><img alt="ItJf6N" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/ItJf6N.png" /></p>
+<h5 id="integrating-jest-html-reporters-test-reports">Integrating jest-html-reporters test reports</h5>
+<ul>
+<li>Install jest-html-reporters library</li>
+</ul>
+<pre><code class="language-bash">npm install --save-dev jest-html-reporters
+</code></pre>
+<ul>
+<li>Updating jest configuration files</li>
+</ul>
+<blockquote>
+<p>You can refer to the demo project at<ttps://github.com/Automation-Test-Starter/SuperTest-Jest-demo></p>
+</blockquote>
+<pre><code class="language-javascript">// Desc: Jest configuration file
+module.exports = {
+    // specify the location of the test file
+    testMatch: ['**/Specs/*.spec.js'],
+    // test report generator
+    reporters: [
+        'default',
+        [
+            'jest-html-reporters',
+            {
+                publicPath: './Report', // report directory
+                filename: 'report.html', // report file name
+                pageTitle: 'SuperTest and Jest API Test Report', // report title
+                overwrite: true, // enable report file overwrite
+                expand: true, // enable report file expansion
+            },
+        ],
+    ],
+};
+</code></pre>
+<ul>
+<li>Running test cases</li>
+</ul>
+<pre><code class="language-bash">// run test case
+npm run test
+</code></pre>
+<ul>
+<li>View test report</li>
+</ul>
+<blockquote>
+<p>Test report folder: Report, click on the browser to open the latest html report file</p>
+</blockquote>
+<p><img alt="12ZreT" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/12ZreT.png" /></p>
+<h2 id="advanced-usage">Advanced Usage</h2>
+<h3 id="cicd-integration">CI/CD integration</h3>
+<h4 id="integration-github-action">Integration github action</h4>
+<p>Use github action as an example, and other CI tools similarly</p>
+<h5 id="the-mocha-version-integration-github-action">The mocha version integration github action</h5>
+<p>See the demo at <a href="https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo">https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo</a></p>
+<ul>
+<li>
+<p>Create the .github/workflows directory: In your GitHub repository, create a directory called .github/workflows. This will be where the GitHub Actions workflow files will be stored.</p>
+</li>
+<li>
+<p>Create a workflow file: Create a YAML-formatted workflow file, such as mocha.yml, in the .github/workflows directory.</p>
+</li>
+<li>
+<p>Edit the mocha.yml file: Copy the following into the file</p>
+</li>
+</ul>
+<pre><code class="language-yaml">name: RUN SuperTest API Test CI
+
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+  pull_request:
+    branches: [ &quot;main&quot; ]
+
+jobs:
+  RUN-SuperTest-API-Test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Installation of related packages
+      run: npm ci
+
+    - name: RUN SuperTest API Testing
+      run: npm test
+
+    - name: Archive SuperTest mochawesome test report
+      uses: actions/upload-artifact@v3
+      with:
+        name: SuperTest-mochawesome-test-report
+        path: Report
+
+    - name: Upload SuperTest mochawesome report to GitHub
+      uses: actions/upload-artifact@v3
+      with:
+        name: SuperTest-mochawesome-test-report
+        path: Report
+</code></pre>
+<ul>
+<li>Commit the code: Add the mocha.yml file to your repository and commit.</li>
+<li>View test reports: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the RUN SuperTest API Test CI workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.</li>
+</ul>
+<p><img alt="dgfyaS" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/dgfyaS.png" /></p>
+<h5 id="the-jest-version-integration-github-action">The jest version integration github action</h5>
+<p>See the demo at <a href="https://github.com/Automation-Test-Starter/SuperTest-Jest-demo">https://github.com/Automation-Test-Starter/SuperTest-Jest-demo</a></p>
+<ul>
+<li>
+<p>Create the .github/workflows directory: In your GitHub repository, create a directory called .github/workflows. This will be where the GitHub Actions workflow files will be stored.</p>
+</li>
+<li>
+<p>Create a workflow file: Create a YAML-formatted workflow file, such as jest.yml, in the .github/workflows directory.</p>
+</li>
+<li>
+<p>Edit the jest.yml file: Copy the following into the file</p>
+</li>
+</ul>
+<pre><code class="language-yaml">name: RUN SuperTest API Test CI
+
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+  pull_request:
+    branches: [ &quot;main&quot; ]
+
+jobs:
+  RUN-SuperTest-API-Test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Installation of related packages
+        run: npm ci
+
+      - name: RUN SuperTest API Testing
+        run: npm test
+
+      - name: Archive SuperTest test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: SuperTest-test-report
+          path: Report
+
+      - name: Upload SuperTest  report to GitHub
+        uses: actions/upload-artifact@v3
+        with:
+          name: SuperTest-test-report
+          path: Report
+</code></pre>
+<ul>
+<li>Commit the code: Add the jest.yml file to the repository and commit.</li>
+<li>View test reports: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the RUN-SuperTest-API-Test workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.</li>
+</ul>
+<p><img alt="fqXy8o" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/fqXy8o.png" /></p>
+<h3 id="common-assertions">Common Assertions</h3>
+<p>The following is an overview of common assertions used by SuperTest, CHAI and Jest.</p>
+<h4 id="supertests-built-in-assertions">SuperTest's built-in assertions</h4>
+<p>Supertest is a more advanced library built on <a href="https://github.com/ladjs/superagent">SuperAgent</a>, so Supertest can easily use SuperAgent's HTTP assertions.</p>
+<p>Examples are as follows:</p>
+<pre><code class="language-javascript">.expect(status[, fn]) // Assert response status code.
+
+.expect(status, body[, fn]) // Assert response status code and body.
+
+.expect(body[, fn]) // Assert response body text with a string, regular expression, or parsed body object.
+
+.expect(field, value[, fn]) // Assert header field value with a string or regular expression.
+
+.expect(function(res) {}) // Pass a custom assertion function. It'll be given the response object to check. If the check fails, throw an error.
+</code></pre>
+<h4 id="common-assertions-for-chai">Common Assertions for CHAI</h4>
+<ul>
+<li>Equality Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(actual).to.equal(expected) // Verify that the actual value is equal to the expected value.
+expect(actual).to.deep.equal(expected) // Verify that the actual value is deeply equal to the expected value, for object and array comparisons.
+expect(actual).to.eql(expected) // Same as deep.equal for deep-equal comparisons.
+</code></pre>
+<ul>
+<li>Inclusion Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(array).to.include(value) // Verify that the array contains the specified value.
+expect(string).to.include(substring) // Verify that the string contains the specified substring.
+expect(object).to.include(key) // Verify that the object contains the specified key.
+</code></pre>
+<ul>
+<li>Type Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(actual).to.be.a(type) // Verify that the type of the actual value is equal to the specified type.
+expect(actual).to.be.an(type) // Same as to.be.a for type assertions.
+expect(actual).to.be.an.instanceof(constructor) // Verify that the actual value is an instance of the specified constructor.
+</code></pre>
+<ul>
+<li>Truthiness Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(value).to.be.true // Verify that the value is true.
+expect(value).to.be.false // Verify that the value is false.
+expect(value).to.exist // Verify that the value exists, is not null and is not undefined.
+</code></pre>
+<ul>
+<li>Length Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(array).to.have.length(length) // Verify that the length of the array is equal to the specified length.
+expect(string).to.have.lengthOf(length) // Verify that the length of the string is equal to the specified length.
+</code></pre>
+<ul>
+<li>Empty Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(array).to.be.empty // Verify if the array is empty.
+expect(string).to.be.empty // Verify that the string is empty.
+</code></pre>
+<ul>
+<li>Range Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(value).to.be.within(min, max) // Verify that the value is within the specified range.
+expect(value).to.be.above(min) // Verify that the value is greater than the specified value.
+expect(value).to.be.below(max) // Verify that the value is less than the specified value.
+</code></pre>
+<ul>
+<li>Exception Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(fn).to.throw(error) // Verify that the function throws an exception of the specified type.
+expect(fn).to.throw(message) // Verify that the function throws an exception containing the specified message.
+</code></pre>
+<ul>
+<li>Existence Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(object).to.have.property(key) // Verify that the object contains the specified property.
+expect(array).to.have.members(subset) // Verify that the array contains the specified members.
+</code></pre>
+<p>For more chai assertions, see <a href="https://www.chaijs.com/api/assert/">https://www.chaijs.com/api/assert/</a></p>
+<h4 id="common-assertions-for-jest">Common Assertions for Jest</h4>
+<ul>
+<li>Equality Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(actual).toBe(expected) // Verify that the actual value is strictly equal to the expected value.
+expect(actual).toEqual(expected) // Verify that the actual value is deeply equal to the expected value, for object and array comparisons.
+</code></pre>
+<ul>
+<li>Inequality Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(actual).not.toBe(expected) // Verify that the actual value is not equal to the expected value.
+</code></pre>
+<ul>
+<li>Inclusion Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(array).toContain(value) // Verify that the array contains the specified value.
+</code></pre>
+<ul>
+<li>Type Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(actual).toBeTypeOf(expected) // Verify that the type of the actual value is equal to the specified type.
+</code></pre>
+<ul>
+<li>Truthiness Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(value).toBeTruthy() // Verify that the value is true.
+expect(value).toBeFalsy() // Verify that the value is false.
+</code></pre>
+<ul>
+<li>Asynchronous Assertions</li>
+</ul>
+<pre><code class="language-javascript">await expect(promise).resolves.toBe(expected) // Verify that the asynchronous operation completed successfully and return a result matching the expected value.
+</code></pre>
+<ul>
+<li>Exception Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(fn).toThrow(error) // Verify that the function throws an exception of the specified type.
+expect(fn).toThrow(message) // Verify that the function throws an exception containing the specified message.
+</code></pre>
+<ul>
+<li>Scope Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(value).toBeGreaterThanOrEqual(min) // Verify that the value is greater than or equal to the specified minimum.
+expect(value).toBeLessThanOrEqual(max) // Verify that the value is less than or equal to the specified maximum.
+</code></pre>
+<ul>
+<li>Object Property Assertions</li>
+</ul>
+<pre><code class="language-javascript">expect(object).toHaveProperty(key, value) // Verify that the object contains the specified property and that the value of the property is equal to the specified value.
+</code></pre>
+<p>For more Jest assertions, see<a href="https://jestjs.io/docs/expect">https://jestjs.io/docs/expect</a></p>
+<h3 id="data-driven">Data Driven</h3>
+<p>Data-driven for API testing is a testing methodology in which the input data and expected output data for test cases are stored in data files, and the testing framework executes multiple tests against these data files to validate various aspects of the API. Data-driven testing can help you effectively cover multiple scenarios and ensure that the API works properly with a variety of input data.</p>
+<p>The Mocha version can be found in the demo project: <a href="https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo">https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo</a>.</p>
+<p>The Jest version can be found in the demo project: <a href="https://github.com/Automation-Test-Starter/SuperTest-Jest-demo">https://github.com/Automation-Test-Starter/SuperTest-Jest-demo</a>.</p>
+<blockquote>
+<p>The mocha version is similar to the Jest version, so here is an example of the mocha version.</p>
+</blockquote>
+<h4 id="create-test-configuration-files">Create test configuration files</h4>
+<pre><code class="language-bash">// create test configuration folder
+mkdir Config
+// create test configuration file
+cd Config
+touch config.js
+</code></pre>
+<h4 id="edit-test-configuration-files">Edit test configuration files</h4>
+<pre><code class="language-javascript">// Test config file
+module.exports = {
+    host: 'https://jsonplaceholder.typicode.com',  // Test endpoint
+    getAPI: '/posts/1',  // Test GET API URL
+    postAPI: '/posts', // Test POST API URL
+};
+</code></pre>
+<h4 id="create-test-data-files">Create test data files</h4>
+<pre><code class="language-bash">// create test data folder
+mkdir testData
+// enter test data folder
+cd testData
+// create request data file
+touch requestData.js
+// create response data file
+touch responseData.js
+</code></pre>
+<h4 id="edit-test-data-files">Edit test data files</h4>
+<ul>
+<li>Edit request data files</li>
+</ul>
+<pre><code class="language-javascript">// Test request data file
+module.exports = {
+    getAPI: '',  // request data for GET API
+    postAPI:{
+        &quot;title&quot;: &quot;foo&quot;,
+        &quot;body&quot;: &quot;bar&quot;,
+        &quot;userId&quot;: 1
+    },  // request data for POST API
+};
+</code></pre>
+<ul>
+<li>Edit response data files</li>
+</ul>
+<pre><code class="language-javascript">// Test response data file
+module.exports = {
+    getAPI: {
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+        &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+    },  // response data for GET API
+    postAPI:{
+        &quot;title&quot;: &quot;foo&quot;,
+        &quot;body&quot;: &quot;bar&quot;,
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 101
+    },  // response data for POST API
+};
+</code></pre>
+<h4 id="update-test-cases-to-support-data-driven">Update test cases to support data-driven</h4>
+<blockquote>
+<p>To differentiate, create a new test case file named dataDrivingTest.spec.js.</p>
+</blockquote>
+<pre><code class="language-javascript">// Test: dataDrivingTest.spec.js
+const request = require('supertest'); // import supertest
+require('chai');
+// import chai
+const expect = require('chai').expect; // import expect
+
+const config = require('../Config/testConfig'); // import test config
+const requestData = require('../TestData/requestData'); // import request data
+const responseData = require('../TestData/responseData'); // import response data
+
+// Test Suite
+describe('Data Driving-Verify that the Get and POST API returns correctly', function(){
+        // Test case 1
+        it('Data Driving-Verify that the GET API returns correctly', function(done){
+            request(config.host) // Test endpoint
+                .get(config.getAPI) // API endpoint
+                .expect(200) // expected response status code
+                .expect(function (res) {
+                    expect(res.body.id).to.equal(responseData.getAPI.id)
+                    expect(res.body.userId).to.equal(responseData.getAPI.userId)
+                    expect(res.body.title).to.equal(responseData.getAPI.title)
+                    expect(res.body.body).to.equal(responseData.getAPI.body)
+                }) // expected response body
+                .end(done) // end the test case
+
+        });
+        // Test case 2
+        it('Data Driving-Verify that the POST API returns correctly', function(done){
+            request(config.host) // Test endpoint
+                .post(config.postAPI) // API endpoint
+                .send(requestData.postAPI) // request body
+                .expect(201) // expected response status code
+                .expect(function (res) {
+                    expect(res.body.id).to.equal(responseData.postAPI.id )
+                    expect(res.body.userId).to.equal(responseData.postAPI.userId )
+                    expect(res.body.title).to.equal(responseData.postAPI.title )
+                    expect(res.body.body).to.equal(responseData.postAPI.body )
+                }) // expected response body
+                .end(done) // end the test case
+        });
+});
+</code></pre>
+<h4 id="run-the-test-case-to-check-whether-the-data-driver-is-effective">Run the test case to check whether the data driver is effective.</h4>
+<blockquote>
+<p>If you run the data driver support test case: dataDrivingTest.spec.js with the demo project, it is recommended to skip the test.spec.js test case first, otherwise it will report an error.</p>
+</blockquote>
+<p><img alt="OCDzLr" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/OCDzLr.png" /></p>
+<h3 id="multiple-environment-support">Multiple Environment Support</h3>
+<p>When using Jest or Mocha for API testing, you may need to support testing different environments, such as development, test and production environments. This can be achieved by configuring different test scripts and environment variables.</p>
+<p>The following is a brief description of how to configure multi-environment support in Jest and Mocha, with a demo demonstrating support for two environments.</p>
+<p>Mocha version can be found in the demo project: <a href="https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo">https://github.com/Automation-Test-Starter/SuperTest-Mocha-demo</a>.</p>
+<p>The Jest version can be found in the demo project: <a href="https://github.com/Automation-Test-Starter/SuperTest-Jest-demo">https://github.com/Automation-Test-Starter/SuperTest-Jest-demo</a>.</p>
+<blockquote>
+<p>The mocha version is similar to the Jest version, so here is an example of the mocha version.</p>
+</blockquote>
+<h4 id="create-multi-environment-test-configuration-file">Create Multi-Environment Test Configuration File</h4>
+<pre><code class="language-bash">// create test configuration folder, if already exists, skip this step
+mkdir Config
+// create test configuration file for test environment
+cd Config
+touch testConfig-test.js
+// create test configuration file for dev environment
+touch testConfig-dev.js
+</code></pre>
+<h4 id="edit-multi-environment-test-configuration-file">Edit Multi-Environment Test Configuration File</h4>
+<ul>
+<li>edit test configuration file for test environment: testConfig-test.js</li>
+</ul>
+<blockquote>
+<p>based on actual situation, edit test configuration file for test environment</p>
+</blockquote>
+<pre><code class="language-javascript">// Test config file for test environment
+module.exports = {
+    host: 'https://jsonplaceholder.typicode.com',  // Test endpoint
+    getAPI: '/posts/1',  // Test GET API URL
+    postAPI: '/posts', // Test POST API URL
+};
+</code></pre>
+<ul>
+<li>edit test configuration file for dev environment: testConfig-dev.js</li>
+</ul>
+<blockquote>
+<p>based on actual situation, edit test configuration file for dev environment</p>
+</blockquote>
+<pre><code class="language-javascript">// Test config file for dev environment
+module.exports = {
+    host: 'https://jsonplaceholder.typicode.com',  // Test endpoint
+    getAPI: '/posts/1',  // Test GET API URL
+    postAPI: '/posts', // Test POST API URL
+};
+</code></pre>
+<h4 id="create-multi-environment-test-data-file">Create Multi-Environment Test Data File</h4>
+<pre><code class="language-bash">// create test data folder, if already exists, skip this step
+mkdir testData
+// enter test data folder
+cd testData
+// create request data file for test environment
+touch requestData-test.js
+// create response data file for test environment
+touch responseData-test.js
+// create request data file for dev environment
+touch requestData-dev.js
+// create response data file for dev environment
+touch responseData-dev.js
+</code></pre>
+<h4 id="edit-multi-environment-test-data-file">Edit Multi-Environment Test Data File</h4>
+<ul>
+<li>edit request data file for test environment: requestData-test.js</li>
+</ul>
+<blockquote>
+<p>based on actual situation, edit request data file for test environment</p>
+</blockquote>
+<pre><code class="language-javascript">// Test request data file for test environment
+module.exports = {
+    getAPI: '',  // request data for GET API
+    postAPI:{
+        &quot;title&quot;: &quot;foo&quot;,
+        &quot;body&quot;: &quot;bar&quot;,
+        &quot;userId&quot;: 1
+    },  // request data for POST API
+};
+</code></pre>
+<ul>
+<li>edit response data file for test environment: responseData-test.js</li>
+</ul>
+<blockquote>
+<p>based on actual situation, edit response data file for test environment</p>
+</blockquote>
+<pre><code class="language-javascript">// Test response data file for test environment
+module.exports = {
+    getAPI: {
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+        &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+    },  // response data for GET API
+    postAPI:{
+        &quot;title&quot;: &quot;foo&quot;,
+        &quot;body&quot;: &quot;bar&quot;,
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 101
+    },  // response data for POST API
+};
+</code></pre>
+<ul>
+<li>edit request data file for dev environment: requestData-dev.js</li>
+</ul>
+<blockquote>
+<p>based on actual situation, edit request data file for dev environment</p>
+</blockquote>
+<pre><code class="language-javascript">// Test request data file for dev environment
+module.exports = {
+    getAPI: '',  // request data for GET API
+    postAPI:{
+        &quot;title&quot;: &quot;foo&quot;,
+        &quot;body&quot;: &quot;bar&quot;,
+        &quot;userId&quot;: 1
+    },  // request data for POST API
+};
+</code></pre>
+<ul>
+<li>edit response data file for dev environment: responseData-dev.js</li>
+</ul>
+<blockquote>
+<p>based on actual situation, edit response data file for dev environment</p>
+</blockquote>
+<pre><code class="language-javascript">// Test response data file for dev environment
+module.exports = {
+    getAPI: {
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 1,
+        &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+        &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+    },  // response data for GET API
+    postAPI:{
+        &quot;title&quot;: &quot;foo&quot;,
+        &quot;body&quot;: &quot;bar&quot;,
+        &quot;userId&quot;: 1,
+        &quot;id&quot;: 101
+    },  // response data for POST API
+};
+</code></pre>
+<h4 id="update-test-cases-to-support-multiple-environments">Update test cases to support multiple environments</h4>
+<blockquote>
+<p>To differentiate, here is a new test case file named multiEnvTest.spec.js</p>
+</blockquote>
+<pre><code class="language-javascript">// Test: multiEnvTest.spec.js
+const request = require('supertest'); // import supertest
+require('chai');
+// import chai
+const expect = require('chai').expect; // import expect
+
+const config = process.env.NODE_ENV === 'test' ? require('../Config/testConfig-test') : require('../Config/testConfig-dev'); // import test config
+const requestData = process.env.NODE_ENV === 'test' ? require('../TestData/requestData-test') : require('../TestData/requestData-dev'); // import request data
+const responseData= process.env.NODE_ENV === 'test' ? require('../TestData/responseData-test') : require('../TestData/responseData-dev'); // import response data
+
+// Test Suite
+describe('multiEnv-Verify that the Get and POST API returns correctly', function(){
+    // Test case 1
+    it('multiEnv-Verify that the GET API returns correctly', function(done){
+        request(config.host) // Test endpoint
+            .get(config.getAPI) // API endpoint
+            .expect(200) // expected response status code
+            .expect(function (res) {
+                expect(res.body.id).to.equal(responseData.getAPI.id)
+                expect(res.body.userId).to.equal(responseData.getAPI.userId)
+                expect(res.body.title).to.equal(responseData.getAPI.title)
+                expect(res.body.body).to.equal(responseData.getAPI.body)
+            }) // expected response body
+            .end(done) // end the test case
+
+    });
+    // Test case 2
+    it('multiEnv-Verify that the POST API returns correctly', function(done){
+        request(config.host) // Test endpoint
+            .post(config.postAPI) // API endpoint
+            .send(requestData.postAPI) // request body
+            .expect(201) // expected response status code
+            .expect(function (res) {
+                expect(res.body.id).to.equal(responseData.postAPI.id )
+                expect(res.body.userId).to.equal(responseData.postAPI.userId )
+                expect(res.body.title).to.equal(responseData.postAPI.title )
+                expect(res.body.body).to.equal(responseData.postAPI.body )
+            }) // expected response body
+            .end(done) // end the test case
+    });
+});
+</code></pre>
+<h4 id="update-test-scripts-to-support-multiple-environments">Update test scripts to support multiple environments</h4>
+<p>'''json
+// package.json
+"scripts": {
+    "test": "NODE_ENV=test mocha" // run test script for test environment
+    "dev": "NODE_ENV=dev mocha" //  run test script for dev environment
+  },
+'''</p>
+<h4 id="run-the-test-case-to-check-if-the-multi-environment-support-is-working">Run the test case to check if the multi environment support is working.</h4>
+<blockquote>
+<p>If you use demo project to run multi-environment support test case: multiEnvTest.spec.js, it is recommended to block dataDrivingTest.spec.js and test.spec.js test cases first, otherwise it will report an error.</p>
+</blockquote>
+<ul>
+<li>Run the test environment test script</li>
+</ul>
+<pre><code class="language-bash">npm run test
+</code></pre>
+<p><img alt="OMbN1v" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/OMbN1v.png" /></p>
+<ul>
+<li>Run the dev environment test script</li>
+</ul>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<p><img alt="mWzei1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/mWzei1.png" /></p>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Automation Test Starter
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>

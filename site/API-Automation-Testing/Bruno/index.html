@@ -1,0 +1,1838 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An organization made by QA, for QA.
+A QUICKSTART project for QA automation testing, including common test frameworks and tools, as well as some common test demo.">
+      
+      
+        <meta name="author" content="Automation Test Starter">
+      
+      
+        <link rel="canonical" href="https://automation-test-starter.pages.dev/API-Automation-Testing/Bruno/">
+      
+      
+        <link rel="prev" href="../Pytest/">
+      
+      
+        <link rel="next" href="../Postman/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>Bruno - Automation Test Starter</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-K091G8C97F"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-K091G8C97F",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-K091G8C97F",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bruno" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Automation Test Starter" class="md-header__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Automation Test Starter
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Bruno
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../zh/API-Automation-Testing/Bruno/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../SuperTest/" class="md-tabs__link">
+          
+  
+  API Automation Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Performance-Testing/Gatling/" class="md-tabs__link">
+          
+  
+  Performance Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Automation Test Starter" class="md-nav__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Automation Test Starter
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API Automation Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Automation Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SuperTest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SuperTest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RestAssured/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RestAssured
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pytest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pytest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Bruno
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Bruno
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-bruno" class="md-nav__link">
+    why bruno
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-bruno" class="md-nav__link">
+    Install bruno
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-main-interface" class="md-nav__link">
+    Default main interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-collection" class="md-nav__link">
+    API collection
+  </a>
+  
+    <nav class="md-nav" aria-label="API collection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-api-collection" class="md-nav__link">
+    Create API collection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-api-collection" class="md-nav__link">
+    Open API collection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-api-collection" class="md-nav__link">
+    Import API collection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-api-collection" class="md-nav__link">
+    RUN API collection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-api-collection" class="md-nav__link">
+    Export API collection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-request" class="md-nav__link">
+    API request
+  </a>
+  
+    <nav class="md-nav" aria-label="API request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-api-request" class="md-nav__link">
+    Create API request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-api-request" class="md-nav__link">
+    Edit API request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-api-request" class="md-nav__link">
+    RUN API request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-request-generate-code" class="md-nav__link">
+    API request generate code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-api-request-test-scripts" class="md-nav__link">
+    Write API request test scripts
+  </a>
+  
+    <nav class="md-nav" aria-label="Write API request test scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-request-assert" class="md-nav__link">
+    API request Assert
+  </a>
+  
+    <nav class="md-nav" aria-label="API request Assert">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introducing-assert" class="md-nav__link">
+    Introducing Assert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assert-demo" class="md-nav__link">
+    Assert demo
+  </a>
+  
+    <nav class="md-nav" aria-label="Assert demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assert-status-code-is-200" class="md-nav__link">
+    Assert status code is 200
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assert-repsponse-body-as-expected" class="md-nav__link">
+    Assert repsponse body as expected
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-assert" class="md-nav__link">
+    Debug Assert
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-request-tests" class="md-nav__link">
+    API request Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="API request Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-tests" class="md-nav__link">
+    Introduction Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests-demo" class="md-nav__link">
+    Tests demo
+  </a>
+  
+    <nav class="md-nav" aria-label="Tests demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verify-status-code-is-200" class="md-nav__link">
+    Verify status code is 200
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-repsponse-body-as-expected" class="md-nav__link">
+    Verify repsponse body as expected
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-tests" class="md-nav__link">
+    Debugging Tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    environment variables
+  </a>
+  
+    <nav class="md-nav" aria-label="environment variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-environment-variables" class="md-nav__link">
+    Creating Environment Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable-demo" class="md-nav__link">
+    environment variable demo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-environment-variables" class="md-nav__link">
+    Using Environment Variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-script-automation" class="md-nav__link">
+    Test script automation
+  </a>
+  
+    <nav class="md-nav" aria-label="Test script automation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-conditions" class="md-nav__link">
+    Pre-conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-automation-project-demo" class="md-nav__link">
+    api automation project demo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    CI/CD Integration
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-github-action" class="md-nav__link">
+    Integration github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-report-todo" class="md-nav__link">
+    Test report---TODO
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bruno-more-usage-todo" class="md-nav__link">
+    bruno More usage---TODO
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postman-script-migration" class="md-nav__link">
+    Postman script migration
+  </a>
+  
+    <nav class="md-nav" aria-label="Postman script migration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-request-collection-migration" class="md-nav__link">
+    API Request Collection Migration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable-migration" class="md-nav__link">
+    Environment Variable Migration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-script-migration-reference" class="md-nav__link">
+    Test Script Migration Reference
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Postman/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Performance Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Performance Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Performance-Testing/Gatling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gatling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-bruno" class="md-nav__link">
+    why bruno
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-bruno" class="md-nav__link">
+    Install bruno
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-main-interface" class="md-nav__link">
+    Default main interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-collection" class="md-nav__link">
+    API collection
+  </a>
+  
+    <nav class="md-nav" aria-label="API collection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-api-collection" class="md-nav__link">
+    Create API collection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-api-collection" class="md-nav__link">
+    Open API collection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-api-collection" class="md-nav__link">
+    Import API collection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-api-collection" class="md-nav__link">
+    RUN API collection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-api-collection" class="md-nav__link">
+    Export API collection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-request" class="md-nav__link">
+    API request
+  </a>
+  
+    <nav class="md-nav" aria-label="API request">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-api-request" class="md-nav__link">
+    Create API request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-api-request" class="md-nav__link">
+    Edit API request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-api-request" class="md-nav__link">
+    RUN API request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-request-generate-code" class="md-nav__link">
+    API request generate code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-api-request-test-scripts" class="md-nav__link">
+    Write API request test scripts
+  </a>
+  
+    <nav class="md-nav" aria-label="Write API request test scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-request-assert" class="md-nav__link">
+    API request Assert
+  </a>
+  
+    <nav class="md-nav" aria-label="API request Assert">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introducing-assert" class="md-nav__link">
+    Introducing Assert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assert-demo" class="md-nav__link">
+    Assert demo
+  </a>
+  
+    <nav class="md-nav" aria-label="Assert demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assert-status-code-is-200" class="md-nav__link">
+    Assert status code is 200
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assert-repsponse-body-as-expected" class="md-nav__link">
+    Assert repsponse body as expected
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-assert" class="md-nav__link">
+    Debug Assert
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-request-tests" class="md-nav__link">
+    API request Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="API request Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-tests" class="md-nav__link">
+    Introduction Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests-demo" class="md-nav__link">
+    Tests demo
+  </a>
+  
+    <nav class="md-nav" aria-label="Tests demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verify-status-code-is-200" class="md-nav__link">
+    Verify status code is 200
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-repsponse-body-as-expected" class="md-nav__link">
+    Verify repsponse body as expected
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-tests" class="md-nav__link">
+    Debugging Tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    environment variables
+  </a>
+  
+    <nav class="md-nav" aria-label="environment variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-environment-variables" class="md-nav__link">
+    Creating Environment Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable-demo" class="md-nav__link">
+    environment variable demo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-environment-variables" class="md-nav__link">
+    Using Environment Variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-script-automation" class="md-nav__link">
+    Test script automation
+  </a>
+  
+    <nav class="md-nav" aria-label="Test script automation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-conditions" class="md-nav__link">
+    Pre-conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-automation-project-demo" class="md-nav__link">
+    api automation project demo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    CI/CD Integration
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-github-action" class="md-nav__link">
+    Integration github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-report-todo" class="md-nav__link">
+    Test report---TODO
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bruno-more-usage-todo" class="md-nav__link">
+    bruno More usage---TODO
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postman-script-migration" class="md-nav__link">
+    Postman script migration
+  </a>
+  
+    <nav class="md-nav" aria-label="Postman script migration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-request-collection-migration" class="md-nav__link">
+    API Request Collection Migration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable-migration" class="md-nav__link">
+    Environment Variable Migration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-script-migration-reference" class="md-nav__link">
+    Test Script Migration Reference
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="bruno">Bruno</h1>
+<h2 id="why-bruno">why bruno</h2>
+<p>Official description: <a href="https://github.com/usebruno/bruno/discussions/269">https://github.com/usebruno/bruno/discussions/269</a></p>
+<p>Comparison with postman: <a href="https://www.usebruno.com/compare/bruno-vs-postman">https://www.usebruno.com/compare/bruno-vs-postman</a></p>
+<p>Open source, MIT License</p>
+<p>Client platform support (Mac/linux/Windows)</p>
+<p>Offline client, no cloud synchronization plan</p>
+<p>Supports Postman/insomina script import (only API request scripts can be imported, not test scripts)</p>
+<p>Relatively active community and clear <a href="https://github.com/usebruno/bruno/discussions/384">product development roadmap</a>.</p>
+<h2 id="install-bruno">Install bruno</h2>
+<p>Download link: <a href="https://www.usebruno.com/downloads">https://www.usebruno.com/downloads</a></p>
+<p>Mac computer recommended brew command download</p>
+<p>​    <code>brew install Bruno</code></p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="default-main-interface">Default main interface</h3>
+<p><img alt="homepage" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/homepage.png" /></p>
+<h3 id="api-collection">API collection</h3>
+<h4 id="create-api-collection">Create API collection</h4>
+<ul>
+<li>
+<p>On the home page, click on the 'Create Collection' link to open the Create API Request Collection pop-up window.</p>
+</li>
+<li>
+<p>On the popup window, enter</p>
+</li>
+</ul>
+<p>Name: input the name of the API request collection</p>
+<p>Location: input the path of the folder where you want to save the API request collection files (we suggest you choose the path where this project is located).</p>
+<p>Folder Name: you can enter the name of the API request set (a folder with the corresponding name will be created under the path you just selected).</p>
+<ul>
+<li>Click Create button to finish creating the API request set and display it on the interface (the list of newly created API request set will be displayed on the left side).</li>
+</ul>
+<p><img alt="create-collection" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/create-collection.png" /></p>
+<h4 id="open-api-collection">Open API collection</h4>
+<ul>
+<li>Click on the 'Open Collection' link on the home page to open the folder of the selected API request collection in bruno format.</li>
+<li>Click open to complete the selection and display it in the interface (the collection list on the left side will display the selected API request collection information).</li>
+</ul>
+<h4 id="import-api-collection">Import API collection</h4>
+<ul>
+<li>Click the 'Import Collection' link on the home page to open the popup window for importing API collections (Bruno/Postman/Insomnia are supported).</li>
+<li>On the popup window, select the link of the corresponding format, and then select the path of the existing file of the corresponding format.</li>
+<li>Click open to complete the selection and display it on the interface (the collection list on the left side will display the information of the selected API collection).</li>
+</ul>
+<p><img alt="import-collection" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/import-collection.png" /></p>
+<h4 id="run-api-collection">RUN API collection</h4>
+<ul>
+<li>Select the API request set you want to run from the collection list on the left side of the main interface.</li>
+<li>Select Run on the menu, the Runner tab will be opened on the right side of the interface, it will show some information about the requests in the selected API request collection.</li>
+<li>Click on the Run Collection button to run it locally (you will see the allowed results on the screen after running).</li>
+</ul>
+<h4 id="export-api-collection">Export API collection</h4>
+<ul>
+<li>Select the API request set you want to run from the collection list on the left side of the main interface, and right-click to open the menu.</li>
+<li>Select Export on the menu, and then select the path of the file you want to export to complete the export (the exported file is also in json format).</li>
+</ul>
+<h3 id="api-request">API request</h3>
+<h4 id="create-api-request">Create API request</h4>
+<ul>
+<li>Pre-requisite: An API request collection has already been created (see Creating an API Request Collection above).</li>
+<li>Select the API request set you want to create a new API request from the collection list on the left side of the main interface.</li>
+<li>Select New Request on the menu, the right interface will open the Request tab, it will show some information of requests in the selected API request set.</li>
+<li>On the new Request window, first select the request type: HTTP/GraphQL.</li>
+<li>In the new Request window, first select the request type: HTTP/GraphQL.
+Name: Enter the name of the API request.
+URL: enter the URL of the API request
+Method: Select the Method of the API request.</li>
+<li>Click Create button to finish creating the API request and display it on the interface (the left request set list will display the information of the newly created API request).</li>
+</ul>
+<h4 id="edit-api-request">Edit API request</h4>
+<ul>
+<li>Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).</li>
+<li>Select the API request collection you want to edit in the collection list on the left side of the main interface, and then select the API request you want to edit.</li>
+<li>Then you can edit different fields of the request according to the type of API request.
+  Body: Enter the Body of the API request.</li>
+</ul>
+<p>Headers: Enter the headers of the API request.</p>
+<p>Params: Enter the Params of the API request.</p>
+<p>Auth: enter the Auth of the API request</p>
+<p>Vars: enter the Vars of the API request</p>
+<p>Script: enter the Script of the API request</p>
+<p>Assert: Enter the Assert of the API request.</p>
+<p>Tests: Enter the Tests of the API request.</p>
+<ul>
+<li>Click the Save button to finish editing the API request and display it on the interface (the list of request sets on the left side will display the information of the edited API request).</li>
+</ul>
+<h4 id="run-api-request">RUN API request</h4>
+<ul>
+<li>Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).</li>
+<li>In the collection list on the left side of the main interface, select the API request set that you want to edit the API request, and then select the API request that you want to edit.</li>
+<li>Click the right button after the API url edit box to finish running the API request and display it on the interface (the Request tab on the right side will display the information of the running API request).</li>
+</ul>
+<h4 id="api-request-generate-code">API request generate code</h4>
+<ul>
+<li>Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).</li>
+<li>In the collection list on the left side of the main interface, select the API request set that you want to edit the API request, and then select the API request that you want to edit.</li>
+<li>Right click on the menu and select Generate Code, then select the language you want to generate code for.</li>
+<li>The Generate Code window will show the request code of different languages.</li>
+</ul>
+<h3 id="write-api-request-test-scripts">Write API request test scripts</h3>
+<h4 id="api-request-assert">API request Assert</h4>
+<h5 id="introducing-assert">Introducing Assert</h5>
+<ul>
+<li>Open any API request and switch to the Assert tab.</li>
+<li>The Assert tab displays the Assert information of the API request.</li>
+<li>Assert is used to determine whether the result of the API request meets the expectation.</li>
+<li>
+<p>Expr: input the expression of expected result, it can be the value of a field of the API request, two types can be input: Status Code and Response Body.
+ Status Code: determine whether the returned status code of the API request meets the expectation (default is 200).
+  Response Body: determine whether the returned result of the API request meets the expectation (default is true).</p>
+</li>
+<li>
+<p>Operator: the validation method for inputting the expected result. Supports multiple judgment methods: Equal and Not Equal, etc.
+  Equal: determine whether the returned result of the API request is equal to the expected result.
+  Not Equal: determine if the returned result of the API request is not equal to the expected result.</p>
+</li>
+<li>Value: input the value of the expected result, supports two ways of inputting the expected result: Static and Dynamic.
+  Static: input the static value of the expected result.
+  Dynamic: input the dynamic value of the expected result, which can be the value of a field in the return result of the API request.</li>
+</ul>
+<h5 id="assert-demo">Assert demo</h5>
+<h6 id="assert-status-code-is-200">Assert status code is 200</h6>
+<ul>
+<li>Taking <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> as an example (the API request returns <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>) I want to verify that the API request returns a status is 200.</li>
+<li>Open the API request and switch to the Assert tab.</li>
+<li>Enter the following information
+Expr: res.status
+Operator: Equal
+Value: 200</li>
+</ul>
+<h6 id="assert-repsponse-body-as-expected">Assert repsponse body as expected</h6>
+<ul>
+<li>Using <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> as an example (the API request returned <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>) I want to verify that the API request's repsponse body is as expected</li>
+<li>Open the API request and switch to the Assert tab.</li>
+<li>Assert1 Enter the following information in order
+Expr: res.body.id
+Operator: Equal
+Value: 1</li>
+<li>Assert2 Input the following information in order
+Expr: res.body.title
+Operator: contains
+Value: provider</li>
+</ul>
+<h5 id="debug-assert">Debug Assert</h5>
+<ul>
+<li>Pre-requisite: you have already created an API request set and an API request (refer to Creating an API request set and New API request above), and you have also written the corresponding Assert according to the demo.</li>
+<li>Select the API request set you want to edit in the collection list on the left side of the main interface, and then select the API request you want to edit.</li>
+<li>Click the right button after the API url edit box to finish running the API request and display it on the interface (the Request tab on the right side will display the information of the running API request).</li>
+<li>Switch to the Tests tab to display the Tests information of the API request, which also includes the Assert information of the request.</li>
+</ul>
+<p><img alt="assert-demo" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/assert-demo.png" /></p>
+<h4 id="api-request-tests">API request Tests</h4>
+<h5 id="introduction-tests">Introduction Tests</h5>
+<ul>
+<li>Open any API request and switch to the Tests tab.</li>
+<li>Tests tab will show the Tests information of the API request.</li>
+<li>Tests are used to write test scripts for API requests, currently javascript language is supported.</li>
+<li>You can write multiple test scripts inside Tests, each test script can be run separately.</li>
+</ul>
+<h5 id="tests-demo">Tests demo</h5>
+<h6 id="verify-status-code-is-200">Verify status code is 200</h6>
+<ul>
+<li>Taking <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> as an example (the API request returns <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>), I want to verify that the API request returns a status is 200.</li>
+<li>Open the API request and switch to the Tests tab.</li>
+<li>Enter the following script</li>
+</ul>
+<pre><code class="language-javascript">test(&quot;res.status should be 200&quot;, function() {
+  const data = res.getBody();
+  expect(res.getStatus()).to.equal(200);
+});
+</code></pre>
+<h6 id="verify-repsponse-body-as-expected">Verify repsponse body as expected</h6>
+<ul>
+<li>Taking <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a> as an example (the API request returned <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>) I want to verify that the repsponse body is as expected</li>
+<li>Open the API request and switch to the Tests tab.</li>
+<li>Enter the following script</li>
+</ul>
+<pre><code class="language-javascript">test(&quot;res.body should be correct&quot;, function() {
+  const data = res.getBody();
+  expect(data.id).to.equal(1);
+expect(data.title).to.contains('provident');
+});
+</code></pre>
+<h5 id="debugging-tests">Debugging Tests</h5>
+<ul>
+<li>Prerequisites: You have already created an API request set and an API request (refer to Creating an API Request Set and New API Request above), and you have also written the corresponding Tests according to the demo.</li>
+<li>Select the API request set you want to edit in the collection list on the left side of the main interface, and then select the API request you want to edit.</li>
+<li>Click the right button after the API url edit box to finish running the API request and display it on the interface (the Request tab on the right side will display the information of the running API request).</li>
+<li>Switch to the Tests tab, it will show the Tests information of the API request, which will also include the requested Tests information.</li>
+</ul>
+<p><img alt="tests-demo" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/tests-demo.png" /></p>
+<h2 id="environment-variables">environment variables</h2>
+<h3 id="creating-environment-variables">Creating Environment Variables</h3>
+<ul>
+<li>Prerequisites: An API request set and an API request have already been created (see Creating an API request set and New API request above).</li>
+<li>Select the API request for which you want to create an environment variable</li>
+<li>Click the 'No Environment' link in the upper right corner of the page (default is No Environment) and select the configure button in the menu to open the environment variable management popup window (supports creating new environment variables and importing existing environment variables).</li>
+<li>Click Create Environment button on the popup window, enter the name of the environment variable and click create button to create the environment variable.</li>
+<li>Then click Add Variable button on the popup window, enter the key and value of the environment variable, and click Save button to add the environment variable.</li>
+</ul>
+<h3 id="environment-variable-demo">environment variable demo</h3>
+<blockquote>
+<p>Requirement: Create a demo environment variable that contains an environment variable with key host and value <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a>.</p>
+</blockquote>
+<ul>
+<li>Select the API request for which you want to create the environment variable</li>
+<li>Click the 'No Environment' link in the upper right corner of the page (default is No Environment), and select the configure button in the menu to open the environment variable management popup.</li>
+<li>Click the Create Environment button on the popup window, enter the name of the environment variable demo, and click the create button to create the environment variable demo.</li>
+<li>Select the demo environment variable, and then click Add Variable button on the page, enter the key of the environment variable as host and the value as <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a>, and click Save button to add the environment variable.</li>
+<li>As shown in the following figure
+! <a href="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/env-intro.png">env-intro</a></li>
+</ul>
+<h3 id="using-environment-variables">Using Environment Variables</h3>
+<ul>
+<li>Prerequisites: You have already created an API request set and an API request (see Creating an API request set and creating a new API request above), and you have also created a demo environment variable.</li>
+<li>Select the API request for which you want to use environment variables</li>
+<li>Click the 'No Environment' link in the top right corner of the page (default is No Environment), and select the demo button in the menu to use the demo environment variable.</li>
+<li>Then change the URL of the API request to {{host}}/posts/1 to use the environment variable.</li>
+</ul>
+<h2 id="test-script-automation">Test script automation</h2>
+<h3 id="pre-conditions">Pre-conditions</h3>
+<ul>
+<li>[x] API request set has been created (example named :api-collects)</li>
+<li>[x] API request has been created (example name: api request1)</li>
+<li>[x] an environment variable has been created (example name: demo)</li>
+<li>[x] has also written an assert or tests script for the API request</li>
+</ul>
+<h3 id="api-automation-project-demo">api automation project demo</h3>
+<ul>
+<li>[x] Installed node.js</li>
+<li>[x] Install npm</li>
+<li>[x] create a new project folder (example name: bruno-test)</li>
+<li>[x] Execute npm init in the project folder to initialize the project as an npm project</li>
+<li>[x] Install @usebruno/cli dependency (script: npm install @usebruno/cli)</li>
+<li>[x] Open the folder directory where the API request sets are stored, and copy all the files in the api-collects directory to the bruno-test project directory</li>
+<li>[x] The project directory looks like this</li>
+</ul>
+<pre><code class="language-javascript">bruno-test   //项目主文件夹
+  api request1.bru //api 请求
+  enviroments //环境变量
+    demo.bru
+  bruno.json
+  node_modules //node 包依赖
+  package-lock.json
+  package.json //npm 项目配置文件
+</code></pre>
+<ul>
+<li>[x] Run the following command in the project directory to run the API request</li>
+</ul>
+<p><code>javascript
+ bruno run --env demo</code></p>
+<ul>
+<li>The result is as follows</li>
+</ul>
+<p><img alt="cli-demo" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/cli-demo.png" /></p>
+<h2 id="cicd-integration">CI/CD Integration</h2>
+<h3 id="integration-github-action">Integration github action</h3>
+<blockquote>
+<p>Take github action as an example, other CI tools are similar.</p>
+</blockquote>
+<ul>
+<li>[x] Prepare: Add the following script to the project package.json file</li>
+</ul>
+<pre><code class="language-json">&quot;test&quot;: &quot;bru run --env demo&quot;
+</code></pre>
+<ul>
+<li>[x] Create .github/workflows folder in the project root folder</li>
+<li>[x] Create main.yml file under .github/workflows folder</li>
+<li>[x] The contents of the main.yml file are as follows</li>
+</ul>
+<pre><code class="language-yaml">name: bruno cli CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run_bruno_api_test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: npm install
+    - name: run tests
+      run: npm run test
+</code></pre>
+<ul>
+<li>[x] submit code to github, will automatically trigger github action</li>
+<li>[x] View the result of the github action, as shown in the example:</li>
+</ul>
+<p><img alt="cli-demo1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/cli-demo1.png" /></p>
+<blockquote>
+<p>The code for this project can be pulled for reference:<a href="https://github.com/dengnao-tw/Bruno-API-Test-Starter">https://github.com/dengnao-tw/Bruno-API-Test-Starter</a></p>
+</blockquote>
+<h2 id="test-report-todo">Test report---TODO</h2>
+<h2 id="bruno-more-usage-todo">bruno More usage---TODO</h2>
+<h2 id="postman-script-migration">Postman script migration</h2>
+<h3 id="api-request-collection-migration">API Request Collection Migration</h3>
+<ul>
+<li>Click on the 'Import Collection' link on the home page to open the Import API collection popup window.</li>
+<li>Click on the Select Postman Collection link and select the path to an existing Postman request collection file.</li>
+<li>Then you can import Postman request collection.</li>
+<li>However, only API requests can be imported, not test scripts, as shown in the figure (but it doesn't affect the request invocation).
+<img alt="postman1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/postman1.png" />
+<img alt="bruno1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bruno1.png" /></li>
+</ul>
+<h3 id="environment-variable-migration">Environment Variable Migration</h3>
+<ul>
+<li>Select the Postman request you just imported on the home page.</li>
+<li>Click the 'No Environment' link in the upper right corner of the page (default is No Environment), and select the configure button in the menu to open the environment variable management popup window.</li>
+<li>Click on the 'Import Environment' link to open the Import Environment popup.</li>
+<li>Click on the 'Postman Environment' link to open the Import Environment popup window Click on the 'Postman Environment' link and select the path to an existing Postman environment file</li>
+<li>You can import Postman environment variables.</li>
+</ul>
+<p><img alt="postman2" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/postman2.png" />
+<img alt="bruno2" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/bruno2.png" /></p>
+<h3 id="test-script-migration-reference">Test Script Migration Reference</h3>
+<blockquote>
+<p>The syntax of the test scripts for the two tools is partially different and needs to be modified manually</p>
+</blockquote>
+<ul>
+<li>Postman test script syntax reference: <a href="https://learning.postman.com/docs/writing-scripts/test-scripts/">https://learning.postman.com/docs/writing-scripts/test-scripts/</a></li>
+<li>Postman test script example</li>
+</ul>
+<pre><code class="language-javascript">pm.test(&quot;res.status should be 200&quot;, function () {
+  pm.response.to.have.status(200);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(1);
+  pm.expect(data.title).to.contains('provident');
+});
+</code></pre>
+<ul>
+<li>Bruno test script syntax reference: <a href="https://docs.usebruno.com/testing/introduction.html">https://docs.usebruno.com/testing/introduction.html</a></li>
+<li>Bruno test script example</li>
+</ul>
+<pre><code class="language-javascript">test(&quot;res.status should be 200&quot;, function() {
+  const data = res.getBody();
+  expect(res.getStatus()).to.equal(200);
+});
+test(&quot;res.body should be correct&quot;, function() {
+  const data = res.getBody();
+  expect(data.id).to.equal(1);
+expect(data.title).to.contains('provident');
+});
+</code></pre>
+<h2 id="reference">reference</h2>
+<ul>
+<li><a href="https://docs.usebruno.com/">bruno Official document</a></li>
+<li><a href="https：//github.com/usebruno/bruno">bruno Official github</a></li>
+</ul>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Automation Test Starter
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>

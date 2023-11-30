@@ -1,0 +1,3477 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An organization made by QA, for QA.
+A QUICKSTART project for QA automation testing, including common test frameworks and tools, as well as some common test demo.">
+      
+      
+        <meta name="author" content="Automation Test Starter">
+      
+      
+        <link rel="canonical" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Postman/">
+      
+      
+        <link rel="prev" href="../Bruno/">
+      
+      
+        <link rel="next" href="../../Performance-Testing/Gatling/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>Postman - Automation Test Starter</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-K091G8C97F"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-K091G8C97F",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-K091G8C97F",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#postman-api-test-starter" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../" title="Automation Test Starter" class="md-header__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Automation Test Starter
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Postman
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../API-Automation-Testing/Postman/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../SuperTest/" class="md-tabs__link">
+          
+  
+  API Automation Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Performance-Testing/Gatling/" class="md-tabs__link">
+          
+  
+  Performance Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="Automation Test Starter" class="md-nav__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Automation Test Starter
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API Automation Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Automation Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SuperTest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SuperTest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RestAssured/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RestAssured
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pytest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pytest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bruno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bruno
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介绍
+  </a>
+  
+    <nav class="md-nav" aria-label="介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    接口测试简介
+  </a>
+  
+    <nav class="md-nav" aria-label="接口测试简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    什么是 API?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    什么是 API 测试？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_2" class="md-nav__link">
+    API 测试类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_3" class="md-nav__link">
+    API 测试步骤
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postman-newman" class="md-nav__link">
+    Postman 与 newman 介绍
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    项目依赖
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    项目文件结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-1-postman" class="md-nav__link">
+    从 0 到 1 搭建 Postman 接口自动化测试项目
+  </a>
+  
+    <nav class="md-nav" aria-label="从 0 到 1 搭建 Postman 接口自动化测试项目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    新建项目文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    项目初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    安装依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postman" class="md-nav__link">
+    Postman 编写接口测试用例
+  </a>
+  
+    <nav class="md-nav" aria-label="Postman 编写接口测试用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collection-request" class="md-nav__link">
+    新建 Collection 和 Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    编辑 Request 和编写测试用例
+  </a>
+  
+    <nav class="md-nav" aria-label="编辑 Request 和编写测试用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-demo" class="md-nav__link">
+    get-demo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-demo" class="md-nav__link">
+    post-demo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postman_1" class="md-nav__link">
+    Postman 编写测试环境配置文件
+  </a>
+  
+    <nav class="md-nav" aria-label="Postman 编写测试环境配置文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    添加环境变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request_1" class="md-nav__link">
+    更新 Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    验证环境变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    导出环境变量和测试用例文件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    调整项目文件结构
+  </a>
+  
+    <nav class="md-nav" aria-label="调整项目文件结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#env-testcase" class="md-nav__link">
+    新建 Env 和 Testcase 文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    调整用例文件和环境变量文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagejson" class="md-nav__link">
+    调整 package.json 文件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    运行测试用例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    进阶用法
+  </a>
+  
+    <nav class="md-nav" aria-label="进阶用法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    输出 html 测试报告
+  </a>
+  
+    <nav class="md-nav" aria-label="输出 html 测试报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#newman-reporter-htmlextra" class="md-nav__link">
+    安装 newman-reporter-htmlextra 依赖包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagejson_1" class="md-nav__link">
+    调整 package.json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_1" class="md-nav__link">
+    运行测试用例输出 html 报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    输出多种格式的测试报告
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd" class="md-nav__link">
+    CI/CD 持续集成
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD 持续集成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-action" class="md-nav__link">
+    接入 github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure" class="md-nav__link">
+    集成 allure 测试报告
+  </a>
+  
+    <nav class="md-nav" aria-label="集成 allure 测试报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allure_1" class="md-nav__link">
+    安装 allure 测试报告依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagejson-allure" class="md-nav__link">
+    调整 package.json 中输出 allure 测试报告的脚本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postman_2" class="md-nav__link">
+    调整 Postman 测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure_2" class="md-nav__link">
+    运行测试用例输出 allure 报告
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    常用测试脚本
+  </a>
+  
+    <nav class="md-nav" aria-label="常用测试脚本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    响应测试脚本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    请求前脚本
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    测试脚本中可用的第三方库
+  </a>
+  
+    <nav class="md-nav" aria-label="测试脚本中可用的第三方库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chaijs" class="md-nav__link">
+    chai.js 断言库方法
+  </a>
+  
+    <nav class="md-nav" aria-label="chai.js 断言库方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-chai" class="md-nav__link">
+    1. 安装 Chai
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-bdd" class="md-nav__link">
+    2. 使用 BDD 风格断言
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tdd" class="md-nav__link">
+    3. 使用 TDD 风格断言
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-chai" class="md-nav__link">
+    4. Chai 支持的一些常用断言
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cheerio-html" class="md-nav__link">
+    使用 cheerio 操作 HTML 文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tv4-json-schema" class="md-nav__link">
+    使用 tv4 来验证 JSON Schema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    生成 uuid
+  </a>
+  
+    <nav class="md-nav" aria-label="生成 uuid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-uuid" class="md-nav__link">
+    1. 安装 uuid 模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-uuid" class="md-nav__link">
+    2. 生成 UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml2js-xml-javascript" class="md-nav__link">
+    使用 xml2js 将 XML 转换为 JavaScript 对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#util" class="md-nav__link">
+    常用工具函数 util
+  </a>
+  
+    <nav class="md-nav" aria-label="常用工具函数 util">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-utilguid-guid" class="md-nav__link">
+    1. util.guid() - 生成全局唯一标识符（GUID）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-utiltimestamp-" class="md-nav__link">
+    2. util.timestamp() - 获取当前时间戳
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-utilrandomintmin-max-" class="md-nav__link">
+    3. util.randomInt(min, max) - 生成指定范围内的随机整数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-utilunixtimestamp-unix" class="md-nav__link">
+    4. util.unixTimestamp() - 获取当前时间戳（Unix 时间戳，秒）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-utilencodebase64str-utildecodebase64base64str-base64" class="md-nav__link">
+    5. util.encodeBase64(str) 和 util.decodeBase64(base64Str) - Base64 编码和解码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-utileachobj-callback-" class="md-nav__link">
+    6. util.each(obj, callback) - 遍历对象或数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    注意事项
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream" class="md-nav__link">
+    stream 流操作
+  </a>
+  
+    <nav class="md-nav" aria-label="stream 流操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-readable-streams" class="md-nav__link">
+    1. 读取流（Readable Streams）：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-writable-streams" class="md-nav__link">
+    2. 写入流（Writable Streams）：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-transform-streams" class="md-nav__link">
+    3. 转换流（Transform Streams）：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timers" class="md-nav__link">
+    定时器 timers
+  </a>
+  
+    <nav class="md-nav" aria-label="定时器 timers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-settimeout-" class="md-nav__link">
+    1. setTimeout - 延时执行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-setinterval-" class="md-nav__link">
+    2. setInterval - 定时执行重复操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-postman" class="md-nav__link">
+    3. 在 Postman 中使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    时间处理 events
+  </a>
+  
+    <nav class="md-nav" aria-label="时间处理 events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 创建事件发射器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 定义事件处理函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 注册事件处理函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 触发事件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    数据驱动
+  </a>
+  
+    <nav class="md-nav" aria-label="数据驱动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    使用环境变量
+  </a>
+  
+    <nav class="md-nav" aria-label="使用环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1. 创建环境变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2. 使用环境变量
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 使用环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-demo_1" class="md-nav__link">
+    编辑 get-demo 接口
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-demo_1" class="md-nav__link">
+    编辑 post-demo 接口
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3. 调试环境变量数据驱动脚本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    4.自动化运行环境变量数据驱动脚本
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    使用数据文件
+  </a>
+  
+    <nav class="md-nav" aria-label="使用数据文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    1.创建数据文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    2.更新测试用例
+  </a>
+  
+    <nav class="md-nav" aria-label="2.更新测试用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-demo_2" class="md-nav__link">
+    更新 get-demo 接口
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-demo_2" class="md-nav__link">
+    更新 post-demo 接口
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3.调试
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    4.自动化运行数据驱动脚本
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    文件上传
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    并发测试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Performance Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Performance Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Performance-Testing/Gatling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gatling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介绍
+  </a>
+  
+    <nav class="md-nav" aria-label="介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    接口测试简介
+  </a>
+  
+    <nav class="md-nav" aria-label="接口测试简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    什么是 API?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    什么是 API 测试？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_2" class="md-nav__link">
+    API 测试类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_3" class="md-nav__link">
+    API 测试步骤
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postman-newman" class="md-nav__link">
+    Postman 与 newman 介绍
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    项目依赖
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    项目文件结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-1-postman" class="md-nav__link">
+    从 0 到 1 搭建 Postman 接口自动化测试项目
+  </a>
+  
+    <nav class="md-nav" aria-label="从 0 到 1 搭建 Postman 接口自动化测试项目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    新建项目文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    项目初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    安装依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postman" class="md-nav__link">
+    Postman 编写接口测试用例
+  </a>
+  
+    <nav class="md-nav" aria-label="Postman 编写接口测试用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collection-request" class="md-nav__link">
+    新建 Collection 和 Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request" class="md-nav__link">
+    编辑 Request 和编写测试用例
+  </a>
+  
+    <nav class="md-nav" aria-label="编辑 Request 和编写测试用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-demo" class="md-nav__link">
+    get-demo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-demo" class="md-nav__link">
+    post-demo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postman_1" class="md-nav__link">
+    Postman 编写测试环境配置文件
+  </a>
+  
+    <nav class="md-nav" aria-label="Postman 编写测试环境配置文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    添加环境变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request_1" class="md-nav__link">
+    更新 Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    验证环境变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    导出环境变量和测试用例文件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    调整项目文件结构
+  </a>
+  
+    <nav class="md-nav" aria-label="调整项目文件结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#env-testcase" class="md-nav__link">
+    新建 Env 和 Testcase 文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    调整用例文件和环境变量文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagejson" class="md-nav__link">
+    调整 package.json 文件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    运行测试用例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    进阶用法
+  </a>
+  
+    <nav class="md-nav" aria-label="进阶用法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    输出 html 测试报告
+  </a>
+  
+    <nav class="md-nav" aria-label="输出 html 测试报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#newman-reporter-htmlextra" class="md-nav__link">
+    安装 newman-reporter-htmlextra 依赖包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagejson_1" class="md-nav__link">
+    调整 package.json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_1" class="md-nav__link">
+    运行测试用例输出 html 报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    输出多种格式的测试报告
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd" class="md-nav__link">
+    CI/CD 持续集成
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD 持续集成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-action" class="md-nav__link">
+    接入 github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure" class="md-nav__link">
+    集成 allure 测试报告
+  </a>
+  
+    <nav class="md-nav" aria-label="集成 allure 测试报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allure_1" class="md-nav__link">
+    安装 allure 测试报告依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagejson-allure" class="md-nav__link">
+    调整 package.json 中输出 allure 测试报告的脚本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postman_2" class="md-nav__link">
+    调整 Postman 测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure_2" class="md-nav__link">
+    运行测试用例输出 allure 报告
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    常用测试脚本
+  </a>
+  
+    <nav class="md-nav" aria-label="常用测试脚本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    响应测试脚本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    请求前脚本
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    测试脚本中可用的第三方库
+  </a>
+  
+    <nav class="md-nav" aria-label="测试脚本中可用的第三方库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chaijs" class="md-nav__link">
+    chai.js 断言库方法
+  </a>
+  
+    <nav class="md-nav" aria-label="chai.js 断言库方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-chai" class="md-nav__link">
+    1. 安装 Chai
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-bdd" class="md-nav__link">
+    2. 使用 BDD 风格断言
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tdd" class="md-nav__link">
+    3. 使用 TDD 风格断言
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-chai" class="md-nav__link">
+    4. Chai 支持的一些常用断言
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cheerio-html" class="md-nav__link">
+    使用 cheerio 操作 HTML 文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tv4-json-schema" class="md-nav__link">
+    使用 tv4 来验证 JSON Schema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uuid" class="md-nav__link">
+    生成 uuid
+  </a>
+  
+    <nav class="md-nav" aria-label="生成 uuid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-uuid" class="md-nav__link">
+    1. 安装 uuid 模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-uuid" class="md-nav__link">
+    2. 生成 UUID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml2js-xml-javascript" class="md-nav__link">
+    使用 xml2js 将 XML 转换为 JavaScript 对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#util" class="md-nav__link">
+    常用工具函数 util
+  </a>
+  
+    <nav class="md-nav" aria-label="常用工具函数 util">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-utilguid-guid" class="md-nav__link">
+    1. util.guid() - 生成全局唯一标识符（GUID）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-utiltimestamp-" class="md-nav__link">
+    2. util.timestamp() - 获取当前时间戳
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-utilrandomintmin-max-" class="md-nav__link">
+    3. util.randomInt(min, max) - 生成指定范围内的随机整数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-utilunixtimestamp-unix" class="md-nav__link">
+    4. util.unixTimestamp() - 获取当前时间戳（Unix 时间戳，秒）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-utilencodebase64str-utildecodebase64base64str-base64" class="md-nav__link">
+    5. util.encodeBase64(str) 和 util.decodeBase64(base64Str) - Base64 编码和解码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-utileachobj-callback-" class="md-nav__link">
+    6. util.each(obj, callback) - 遍历对象或数组
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    注意事项
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stream" class="md-nav__link">
+    stream 流操作
+  </a>
+  
+    <nav class="md-nav" aria-label="stream 流操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-readable-streams" class="md-nav__link">
+    1. 读取流（Readable Streams）：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-writable-streams" class="md-nav__link">
+    2. 写入流（Writable Streams）：
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-transform-streams" class="md-nav__link">
+    3. 转换流（Transform Streams）：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timers" class="md-nav__link">
+    定时器 timers
+  </a>
+  
+    <nav class="md-nav" aria-label="定时器 timers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-settimeout-" class="md-nav__link">
+    1. setTimeout - 延时执行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-setinterval-" class="md-nav__link">
+    2. setInterval - 定时执行重复操作
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-postman" class="md-nav__link">
+    3. 在 Postman 中使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    时间处理 events
+  </a>
+  
+    <nav class="md-nav" aria-label="时间处理 events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 创建事件发射器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 定义事件处理函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 注册事件处理函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 触发事件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    数据驱动
+  </a>
+  
+    <nav class="md-nav" aria-label="数据驱动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    使用环境变量
+  </a>
+  
+    <nav class="md-nav" aria-label="使用环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1. 创建环境变量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2. 使用环境变量
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 使用环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-demo_1" class="md-nav__link">
+    编辑 get-demo 接口
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-demo_1" class="md-nav__link">
+    编辑 post-demo 接口
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3. 调试环境变量数据驱动脚本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    4.自动化运行环境变量数据驱动脚本
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    使用数据文件
+  </a>
+  
+    <nav class="md-nav" aria-label="使用数据文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    1.创建数据文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    2.更新测试用例
+  </a>
+  
+    <nav class="md-nav" aria-label="2.更新测试用例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-demo_2" class="md-nav__link">
+    更新 get-demo 接口
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-demo_2" class="md-nav__link">
+    更新 post-demo 接口
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3.调试
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    4.自动化运行数据驱动脚本
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    文件上传
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    并发测试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="postman-api-test-starter">Postman-API-Test-Starter</h1>
+<p>使用 Postman 进行 API 自动化测试的入门 QuickStart 项目文档。</p>
+<h2 id="_1">介绍</h2>
+<h3 id="_2">接口测试简介</h3>
+<h4 id="api">什么是 API?</h4>
+<p>API:应用程序接口（全称：application programming interface），缩写为 API，是一种计算接口，它定义多个软件中介之间的交互，以及可以进行的调用（call）或请求（request）的种类，如何进行调用或发出请求，应使用的数据格式，应遵循的惯例等。它还可以提供扩展机制，以便用户可以通过各种方式对现有功能进行不同程度的扩展。一个 API 可以是完全定制的，针对某个组件的，也可以是基于行业标准设计的以确保互操作性。通过信息隐藏，API 实现了模块化编程，从而允许用户实现独立地使用接口。</p>
+<h4 id="api_1">什么是 API 测试？</h4>
+<p>接口测试是<a href="https://zh.wikipedia.org/wiki/软件测试">软件测试</a>的一种，它包括两种测试类型：狭义上指的是直接针对<a href="https://zh.wikipedia.org/wiki/应用程序接口">应用程序接口</a>（下面使用缩写 API 指代，其中文简称为接口）的功能进行的测试；广义上指<a href="https://zh.wikipedia.org/wiki/集成测试">集成测试</a>中，通过调用 API 测试整体的功能完成度、可靠性、安全性与性能等指标。</p>
+<p>API Best Practice:</p>
+<ul>
+<li>API 定义遵循 RESTFUL API 风格，语意化的 URI 定义，准确的 HTTP 状态码，通过 API 的定义就可以知道资源间的关系</li>
+<li>配有详细且准确的 API 文档（如 Swagger 文档）</li>
+<li>对外的 API 可以包含版本号以快速迭代（如 https://thoughtworks.com/v1/users/）</li>
+</ul>
+<p>测试四象限中不同象限的测试，其测试目的跟测试策略也不同，API 测试主要位于第二、第四象限</p>
+<p>API 测试在测试金子塔中处于一个相对靠上的位置，主要站在系统、服务边界来测试功能和业务逻辑，执行时机是在服务完成构建、部署到测试环境之后再执行、验证。</p>
+<h4 id="api_2">API 测试类型</h4>
+<p>功能测试</p>
+<ul>
+<li>正确性测试</li>
+<li>异常处理</li>
+<li>内部逻辑</li>
+<li>……</li>
+</ul>
+<p>非功能测试</p>
+<ul>
+<li>性能</li>
+<li>安全</li>
+<li>……</li>
+</ul>
+<h4 id="api_3">API 测试步骤</h4>
+<ul>
+<li>发送请求</li>
+<li>得到响应</li>
+<li>验证响应结果</li>
+</ul>
+<h3 id="postman-newman">Postman 与 newman 介绍</h3>
+<p>Postman 是一个流行的 API 开发工具，它提供了一个易于使用的图形界面，可用于创建，测试和调试 API。Postman 还提供了一个可以轻松编写和共享测试脚本的功能。它支持多种 HTTP 请求方法，包括 GET，POST，PUT，DELETE 等，并且可以使用各种身份验证和授权方式来测试 API。</p>
+<p>Newman 是 Postman 的命令行工具，可用于在不使用 Postman GUI 的情况下运行测试集。使用 Newman，用户可以轻松地将 Postman 集合导出为一个可执行文件，并在任何环境中运行它。此外，Newman 还支持生成 HTML 或 Junit 格式的测试报告，以及集成到 CI/CD 管道中以实现自动化测试。</p>
+<p>总的来说，Postman 是一个强大的 API 开发和测试工具，而 Newman 则是一个方便的命令行工具，用于在不使用 Postman GUI 的情况下运行测试集。它们的结合使用可以提高 API 测试和开发的效率和准确性。</p>
+<p>除了基本功能，Postman 还具有以下特性：</p>
+<ol>
+<li>环境和变量管理：Postman 支持在不同环境之间切换，例如在开发、测试和生产环境之间切换。同时，它还支持变量管理，可以轻松地为不同的测试用例和请求设置变量。</li>
+<li>自动化测试：用户可以使用 Postman 创建和运行自动化测试，以便在持续集成或部署流程中集成。这使得测试变得更加准确和高效。</li>
+<li>协作和共享：Postman 支持将集合和环境与团队共享，方便团队成员之间的协作。</li>
+<li>监控：Postman 还提供 API 监控功能，可以实时监控 API 的可用性和性能。</li>
+</ol>
+<p>而 Newman 则主要有以下特点：</p>
+<ol>
+<li>命令行接口：Newman 可以在命令行中运行，因此可以方便地自动化测试和集成到 CI/CD 流程中。</li>
+<li>支持多种输出格式：Newman 支持多种输出格式，包括 HTML、JSON 和 JUnit 格式，方便用户在不同场景下使用。</li>
+<li>并发执行：Newman 支持并发执行测试，从而提高了测试的效率。</li>
+<li>轻量级：与 Postman GUI 相比，Newman 是一个轻量级的工具，因此在运行测试时需要更少的资源。</li>
+</ol>
+<p>总之，Postman 和 Newman 是现代 API 测试的重要工具，它们提供了强大的功能，可以使 API 测试变得更加高效、准确和自动化。</p>
+<p>除了上述提到的功能和特点，Postman 和 Newman 还有其他一些重要的功能和优势：</p>
+<ol>
+<li>集成：Postman 和 Newman 可以与许多其他工具和服务进行集成，例如 GitHub、Jenkins、Slack 等。这使得它们可以轻松地集成到开发和部署流程中，以实现更高效的 API 开发和测试。</li>
+<li>文档生成：Postman 可以使用 API 的请求和响应来生成 API 文档。这可以使 API 文档更加准确和及时。</li>
+<li>测试脚本：Postman 可以使用 JavaScript 编写测试脚本，这可以使测试变得更加灵活和自定义。用户可以轻松地编写自定义测试脚本，以确保 API 的行为符合预期。</li>
+<li>历史记录：Postman 可以存储 API 请求的历史记录，这可以方便用户查看和管理以前的请求和响应。这对于调试和问题排查非常有用。</li>
+<li>多平台支持：Postman 和 Newman 可以在多种平台上运行，包括 Windows、MacOS 和 Linux 等。</li>
+</ol>
+<p>总之，Postman 和 Newman 是现代 API 测试和开发的强大工具。它们提供了丰富的功能和灵活的测试脚本，可以帮助开发人员和测试人员更快、更准确地构建和测试 API。</p>
+<h2 id="_3">项目依赖</h2>
+<blockquote>
+<p>需提前安装好以下环境</p>
+</blockquote>
+<ul>
+<li>[x] nodejs, demo 版本为 v21.1.0</li>
+<li>[x] Postman 安装完成，可通过官方网站下载安装包进行安装</li>
+</ul>
+<h2 id="_4">项目文件结构</h2>
+<p>以下是一个 Postman 和 Newman 的接口自动化测试项目的文件结构，其中包含了测试配置文件、测试用例文件、测试工具文件和测试报告文件。可进行参考。</p>
+<pre><code class="language-Text">Postman-Newman-demo
+├── README.md
+├── package.json
+├── package-lock.json
+├── Data // 测试配置文件
+│   └── testdata.csv // 测试数据
+├── Testcase // 测试用例文件夹
+│   └── APITestDemo.postman_collection.json // 测试用例文件
+├── Env // 不同测试环境文件夹
+│   └── DemoEnv.postman_environment.json // 测试环境配置文件
+├── Report // 测试报告文件
+│   └── report.html
+├── .gitignore
+└── node_modules // 项目依赖
+</code></pre>
+<h2 id="0-1-postman">从 0 到 1 搭建 Postman 接口自动化测试项目</h2>
+<p>下面会介绍从 0 到 1 搭建一个 Postman 和 Newman 的接口自动化测试项目，包括测试配置、测试用例、测试环境、测试工具和测试报告等。</p>
+<p>可参考 demo 项目：<a href="https://github.com/Automation-Test-Starter/Postman-Newman-demo">https://github.com/Automation-Test-Starter/Postman-Newman-demo</a></p>
+<h3 id="_5">新建项目文件夹</h3>
+<pre><code class="language-bash">mkdir Postman-Newman-demo
+</code></pre>
+<h3 id="_6">项目初始化</h3>
+<pre><code class="language-bash">// 进入项目文件夹下
+cd Postman-Newman-demo
+// nodejs 项目初始化
+npm init -y
+</code></pre>
+<h3 id="_7">安装依赖</h3>
+<blockquote>
+<p>目前 newman 最新版本在 html 测试报告的一些包兼容性上有问题，所以这里使用 5.1.2 版本</p>
+</blockquote>
+<pre><code class="language-bash">// 安装 newman
+npm install newman@5.1.2--save-dev
+</code></pre>
+<h3 id="postman">Postman 编写接口测试用例</h3>
+<h4 id="collection-request">新建 Collection 和 Request</h4>
+<ol>
+<li>打开 Postman，点击左上角的 New 按钮，选择 Collection，输入 Collection 的名称，点击 Create Collection 按钮，创建一个名称为 demo 的 Collection。</li>
+<li>在 Collection 中，点击右上角的三个点，选择 Add Request，输入 Request 的名称，点击 Save 按钮，创建一个 Request 命名为 get-demo。再添加一个 Request 命名为 post-demo。</li>
+</ol>
+<h4 id="request">编辑 Request 和编写测试用例</h4>
+<p>可根据项目文件下的 demoAPI.md 文件中的接口文档，获取 demo 使用的 Request 的 URL、请求方法、请求头、请求体等信息。</p>
+<h5 id="get-demo">get-demo</h5>
+<ul>
+<li>在 get-demo 的 Request 中，选择 GET 请求方法，输入 URL 为<a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a></li>
+<li>在 Headers 中，添加一个 Key 为 Content-Type，Value 为 application/json; 的请求头。</li>
+<li>在 Tests 下，添加以下脚本，用于验证响应结果：</li>
+</ul>
+<pre><code class="language-JavaScript">pm.test(&quot;res.status should be 200&quot;, function () {
+  pm.response.to.have.status(200);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(1);
+  pm.expect(data.title).to.contains('provident');
+});
+</code></pre>
+<ul>
+<li>点击 Send 按钮，发送请求，验证响应结果。</li>
+</ul>
+<p><img alt="2023112117P6poCX" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117P6poCX.png" /></p>
+<p>确认响应结果正确后，点击 Save 按钮，保存 Request。</p>
+<h5 id="post-demo">post-demo</h5>
+<ul>
+<li>在 post-demo 的 Request 中，选择 POST 请求方法，输入 URL 为<a href="https://jsonplaceholder.typicode.com/posts">https://jsonplaceholder.typicode.com/posts</a></li>
+<li>在 Headers 中，添加一个 Key 为 Content-Type，Value 为 application/json; 的请求头。</li>
+<li>在 Body 中，选择 raw，选择 JSON 格式，输入以下请求体：</li>
+</ul>
+<pre><code class="language-JSON">{
+    &quot;title&quot;: &quot;foo&quot;,
+    &quot;body&quot;: &quot;bar&quot;,
+    &quot;userId&quot;: 1
+}
+</code></pre>
+<ul>
+<li>在 Tests 下，添加以下脚本，用于验证响应结果：</li>
+</ul>
+<pre><code class="language-JavaScript">pm.test(&quot;res.status should be 201&quot;, function () {
+  pm.response.to.have.status(201);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(101);
+  pm.expect(data.title).to.equal('foo');
+});
+</code></pre>
+<p><img alt="2023112117x34eSN" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117x34eSN.png" /></p>
+<p>确认响应结果正确后，点击 Save 按钮，保存 Request。</p>
+<h3 id="postman_1">Postman 编写测试环境配置文件</h3>
+<p>下面会取接口请求的 host 为环境变量来进行 demo</p>
+<h4 id="_8">添加环境变量</h4>
+<ul>
+<li>在 Postman 的右上角，点击齿轮图标，选择 Manage Environments，点击 Add 按钮，输入环境名称为 DemoEnv，点击 Add 按钮，创建一个名称为 DemoEnv 的环境。</li>
+<li>编辑环境变量，添加一个 Key 为 host，Value 为<a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a>的环境变量。</li>
+<li>点击 Add 按钮，保存环境变量。</li>
+</ul>
+<h4 id="request_1">更新 Request</h4>
+<ul>
+<li>在 get-demo 的 Request 中，更新 URL 为{{host}}/posts/1</li>
+<li>在 post-demo 的 Request 中，更新 URL 为{{host}}/posts</li>
+</ul>
+<h4 id="_9">验证环境变量</h4>
+<ul>
+<li>在 Postman 的右上角，点击齿轮图标，选择 DemoEnv，切换环境变量为 DemoEnv。</li>
+<li>选择 get-demo 的 Request，点击 Send 按钮，发送请求，验证响应结果。确认响应结果正确后，点击 Save 按钮，保存 Request。</li>
+<li>选择 post-demo 的 Request，点击 Send 按钮，发送请求，验证响应结果。确认响应结果正确后，点击 Save 按钮，保存 Request。</li>
+</ul>
+<h4 id="_10">导出环境变量和测试用例文件</h4>
+<ul>
+<li>在 Postman 的右上角，点击齿轮图标，选择 Export，选择 DemoEnv，点击 Export 按钮，导出环境变量。</li>
+<li>选择 get-demo request 和 post-demo request 所在的 demo Collection，点击右上角的三个点，选择 Export，选择 Collection v2.1，点击 Export 按钮，导出测试用例文件。</li>
+</ul>
+<h3 id="_11">调整项目文件结构</h3>
+<h4 id="env-testcase">新建 Env 和 Testcase 文件夹</h4>
+<ul>
+<li>在项目文件夹下，新建一个名为 Env 的文件夹，用于存放环境变量文件。</li>
+</ul>
+<pre><code class="language-bash">// 新建 Env 文件夹
+mkdir Env
+</code></pre>
+<ul>
+<li>在项目文件夹下，新建一个名为 Testcase 的文件夹，用于存放测试用例文件。</li>
+</ul>
+<pre><code class="language-bash">// 新建 Testcase 文件夹
+mkdir Testcase
+</code></pre>
+<h4 id="_12">调整用例文件和环境变量文件</h4>
+<p>将导出的环境变量文件和测试用例文件放到项目文件夹下的 Env 和 Testcase 文件夹下。</p>
+<p><img alt="2023112117ePiBiv" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117ePiBiv.png" /></p>
+<h4 id="packagejson">调整 package.json 文件</h4>
+<ul>
+<li>在 package.json 文件中，添加以下脚本，用于运行测试用例：</li>
+</ul>
+<pre><code class="language-JSON">&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json&quot;
+}
+</code></pre>
+<h3 id="_13">运行测试用例</h3>
+<pre><code class="language-bash">npm run test
+</code></pre>
+<p><img alt="2023112117lt8FW9" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117lt8FW9.png" /></p>
+<h2 id="_14">进阶用法</h2>
+<p>以下会介绍 Postman 和 Newman 的一些进阶用法，包括测试数据、测试脚本、测试报告和测试报告集成等。
+也会介绍如何将 Postman 和 Newman 集成到 CI/CD 流程中，以实现自动化测试。</p>
+<h3 id="html">输出 html 测试报告</h3>
+<p>demo 会以集成<a href="[https://npm](https://github.com/DannyDainton/newman-reporter-htmlextra)">newman-reporter-htmlextra</a>为例，介绍如何输出 html 测试报告。</p>
+<h4 id="newman-reporter-htmlextra">安装 newman-reporter-htmlextra 依赖包</h4>
+<pre><code class="language-bash">npm install newman-reporter-htmlextra --save-dev
+</code></pre>
+<blockquote>
+<p>注意：目前 newman 最新 V6 版本在 html 测试报告的一些包兼容性上有问题，所以这里使用 5.1.2 版本</p>
+</blockquote>
+<h4 id="packagejson_1">调整 package.json</h4>
+<p>在 package.json 文件中，更新测试测试脚本，用于运行测试用例并输出 html 测试报告：</p>
+<pre><code class="language-JSON">&quot;test&quot;: &quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json -r htmlextra --reporter-htmlextra-export ./Report/Postman-newman-demo-api-testing-report.html&quot;
+</code></pre>
+<blockquote>
+<p>指定输出 html 测试报告的路径为 Report/Postman-newman-demo-api-testing-report.html</p>
+</blockquote>
+<h4 id="html_1">运行测试用例输出 html 报告</h4>
+<ul>
+<li>运行测试用例</li>
+</ul>
+<pre><code class="language-bash"> npm run test
+</code></pre>
+<ul>
+<li>检查报告文件</li>
+</ul>
+<p><img alt="2023112211zs7xCl" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112211zs7xCl.png" /></p>
+<ul>
+<li>浏览器打开报告文件</li>
+</ul>
+<p><img alt="2023112211IHIUzV" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112211IHIUzV.png" /></p>
+<h4 id="_15">输出多种格式的测试报告</h4>
+<p>前面的配置是输出 html 格式的测试报告，如果想要输出多种格式的测试报告，如命令行 cli 的报告，可以在 package.json 文件中添加以下脚本：</p>
+<pre><code class="language-JSON">&quot;test&quot;: &quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export ./Report/Postman-newman-demo-api-testing-report.html&quot;
+</code></pre>
+<p>再次运行测试用例，可以看到在 Report 文件夹下，除了 html 格式的测试报告，还有 cli 格式的测试报告。</p>
+<p><img alt="202311221109B7Fg" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/202311221109B7Fg.png" /></p>
+<h3 id="cicd">CI/CD 持续集成</h3>
+<p>将接口自动化测试的代码集成到 CI/CD 流程中，可以实现自动化测试，提高测试效率。</p>
+<h4 id="github-action">接入 github action</h4>
+<p>以 github action 为例，其他 CI 工具类似</p>
+<p>可参考 demo：<a href="https://github.com/Automation-Test-Starter/Postman-Newman-demo">https://github.com/Automation-Test-Starter/Postman-Newman-demo</a></p>
+<p>创建.github/workflows 目录：在你的 GitHub 仓库中，创建一个名为 .github/workflows 的目录。这将是存放 GitHub Actions 工作流程文件的地方。</p>
+<p>创建工作流程文件：在.github/workflows 目录中创建一个 YAML 格式的工作流程文件，例如 postman.yml。</p>
+<p>编辑 postman.yml 文件：将以下内容复制到文件中</p>
+<pre><code class="language-YAML">name: RUN Postman API Test CI
+
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+  pull_request:
+    branches: [ &quot;main&quot; ]
+
+jobs:
+  RUN-Postman-API-Test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Installation of related packages
+        run: npm ci
+
+      - name: RUN SuperTest API Testing
+        run: npm test
+
+      - name: Archive Postman test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: Postman-test-report
+          path: Report
+
+      - name: Upload Postman report to GitHub
+        uses: actions/upload-artifact@v3
+        with:
+          name: Postman-test-report
+          path: Report
+</code></pre>
+<ul>
+<li>提交代码：将 postman.yml 文件添加到仓库中并提交。</li>
+<li>查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 RUN-Postman-API-Test 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。</li>
+</ul>
+<p><img alt="2023112213AFVWZe" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112213AFVWZe.png" /></p>
+<h3 id="allure">集成 allure 测试报告</h3>
+<p>allure 是一个轻量级的、灵活的、多语言支持的测试报告工具，可以生成各种各样的测试报告，包括饼图、柱状图、曲线图等，可以方便地查看测试结果。</p>
+<h4 id="allure_1">安装 allure 测试报告依赖</h4>
+<pre><code class="language-bash">npm install newman-reporter-allure --save-dev
+</code></pre>
+<h4 id="packagejson-allure">调整 package.json 中输出 allure 测试报告的脚本</h4>
+<pre><code class="language-JSON">&quot;test&quot;: &quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json -r cli,allure --reporter-allure-export ./allure-results&quot;
+</code></pre>
+<h4 id="postman_2">调整 Postman 测试用例</h4>
+<ul>
+<li>调整 get-demo 的 Tests 脚本，添加以下脚本，用于生成 allure 测试报告：</li>
+</ul>
+<pre><code class="language-JavaScript">// @allure.label.suite=postman-new-api-testing-demo
+// @allure.label.story=&quot;Verify-the-get-api-return-correct-data&quot;
+// @allure.label.owner=&quot;naodeng&quot;
+// @allure.label.tag=&quot;GETAPI&quot;
+
+pm.test(&quot;res.status should be 200&quot;, function () {
+  pm.response.to.have.status(200);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(1);
+  pm.expect(data.title).to.contains('provident');
+});
+</code></pre>
+<ul>
+<li>调整 post-demo 的 Tests 脚本，添加以下脚本，用于生成 allure 测试报告：</li>
+</ul>
+<pre><code class="language-JavaScript">// @allure.label.suite=postman-new-api-testing-demo
+// @allure.label.story=&quot;Verify-the-post-api-return-correct-data&quot;
+// @allure.label.owner=&quot;naodeng&quot;
+// @allure.label.tag=&quot;POSTAPI&quot;
+
+pm.test(&quot;res.status should be 201&quot;, function () {
+  pm.response.to.have.status(201);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(101);
+  pm.expect(data.title).to.equal('foo');
+});
+</code></pre>
+<ul>
+<li>保存更改后的 postman 测试用例，重新导出测试用例文件并替换原来的测试用例文件。</li>
+</ul>
+<h4 id="allure_2">运行测试用例输出 allure 报告</h4>
+<ul>
+<li>运行测试用例</li>
+</ul>
+<pre><code class="language-bash"> npm run test
+</code></pre>
+<p>会在项目文件夹下生成 allure-results 文件夹，里面包含了测试用例的执行结果。</p>
+<p><img alt="2023112213YUMTwz" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112213YUMTwz.png" /></p>
+<ul>
+<li>预览 allure 测试报告</li>
+</ul>
+<pre><code class="language-bash">allure serve
+</code></pre>
+<p><img alt="2023112214Aa77VG" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112214Aa77VG.png" /></p>
+<h3 id="_16">常用测试脚本</h3>
+<p>Postman 提供了测试脚本功能，可以使用 JavaScript 编写脚本来验证 API 的响应和行为。这些脚本可以在请求的“Tests”标签下添加，分为请求前脚本（Pre-request Script）和响应后脚本（Tests）两个部分。下面是一些常用的 Postman 和 Newman 测试脚本：</p>
+<h4 id="_17">响应测试脚本</h4>
+<ol>
+<li><strong>状态码检查：</strong></li>
+</ol>
+<p><code>javascript
+   pm.test("Status code is 200", function () {
+       pm.response.to.have.status(200);
+   });</code></p>
+<ol>
+<li><strong>响应时间检查：</strong></li>
+</ol>
+<p><code>javascript
+   pm.test("Response time is less than 200ms", function () {
+       pm.expect(pm.response.responseTime).to.be.below(200);
+   });</code></p>
+<ol>
+<li><strong>响应体 JSON 格式检查：</strong></li>
+</ol>
+<p><code>javascript
+   pm.test("Response body is a valid JSON", function () {
+       pm.response.to.be.json;
+   });</code></p>
+<ol>
+<li><strong>响应体字段值检查：</strong></li>
+</ol>
+<p><code>javascript
+   pm.test("Response body contains expected value", function () {
+       pm.expect(pm.response.json().key).to.eql("expectedValue");
+   });</code></p>
+<ol>
+<li><strong>响应体数组长度检查：</strong></li>
+</ol>
+<p><code>javascript
+   pm.test("Response body array has correct length", function () {
+       pm.expect(pm.response.json().arrayKey).to.have.lengthOf(3);
+   });</code></p>
+<ol>
+<li><strong>响应体属性存在性检查：</strong></li>
+</ol>
+<p><code>javascript
+   pm.test("Response body has required properties", function () {
+       pm.expect(pm.response.json()).to.have.property("key");
+   });</code></p>
+<h4 id="_18">请求前脚本</h4>
+<ol>
+<li><strong>动态设置请求参数：</strong></li>
+</ol>
+<p><code>javascript
+   pm.variables.set("dynamicVariable", "dynamicValue");</code></p>
+<ol>
+<li><strong>使用全局变量设置请求头：</strong></li>
+</ol>
+<p><code>javascript
+   pm.request.headers.add({ key: 'Authorization', value: pm.globals.get('authToken') });</code></p>
+<ol>
+<li><strong>生成随机数并设置为变量：</strong></li>
+</ol>
+<p><code>javascript
+   const randomNumber = Math.floor(Math.random() * 1000);
+   pm.variables.set("randomNumber", randomNumber);</code></p>
+<ol>
+<li><strong>签名生成或加密等操作：</strong></li>
+</ol>
+<p><code>javascript
+   // 示例：使用 CryptoJS 进行 HMAC SHA256 签名
+   const CryptoJS = require('crypto-js');
+   const secretKey = 'yourSecretKey';
+   const message = 'dataToSign';
+   const signature = CryptoJS.HmacSHA256(message, secretKey).toString(CryptoJS.enc.Base64);
+   pm.variables.set("signature", signature);</code></p>
+<h3 id="_19">测试脚本中可用的第三方库</h3>
+<p>提供的 require 方法允许您使用沙箱内置库模块。下面列出了个人常用的可用库和示例
+更多可用的库可以在<a href="https://learning.postman.com/docs/writing-scripts/script-references/postman-sandbox-api-reference/#using-external-libraries">这里</a>找到</p>
+<h4 id="chaijs">chai.js 断言库方法</h4>
+<p>在 Postman 的测试脚本中，你可以使用 Chai 断言库来编写断言，以验证你的 API 响应是否符合预期。Chai 提供了多种断言风格，包括 BDD（Behavior Driven Development）、TDD（Test Driven Development）等。以下是一些基本的 Chai 使用方法：</p>
+<h5 id="1-chai">1. 安装 Chai</h5>
+<p>在 Postman 的脚本环境中，你无需单独安装 Chai，因为 Postman 默认已经内置了 Chai。</p>
+<h5 id="2-bdd">2. 使用 BDD 风格断言</h5>
+<p>在 Postman 的 "Tests" 部分中，你可以使用 Chai 的 BDD 风格断言，例如：</p>
+<pre><code class="language-javascript">// 引入 Chai 库
+const chai = require('chai');
+
+// 使用 BDD 风格断言
+const expect = chai.expect;
+
+// 示例：验证响应状态码为 200
+pm.test('Status code is 200', function() {
+    expect(pm.response.code).to.equal(200);
+});
+
+// 示例：验证响应体是 JSON
+pm.test('Response body is JSON', function() {
+    expect(pm.response.headers.get('Content-Type')).to.include('application/json');
+});
+</code></pre>
+<h5 id="3-tdd">3. 使用 TDD 风格断言</h5>
+<pre><code class="language-javascript">// 引入 Chai 库
+const chai = require('chai');
+
+// 使用 TDD 风格断言
+const assert = chai.assert;
+
+// 示例：使用 assert 断言响应状态码为 200
+assert.equal(pm.response.code, 200, 'Status code should be 200');
+</code></pre>
+<h5 id="4-chai">4. Chai 支持的一些常用断言</h5>
+<ul>
+<li><strong>相等性：</strong></li>
+</ul>
+<p><code>javascript
+  expect(actual).to.equal(expected);</code></p>
+<ul>
+<li><strong>包含：</strong></li>
+</ul>
+<p><code>javascript
+  expect(actual).to.include(expected);</code></p>
+<ul>
+<li><strong>类型检查：</strong></li>
+</ul>
+<p><code>javascript
+  expect(actual).to.be.a('string');</code></p>
+<ul>
+<li><strong>大于/小于：</strong></li>
+</ul>
+<p><code>javascript
+  expect(actual).to.be.above(expected);
+  expect(actual).to.be.below(expected);</code></p>
+<ul>
+<li><strong>空/非空：</strong></li>
+</ul>
+<p><code>javascript
+  expect(actual).to.be.null;
+  expect(actual).to.not.be.null;</code></p>
+<ul>
+<li><strong>深度相等性：</strong></li>
+</ul>
+<p><code>javascript
+  expect(actual).to.deep.equal(expected);</code></p>
+<p>以上只是 Chai 断言库的一些基本用法，你可以根据需要使用更多的断言方法和组合。Chai 提供了丰富的断言功能，可以满足各种测试需求。更多详细信息，请查阅 Chai 的官方文档：<a href="https://www.chaijs.com/">Chai Documentation</a>。</p>
+<h4 id="cheerio-html">使用 cheerio 操作 HTML 文件</h4>
+<p>在 Postman 中，Cheerio 是一个基于 jQuery 的库，用于在服务器端操作 HTML 文档。它允许你使用类似于 jQuery 的语法来选择和操作 HTML 元素，非常适用于解析和提取 HTML 页面中的信息。在 Postman 中，你可以使用 Cheerio 库进行 HTML 响应的解析。以下是 Cheerio 在 Postman 中的基本用法：</p>
+<ol>
+<li><strong>安装 Cheerio：</strong></li>
+<li>由于 Postman 使用的是 Node.js 运行时环境，你可以通过在 Postman 的脚本中安装 Cheerio 来使用它。在请求的 "Pre-request Script" 或 "Tests" 部分，可以使用以下方式安装 Cheerio：</li>
+</ol>
+<p><code>javascript
+   // 安装 Cheerio
+   const cheerio = require('cheerio');</code></p>
+<ol>
+<li><strong>使用 Cheerio 解析 HTML：</strong></li>
+<li>在请求的 "Tests" 部分中，你可以使用 Cheerio 解析 HTML。以下是一个简单的例子：</li>
+</ol>
+<p>```javascript
+   // 从响应中获取 HTML 内容
+   const htmlContent = pm.response.text();</p>
+<p>// 使用 Cheerio 解析 HTML
+   const $ = cheerio.load(htmlContent);</p>
+<p>// 示例：从 HTML 中提取标题文本
+   const titleText = $('title').text();
+   console.log('Title:', titleText);</p>
+<p>// 示例：从 HTML 中提取所有链接的 href 属性
+   const links = [];
+   $('a').each(function () {
+       const link = $(this).attr('href');
+       links.push(link);
+   });
+   console.log('Links:', links);
+   ```</p>
+<p>在上述例子中，<code>cheerio.load(htmlContent)</code> 用于加载 HTML 内容，并使用类似于 jQuery 的语法来选择和操作元素。</p>
+<ol>
+<li><strong>注意事项：</strong></li>
+<li>Cheerio 主要用于解析静态 HTML，对于使用 JavaScript 动态生成的内容，可能无法正常获取。在这种情况下，你可能需要考虑使用 Puppeteer 或其他支持 JavaScript 执行的工具。</li>
+</ol>
+<p>这只是 Cheerio 在 Postman 中的基本用法。你可以根据具体的需求使用 Cheerio 提供的各种选择器和方法。请查阅 Cheerio 的官方文档以获取更详细的信息：<a href="https://cheerio.js.org/">Cheerio Documentation</a>。</p>
+<h4 id="tv4-json-schema">使用 tv4 来验证 JSON Schema</h4>
+<p>在 Postman 中，tv4 是一个 JSON Schema 验证库，用于验证 JSON 数据是否符合给定的 JSON Schema。JSON Schema 是一种描述 JSON 数据结构的规范，它定义了 JSON 对象的属性、类型和其他约束。</p>
+<p>以下是在 Postman 中使用 tv4 进行 JSON Schema 验证的基本步骤：</p>
+<ol>
+<li><strong>安装 tv4 库：</strong></li>
+<li>由于 Postman 使用的是 Node.js 运行时环境，你可以通过在 Postman 的脚本中安装 tv4 来使用它。在请求的 "Pre-request Script" 或 "Tests" 部分，你可以使用以下方式安装 tv4：</li>
+</ol>
+<p><code>javascript
+   // 安装 tv4
+   const tv4 = require('tv4');</code></p>
+<ol>
+<li><strong>定义 JSON Schema：</strong></li>
+<li>在 Postman 中，你可以在请求的 "Pre-request Script" 或 "Tests" 部分定义 JSON Schema。JSON Schema 可以作为一个 JavaScript 对象进行定义。以下是一个简单的例子：</li>
+</ol>
+<p><code>javascript
+   // 定义 JSON Schema
+   const jsonSchema = {
+       "type": "object",
+       "properties": {
+           "name": { "type": "string" },
+           "age": { "type": "number" }
+       },
+       "required": ["name", "age"]
+   };</code></p>
+<ol>
+<li><strong>使用 tv4 进行验证：</strong></li>
+<li>在请求的 "Tests" 部分，你可以使用 tv4 对 JSON 数据进行验证。以下是一个简单的例子：</li>
+</ol>
+<p>```javascript
+   // 获取响应的 JSON 数据
+   const jsonResponse = pm.response.json();</p>
+<p>// 使用 tv4 进行 JSON Schema 验证
+   const isValid = tv4.validate(jsonResponse, jsonSchema);</p>
+<p>// 检查验证结果
+   pm.test('JSON is valid according to the schema', function() {
+       pm.expect(isValid).to.be.true;
+   });
+   ```</p>
+<p>在上述例子中，<code>tv4.validate(jsonResponse, jsonSchema)</code> 用于验证 <code>jsonResponse</code> 是否符合 <code>jsonSchema</code> 定义的规范。验证结果存储在 <code>isValid</code> 变量中，然后使用 <code>pm.test</code> 来检查验证结果。</p>
+<p>这只是 tv4 在 Postman 中的基本用法。你可以根据实际需求，定义更复杂的 JSON Schema，并使用 tv4 的其他功能进行更灵活的验证。请查阅 tv4 的官方文档以获取更详细的信息：<a href="https://github.com/geraintluff/tv4">tv4 Documentation</a>。</p>
+<h4 id="uuid">生成 uuid</h4>
+<p>在 Postman 中，你可以使用 <code>uuid</code> 模块来生成 UUID（Universally Unique Identifier），也被称为 GUID。以下是在 Postman 中使用 <code>uuid</code> 模块的基本用法：</p>
+<h5 id="1-uuid">1. 安装 <code>uuid</code> 模块</h5>
+<p>在 Postman 的 "Pre-request Script" 或 "Tests" 部分，你可以使用以下方式安装 <code>uuid</code> 模块：</p>
+<pre><code class="language-javascript">// 安装 uuid 模块
+const uuid = require('uuid');
+</code></pre>
+<h5 id="2-uuid">2. 生成 UUID</h5>
+<pre><code class="language-javascript">// 生成 UUID
+const generatedUUID = uuid.v4();
+console.log('Generated UUID:', generatedUUID);
+</code></pre>
+<p>在上述例子中，<code>uuid.v4()</code> 用于生成一个基于随机数的 UUID。你可以在 Postman 脚本中使用生成的 UUID，例如将其设置为请求头或参数的值。</p>
+<h5 id="_20">示例</h5>
+<p>以下是一个在 Postman "Pre-request Script" 中生成 UUID 并设置为请求头的示例：</p>
+<pre><code class="language-javascript">// 安装 uuid 模块
+const uuid = require('uuid');
+
+// 生成 UUID
+const generatedUUID = uuid.v4();
+
+// 设置请求头
+pm.request.headers.add({ key: 'X-Request-ID', value: generatedUUID });
+</code></pre>
+<p>在上述例子中，<code>X-Request-ID</code> 是一个常见的请求头，用于标识请求的唯一性。生成的 UUID 被设置为这个请求头的值，以确保每个请求都有唯一的标识。</p>
+<p>请注意，Postman 在运行脚本时会自动执行安装依赖项的步骤，无需手动安装 <code>uuid</code> 模块。</p>
+<h4 id="xml2js-xml-javascript">使用 xml2js 将 XML 转换为 JavaScript 对象</h4>
+<p>在 Postman 中，<code>xml2js</code> 是一个用于将 XML 转换为 JavaScript 对象的库。在 Postman 的脚本中，你可以使用 <code>xml2js</code> 来处理 XML 响应并将其转换为易于处理的 JavaScript 对象。以下是在 Postman 中使用 <code>xml2js</code> 的基本步骤：</p>
+<ol>
+<li><strong>安装 xml2js 库：</strong></li>
+<li>由于 Postman 使用的是 Node.js 运行时环境，你可以通过在 Postman 的脚本中安装 <code>xml2js</code> 来使用它。在请求的 "Pre-request Script" 或 "Tests" 部分，你可以使用以下方式安装 <code>xml2js</code>：</li>
+</ol>
+<p><code>javascript
+   // 安装 xml2js
+   const xml2js = require('xml2js');</code></p>
+<ol>
+<li><strong>解析 XML 响应：</strong></li>
+<li>获取 XML 响应后，你可以使用 <code>xml2js</code> 将其解析为 JavaScript 对象。以下是一个简单的例子：</li>
+</ol>
+<p>```javascript
+   // 获取响应的 XML 内容
+   const xmlContent = pm.response.text();</p>
+<p>// 使用 xml2js 解析 XML
+   xml2js.parseString(xmlContent, function (err, result) {
+       if (err) {
+           console.error('Error parsing XML:', err);
+           return;
+       }</p>
+<pre><code>   // result 是解析后的 JavaScript 对象
+   console.log('Parsed XML:', result);
+</code></pre>
+<p>});
+   ```</p>
+<p>在上述例子中，<code>xml2js.parseString(xmlContent, function (err, result) {...}</code> 用于异步地解析 XML 内容。解析后的 JavaScript 对象存储在 <code>result</code> 中。</p>
+<ol>
+<li><strong>处理解析后的 JavaScript 对象：</strong></li>
+<li>一旦你获得了解析后的 JavaScript 对象，你就可以按照普通的 JavaScript 对象处理方式访问和操作它的属性。</li>
+</ol>
+<p><code>javascript
+   // 示例：访问解析后的 JavaScript 对象的属性
+   const value = result.root.element[0].subelement[0]._;
+   console.log('Value from parsed XML:', value);</code></p>
+<p>在上述例子中，<code>result.root.element[0].subelement[0]._</code> 是一个访问解析后对象属性的示例。具体的结构取决于你的 XML 结构。</p>
+<p>这只是 <code>xml2js</code> 在 Postman 中的基本用法。你可以根据实际需求使用 <code>xml2js</code> 的其他功能，例如设置解析选项，处理命名空间等。请查阅 <code>xml2js</code> 的官方文档以获取更详细的信息：<a href="https://github.com/Leonidas-from-XIV/node-xml2js">xml2js Documentation</a>。</p>
+<h4 id="util">常用工具函数 util</h4>
+<p>在 Postman 中，<code>util</code> 是一个全局对象，提供了一些常用的实用工具函数，可以在 Postman 脚本中使用。以下是一些常见的 <code>util</code> 对象的用法：</p>
+<h5 id="1-utilguid-guid">1. <code>util.guid()</code> - 生成全局唯一标识符（GUID）</h5>
+<pre><code class="language-javascript">// 生成一个全局唯一标识符
+const uniqueId = util.guid();
+console.log('Unique ID:', uniqueId);
+</code></pre>
+<h5 id="2-utiltimestamp-">2. <code>util.timestamp()</code> - 获取当前时间戳</h5>
+<pre><code class="language-javascript">// 获取当前时间戳（毫秒）
+const timestamp = util.timestamp();
+console.log('Timestamp:', timestamp);
+</code></pre>
+<h5 id="3-utilrandomintmin-max-">3. <code>util.randomInt(min, max)</code> - 生成指定范围内的随机整数</h5>
+<pre><code class="language-javascript">// 生成 1 到 100 之间的随机整数
+const randomInt = util.randomInt(1, 100);
+console.log('Random Integer:', randomInt);
+</code></pre>
+<h5 id="4-utilunixtimestamp-unix">4. <code>util.unixTimestamp()</code> - 获取当前时间戳（Unix 时间戳，秒）</h5>
+<pre><code class="language-javascript">// 获取当前时间戳（秒）
+const unixTimestamp = util.unixTimestamp();
+console.log('Unix Timestamp:', unixTimestamp);
+</code></pre>
+<h5 id="5-utilencodebase64str-utildecodebase64base64str-base64">5. <code>util.encodeBase64(str)</code> 和 <code>util.decodeBase64(base64Str)</code> - Base64 编码和解码</h5>
+<pre><code class="language-javascript">// Base64 编码
+const encodedString = util.encodeBase64('Hello, World!');
+console.log('Encoded String:', encodedString);
+
+// Base64 解码
+const decodedString = util.decodeBase64(encodedString);
+console.log('Decoded String:', decodedString);
+</code></pre>
+<h5 id="6-utileachobj-callback-">6. <code>util.each(obj, callback)</code> - 遍历对象或数组</h5>
+<pre><code class="language-javascript">// 遍历数组
+const array = [1, 2, 3, 4];
+util.each(array, function (value, index) {
+    console.log(`Index ${index}: ${value}`);
+});
+
+// 遍历对象
+const obj = { a: 1, b: 2, c: 3 };
+util.each(obj, function (value, key) {
+    console.log(`Key ${key}: ${value}`);
+});
+</code></pre>
+<h5 id="_21">注意事项</h5>
+<ul>
+<li>在 Postman 脚本中，可以通过 <code>util</code> 对象直接调用这些实用工具函数。</li>
+<li><code>util</code> 对象提供的这些方法能够简化在 Postman 脚本中的一些常见任务，如生成随机数、处理时间戳等。</li>
+<li>请注意查阅 Postman 的官方文档，因为 Postman 会不断更新和改进其脚本环境，可能会引入新的实用工具函数。</li>
+</ul>
+<h4 id="stream">stream 流操作</h4>
+<p>在 Node.js 中使用流（Streams）通常用于处理大量的数据，可以有效地降低内存占用并提高性能。以下是一些在 Node.js 中使用流的基本用法，可以参考这些方法来处理数据或文件。</p>
+<h5 id="1-readable-streams">1. <strong>读取流（Readable Streams）：</strong></h5>
+<pre><code class="language-javascript">const fs = require('fs');
+
+// 创建可读流
+const readableStream = fs.createReadStream('input.txt');
+
+// 设置编码（如果是文本文件）
+readableStream.setEncoding('utf-8');
+
+// 处理数据
+readableStream.on('data', function(chunk) {
+    console.log('Received chunk:', chunk);
+});
+
+// 处理结束
+readableStream.on('end', function() {
+    console.log('Stream ended.');
+});
+
+// 处理错误
+readableStream.on('error', function(err) {
+    console.error('Error:', err);
+});
+</code></pre>
+<h5 id="2-writable-streams">2. <strong>写入流（Writable Streams）：</strong></h5>
+<pre><code class="language-javascript">const fs = require('fs');
+
+// 创建可写流
+const writableStream = fs.createWriteStream('output.txt');
+
+// 写入数据
+writableStream.write('Hello, World!\n');
+writableStream.write('Another line.');
+
+// 结束写入
+writableStream.end();
+
+// 处理结束
+writableStream.on('finish', function() {
+    console.log('Write completed.');
+});
+
+// 处理错误
+writableStream.on('error', function(err) {
+    console.error('Error:', err);
+});
+</code></pre>
+<h5 id="3-transform-streams">3. <strong>转换流（Transform Streams）：</strong></h5>
+<pre><code class="language-javascript">const { Transform } = require('stream');
+
+// 创建转换流
+const myTransform = new Transform({
+    transform(chunk, encoding, callback) {
+        // 转换数据
+        const transformedData = chunk.toString().toUpperCase();
+        this.push(transformedData);
+        callback();
+    }
+});
+
+// 管道连接读取流、转换流和写入流
+readableStream.pipe(myTransform).pipe(writableStream);
+</code></pre>
+<p>这只是 Node.js 中使用流的一些基本用法。在 Postman 中，你可以在请求的脚本中使用这些方法，例如 "Pre-request Script" 或 "Tests" 部分，通过 Node.js 运行环境来执行这些脚本。请注意，Node.js 中的流 API 可以更复杂，例如通过使用 <code>pipeline</code> 函数来处理多个流的连接。</p>
+<h4 id="timers">定时器 timers</h4>
+<p>在 Postman 中，你可以使用 Node.js 的定时器功能来处理定时任务或延时执行的操作。以下是一些基本的 Node.js 定时器的用法，这些用法可以在 Postman 的脚本中使用。</p>
+<h5 id="1-settimeout-">1. <code>setTimeout</code> - 延时执行</h5>
+<pre><code class="language-javascript">// 延时执行操作
+setTimeout(function() {
+    console.log('Delayed operation.');
+}, 2000); // 2000 毫秒（2 秒）
+</code></pre>
+<h5 id="2-setinterval-">2. <code>setInterval</code> - 定时执行重复操作</h5>
+<pre><code class="language-javascript">// 定时执行重复操作
+const intervalId = setInterval(function() {
+    console.log('Repeated operation.');
+}, 3000); // 3000 毫秒（3 秒）
+
+// 取消定时执行
+// clearInterval(intervalId);
+</code></pre>
+<h5 id="3-postman">3. 在 Postman 中使用</h5>
+<p>在 Postman 中，你可以在 "Pre-request Script" 或 "Tests" 部分中使用这些定时器。例如，在 "Tests" 部分中延时执行操作：</p>
+<pre><code class="language-javascript">// 在 &quot;Tests&quot; 部分延时执行操作
+setTimeout(function() {
+    console.log('Delayed operation in Tests.');
+}, 2000); // 2000 毫秒（2 秒）
+</code></pre>
+<p>请注意，在 Postman 的 "Pre-request Script" 或 "Tests" 部分执行的代码是在 Node.js 环境中运行的，因此你可以使用 Node.js 支持的大多数功能，包括定时器。</p>
+<p>在以上例子中，<code>setTimeout</code> 会在指定的延时后执行一次操作，而 <code>setInterval</code> 会在每隔指定的时间间隔后执行一次操作。在 Postman 中，你可以根据实际需求使用这些定时器功能。</p>
+<h4 id="events">时间处理 events</h4>
+<p>在 Postman 的脚本环境中，你可以使用 Node.js 的 <code>events</code> 模块来处理事件。<code>events</code> 模块提供了 <code>EventEmitter</code> 类，该类可以用于定义和触发事件。以下是在 Postman 中使用 Node.js 的 <code>events</code> 模块的一些基本用法：</p>
+<h5 id="1">1. 创建事件发射器</h5>
+<pre><code class="language-javascript">const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
+</code></pre>
+<h5 id="2">2. 定义事件处理函数</h5>
+<pre><code class="language-javascript">// 定义事件处理函数
+function myEventHandler() {
+    console.log('Event handled.');
+}
+</code></pre>
+<h5 id="3">3. 注册事件处理函数</h5>
+<pre><code class="language-javascript">// 注册事件处理函数
+myEmitter.on('myEvent', myEventHandler);
+</code></pre>
+<h5 id="4">4. 触发事件</h5>
+<pre><code class="language-javascript">// 触发事件
+myEmitter.emit('myEvent');
+</code></pre>
+<h5 id="_22">示例</h5>
+<p>在 Postman 的脚本环境中，你可以使用事件来实现异步操作的回调或处理。以下是一个简单的例子，演示如何在异步操作完成后触发事件：</p>
+<pre><code class="language-javascript">const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
+
+// 模拟异步操作
+function performAsyncOperation() {
+    setTimeout(function() {
+        console.log('Async operation completed.');
+        // 触发事件
+        myEmitter.emit('asyncOperationComplete');
+    }, 2000);
+}
+
+// 注册事件处理函数
+myEmitter.on('asyncOperationComplete', function() {
+    console.log('Handling async operation completion.');
+    // 这里可以执行异步操作完成后的处理逻辑
+});
+
+// 执行异步操作
+performAsyncOperation();
+</code></pre>
+<p>在上述例子中，<code>performAsyncOperation</code> 函数模拟了一个异步操作，当该操作完成时，通过 <code>myEmitter.emit</code> 触发了 <code>asyncOperationComplete</code> 事件。在事件处理函数中，你可以编写处理异步操作完成后的逻辑。</p>
+<p>请注意，在 Postman 的脚本中，异步操作的执行方式可能受到限制，因此在实际使用中需要谨慎考虑。</p>
+<h3 id="_23">数据驱动</h3>
+<p>在 API 自动化测试的过程中。使用数据驱动是一种常规测试方法，其中测试用例的输入数据和预期输出数据都被存储在数据文件中，测试框架根据这些数据文件执行多次测试，以验证 API 的各个方面。</p>
+<p>测试数据可以很容易地修改，而不需要修改测试用例代码。</p>
+<p>数据驱动测试可以帮助你有效地覆盖多种情况，确保 API 在各种输入数据下都能正常运行。</p>
+<p>可参考 demo：<a href="https://github.com/Automation-Test-Starter/Postman-Newman-demo">https://github.com/Automation-Test-Starter/Postman-Newman-demo</a></p>
+<p>在 Postman 中进行数据驱动测试，特别是使用 JSON 数据作为测试数据，可以通过环境变量和数据文件配合 Postman 提供的测试脚本来实现，以下会分别以简单的示例来介绍环境变量和数据文件的使用。</p>
+<h4 id="_24">使用环境变量</h4>
+<p>大致的步骤是：将测试数据存储在环境变量中，然后在测试脚本中读取环境变量中的数据，进行测试。</p>
+<h5 id="1_1">1. 创建环境变量</h5>
+<p>在 Postman 中，你可以在 "Manage Environments" 窗口中创建环境变量。在 "Manage Environments" 窗口中，你可以创建多个环境，每个环境都有一组环境变量。</p>
+<p>之前在 demo 中创建了一个环境变量，名为 <code>DemoEnv</code>，其中包含了一个环境变量 <code>baseURL</code>，用于存储 API 的基本 URL。
+这一次我们在 <code>DemoEnv</code> 环境中添加多个环境变量，用于存储 get-demo 接口和 post-demo 接口的各类测试数据。</p>
+<p>点击编辑<code>DemoEnv</code>环境，添加以下环境变量：</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getAPI</td>
+<td>posts/1</td>
+</tr>
+<tr>
+<td>getAPIResponseStatus</td>
+<td>200</td>
+</tr>
+<tr>
+<td>getAPIResponseData</td>
+<td>{"userId":1,"id":1,"title":"sunt aut facere repellat provident occaecati excepturi optio reprehenderit","body":"quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"}</td>
+</tr>
+<tr>
+<td>postAPI</td>
+<td>posts</td>
+</tr>
+<tr>
+<td>postAPIResponseStatus</td>
+<td>201</td>
+</tr>
+<tr>
+<td>postAPIResponseData</td>
+<td>{"title":"foo","body":"bar","userId":1,"id":101}</td>
+</tr>
+</tbody>
+</table>
+<h5 id="2_1">2. 使用环境变量</h5>
+<p>在 "Pre-request Script" 或 "Tests" 部分中，你可以使用环境变量来存储和获取数据。在请求 Body 中，你可以通过 pm.environment.get 获取环境变量的值。</p>
+<blockquote>
+<p>注意：在 JavaScript 中，环境变量获取的值是字符串</p>
+</blockquote>
+<h6 id="get-demo_1">编辑 get-demo 接口</h6>
+<ul>
+<li>将 URL 修改为 <code>{{baseURL}}/{{getAPI}}</code>，</li>
+<li>编辑 Tests 脚本用来验证响应数据：</li>
+</ul>
+<pre><code class="language-javascript">// 获取环境变量中的数据
+const getAPIResponseStatus = parseInt(pm.environment.get(&quot;getAPIResponseStatus&quot;));
+const getAPIResponseData = JSON.parse(pm.environment.get('getAPIResponseData'));
+
+pm.test(&quot;res.status should be 200&quot;, function () {
+    pm.response.to.have.status(getAPIResponseStatus);
+});
+
+
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(getAPIResponseData.id);
+  pm.expect(data.userId).to.equal(getAPIResponseData.userId);
+  pm.expect(data.title).to.equal(getAPIResponseData.title);
+  pm.expect(data.body).to.equal(getAPIResponseData.body);
+});
+</code></pre>
+<ul>
+<li>点击保存，然后点击发送，可以看到测试通过。</li>
+</ul>
+<p><img alt=" " src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112418URuFUy.png" /></p>
+<h6 id="post-demo_1">编辑 post-demo 接口</h6>
+<ul>
+<li>将 URL 修改为 <code>{{baseURL}}/{{postAPI}}</code>，</li>
+<li>编辑 Tests 脚本用来验证响应数据：</li>
+</ul>
+<pre><code class="language-javascript">// 获取环境变量中的数据
+const postAPIResponseStatus = parseInt(pm.environment.get(&quot;postAPIResponseStatus&quot;));
+const postAPIResponseData = JSON.parse(pm.environment.get('postAPIResponseData'));
+
+pm.test(&quot;res.status should be 201&quot;, function () {
+  pm.response.to.have.status(postAPIResponseStatus);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(postAPIResponseData.id);
+  pm.expect(data.userId).to.equal(postAPIResponseData.userId);
+  pm.expect(data.title).to.equal(postAPIResponseData.title);
+  pm.expect(data.body).to.equal(postAPIResponseData.body);
+});
+</code></pre>
+<ul>
+<li>点击保存，然后点击发送，可以看到测试通过。</li>
+</ul>
+<p><img alt=" " src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/20231124181Zpwgn.png" /></p>
+<h5 id="3_1">3. 调试环境变量数据驱动脚本</h5>
+<p>选择对应的环境变量和更新后的测试用例，运行整个 demo collection，确认测试通过</p>
+<p><img alt="2023112419E4tzBS" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419E4tzBS.png" /></p>
+<h5 id="4_1">4.自动化运行环境变量数据驱动脚本</h5>
+<ul>
+<li>将更新后的测试用例导出到自动化测试项目测试用例文件夹下</li>
+<li>调整 package.json</li>
+</ul>
+<p>在 package.json 文件中，更新测试脚本，用于运行环境变量数据驱动测试用例：</p>
+<blockquote>
+<p>demo 项目为了区分不同场景，新增了测试命令为 environment-driven-test</p>
+</blockquote>
+<pre><code class="language-JSON"> &quot;environment-driven-test&quot;: &quot;newman run Testcase/Environment-Driven.postman_collection.json -e Env/Environment-Driven-DemoEnv.postman_environment.json -r cli,allure --reporter-allure-export ./allure-results&quot;,
+</code></pre>
+<ul>
+<li>运行测试</li>
+</ul>
+<pre><code class="language-shell">npm run environment-driven-test
+</code></pre>
+<p><img alt="2023112419OCkmnl" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419OCkmnl.png" /></p>
+<h4 id="_25">使用数据文件</h4>
+<p>大致的步骤是：将测试数据存放在数据文件中，然后在测试脚本中读取数据文件中的数据，进行测试。</p>
+<p>postman 的数据文件支持 json，csv 和 txt 等多种格式，以下示例会以 json 格式 进行</p>
+<h5 id="1_2">1.创建数据文件</h5>
+<ul>
+<li>在 postma 接口自动化测试项目下新建 Data 文件夹</li>
+</ul>
+<pre><code class="language-shell">mkdir Data
+</code></pre>
+<ul>
+<li>在 Data 文件夹下新建 json 格式数据文件 testdata.json</li>
+</ul>
+<pre><code class="language-shell">cd Data
+touch testdata.json
+</code></pre>
+<ul>
+<li>更新测试数据文件 testdata.json</li>
+</ul>
+<pre><code class="language-json">[
+  {
+    &quot;getAPI&quot;: &quot;posts/1&quot;,
+    &quot;postAPI&quot;: &quot;posts&quot;,
+    &quot;getAPIResponseStatus&quot;: 200,
+    &quot;getAPIResponseData&quot;: {
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 1,
+      &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+      &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+    },
+    &quot;postAPIResponseStatus&quot;: 201,
+    &quot;postAPIResponseData&quot;: {
+      &quot;title&quot;: &quot;foo&quot;,
+      &quot;body&quot;: &quot;bar&quot;,
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 101
+    }
+  }
+]
+</code></pre>
+<h5 id="2_2">2.更新测试用例</h5>
+<h6 id="get-demo_2">更新 get-demo 接口</h6>
+<ul>
+<li>编辑 Pre-request Script 脚本来从测试数据文件中获取
+请求 url</li>
+</ul>
+<pre><code class="language-javascript">const getAPI = pm.iterationData.get('getAPI');
+</code></pre>
+<ul>
+<li>
+<p>将 URL 修改为 <code>{{baseURL}}/{{getAPI}}</code>，</p>
+</li>
+<li>
+<p>编辑 test 脚本来从测试数据文件中获取测试数据</p>
+</li>
+</ul>
+<pre><code class="language-javascript">const getAPIResponseStatus = pm.iterationData.get('getAPIResponseStatus');
+
+const getAPIResponseData = pm.iterationData.get('getAPIResponseData');
+
+pm.test(&quot;res.status should be 200&quot;, function () {
+  pm.response.to.have.status(getAPIResponseStatus);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(getAPIResponseData.id);
+  pm.expect(data.userId).to.equal(getAPIResponseData.userId);
+  pm.expect(data.title).to.equal(getAPIResponseData.title);
+  pm.expect(data.body).to.equal(getAPIResponseData.body);
+});
+</code></pre>
+<h6 id="post-demo_2">更新 post-demo 接口</h6>
+<ul>
+<li>编辑 Pre-request Script 脚本来从测试数据文件中获取
+请求 url</li>
+</ul>
+<pre><code class="language-javascript">const postAPI = pm.iterationData.get('postAPI');
+</code></pre>
+<ul>
+<li>
+<p>将 URL 修改为 <code>{{baseURL}}/{{postAPI}}</code>，</p>
+</li>
+<li>
+<p>编辑 test 脚本来从测试数据文件中获取测试数据</p>
+</li>
+</ul>
+<pre><code class="language-javascript">// 从数据文件获取测试数据
+const postAPIResponseStatus = pm.iterationData.get('postAPIResponseStatus');
+
+const postAPIResponseData = pm.iterationData.get('postAPIResponseData');
+
+pm.test(&quot;res.status should be 201&quot;, function () {
+  pm.response.to.have.status(postAPIResponseStatus);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(postAPIResponseData.id);
+  pm.expect(data.userId).to.equal(postAPIResponseData.userId);
+  pm.expect(data.title).to.equal(postAPIResponseData.title);
+  pm.expect(data.body).to.equal(postAPIResponseData.body);
+});
+</code></pre>
+<h5 id="3_2">3.调试</h5>
+<ul>
+<li>在 postman 页面选择 get-demo request 和 post-demo request 所在的 demo Collection，点击右上角的三个点，选择 Run Collection</li>
+<li>在 runner 准备页面右侧区域点击 Data 的 Select File 按钮，选择之前的测试数据文件 testdata.json</li>
+</ul>
+<p><img alt="2023112419KIqIfa" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419KIqIfa.png" /></p>
+<ul>
+<li>然后点击 Run demo，确认运行通过即可导出测试用例文件</li>
+</ul>
+<p><img alt="2023112419c9Hv5e" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419c9Hv5e.png" /></p>
+<h5 id="4_2">4.自动化运行数据驱动脚本</h5>
+<ul>
+<li>将更新后的测试用例导出到自动化测试项目测试用例文件夹下</li>
+<li>调整 package.json</li>
+</ul>
+<p>在 package.json 文件中，更新测试测试脚本，用于运行数据驱动测试用例：</p>
+<blockquote>
+<p>demo 项目为了区分不同场景，新增了测试命令为 data-driven-test，且命令后加了-d 参数 用于指定测试数据文件路径</p>
+</blockquote>
+<pre><code class="language-JSON">&quot;data-driven-test&quot;: &quot;newman run Testcase/Data-Driven.postman_collection.json -e Env/DemoEnv.postman_environment.json -d Data/testdata.json -r cli,allure --reporter-allure-export ./allure-results&quot;
+</code></pre>
+<ul>
+<li>运行测试</li>
+</ul>
+<pre><code class="language-shell">npm run data-driven-test
+</code></pre>
+<p><img alt="2023112419k7I9ZE" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112419k7I9ZE.png" /></p>
+<h3 id="_26">文件上传</h3>
+<p>在 postman 和 newman 做接口自动化时，文件上传可以通过 form-data 的方式来实现。</p>
+<p>文件必须存在于当前工作目录中。请求的 "src "属性中也必须包含文件名。</p>
+<p>在此集合中，当前工作目录中应包含名为 "demo.txt" 的文件。</p>
+<pre><code class="language-json">{
+    &quot;info&quot;: {
+        &quot;name&quot;: &quot;file-upload&quot;
+    },
+    &quot;item&quot;: [
+        {
+            &quot;request&quot;: {
+                &quot;url&quot;: &quot;https://postman-echo.com/post&quot;,
+                &quot;method&quot;: &quot;POST&quot;,
+                &quot;body&quot;: {
+                    &quot;mode&quot;: &quot;formdata&quot;,
+                    &quot;formdata&quot;: [
+                        {
+                            &quot;key&quot;: &quot;file&quot;,
+                            &quot;type&quot;: &quot;file&quot;,
+                            &quot;enabled&quot;: true,
+                            &quot;src&quot;: &quot;demo.txt&quot;
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
+</code></pre>
+<blockquote>
+<p>注意：调整文件上传的路径，确保文件存在路径在项目根目录下存在或者使用绝对路径</p>
+</blockquote>
+<h3 id="_27">并发测试</h3>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Automation Test Starter
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>

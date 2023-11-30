@@ -1,0 +1,1787 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An organization made by QA, for QA.
+A QUICKSTART project for QA automation testing, including common test frameworks and tools, as well as some common test demo.">
+      
+      
+        <meta name="author" content="Automation Test Starter">
+      
+      
+        <link rel="canonical" href="https://automation-test-starter.pages.dev/API-Automation-Testing/Postman/">
+      
+      
+        <link rel="prev" href="../Bruno/">
+      
+      
+        <link rel="next" href="../../Performance-Testing/Gatling/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>Postman - Automation Test Starter</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-K091G8C97F"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-K091G8C97F",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-K091G8C97F",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#postman-api-test-starter" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Automation Test Starter" class="md-header__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Automation Test Starter
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Postman
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../zh/API-Automation-Testing/Postman/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../SuperTest/" class="md-tabs__link">
+          
+  
+  API Automation Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Performance-Testing/Gatling/" class="md-tabs__link">
+          
+  
+  Performance Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Automation Test Starter" class="md-nav__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Automation Test Starter
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API Automation Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Automation Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SuperTest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SuperTest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RestAssured/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RestAssured
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pytest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pytest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bruno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bruno
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-api-testing" class="md-nav__link">
+    Introduction to API Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to API Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-api" class="md-nav__link">
+    What is API?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-api-testing" class="md-nav__link">
+    What is API Testing?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-api-testing" class="md-nav__link">
+    Types of API Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-in-api-testing" class="md-nav__link">
+    Steps in API Testing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-postman-and-newman" class="md-nav__link">
+    Introduction to Postman and Newman
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-dependencies" class="md-nav__link">
+    Project Dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    Project Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-postman-api-automation-test-project-from-0-to-1" class="md-nav__link">
+    Building a Postman API Automation Test Project from 0 to 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Building a Postman API Automation Test Project from 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project-folder" class="md-nav__link">
+    Create a New Project Folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-initialization" class="md-nav__link">
+    Project initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-dependencies" class="md-nav__link">
+    Install dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-api-test-cases-in-postman" class="md-nav__link">
+    Writing API Test Cases in Postman
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing API Test Cases in Postman">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-collection-and-request-in-postman" class="md-nav__link">
+    Creating a Collection and Request in Postman
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editing-request-and-writing-test-cases" class="md-nav__link">
+    Editing Request and Writing Test Cases
+  </a>
+  
+    <nav class="md-nav" aria-label="Editing Request and Writing Test Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-demo" class="md-nav__link">
+    get-demo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-demo" class="md-nav__link">
+    post-demo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-test-environment-in-postman" class="md-nav__link">
+    Configuring Test Environment in Postman
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Test Environment in Postman">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-environment-variables" class="md-nav__link">
+    Adding Environment Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-requests" class="md-nav__link">
+    Updating Requests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-environment-variables" class="md-nav__link">
+    Verifying Environment Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exporting-environment-variables-and-test-case-files" class="md-nav__link">
+    Exporting Environment Variables and Test Case Files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-project-file-structure" class="md-nav__link">
+    Adjusting Project File Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Adjusting Project File Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-env-and-testcase-folders" class="md-nav__link">
+    Creating Env and Testcase Folders
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-the-packagejson-file" class="md-nav__link">
+    Adjusting the package.json file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-test-cases" class="md-nav__link">
+    Running Test Cases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-html-test-reports" class="md-nav__link">
+    Generating HTML Test Reports
+  </a>
+  
+    <nav class="md-nav" aria-label="Generating HTML Test Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-the-newman-reporter-htmlextra-dependency" class="md-nav__link">
+    Installing the newman-reporter-htmlextra Dependency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-packagejson" class="md-nav__link">
+    Adjusting package.json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-test-cases-to-generate-html-report" class="md-nav__link">
+    Run Test Cases to Generate HTML Report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-reports-in-multiple-formats" class="md-nav__link">
+    Generating Reports in Multiple Formats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration-ci-with-cicd" class="md-nav__link">
+    Continuous Integration (CI) with CI/CD
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Integration (CI) with CI/CD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integrating-with-github-actions" class="md-nav__link">
+    Integrating with GitHub Actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrating-allure-test-report" class="md-nav__link">
+    Integrating Allure Test Report
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrating Allure Test Report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-allure-test-report-dependencies" class="md-nav__link">
+    Installing Allure Test Report Dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-the-script-in-packagejson-for-generating-allure-test-reports" class="md-nav__link">
+    Adjusting the Script in package.json for Generating Allure Test Reports
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-postman-test-cases" class="md-nav__link">
+    Adjusting Postman Test Cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-test-cases-to-generate-allure-report" class="md-nav__link">
+    Run Test Cases to Generate Allure Report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Performance Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Performance Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Performance-Testing/Gatling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gatling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-api-testing" class="md-nav__link">
+    Introduction to API Testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to API Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-api" class="md-nav__link">
+    What is API?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-api-testing" class="md-nav__link">
+    What is API Testing?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-api-testing" class="md-nav__link">
+    Types of API Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-in-api-testing" class="md-nav__link">
+    Steps in API Testing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-to-postman-and-newman" class="md-nav__link">
+    Introduction to Postman and Newman
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-dependencies" class="md-nav__link">
+    Project Dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    Project Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-postman-api-automation-test-project-from-0-to-1" class="md-nav__link">
+    Building a Postman API Automation Test Project from 0 to 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Building a Postman API Automation Test Project from 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-project-folder" class="md-nav__link">
+    Create a New Project Folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-initialization" class="md-nav__link">
+    Project initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-dependencies" class="md-nav__link">
+    Install dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-api-test-cases-in-postman" class="md-nav__link">
+    Writing API Test Cases in Postman
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing API Test Cases in Postman">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-collection-and-request-in-postman" class="md-nav__link">
+    Creating a Collection and Request in Postman
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editing-request-and-writing-test-cases" class="md-nav__link">
+    Editing Request and Writing Test Cases
+  </a>
+  
+    <nav class="md-nav" aria-label="Editing Request and Writing Test Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-demo" class="md-nav__link">
+    get-demo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-demo" class="md-nav__link">
+    post-demo
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-test-environment-in-postman" class="md-nav__link">
+    Configuring Test Environment in Postman
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Test Environment in Postman">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-environment-variables" class="md-nav__link">
+    Adding Environment Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-requests" class="md-nav__link">
+    Updating Requests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-environment-variables" class="md-nav__link">
+    Verifying Environment Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exporting-environment-variables-and-test-case-files" class="md-nav__link">
+    Exporting Environment Variables and Test Case Files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-project-file-structure" class="md-nav__link">
+    Adjusting Project File Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="Adjusting Project File Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-env-and-testcase-folders" class="md-nav__link">
+    Creating Env and Testcase Folders
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-the-packagejson-file" class="md-nav__link">
+    Adjusting the package.json file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-test-cases" class="md-nav__link">
+    Running Test Cases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-html-test-reports" class="md-nav__link">
+    Generating HTML Test Reports
+  </a>
+  
+    <nav class="md-nav" aria-label="Generating HTML Test Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-the-newman-reporter-htmlextra-dependency" class="md-nav__link">
+    Installing the newman-reporter-htmlextra Dependency
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-packagejson" class="md-nav__link">
+    Adjusting package.json
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-test-cases-to-generate-html-report" class="md-nav__link">
+    Run Test Cases to Generate HTML Report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-reports-in-multiple-formats" class="md-nav__link">
+    Generating Reports in Multiple Formats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration-ci-with-cicd" class="md-nav__link">
+    Continuous Integration (CI) with CI/CD
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Integration (CI) with CI/CD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integrating-with-github-actions" class="md-nav__link">
+    Integrating with GitHub Actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrating-allure-test-report" class="md-nav__link">
+    Integrating Allure Test Report
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrating Allure Test Report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-allure-test-report-dependencies" class="md-nav__link">
+    Installing Allure Test Report Dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-the-script-in-packagejson-for-generating-allure-test-reports" class="md-nav__link">
+    Adjusting the Script in package.json for Generating Allure Test Reports
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-postman-test-cases" class="md-nav__link">
+    Adjusting Postman Test Cases
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-test-cases-to-generate-allure-report" class="md-nav__link">
+    Run Test Cases to Generate Allure Report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="postman-api-test-starter">Postman-API-Test-Starter</h1>
+<p>An introductory QuickStart project document on API automation testing with Postman.</p>
+<h2 id="introduction">Introduction</h2>
+<h3 id="introduction-to-api-testing">Introduction to API Testing</h3>
+<h4 id="what-is-api">What is API?</h4>
+<p>API, which stands for Application Programming Interface, is a computing interface that defines the interactions between multiple software intermediaries. It specifies the types of calls or requests that can be made, how they are made, the data format to be used, and the conventions to be followed. APIs can also provide extension mechanisms, allowing users to extend existing functionalities in various ways. An API can be custom-made for a specific component or designed based on industry standards to ensure interoperability. By hiding information, APIs enable modular programming, allowing users to work independently using interfaces.</p>
+<h4 id="what-is-api-testing">What is API Testing?</h4>
+<p>API testing is a type of <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> that includes two types: specifically testing the functionality of <a href="https://en.wikipedia.org/wiki/Application_programming_interface">Application Programming Interfaces</a> (referred to as API) and, more broadly, testing the overall functionality, reliability, security, and performance in <a href="https://en.wikipedia.org/wiki/Integration_testing">integration testing</a> by invoking APIs.</p>
+<p>API Best Practice:</p>
+<ul>
+<li>API definition follows the RESTful API style, with semantic URI definitions, accurate HTTP status codes, and the ability to understand the relationships between resources through API definitions.</li>
+<li>Detailed and accurate API documentation (such as Swagger documentation).</li>
+<li>External APIs may include version numbers for quick iteration (e.g., <a href="https://thoughtworks.com/v1/users/">https://thoughtworks.com/v1/users/</a>).</li>
+</ul>
+<p>Testing in different quadrants of the testing pyramid has different purposes and strategies. API testing mainly resides in the second and fourth quadrants.</p>
+<p>API testing holds a relatively high position in the testing pyramid, focusing on testing functionality and business logic at the boundaries of systems and services. It is executed after the service is built and deployed in the testing environment for validation.</p>
+<h4 id="types-of-api-testing">Types of API Testing</h4>
+<p>Functional Testing</p>
+<ul>
+<li>Correctness Testing</li>
+<li>Exception Handling</li>
+<li>Internal Logic</li>
+<li>...</li>
+</ul>
+<p>Non-functional Testing</p>
+<ul>
+<li>Performance</li>
+<li>Security</li>
+<li>...</li>
+</ul>
+<h4 id="steps-in-api-testing">Steps in API Testing</h4>
+<ul>
+<li>Send Request</li>
+<li>Get Response</li>
+<li>Verify Response Result</li>
+</ul>
+<h3 id="introduction-to-postman-and-newman">Introduction to Postman and Newman</h3>
+<p>Postman is a popular API development tool that provides an easy-to-use graphical interface for creating, testing, and debugging APIs. Postman also features the ability to easily write and share test scripts. It supports various HTTP request methods, including GET, POST, PUT, DELETE, etc., and can use various authentication and authorization methods for API testing.</p>
+<p>Newman is the command-line tool for Postman, used to run test suites without using the Postman GUI. With Newman, users can easily export Postman collections as an executable file and run them in any environment. Additionally, Newman supports generating test reports in HTML or Junit format and integrating into CI/CD pipelines for automated testing.</p>
+<p>In summary, Postman is a powerful API development and testing tool, while Newman is a convenient command-line tool for running test suites without using the Postman GUI. Their combination enhances the efficiency and accuracy of API testing and development.</p>
+<p>In addition to basic functionalities, Postman has the following features:</p>
+<ol>
+<li>Environment and Variable Management: Postman supports switching between different environments, such as development, testing, and production, and variable management, making it easy to set variables for different test cases and requests.</li>
+<li>Automated Testing: Users can create and run automated tests using Postman, integrating them into continuous integration or deployment processes for more accurate and efficient testing.</li>
+<li>Collaboration and Sharing: Postman supports sharing collections and environments with teams, facilitating collaboration among team members.</li>
+<li>Monitoring: Postman provides API monitoring, allowing real-time monitoring of API availability and performance.</li>
+</ol>
+<p>Meanwhile, Newman has the following characteristics:</p>
+<ol>
+<li>Command-Line Interface: Newman can run in the command line, making it convenient for automated testing and integration into CI/CD processes.</li>
+<li>Support for Multiple Output Formats: Newman supports multiple output formats, including HTML, JSON, and JUnit formats, making it easy to use in different scenarios.</li>
+<li>Concurrent Execution: Newman supports concurrent test execution, improving testing efficiency.</li>
+<li>Lightweight: Compared to the Postman GUI, Newman is a lightweight tool, requiring fewer resources during test execution.</li>
+</ol>
+<p>In conclusion, Postman and Newman are essential tools for modern API testing, offering powerful features for efficient, accurate, and automated API testing and development.</p>
+<p>In addition to the mentioned features and characteristics, Postman and Newman have other important functionalities and advantages:</p>
+<ol>
+<li>Integration: Postman and Newman can integrate with many other tools and services, such as GitHub, Jenkins, Slack, etc., making it easy to integrate into development and deployment processes for more efficient API development and testing.</li>
+<li>Documentation Generation: Postman can generate API documentation using requests and responses, ensuring accurate and timely documentation.</li>
+<li>Test Scripts: Postman can use JavaScript to write test scripts, providing flexibility and customization in testing. Users can easily write custom test scripts to ensure the expected behavior of the API.</li>
+<li>History: Postman can store the history of API requests, making it convenient for users to view and manage previous requests and responses. This is useful for debugging and issue troubleshooting.</li>
+<li>Multi-Platform Support: Postman and Newman can run on multiple platforms, including Windows, MacOS, and Linux.</li>
+</ol>
+<p>In summary, Postman and Newman are powerful tools for modern API testing and development, offering rich features and flexible test scripts to help developers and testers build and test APIs faster and more accurately.</p>
+<h2 id="project-dependencies">Project Dependencies</h2>
+<blockquote>
+<p>The following environments need to be installed in advance</p>
+</blockquote>
+<ul>
+<li>[x] Node.js, with the demo version being v21.1.0</li>
+<li>[x] Postman installed, you can download the installation package from the official website and complete the installation</li>
+</ul>
+<h2 id="project-structure">Project Structure</h2>
+<p>The following is the file structure of an API automation testing project for Postman and Newman, which contains test configuration files, test case files, test tool files, and test report files. It can be used for reference.</p>
+<pre><code class="language-Text">Postman-Newman-demo
+├── README.md
+├── package.json
+├── package-lock.json
+├── Data // Test data folder
+│   └── testdata.csv // Test data file
+├── Testcase // Test case folder
+│   └── APITestDemo.postman_collection.json // Test case file
+├── Env // Test environment folder  
+│   └── DemoEnv.postman_environment.json // Test environment file
+├── Report // Test report folder
+│   └── report.html
+├── .gitignore
+└── node_modules // Project dependencies
+    └── ...
+</code></pre>
+<h2 id="building-a-postman-api-automation-test-project-from-0-to-1">Building a Postman API Automation Test Project from 0 to 1</h2>
+<p>Below, we will introduce how to build a Postman and Newman API automation test project from scratch, including test configuration, test cases, test environment, testing tools, and test reports.</p>
+<p>You can refer to the demo project: <a href="https://github.com/Automation-Test-Starter/Postman-Newman-demo">Postman-Newman-demo</a></p>
+<h3 id="create-a-new-project-folder">Create a New Project Folder</h3>
+<pre><code class="language-bash">mkdir Postman-Newman-demo
+</code></pre>
+<h3 id="project-initialization">Project initialization</h3>
+<pre><code class="language-bash">// enter the project folder
+cd Postman-Newman-demo
+// nodejs project initialization
+npm init -y
+</code></pre>
+<h3 id="install-dependencies">Install dependencies</h3>
+<blockquote>
+<p>Currently, the latest version of newman has some package compatibility issues reported by the html test, so we're using version 5.1.2 here.</p>
+</blockquote>
+<pre><code class="language-bash">// Install newman library
+npm install newman@5.1.2--save-dev
+</code></pre>
+<h3 id="writing-api-test-cases-in-postman">Writing API Test Cases in Postman</h3>
+<h4 id="creating-a-collection-and-request-in-postman">Creating a Collection and Request in Postman</h4>
+<ol>
+<li>Open Postman, click the New button in the top left corner, select Collection, enter the name of the collection, click the Create Collection button to create a collection named "demo."</li>
+<li>In the collection, click the three dots in the top right corner, select Add Request, enter the name of the request, and click the Save button to create a request named "get-demo." Add another request named "post-demo."</li>
+</ol>
+<h4 id="editing-request-and-writing-test-cases">Editing Request and Writing Test Cases</h4>
+<p>Refer to the interface documentation in the demoAPI.md file in the project folder to obtain information such as the URL, request method, request headers, and request body used by the "demo" requests.</p>
+<h5 id="get-demo">get-demo</h5>
+<ul>
+<li>In the "get-demo" request, select the GET request method and enter the URL as <a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a>.</li>
+<li>In the Headers section, add a header with Key as "Content-Type" and Value as "application/json."</li>
+<li>Under Tests, add the following script to verify the response result:</li>
+</ul>
+<pre><code class="language-JavaScript">pm.test(&quot;res.status should be 200&quot;, function () {
+  pm.response.to.have.status(200);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(1);
+  pm.expect(data.title).to.contains('provident');
+});
+</code></pre>
+<ul>
+<li>Click the Send button to send the request and verify the response result.</li>
+</ul>
+<p><img alt="2023112117P6poCX" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117P6poCX.png" /></p>
+<p>Confirm that the response result is correct, click the Save button to save the request.</p>
+<h5 id="post-demo">post-demo</h5>
+<ul>
+<li>In the Request of the post-demo, select the POST request method and enter the URL as <a href="https://jsonplaceholder.typicode.com/posts">https://jsonplaceholder.typicode.com/posts</a>.</li>
+<li>In Headers, add a request header with Key as Content-Type and Value as application/json.</li>
+<li>In Body, select raw, select JSON format, and enter the following request body:</li>
+</ul>
+<pre><code class="language-JSON">{
+    &quot;title&quot;: &quot;foo&quot;,
+    &quot;body&quot;: &quot;bar&quot;,
+    &quot;userId&quot;: 1
+}
+</code></pre>
+<ul>
+<li>Under Tests, add the following script to verify the response result:</li>
+</ul>
+<pre><code class="language-JavaScript">pm.test(&quot;res.status should be 201&quot;, function () {
+  pm.response.to.have.status(201);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(101);
+  pm.expect(data.title).to.equal('foo');
+});
+</code></pre>
+<p><img alt="2023112117x34eSN" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117x34eSN.png" /></p>
+<p>Confirm that the response result is correct, click the Save button to save the request.</p>
+<h3 id="configuring-test-environment-in-postman">Configuring Test Environment in Postman</h3>
+<p>The following steps involve using the host of the API requests as environment variables for demonstration purposes.</p>
+<h4 id="adding-environment-variables">Adding Environment Variables</h4>
+<ul>
+<li>In the top right corner of Postman, click the gear icon, select Manage Environments, click the Add button, enter the environment name as "DemoEnv," and click the Add button to create an environment named "DemoEnv."</li>
+<li>Edit the environment variables, add a key named "host" with a value of <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a>.</li>
+<li>Click the Add button to save the environment variables.</li>
+</ul>
+<h4 id="updating-requests">Updating Requests</h4>
+<ul>
+<li>In the "get-demo" request, update the URL to {{host}}/posts/1.</li>
+<li>In the "post-demo" request, update the URL to {{host}}/posts.</li>
+</ul>
+<h4 id="verifying-environment-variables">Verifying Environment Variables</h4>
+<ul>
+<li>In the top right corner of Postman, click the gear icon, select DemoEnv to switch to the "DemoEnv" environment.</li>
+<li>Select the "get-demo" request, click the Send button to send the request, and verify the response result. After confirming the correctness of the response, click the Save button to save the request.</li>
+<li>Select the "post-demo" request, click the Send button to send the request, and verify the response result. After confirming the correctness of the response, click the Save button to save the request.</li>
+</ul>
+<h4 id="exporting-environment-variables-and-test-case-files">Exporting Environment Variables and Test Case Files</h4>
+<ul>
+<li>In the top right corner of Postman, click the gear icon, select Export, choose DemoEnv, and click the Export button to export the environment variables.</li>
+<li>Select the demo Collection containing the "get-demo" and "post-demo" requests, click the three dots in the top right corner, select Export, choose Collection v2.1, and click the Export button to export the test case file.</li>
+</ul>
+<h3 id="adjusting-project-file-structure">Adjusting Project File Structure</h3>
+<h4 id="creating-env-and-testcase-folders">Creating Env and Testcase Folders</h4>
+<ul>
+<li>In the project folder, create a folder named Env to store environment variable files.</li>
+</ul>
+<pre><code class="language-bash">// Create Env folder
+mkdir Env
+</code></pre>
+<ul>
+<li>In the project folder, create a folder named Testcase to store test case files.</li>
+</ul>
+<pre><code class="language-bash">// Create Testcase folder
+mkdir Testcase
+</code></pre>
+<p>Organizing Case and Environment Files</p>
+<p>Place the exported environment variable files and test case files into the Env and Testcase folders within the project folder.</p>
+<p><img alt="2023112117ePiBiv" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117ePiBiv.png" /></p>
+<h4 id="adjusting-the-packagejson-file">Adjusting the package.json file</h4>
+<ul>
+<li>In the package.json file, add the following script to run the test cases:</li>
+</ul>
+<pre><code class="language-JSON">&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json&quot;
+}
+</code></pre>
+<h3 id="running-test-cases">Running Test Cases</h3>
+<pre><code class="language-bash">npm run test
+</code></pre>
+<p><img alt="2023112117lt8FW9" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112117lt8FW9.png" /></p>
+<h2 id="advanced-usage">Advanced Usage</h2>
+<p>This section will cover some advanced usages of Postman and Newman, including testing data, testing scripts, testing reports, and report integration. It will also explain how to integrate Postman and Newman into the CI/CD process for automated testing.</p>
+<h3 id="generating-html-test-reports">Generating HTML Test Reports</h3>
+<p>Using the <a href="https://github.com/DannyDainton/newman-reporter-htmlextra">newman-reporter-htmlextra</a> as an example, the demo will illustrate how to generate HTML test reports.</p>
+<h4 id="installing-the-newman-reporter-htmlextra-dependency">Installing the newman-reporter-htmlextra Dependency</h4>
+<pre><code class="language-bash">npm install newman-reporter-htmlextra --save-dev
+</code></pre>
+<blockquote>
+<p>Note: Currently, there are compatibility issues with some packages in the latest version (V6) of Newman regarding HTML test reports. Therefore, version 5.1.2 is used here.</p>
+</blockquote>
+<h4 id="adjusting-packagejson">Adjusting package.json</h4>
+<p>In the package.json file, update the test script to run test cases and generate HTML test reports:</p>
+<pre><code class="language-JSON">&quot;test&quot;: &quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json -r htmlextra --reporter-htmlextra-export ./Report/Postman-newman-demo-api-testing-report.html&quot;
+</code></pre>
+<blockquote>
+<p>Specify the path for the HTML test report output as Report/Postman-newman-demo-api-testing-report.html</p>
+</blockquote>
+<h4 id="run-test-cases-to-generate-html-report">Run Test Cases to Generate HTML Report</h4>
+<ul>
+<li>Run the test cases</li>
+</ul>
+<pre><code class="language-bash"> npm run test
+</code></pre>
+<ul>
+<li>Check the Report folder, you will find that a Postman-newman-demo-api-testing-report.html file has been generated.</li>
+</ul>
+<p><img alt="2023112211zs7xCl" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112211zs7xCl.png" /></p>
+<ul>
+<li>Open the Postman-newman-demo-api-testing-report.html file in a browser to view the HTML test report.</li>
+</ul>
+<p><img alt="2023112211IHIUzV" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112211IHIUzV.png" /></p>
+<h4 id="generating-reports-in-multiple-formats">Generating Reports in Multiple Formats</h4>
+<p>The previous configuration is for generating HTML-format test reports. If you want to output reports in multiple formats, such as the command line (CLI) report, add the following script to the package.json file:</p>
+<pre><code class="language-JSON">&quot;test&quot;: &quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json -r cli,htmlextra --reporter-htmlextra-export ./Report/Postman-newman-demo-api-testing-report.html&quot;
+</code></pre>
+<p>Run the test cases again, and you will find both HTML and CLI format test reports in the Report folder.</p>
+<p><img alt="202311221109B7Fg" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/202311221109B7Fg.png" /></p>
+<h3 id="continuous-integration-ci-with-cicd">Continuous Integration (CI) with CI/CD</h3>
+<p>Integrating API automation test code into the CI/CD process enables automated testing, improving testing efficiency.</p>
+<h4 id="integrating-with-github-actions">Integrating with GitHub Actions</h4>
+<p>Taking GitHub Actions as an example, similar steps can be followed for other CI tools.</p>
+<p>Refer to the demo: <a href="https://github.com/Automation-Test-Starter/Postman-Newman-demo">Postman-Newman-demo</a></p>
+<p>Create the .github/workflows directory: In your GitHub repository, create a directory named .github/workflows. This will be the place to store GitHub Actions workflow files.</p>
+<p>Create the workflow file: In the .github/workflows directory, create a YAML-formatted workflow file, for example, postman.yml.</p>
+<p>Edit the postman.yml file: Copy and paste the following content into the file:</p>
+<pre><code class="language-YAML">name: RUN Postman API Test CI
+
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+  pull_request:
+    branches: [ &quot;main&quot; ]
+
+jobs:
+  RUN-Postman-API-Test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Installation of related packages
+        run: npm ci
+
+      - name: RUN SuperTest API Testing
+        run: npm test
+
+      - name: Archive Postman test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: Postman-test-report
+          path: Report
+
+      - name: Upload Postman report to GitHub
+        uses: actions/upload-artifact@v3
+        with:
+          name: Postman-test-report
+          path: Report
+</code></pre>
+<ul>
+<li>Commit your code: Add the postman.yml file to the repository and commit the changes.</li>
+<li>View the test report: In GitHub, navigate to your repository. Click on the Actions tab at the top and then click on the RUN-Postman-API-Test workflow on the left. You should see the workflow running, and once it completes, you can view the results.</li>
+</ul>
+<p><img alt="2023112213AFVWZe" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112213AFVWZe.png" /></p>
+<h3 id="integrating-allure-test-report">Integrating Allure Test Report</h3>
+<p>Allure is a lightweight, flexible, and multi-language-supported test reporting tool that can generate various types of test reports, including pie charts, bar charts, line charts, etc., making it easy to visualize test results.</p>
+<h4 id="installing-allure-test-report-dependencies">Installing Allure Test Report Dependencies</h4>
+<pre><code class="language-bash">npm install newman-reporter-allure --save-dev
+</code></pre>
+<h4 id="adjusting-the-script-in-packagejson-for-generating-allure-test-reports">Adjusting the Script in package.json for Generating Allure Test Reports</h4>
+<pre><code class="language-JSON">&quot;test&quot;: &quot;newman run Testcase/demo.postman_collection.json -e Env/DemoEnv.postman_environment.json -r cli,allure --reporter-allure-export ./allure-results&quot;
+</code></pre>
+<h4 id="adjusting-postman-test-cases">Adjusting Postman Test Cases</h4>
+<ul>
+<li>Modify the Tests script in the "get-demo" request. Add the following script to generate Allure test reports:</li>
+</ul>
+<pre><code class="language-JavaScript">// @allure.label.suite=postman-new-api-testing-demo
+// @allure.label.story=&quot;Verify-the-get-api-return-correct-data&quot;
+// @allure.label.owner=&quot;naodeng&quot;
+// @allure.label.tag=&quot;GETAPI&quot;
+
+pm.test(&quot;res.status should be 200&quot;, function () {
+  pm.response.to.have.status(200);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(1);
+  pm.expect(data.title).to.contains('provident');
+});
+</code></pre>
+<ul>
+<li>Adjust the Tests script in the "post-demo" request. Add the following script to generate Allure test reports:</li>
+</ul>
+<pre><code class="language-JavaScript">// @allure.label.suite=postman-new-api-testing-demo
+// @allure.label.story=&quot;Verify-the-post-api-return-correct-data&quot;
+// @allure.label.owner=&quot;naodeng&quot;
+// @allure.label.tag=&quot;POSTAPI&quot;
+
+pm.test(&quot;res.status should be 201&quot;, function () {
+  pm.response.to.have.status(201);
+});
+pm.test(&quot;res.body should be correct&quot;, function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(101);
+  pm.expect(data.title).to.equal('foo');
+});
+</code></pre>
+<ul>
+<li>Save the modified Postman test cases, export the test case file again, and replace the original test case file.</li>
+</ul>
+<h4 id="run-test-cases-to-generate-allure-report">Run Test Cases to Generate Allure Report</h4>
+<ul>
+<li>Run the test cases</li>
+</ul>
+<pre><code class="language-bash"> npm run test
+</code></pre>
+<p>The allure-results folder will be generated in the project folder, containing the execution results of the test cases.</p>
+<p><img alt="2023112213YUMTwz" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112213YUMTwz.png" /></p>
+<ul>
+<li>Previewing the Allure Test Report</li>
+</ul>
+<pre><code class="language-bash">allure serve
+</code></pre>
+<p><img alt="2023112214Aa77VG" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112214Aa77VG.png" /></p>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Automation Test Starter
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>
