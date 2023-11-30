@@ -1,0 +1,2749 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An organization made by QA, for QA.
+A QUICKSTART project for QA automation testing, including common test frameworks and tools, as well as some common test demo.">
+      
+      
+        <meta name="author" content="Automation Test Starter">
+      
+      
+        <link rel="canonical" href="https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Pytest/">
+      
+      
+        <link rel="prev" href="../RestAssured/">
+      
+      
+        <link rel="next" href="../Bruno/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>Pytest - Automation Test Starter</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-K091G8C97F"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-K091G8C97F",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-K091G8C97F",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pytest" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../" title="Automation Test Starter" class="md-header__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Automation Test Starter
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pytest
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../API-Automation-Testing/Pytest/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../SuperTest/" class="md-tabs__link">
+          
+  
+  API Automation Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Performance-Testing/Gatling/" class="md-tabs__link">
+          
+  
+  Performance Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="Automation Test Starter" class="md-nav__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Automation Test Starter
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API Automation Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Automation Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SuperTest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SuperTest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RestAssured/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RestAssured
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Pytest
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Pytest
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介绍
+  </a>
+  
+    <nav class="md-nav" aria-label="介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytest_1" class="md-nav__link">
+    Pytest 介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    python 虚拟环境介绍
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    项目依赖
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    项目目录结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-1-pytest" class="md-nav__link">
+    从 0 到 1 搭建 Pytest 接口自动化测试项目
+  </a>
+  
+    <nav class="md-nav" aria-label="从 0 到 1 搭建 Pytest 接口自动化测试项目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.创建项目目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2.项目初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3.安装项目依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4.新建测试文件及测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5.编写测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6.运行测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7.查看测试报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-pytest-html-reporter" class="md-nav__link">
+    8.接入 pytest-html-reporter 测试报告
+  </a>
+  
+    <nav class="md-nav" aria-label="8.接入 pytest-html-reporter 测试报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytest-html-reporter" class="md-nav__link">
+    安装 pytest-html-reporter 依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    配置测试报告参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    运行测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    查看测试报告
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    进阶用法
+  </a>
+  
+    <nav class="md-nav" aria-label="进阶用法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    持续集成
+  </a>
+  
+    <nav class="md-nav" aria-label="持续集成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-action" class="md-nav__link">
+    接入 github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    常用断言
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    数据驱动
+  </a>
+  
+    <nav class="md-nav" aria-label="数据驱动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    新建测试配置文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    编写测试配置文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    新建测试数据文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    编写测试数据文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    更新测试用例来支持数据驱动
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    运行该测试用例确认数据驱动是否生效
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    多环境支持
+  </a>
+  
+    <nav class="md-nav" aria-label="多环境支持">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    新建不同环境测试配置文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    编写不同环境测试配置文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    新建不同环境测试数据文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    编写不同环境测试数据文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixture" class="md-nav__link">
+    配置支持多环境的 fixture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    更新测试用例来支持多环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    运行该测试用例确认多环境支持是否生效
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure" class="md-nav__link">
+    集成 allure 报告
+  </a>
+  
+    <nav class="md-nav" aria-label="集成 allure 报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allure-pytest" class="md-nav__link">
+    安装 allure-pytest 依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure-pytest_1" class="md-nav__link">
+    配置 allure-pytest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure_1" class="md-nav__link">
+    调整测试用例来支持 allure 报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure_2" class="md-nav__link">
+    运行测试用例生成 allure 报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure_3" class="md-nav__link">
+    查看 allure 报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-allure" class="md-nav__link">
+    调整 CI/CD 流程来支持 allure 报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-action-allure" class="md-nav__link">
+    查看 github action allure 报告
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    并发测试和分布式测试
+  </a>
+  
+    <nav class="md-nav" aria-label="并发测试和分布式测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytest-xdist" class="md-nav__link">
+    pytest-xdist 功能介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytest-xdist_1" class="md-nav__link">
+    安装 pytest-xdist 依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    并发运行测试用例示例
+  </a>
+  
+    <nav class="md-nav" aria-label="并发运行测试用例示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-worker" class="md-nav__link">
+    并发 3 个 worker 执行测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-worker-worker" class="md-nav__link">
+    并发 3 个 worker 执行测试用例，并且每个 worker 都会打印测试用例的进度
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    分布式测试示例
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式测试示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    分布式测试，每个节点运行一组测试
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker" class="md-nav__link">
+    分布式测试，每个节点运行一组测试，并且每个 worker 都会打印测试用例的进度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker_1" class="md-nav__link">
+    分布式测试，每个节点运行一组测试，并且每个 worker 都会打印测试用例的进度，同时打印测试日志的输出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    筛选用例执行
+  </a>
+  
+    <nav class="md-nav" aria-label="筛选用例执行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytest_2" class="md-nav__link">
+    定义 Pytest 标记
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    标记用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    筛选测试用例执行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Bruno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bruno
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Postman/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Performance Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Performance Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Performance-Testing/Gatling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gatling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    介绍
+  </a>
+  
+    <nav class="md-nav" aria-label="介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytest_1" class="md-nav__link">
+    Pytest 介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    python 虚拟环境介绍
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    项目依赖
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    项目目录结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-1-pytest" class="md-nav__link">
+    从 0 到 1 搭建 Pytest 接口自动化测试项目
+  </a>
+  
+    <nav class="md-nav" aria-label="从 0 到 1 搭建 Pytest 接口自动化测试项目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1.创建项目目录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2.项目初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3.安装项目依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4.新建测试文件及测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5.编写测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6.运行测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7.查看测试报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-pytest-html-reporter" class="md-nav__link">
+    8.接入 pytest-html-reporter 测试报告
+  </a>
+  
+    <nav class="md-nav" aria-label="8.接入 pytest-html-reporter 测试报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytest-html-reporter" class="md-nav__link">
+    安装 pytest-html-reporter 依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    配置测试报告参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    运行测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    查看测试报告
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    进阶用法
+  </a>
+  
+    <nav class="md-nav" aria-label="进阶用法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    持续集成
+  </a>
+  
+    <nav class="md-nav" aria-label="持续集成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-action" class="md-nav__link">
+    接入 github action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    常用断言
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    数据驱动
+  </a>
+  
+    <nav class="md-nav" aria-label="数据驱动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    新建测试配置文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    编写测试配置文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    新建测试数据文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    编写测试数据文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    更新测试用例来支持数据驱动
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    运行该测试用例确认数据驱动是否生效
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    多环境支持
+  </a>
+  
+    <nav class="md-nav" aria-label="多环境支持">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    新建不同环境测试配置文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    编写不同环境测试配置文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    新建不同环境测试数据文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    编写不同环境测试数据文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixture" class="md-nav__link">
+    配置支持多环境的 fixture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    更新测试用例来支持多环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    运行该测试用例确认多环境支持是否生效
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure" class="md-nav__link">
+    集成 allure 报告
+  </a>
+  
+    <nav class="md-nav" aria-label="集成 allure 报告">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#allure-pytest" class="md-nav__link">
+    安装 allure-pytest 依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure-pytest_1" class="md-nav__link">
+    配置 allure-pytest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure_1" class="md-nav__link">
+    调整测试用例来支持 allure 报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure_2" class="md-nav__link">
+    运行测试用例生成 allure 报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allure_3" class="md-nav__link">
+    查看 allure 报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-allure" class="md-nav__link">
+    调整 CI/CD 流程来支持 allure 报告
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-action-allure" class="md-nav__link">
+    查看 github action allure 报告
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    并发测试和分布式测试
+  </a>
+  
+    <nav class="md-nav" aria-label="并发测试和分布式测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytest-xdist" class="md-nav__link">
+    pytest-xdist 功能介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pytest-xdist_1" class="md-nav__link">
+    安装 pytest-xdist 依赖
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    并发运行测试用例示例
+  </a>
+  
+    <nav class="md-nav" aria-label="并发运行测试用例示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-worker" class="md-nav__link">
+    并发 3 个 worker 执行测试用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-worker-worker" class="md-nav__link">
+    并发 3 个 worker 执行测试用例，并且每个 worker 都会打印测试用例的进度
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    分布式测试示例
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式测试示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    分布式测试，每个节点运行一组测试
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker" class="md-nav__link">
+    分布式测试，每个节点运行一组测试，并且每个 worker 都会打印测试用例的进度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker_1" class="md-nav__link">
+    分布式测试，每个节点运行一组测试，并且每个 worker 都会打印测试用例的进度，同时打印测试日志的输出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    筛选用例执行
+  </a>
+  
+    <nav class="md-nav" aria-label="筛选用例执行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytest_2" class="md-nav__link">
+    定义 Pytest 标记
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    标记用例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    筛选测试用例执行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="pytest">Pytest 接口自动化测试快速启动项目</h1>
+<p>关于使用 Pytest 进行 API 自动化测试的快速启动项目介绍文档。</p>
+<h2 id="_1">介绍</h2>
+<h3 id="pytest_1">Pytest 介绍</h3>
+<p>Pytest 是一个流行的 Python 测试框架，用于编写、组织和运行各种类型的自动化测试。它提供了丰富的功能，使您能够轻松编写和管理测试用例，以及生成详细的测试报告。以下是 Pytest 的一些主要特点和优势：</p>
+<ol>
+<li>
+<p><strong>简单和易用</strong>：Pytest 的设计使得编写测试用例变得简单且易于理解。您可以使用 Python 的标准 <code>assert</code> 语句来编写测试断言，而不需要学习新的断言语法。</p>
+</li>
+<li>
+<p><strong>自动发现测试用例</strong>：Pytest 可以自动发现和运行项目中的测试用例，而不需要显式配置测试套件。测试用例文件可以命名为 <code>test_*.py</code> 或 <code>*_test.py</code>，或使用特定的测试函数命名规范。</p>
+</li>
+<li>
+<p><strong>丰富的插件生态系统</strong>：Pytest 可以通过插件扩展其功能。有许多第三方插件可用，以满足不同测试需求，如 Allure 报告、参数化、覆盖率分析等。</p>
+</li>
+<li>
+<p><strong>参数化测试</strong>：Pytest 支持参数化测试，允许您运行相同的测试用例多次，但使用不同的参数。这可以减少代码重复，提高测试覆盖率。</p>
+</li>
+<li>
+<p><strong>异常和故障定位</strong>：Pytest 提供详细的错误和异常信息，有助于您更容易地定位和解决问题。它还提供详细的回溯（traceback）信息。</p>
+</li>
+<li>
+<p><strong>并行测试执行</strong>：Pytest 支持并行执行测试用例，提高了测试执行的速度，特别是在大型项目中。</p>
+</li>
+<li>
+<p><strong>多种报告格式</strong>：Pytest 支持多种测试报告格式，包括终端输出、JUnit XML、HTML 报告和 Allure 报告等。这些报告可以帮助您可视化测试结果。</p>
+</li>
+<li>
+<p><strong>命令行选项</strong>：Pytest 提供了丰富的命令行选项，以定制测试运行的行为，包括过滤、重试、覆盖率分析等。</p>
+</li>
+<li>
+<p><strong>集成性</strong>：Pytest 可以与其他测试框架和工具（如 Selenium、Django、Flask 等）以及持续集成系统（如 Jenkins、Travis CI 等）轻松集成。</p>
+</li>
+<li>
+<p><strong>活跃的社区</strong>：Pytest 拥有一个活跃的社区，有广泛的文档和教程可供学习和参考。您还可以在社区中获得支持和解决问题。</p>
+</li>
+</ol>
+<p>总之，Pytest 是一个强大且灵活的测试框架，适用于各种规模和类型的项目。它的易用性、自动化能力以及丰富的插件使它成为 Python 测试领域的首选工具之一。</p>
+<p>官方网站：<a href="https://docs.pytest.org/en/latest/">https://docs.pytest.org/en/latest/</a></p>
+<h3 id="python">python 虚拟环境介绍</h3>
+<p>Python 虚拟环境（Virtual Environment）是一种机制，用于在单个 Python 安装中创建和管理多个隔离的开发环境。虚拟环境有助于解决不同项目之间的依赖冲突问题，确保每个项目都能够使用其独立的 Python 包和库，而不会相互干扰。以下是如何创建和使用 Python 虚拟环境的步骤：</p>
+<ol>
+<li><strong>安装虚拟环境工具</strong>:
+   在开始之前，确保您已安装 Python 的虚拟环境工具。在 Python 3.3 及更高版本中，<code>venv</code> 模块已经内置，可以使用它来创建虚拟环境。如果您使用较旧版本的 Python，您可以安装 <code>virtualenv</code> 工具。</li>
+</ol>
+<p>对于 Python 3.3+，<code>venv</code> 工具已内置，无需额外安装。</p>
+<p>对于 Python 2.x，可以使用以下命令安装 <code>virtualenv</code> 工具：</p>
+<p><code>bash
+   pip install virtualenv</code></p>
+<ol>
+<li><strong>创建虚拟环境</strong>:
+   打开终端，移动到您希望创建虚拟环境的目录，并运行以下命令以创建虚拟环境：</li>
+</ol>
+<p>使用 <code>venv</code>（适用于 Python 3.3+）：</p>
+<p><code>bash
+   python -m venv myenv</code></p>
+<p>使用 <code>virtualenv</code>（适用于 Python 2.x）：</p>
+<p><code>bash
+   virtualenv myenv</code></p>
+<p>在上述命令中，<code>myenv</code> 是虚拟环境的名称，您可以自定义名称。</p>
+<ol>
+<li>
+<p><strong>激活虚拟环境</strong>:
+   要开始使用虚拟环境，需要激活它。在不同的操作系统中，激活命令略有不同：</p>
+</li>
+<li>
+<p>在 macOS 和 Linux 上：</p>
+<p><code>bash
+ source myenv/bin/activate</code></p>
+</li>
+<li>
+<p>在 Windows 上（使用 Command Prompt）：</p>
+<p><code>bash
+ myenv\Scripts\activate</code></p>
+</li>
+<li>
+<p>在 Windows 上（使用 PowerShell）：</p>
+<p><code>bash
+ .\myenv\Scripts\Activate.ps1</code></p>
+</li>
+</ol>
+<p>一旦虚拟环境激活，您会在终端提示符前看到虚拟环境的名称，表示您已进入虚拟环境。</p>
+<ol>
+<li><strong>在虚拟环境中安装依赖</strong>:
+   在虚拟环境中，您可以使用 <code>pip</code> 安装项目所需的任何 Python 包和库，这些依赖将与该虚拟环境关联。例如：</li>
+</ol>
+<p><code>bash
+   pip install requests</code></p>
+<ol>
+<li>
+<p><strong>使用虚拟环境</strong>:
+   在虚拟环境中工作时，您可以运行 Python 脚本和使用安装在虚拟环境中的包。这确保了您的项目在独立的环境中运行，不会与全局 Python 安装产生冲突。</p>
+</li>
+<li>
+<p><strong>退出虚拟环境</strong>:
+   要退出虚拟环境，只需在终端中运行以下命令：</p>
+</li>
+</ol>
+<p><code>bash
+   deactivate</code></p>
+<p>这将使您返回到全局 Python 环境。</p>
+<p>通过使用虚拟环境，您可以在不同项目之间维护干净的依赖关系，并确保项目的稳定性和隔离性。这是 Python 开发中的一个良好实践。</p>
+<h2 id="_2">项目依赖</h2>
+<blockquote>
+<p>需提前安装好以下环境</p>
+</blockquote>
+<ul>
+<li>[x] python, demo 版本为 v3.11.6</li>
+</ul>
+<blockquote>
+<p>大家安装 python3.x 以上的版本即可</p>
+</blockquote>
+<h2 id="_3">项目目录结构</h2>
+<p>以下为一个 Pytest 接口自动化测试项目的目录结构示例：</p>
+<blockquote>
+<p>后续 demo 项目会引入 allure 报告，所以会多出一个 allure-report 目录</p>
+</blockquote>
+<pre><code class="language-text">Pytest-allure-demo/
+    ├── tests/                  # 存放测试用例文件
+    │   ├── test_login.py       # 示例测试用例文件
+    │   ├── test_order.py       # 示例测试用例文件
+    │   └── ...
+    ├── data/                   # 存放测试数据文件（如 JSON、CSV 等）
+    │   ├── dev_test_data.json      # 开发环境测试数据文件
+    │   ├── prod_test_data.json      # 生产环境测试数据文件
+    │   ├── ...
+    ├── config/
+    │   ├── dev_config.json  # 开发环境配置文件
+    │   ├── prod_config.json  # 生产环境配置文件
+    │   ├── ...
+    ├── conftest.py             # Pytest 的全局配置文件
+    ├── pytest.ini              # Pytest 配置文件
+    ├── requirements.txt        # 项目依赖项文件
+    └── allure-report/          # 存放 Allure 报告
+</code></pre>
+<h2 id="0-1-pytest">从 0 到 1 搭建 Pytest 接口自动化测试项目</h2>
+<h3 id="1">1.创建项目目录</h3>
+<pre><code class="language-shell">mkdir Pytest-API-Testing-Demo
+</code></pre>
+<h3 id="2">2.项目初始化</h3>
+<pre><code class="language-shell">// 进入项目文件夹下
+cd Pytest-API-Testing-Demo
+// 创建项目 python 项目虚拟环境
+python -m venv .env
+// 启用项目 python 项目虚拟环境
+source .env/bin/activate
+</code></pre>
+<h3 id="3">3.安装项目依赖</h3>
+<pre><code class="language-shell">// 安装 requests 包
+pip install requests
+// 安装pytest 包
+pip install pytest
+// 将项目依赖项保存到 requirements.txt 文件中
+pip freeze &gt; requirements.txt
+</code></pre>
+<h3 id="4">4.新建测试文件及测试用例</h3>
+<pre><code class="language-shell">// 新建测试文件夹
+mkdir tests
+// 新建测试用例文件
+cd tests
+touch test_demo.py
+</code></pre>
+<h3 id="5">5.编写测试用例</h3>
+<blockquote>
+<p>测试接口可参考项目中 demoAPI.md 文件</p>
+</blockquote>
+<pre><code class="language-python">import requests
+
+
+class TestPytestDemo:
+
+    def test_get_demo(self):
+        base_url = &quot;https://jsonplaceholder.typicode.com&quot;
+        # 发起请求
+        response = requests.get(f&quot;{base_url}/posts/1&quot;)
+        # 断言
+        assert response.status_code == 200
+        assert response.json()['userId'] == 1
+        assert response.json()['id'] == 1
+
+    def test_post_demo(self):
+        base_url = &quot;https://jsonplaceholder.typicode.com&quot;
+        requests_data = {
+            &quot;title&quot;: &quot;foo&quot;,
+            &quot;body&quot;: &quot;bar&quot;,
+            &quot;userId&quot;: 1
+        }
+        # 发起请求
+        response = requests.post(f&quot;{base_url}/posts&quot;, requests_data)
+        # 断言
+        assert response.status_code == 201
+        print(response.json())
+        assert response.json()['userId'] == '1'
+        assert response.json()['id'] == 101
+</code></pre>
+<h3 id="6">6.运行测试用例</h3>
+<pre><code class="language-shell">pytest
+</code></pre>
+<h3 id="7">7.查看测试报告</h3>
+<p><img alt="CsoB4y" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/CsoB4y.png" /></p>
+<h3 id="8-pytest-html-reporter">8.接入 pytest-html-reporter 测试报告</h3>
+<blockquote>
+<p><a href="https://github.com/prashanth-sams/pytest-html-reporter">https://github.com/prashanth-sams/pytest-html-reporter</a></p>
+</blockquote>
+<h4 id="pytest-html-reporter">安装 pytest-html-reporter 依赖</h4>
+<pre><code class="language-shell">pip install pytest-html-reporter 
+</code></pre>
+<h4 id="_4">配置测试报告参数</h4>
+<ul>
+<li>项目根目录下新建 pytest.ini 文件</li>
+<li>添加以下内容</li>
+</ul>
+<pre><code class="language-ini">[pytest]
+addopts = -vs -rf --html-report=./report --title='PYTEST REPORT' --self-contained-html
+</code></pre>
+<h4 id="_5">运行测试用例</h4>
+<pre><code class="language-shell">pytest
+</code></pre>
+<h4 id="_6">查看测试报告</h4>
+<p>报告在项目根目录下的 report 目录下，使用浏览器打开 pytest_html_report.html 文件即可查看</p>
+<p><img alt="8JdxbA" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/8JdxbA.png" /></p>
+<h2 id="_7">进阶用法</h2>
+<h3 id="_8">持续集成</h3>
+<h4 id="github-action">接入 github action</h4>
+<p>以 github action 为例，其他 CI 工具类似</p>
+<p>可参考 demo：<a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo">https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo</a></p>
+<p>创建.github/workflows 目录：在你的 GitHub 仓库中，创建一个名为 .github/workflows 的目录。这将是存放 GitHub Actions 工作流程文件的地方。</p>
+<p>创建工作流程文件：在.github/workflows 目录中创建一个 YAML 格式的工作流程文件，例如 pytest.yml。</p>
+<p>编辑 pytest.yml 文件：将以下内容复制到文件中</p>
+<pre><code class="language-yaml"># This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Pytest API Testing
+
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+  pull_request:
+    branches: [ &quot;main&quot; ]
+
+permissions:
+  contents: read
+
+jobs:
+  Pytes-API-Testing:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: &quot;3.10&quot;
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Test with pytest
+      run: |
+        pytest
+
+    - name: Archive Pytest test report
+      uses: actions/upload-artifact@v3
+      with:
+        name: SuperTest-test-report
+        path: report
+
+    - name: Upload Pytest report to GitHub
+      uses: actions/upload-artifact@v3
+      with:
+        name: Pytest-test-report
+        path: report
+</code></pre>
+<ul>
+<li>提交代码：将 pytest.yml 文件添加到仓库中并提交。</li>
+<li>查看测试报告：在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 Pytest API Testing 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。</li>
+</ul>
+<p><img alt="yE65LO" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/yE65LO.png" /></p>
+<h3 id="_9">常用断言</h3>
+<p>使用 Pytest 在接口自动化测试用例编写过程中，我们需要使用各种断言来验证测试的预期结果。</p>
+<p>Pytest 提供了更多的断言和灵活的断言库，以满足各种测试需求。</p>
+<p>以下是一些常用的 Pytest 接口自动化测试断言：</p>
+<ul>
+<li><strong>相等性断言</strong>：检查两个值是否相等。</li>
+</ul>
+<p><code>python
+   assert actual_value == expected_value</code></p>
+<ul>
+<li><strong>不相等性断言</strong>：检查两个值是否不相等。</li>
+</ul>
+<p><code>python
+   assert actual_value != expected_value</code></p>
+<ul>
+<li><strong>包含断言</strong>：检查一个值是否包含在另一个值中，通常用于检查字符串是否包含子字符串。</li>
+</ul>
+<p><code>python
+   assert substring in full_string</code></p>
+<ul>
+<li><strong>成员资格断言</strong>：检查一个值是否在集合、列表或其他可迭代对象中。</li>
+</ul>
+<p><code>python
+   assert item in iterable</code></p>
+<ul>
+<li><strong>真值断言</strong>：检查一个表达式或变量是否为真。</li>
+</ul>
+<p><code>python
+   assert expression</code></p>
+<p>或</p>
+<p><code>python
+   assert variable</code></p>
+<ul>
+<li><strong>假值断言</strong>：检查一个表达式或变量是否为假。</li>
+</ul>
+<p><code>python
+   assert not expression</code></p>
+<p>或</p>
+<p><code>python
+   assert not variable</code></p>
+<ul>
+<li><strong>大于、小于、大于等于、小于等于断言</strong>：检查一个值是否大于、小于、大于等于或小于等于另一个值。</li>
+</ul>
+<p><code>python
+   assert value &gt; other_value
+   assert value &lt; other_value
+   assert value &gt;= other_value
+   assert value &lt;= other_value</code></p>
+<ul>
+<li><strong>类型断言</strong>：检查一个值的类型是否符合预期。</li>
+</ul>
+<p><code>python
+   assert isinstance(value, expected_type)</code></p>
+<p>例如，检查一个值是否是字符串：</p>
+<p><code>python
+   assert isinstance(my_string, str)</code></p>
+<ul>
+<li><strong>异常断言</strong>：检查在代码块中是否引发了特定类型的异常。</li>
+</ul>
+<p><code>python
+   with pytest.raises(ExpectedException):
+       # 代码块，期望引发 ExpectedException 异常</code></p>
+<ul>
+<li><strong>近似相等断言</strong>：检查两个浮点数是否在某个误差范围内相等。</li>
+</ul>
+<p><code>python
+   assert math.isclose(actual_value, expected_value, rel_tol=1e-9)</code></p>
+<ul>
+<li><strong>列表相等断言</strong>：检查两个列表是否相等。</li>
+</ul>
+<p><code>python
+   assert actual_list == expected_list</code></p>
+<ul>
+<li><strong>字典相等断言</strong>：检查两个字典是否相等。</li>
+</ul>
+<p><code>python
+   assert actual_dict == expected_dict</code></p>
+<ul>
+<li><strong>正则表达式匹配断言</strong>：检查一个字符串是否匹配给定的正则表达式。</li>
+</ul>
+<p>```python
+   import re</p>
+<p>assert re.match(pattern, string)
+   ```</p>
+<ul>
+<li><strong>空值断言</strong>：检查一个值是否为 <code>None</code>。</li>
+</ul>
+<p><code>python
+   assert value is None</code></p>
+<ul>
+<li><strong>非空值断言</strong>：检查一个值是否不为 <code>None</code>。</li>
+</ul>
+<p><code>python
+   assert value is not None</code></p>
+<ul>
+<li><strong>布尔值断言</strong>：检查一个值是否为 <code>True</code> 或 <code>False</code>。</li>
+</ul>
+<p><code>python
+   assert boolean_expression</code></p>
+<ul>
+<li><strong>空容器断言</strong>：检查一个列表、集合或字典是否为空。</li>
+</ul>
+<p><code>python
+   assert not container  # 检查容器是否为空</code></p>
+<ul>
+<li><strong>包含子集断言</strong>：检查一个集合是否包含另一个集合作为子集。</li>
+</ul>
+<p><code>python
+   assert subset &lt;= full_set</code></p>
+<ul>
+<li>
+<p><strong>字符串开头或结尾断言</strong>：检查一个字符串是否以指定的前缀或后缀开头或结尾。</p>
+<p><code>python
+assert string.startswith(prefix)
+assert string.endswith(suffix)</code></p>
+</li>
+<li>
+<p><strong>数量断言</strong>：检查一个列表、集合或其他可迭代对象的元素数量。</p>
+<p><code>python
+assert len(iterable) == expected_length</code></p>
+</li>
+<li>
+<p><strong>范围断言</strong>：检查一个值是否在指定的范围内。</p>
+<p><code>python
+assert lower_bound &lt;= value &lt;= upper_bound</code></p>
+</li>
+<li>
+<p><strong>文件存在断言</strong>：检查文件是否存在。</p>
+<p>```python
+import os</p>
+<p>assert os.path.exists(file_path)
+```</p>
+</li>
+</ul>
+<p>以上是一些 Pytest 常用的断言，但根据具体的测试需求，您可能会使用其他断言或结合多个断言来更全面地验证测试结果。
+详细的断言文档可以在 Pytest 官方网站找到：<a href="https://docs.pytest.org/en/latest/reference.html#pytest">Pytest - Built-in fixtures, marks, and nodes</a></p>
+<h3 id="_10">数据驱动</h3>
+<p>在 API 自动化测试的过程中。使用数据驱动是一种常规测试方法，其中测试用例的输入数据和预期输出数据都被存储在数据文件中，测试框架根据这些数据文件执行多次测试，以验证 API 的各个方面。</p>
+<p>测试数据可以很容易地修改，而不需要修改测试用例代码。</p>
+<p>数据驱动测试可以帮助你有效地覆盖多种情况，确保 API 在各种输入数据下都能正常运行。</p>
+<p>可参考 demo：<a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo">https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo</a></p>
+<h4 id="_11">新建测试配置文件</h4>
+<blockquote>
+<p>配置文件会以 json 格式存储为例，其他格式如 YAML、CSV 等类似，均可参考</p>
+</blockquote>
+<pre><code class="language-bash">// 新建测试配置文件夹
+mkdir config
+// 新建测试配置文件
+cd config
+touch config.json
+</code></pre>
+<h4 id="_12">编写测试配置文件</h4>
+<p>配置文件存储测试环境的配置信息，如测试环境的 URL、数据库连接信息等。</p>
+<p>demo 中的测试配置文件内容如下：</p>
+<ul>
+<li>配置 host 信息</li>
+<li>配置 getAPI 接口信息</li>
+<li>配置 postAPI 接口信息</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;host&quot;: &quot;https://jsonplaceholder.typicode.com&quot;,
+  &quot;getAPI&quot;: &quot;/posts/1&quot;,
+  &quot;postAPI&quot;:&quot;/posts&quot;
+}
+</code></pre>
+<h4 id="_13">新建测试数据文件</h4>
+<p>请求数据文件和响应数据文件分别存储测试用例的请求数据和预期响应数据。</p>
+<pre><code class="language-bash">// 新建测试数据文件夹
+mkdir data
+// 进入测试数据文件夹
+cd data
+// 新建请求数据文件
+touch request_data.json
+// 新建响应数据文件
+touch response_data.json
+</code></pre>
+<h4 id="_14">编写测试数据文件</h4>
+<ul>
+<li>编写请求数据文件</li>
+</ul>
+<blockquote>
+<p>请求数据文件中配置了 getAPI 接口的请求数据和 postAPI 接口的请求数据</p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;getAPI&quot;: &quot;&quot;,
+  &quot;postAPI&quot;:{
+    &quot;title&quot;: &quot;foo&quot;,
+    &quot;body&quot;: &quot;bar&quot;,
+    &quot;userId&quot;: 1
+  }
+}
+</code></pre>
+<ul>
+<li>编写响应数据文件</li>
+</ul>
+<blockquote>
+<p>请求数据文件中配置了 getAPI 接口的响应数据和 postAPI 接口的响应数据</p>
+</blockquote>
+<pre><code class="language-json">{
+    &quot;getAPI&quot;: {
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 1,
+      &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+      &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+    },
+    &quot;postAPI&quot;:{
+      &quot;title&quot;: &quot;foo&quot;,
+      &quot;body&quot;: &quot;bar&quot;,
+      &quot;userId&quot;: &quot;1&quot;,
+      &quot;id&quot;: 101
+    }
+}
+</code></pre>
+<h4 id="_15">更新测试用例来支持数据驱动</h4>
+<blockquote>
+<p>为做区分，这里新建测试用例文件，文件名为 test_demo_data_driving.py</p>
+</blockquote>
+<pre><code class="language-python">import requests
+import json
+
+# 从配置文件夹获取测试配置
+with open(&quot;config/config.json&quot;, &quot;r&quot;) as json_file:
+    config = json.load(json_file)
+
+# 从测试数据文件夹获取接口请求数据
+with open('data/request_data.json', 'r') as json_file:
+    request_data = json.load(json_file)
+
+# 从测试数据文件夹获取接口响应数据
+with open('data/response_data.json', 'r') as json_file:
+    response_data = json.load(json_file)
+
+
+class TestPytestDemo:
+
+    def test_get_demo(self):
+        host = config.get(&quot;host&quot;)
+        get_api = config.get(&quot;getAPI&quot;)
+        get_api_response_data = response_data.get(&quot;getAPI&quot;)
+        # 发起请求
+        response = requests.get(host+get_api)
+        # 断言
+        assert response.status_code == 200
+        assert response.json() == get_api_response_data
+
+    def test_post_demo(self):
+        host = config.get(&quot;host&quot;)
+        post_api = config.get(&quot;postAPI&quot;)
+        post_api_request_data = request_data.get(&quot;postAPI&quot;)
+        post_api_response_data = response_data.get(&quot;postAPI&quot;)
+        # 发起请求
+        response = requests.post(host + post_api, post_api_request_data)
+        # 断言
+        assert response.status_code == 201
+        assert response.json() == post_api_response_data
+</code></pre>
+<h4 id="_16">运行该测试用例确认数据驱动是否生效</h4>
+<blockquote>
+<p>若用 demo 项目运行数据驱动支持测试用例：test_demo_data_driving.py，建议先屏蔽掉其他测试用例，否则可能会报错</p>
+</blockquote>
+<pre><code class="language-shell">  pytest tests/test_demo_data_driving.py
+</code></pre>
+<p><img alt="XQIPLf" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/XQIPLf.png" /></p>
+<h3 id="_17">多环境支持</h3>
+<p>在实际的 API 自动化测试过程中，我们需要在不同的环境中运行测试用例，以确保 API 在各个环境中都能正常运行。</p>
+<p>通过使用 Pytest 的 fixture 功能，我们可以轻松地实现多环境支持。</p>
+<p>可参考 demo：<a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo">https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo</a></p>
+<h4 id="_18">新建不同环境测试配置文件</h4>
+<blockquote>
+<p>配置文件会以 json 格式存储为例，其他格式如 YAML、CSV 等类似，均可参考</p>
+</blockquote>
+<pre><code class="language-bash">// 新建测试配置文件夹
+mkdir config
+// 进入测试配置文件夹 
+cd config
+// 新建开发环境测试配置文件
+touch dev_config.json
+// 新建生产环境测试配置文件
+touch prod_config.json
+</code></pre>
+<h4 id="_19">编写不同环境测试配置文件</h4>
+<ul>
+<li>编写开发环境测试配置文件</li>
+</ul>
+<blockquote>
+<p>根据实际情况配置开发环境测试配置文件</p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;host&quot;: &quot;https://jsonplaceholder.typicode.com&quot;,
+  &quot;getAPI&quot;: &quot;/posts/1&quot;,
+  &quot;postAPI&quot;:&quot;/posts&quot;
+}
+</code></pre>
+<ul>
+<li>编写生产环境测试配置文件</li>
+</ul>
+<blockquote>
+<p>根据实际情况配置生产环境测试配置文件</p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;host&quot;: &quot;https://jsonplaceholder.typicode.com&quot;,
+  &quot;getAPI&quot;: &quot;/posts/1&quot;,
+  &quot;postAPI&quot;:&quot;/posts&quot;
+}
+</code></pre>
+<h4 id="_20">新建不同环境测试数据文件</h4>
+<blockquote>
+<p>不同环境请求数据文件和响应数据文件分别存储测试用例的不同环境请求数据和不同环境预期响应数据。</p>
+</blockquote>
+<pre><code class="language-bash">// 新建测试数据文件夹
+mkdir data
+// 进入测试数据文件夹
+cd data
+// 新建开发环境请求数据文件
+touch dev_request_data.json
+// 新建开发环境响应数据文件
+touch dev_response_data.json
+// 新建生产环境请求数据文件
+touch prod_request_data.json
+// 新建生产环境响应数据文件
+touch prod_response_data.json
+</code></pre>
+<h4 id="_21">编写不同环境测试数据文件</h4>
+<ul>
+<li>编写开发环境请求数据文件</li>
+</ul>
+<blockquote>
+<p>开发环境请求数据文件中配置了 getAPI 接口的请求数据和 postAPI 接口的请求数据</p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;getAPI&quot;: &quot;&quot;,
+  &quot;postAPI&quot;:{
+    &quot;title&quot;: &quot;foo&quot;,
+    &quot;body&quot;: &quot;bar&quot;,
+    &quot;userId&quot;: 1
+  }
+}
+</code></pre>
+<ul>
+<li>编写开发环境响应数据文件</li>
+</ul>
+<blockquote>
+<p>开发环境响应数据文件中配置了 getAPI 接口的响应数据和 postAPI 接口的响应数据</p>
+</blockquote>
+<pre><code class="language-json">{
+    &quot;getAPI&quot;: {
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 1,
+      &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+      &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+    },
+    &quot;postAPI&quot;:{
+      &quot;title&quot;: &quot;foo&quot;,
+      &quot;body&quot;: &quot;bar&quot;,
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 101
+    }
+}
+</code></pre>
+<ul>
+<li>编写生产环境请求数据文件</li>
+</ul>
+<blockquote>
+<p>生产环境请求数据文件中配置了 getAPI 接口的请求数据和 postAPI 接口的请求数据</p>
+</blockquote>
+<pre><code class="language-json">{
+  &quot;getAPI&quot;: &quot;&quot;,
+  &quot;postAPI&quot;:{
+    &quot;title&quot;: &quot;foo&quot;,
+    &quot;body&quot;: &quot;bar&quot;,
+    &quot;userId&quot;: 1
+  }
+}
+</code></pre>
+<ul>
+<li>编写生产环境响应数据文件</li>
+</ul>
+<blockquote>
+<p>生产环境响应数据文件中配置了 getAPI 接口的响应数据和 postAPI 接口的响应数据</p>
+</blockquote>
+<pre><code class="language-json">{
+    &quot;getAPI&quot;: {
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 1,
+      &quot;title&quot;: &quot;sunt aut facere repellat provident occaecati excepturi optio reprehenderit&quot;,
+      &quot;body&quot;: &quot;quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto&quot;
+    },
+    &quot;postAPI&quot;:{
+      &quot;title&quot;: &quot;foo&quot;,
+      &quot;body&quot;: &quot;bar&quot;,
+      &quot;userId&quot;: 1,
+      &quot;id&quot;: 101
+    }
+}
+</code></pre>
+<h4 id="fixture">配置支持多环境的 fixture</h4>
+<blockquote>
+<p>fixture 会以 conftest.py 文件存储为例，其他格式如 YAML、CSV 等类似，均可参考</p>
+</blockquote>
+<ul>
+<li>项目根目录新建 conftest.py 文件</li>
+</ul>
+<pre><code class="language-bash"> mkdrir conftest.py
+</code></pre>
+<ul>
+<li>编写 conftest.py 文件</li>
+</ul>
+<pre><code class="language-python">
+import pytest
+import json
+import json
+import os
+
+
+@pytest.fixture(scope=&quot;session&quot;)
+def env_config(request):
+    # get config file from different env
+    env = os.getenv('ENV', 'dev')
+    with open(f'config/{env}_config.json', 'r') as config_file:
+        config = json.load(config_file)
+    return config
+
+
+@pytest.fixture(scope=&quot;session&quot;)
+def env_request_data(request):
+    # get request data file from different env
+    env = os.getenv('ENV', 'dev')
+    with open(f'data/{env}_request_data.json', 'r') as request_data_file:
+        request_data = json.load(request_data_file)
+    return request_data
+
+
+@pytest.fixture (scope=&quot;session&quot;)
+def env_response_data(request):
+    # get response data file from different env
+    env = os.getenv('ENV', 'dev')
+    with open(f'data/{env}_response_data.json', 'r') as response_data_file:
+        response_data = json.load(response_data_file)
+    return response_data
+</code></pre>
+<h4 id="_22">更新测试用例来支持多环境</h4>
+<blockquote>
+<p>为做区分，这里新建测试用例文件，文件名为 test_demo_multi_environment.py</p>
+</blockquote>
+<pre><code class="language-python">import requests
+import json
+
+
+class TestPytestMultiEnvDemo:
+
+    def test_get_demo_multi_env(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        get_api = env_config[&quot;getAPI&quot;]
+        get_api_response_data = env_response_data[&quot;getAPI&quot;]
+        # send request
+        response = requests.get(host+get_api)
+        # assert
+        assert response.status_code == 200
+        assert response.json() == get_api_response_data
+
+    def test_post_demo_multi_env(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        post_api = env_config[&quot;postAPI&quot;]
+        post_api_request_data = env_request_data[&quot;postAPI&quot;]
+        post_api_response_data = env_response_data[&quot;postAPI&quot;]
+        # send request
+        response = requests.post(host + post_api, post_api_request_data)
+        # assert
+        assert response.status_code == 201
+        assert response.json() == post_api_response_data
+</code></pre>
+<h4 id="_23">运行该测试用例确认多环境支持是否生效</h4>
+<ul>
+<li>运行开发环境测试用例</li>
+</ul>
+<pre><code class="language-shell">ENV=dev pytest test_case/test_demo_multi_environment.py
+</code></pre>
+<p><img alt="Wb0owW" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Wb0owW.png" /></p>
+<ul>
+<li>运行生产环境测试用例</li>
+</ul>
+<pre><code class="language-shell">ENV=prod pytest test_case/test_demo_multi_environment.py
+</code></pre>
+<p><img alt="2kITJT" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2kITJT.png" /></p>
+<h3 id="allure">集成 allure 报告</h3>
+<p>allure 是一个轻量级的、灵活的、易于扩展的测试报告工具，它提供了丰富的报告类型和功能，可以帮助您更好地可视化测试结果。</p>
+<p>allure 报告可以与 Pytest 集成，以生成详细的测试报告。</p>
+<p>可参考 demo：<a href="https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo">https://github.com/Automation-Test-Starter/Pytest-API-Test-Demo</a></p>
+<h4 id="allure-pytest">安装 allure-pytest 依赖</h4>
+<pre><code class="language-shell">pip install allure-pytest
+</code></pre>
+<blockquote>
+<p>避免之前安装的 pytest-html-reporter 与 allure-pytest 冲突，建议先卸载 pytest-html-reporter</p>
+</blockquote>
+<pre><code class="language-shell">pip uninstall pytest-html-reporter
+</code></pre>
+<h4 id="allure-pytest_1">配置 allure-pytest</h4>
+<p>更新 pytest.ini 文件来指定 allure 报告的存储位置</p>
+<pre><code class="language-ini">[pytest]
+# allure
+addopts = --alluredir ./allure-results
+</code></pre>
+<h4 id="allure_1">调整测试用例来支持 allure 报告</h4>
+<blockquote>
+<p>为做区分，这里新建测试用例文件，文件名为 test_demo_allure.py</p>
+</blockquote>
+<pre><code class="language-python">import allure
+import requests
+
+
+@allure.feature(&quot;Test example API&quot;)
+class TestPytestAllureDemo:
+
+    @allure.story(&quot;Test example get endpoint&quot;)
+    @allure.title(&quot;Verify the get API&quot;)
+    @allure.description(&quot;verify the get API response status code and data&quot;)
+    @allure.severity(&quot;blocker&quot;)
+    def test_get_example_endpoint_allure(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        get_api = env_config[&quot;getAPI&quot;]
+        get_api_request_data = env_request_data[&quot;getAPI&quot;]
+        get_api_response_data = env_response_data[&quot;getAPI&quot;]
+        # send get request
+        response = requests.get(host + get_api)
+        # assert
+        print(&quot;response status code is&quot; + str(response.status_code))
+        assert response.status_code == 200
+        print(&quot;response data is&quot; + str(response.json()))
+        assert response.json() == get_api_response_data
+
+    @allure.story(&quot;Test example POST API&quot;)
+    @allure.title(&quot;Verify the POST API&quot;)
+    @allure.description(&quot;verify the POST API response status code and data&quot;)
+    @allure.severity(&quot;Critical&quot;)
+    def test_post_example_endpoint_allure(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        post_api = env_config[&quot;postAPI&quot;]
+        post_api_request_data = env_request_data[&quot;postAPI&quot;]
+        post_api_response_data = env_response_data[&quot;postAPI&quot;]
+        # send request
+        response = requests.post(host + post_api, json=post_api_request_data)
+        # assert
+        print(&quot;response status code is&quot; + str(response.status_code))
+        assert response.status_code == 201
+        print(&quot;response data is&quot; + str(response.json()))
+        assert response.json() == post_api_response_data
+</code></pre>
+<h4 id="allure_2">运行测试用例生成 allure 报告</h4>
+<pre><code class="language-shell">ENV=dev pytest test_case/test_demo_allure.py
+</code></pre>
+<h4 id="allure_3">查看 allure 报告</h4>
+<p>输入以下命令来启动 allure 服务并浏览器中查看 allure 报告</p>
+<pre><code class="language-shell">allure serve allure-results
+</code></pre>
+<p><img alt="Pr1E3W" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Pr1E3W.png" /></p>
+<p><img alt="OsUO2e" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/OsUO2e.png" /></p>
+<h4 id="cicd-allure">调整 CI/CD 流程来支持 allure 报告</h4>
+<blockquote>
+<p>以 github action 为例，其他 CI 工具类似</p>
+</blockquote>
+<p>更新.github/workflows/pytest.yml 文件内容来上传 allure 报告到 GitHub</p>
+<pre><code class="language-yaml">name: Pytest API Testing
+
+on:
+  push:
+    branches: [ &quot;main&quot; ]
+  pull_request:
+    branches: [ &quot;main&quot; ]
+
+permissions:
+  contents: read
+
+jobs:
+  Pytes-API-Testing:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: &quot;3.10&quot;
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Test with pytest
+      run: |
+        ENV=dev pytest
+
+    - name: Archive Pytest allure test report
+      uses: actions/upload-artifact@v3
+      with:
+        name: Pytest-allure-report
+        path: allure-results
+
+    - name: Upload Pytest allure report to GitHub
+      uses: actions/upload-artifact@v3
+      with:
+        name: Pytest-allure-report
+        path: allure-results
+</code></pre>
+<h4 id="github-action-allure">查看 github action allure 报告</h4>
+<p>在 GitHub 中，导航到你的仓库。单击上方的 Actions 选项卡，然后单击左侧的 Pytest API Testing 工作流。你应该会看到工作流正在运行，等待执行完成，就可以查看结果。</p>
+<p><img alt="Lz2pPh" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/Lz2pPh.png" /></p>
+<h3 id="_24">并发测试和分布式测试</h3>
+<p>在日常的接口自动化测试过程中，需要并发执行测试用例，以提高测试效率。</p>
+<p>有时候也需要引入分布式测试，以便在多台机器上同时运行测试用例，也能更好的提升测试效率。</p>
+<p><code>pytest-xdist</code> 是 Pytest 的一个插件，能提供了一些对应的功能，主要用于支持并发测试和分布式测试。</p>
+<h4 id="pytest-xdist"><code>pytest-xdist</code> 功能介绍</h4>
+<ol>
+<li><strong>并发执行测试</strong>：</li>
+<li>使用 <code>-n</code> 选项：<code>pytest -n NUM</code> 允许并发运行测试，其中 <code>NUM</code> 是并发 worker 的数量。这可以加速测试执行，特别是在拥有多个 CPU 内核的计算机上。</li>
+</ol>
+<p><code>bash
+   pytest -n 3  # 启动 3 个并发 worker 执行测试</code></p>
+<ol>
+<li><strong>分布式测试</strong>：</li>
+<li>使用 <code>pytest --dist=loadscope</code>：允许在多个节点上执行测试，通过分布式测试可以更快地完成测试运行。</li>
+</ol>
+<p><code>bash
+   pytest --dist=loadscope</code></p>
+<ul>
+<li>使用 <code>pytest --dist=each</code>：每个节点运行一组测试，适用于分布式测试。</li>
+</ul>
+<p><code>bash
+   pytest --dist=each</code></p>
+<ol>
+<li><strong>参数化测试和并发</strong>：</li>
+<li>使用 <code>pytest.mark.run</code>：结合 <code>pytest.mark.run</code> 标记，可以选择在不同的进程或节点上运行具有不同标记的测试。</li>
+</ol>
+<p><code>python
+   @pytest.mark.run(processes=2)
+   def test_example():
+       pass</code></p>
+<ol>
+<li><strong>分布式环境设置</strong>：</li>
+<li>使用 <code>pytest_configure_node</code>：可以在节点上运行测试之前进行配置。</li>
+</ol>
+<p><code>python
+   def pytest_configure_node(node):
+       node.slaveinput['my_option'] = 'some value'</code></p>
+<ul>
+<li>使用 <code>pytest_configure_node</code>：可以在节点上运行测试之前进行配置。</li>
+</ul>
+<p><code>python
+   def pytest_configure_node(node):
+       node.slaveinput['my_option'] = 'some value'</code></p>
+<ol>
+<li><strong>分布式测试环境销毁</strong>：</li>
+<li>使用 <code>pytest_configure_node</code>：可以在节点上运行测试之后进行清理。</li>
+</ol>
+<p>```python
+   def pytest_configure_node(node):
+       # 配置节点
+       yield</p>
+<pre><code>   # 在节点上运行测试后执行清理
+   print("Cleaning up after test run on node %s" % node.gateway.id)
+</code></pre>
+<p>```</p>
+<p>这些是 <code>pytest-xdist</code> 提供的一些功能，可以帮助您更有效地执行并发测试和分布式测试，以加速测试执行并提高效率。确保在使用前查阅 <code>pytest-xdist</code> 的文档以获取更详细的信息和用法示例。</p>
+<h4 id="pytest-xdist_1">安装 <code>pytest-xdist</code> 依赖</h4>
+<pre><code class="language-shell">pip install pytest-xdist
+</code></pre>
+<h4 id="_25">并发运行测试用例示例</h4>
+<h5 id="3-worker">并发 3 个 worker 执行测试用例</h5>
+<p>分别运行以下命令，查看测试用例的执行时长</p>
+<ul>
+<li>并发执行</li>
+</ul>
+<pre><code class="language-shell">pytest -n 3
+</code></pre>
+<p><img alt="LKHRct" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/LKHRct.png" /></p>
+<ul>
+<li>默认串行执行</li>
+</ul>
+<pre><code class="language-shell">pytest
+</code></pre>
+<p><img alt="5y442s" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5y442s.png" /></p>
+<p><code>串行执行耗时 9.81s</code>，而<code>并发执行耗时 1.63s</code>，可以看到并发执行测试用例可以大大提高测试效率。</p>
+<h5 id="3-worker-worker">并发 3 个 worker 执行测试用例，并且每个 worker 都会打印测试用例的进度</h5>
+<pre><code class="language-shell">pytest -n 3 -v
+</code></pre>
+<p><img alt="5krJia" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/5krJia.png" /></p>
+<p>测试结果中会打印测试进度，可以更好的了解测试用例的执行情况。</p>
+<h4 id="_26">分布式测试示例</h4>
+<h5 id="_27">分布式测试，每个节点运行一组测试</h5>
+<pre><code class="language-shell">pytest --dist=each
+</code></pre>
+<p><img alt="W1akqS" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/W1akqS.png" /></p>
+<p>分布式测试可以更快地完成测试运行。</p>
+<h5 id="worker">分布式测试，每个节点运行一组测试，并且每个 worker 都会打印测试用例的进度</h5>
+<pre><code class="language-shell">pytest --dist=each -v
+</code></pre>
+<p><img alt="sMlawH" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/sMlawH.png" /></p>
+<p>测试结果中会打印测试进度，可以更好的了解测试用例的执行情况。</p>
+<h5 id="worker_1">分布式测试，每个节点运行一组测试，并且每个 worker 都会打印测试用例的进度，同时打印测试日志的输出</h5>
+<pre><code class="language-shell">pytest --dist=each -v --capture=no
+</code></pre>
+<p><img alt="RkNSDb" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/RkNSDb.png" /></p>
+<p>测试结果中会打印测试日志的输出，可以更好的了解测试用例的执行情况。</p>
+<h3 id="_28">筛选用例执行</h3>
+<p>在日常的接口测试过程中，我们需要根据实际情况来选择性地执行测试用例，以提高测试效率。</p>
+<p>一般我们使用 allure 测试报告的时候，可以使用 Allure 标签特性来进行筛选对应标签的的用例来执行测试，但 Pytest 框架不直接支持运行基于 Allure 标签的测试。所以可以使用 Pytest 标记来实现这一点。</p>
+<p>Pytest 提供 <code>marks</code>标记功能可以用来标记不同类型的测试用例，然后进行筛选对应类型的测试用例进行执行。</p>
+<p>大致流程为你可以用自定义标记（如 Regression/Smoke）来标记测试，然后使用 pytest 的 -m 选项只运行这些测试。</p>
+<h4 id="pytest_2">定义 Pytest 标记</h4>
+<p>编辑 pytest.ini 文件，添加以下内容：自定义标记的类型</p>
+<ul>
+<li>Regression:标记为回归测试的用例</li>
+<li>Smoke:标记为冒烟测试的用例</li>
+</ul>
+<pre><code class="language-ini">markers =
+    Regression: marks tests as Regression
+    Smoke: marks tests as Smoke
+</code></pre>
+<h4 id="_29">标记用例</h4>
+<p>操作步骤为：</p>
+<ul>
+<li>引入 pytest</li>
+<li>使用 <code>@pytest.mark</code> 标记测试用例</li>
+</ul>
+<blockquote>
+<p>为做区分，这里新建测试用例文件，文件名为 test_demo_filter.py</p>
+</blockquote>
+<pre><code class="language-python">import pytest
+import requests
+import json
+
+
+class TestPytestMultiEnvDemo:
+
+    @pytest.mark.Regression  # mark the test case as regression
+    def test_get_demo_filter(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        get_api = env_config[&quot;getAPI&quot;]
+        get_api_response_data = env_response_data[&quot;getAPI&quot;]
+        # send request
+        response = requests.get(host+get_api)
+        # assert
+        assert response.status_code == 200
+        assert response.json() == get_api_response_data
+
+    @pytest.mark.Smoke  # mark the test case as smoke
+    def test_post_demo_filter(self, env_config, env_request_data, env_response_data):
+        host = env_config[&quot;host&quot;]
+        post_api = env_config[&quot;postAPI&quot;]
+        post_api_request_data = env_request_data[&quot;postAPI&quot;]
+        print(&quot;make the request&quot;)
+        post_api_response_data = env_response_data[&quot;postAPI&quot;]
+        # Your test code here
+        response = requests.post(host + post_api, json=post_api_request_data)
+        print(&quot;verify the response status code&quot;)
+        assert response.status_code == 201
+        print(&quot;verify the response data&quot;)
+        assert response.json() == post_api_response_data
+</code></pre>
+<h4 id="_30">筛选测试用例执行</h4>
+<ul>
+<li>运行 Regression 标记的测试用例</li>
+</ul>
+<pre><code class="language-shell">pytest -m Regression
+</code></pre>
+<p>这条命令告诉 pytest 只运行标有 Regression 的测试。</p>
+<p><img alt="d8dMGa" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/d8dMGa.png" /></p>
+<ul>
+<li>运行 Smoke 标记的测试用例</li>
+</ul>
+<pre><code class="language-shell">pytest -m Smoke
+</code></pre>
+<p>这条命令告诉 pytest 只运行标有 Smoke 的测试。</p>
+<p><img alt="2023112014VOVT3v" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/2023112014VOVT3v.png" /></p>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Automation Test Starter
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>

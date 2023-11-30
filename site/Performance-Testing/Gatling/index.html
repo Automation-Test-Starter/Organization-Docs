@@ -1,0 +1,2242 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An organization made by QA, for QA.
+A QUICKSTART project for QA automation testing, including common test frameworks and tools, as well as some common test demo.">
+      
+      
+        <meta name="author" content="Automation Test Starter">
+      
+      
+        <link rel="canonical" href="https://automation-test-starter.pages.dev/Performance-Testing/Gatling/">
+      
+      
+        <link rel="prev" href="../../API-Automation-Testing/Postman/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>Gatling - Automation Test Starter</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-K091G8C97F"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-K091G8C97F",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-K091G8C97F",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gatling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Automation Test Starter" class="md-header__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Automation Test Starter
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Gatling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../zh/Performance-Testing/Gatling/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../API-Automation-Testing/SuperTest/" class="md-tabs__link">
+          
+  
+  API Automation Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Performance Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Automation Test Starter" class="md-nav__button md-logo" aria-label="Automation Test Starter" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Automation Test Starter
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Automation-Test-Starter/Organization-Docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Automation-Test-Starter/Organization-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API Automation Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            API Automation Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API-Automation-Testing/SuperTest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SuperTest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API-Automation-Testing/RestAssured/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RestAssured
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API-Automation-Testing/Pytest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pytest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API-Automation-Testing/Bruno/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bruno
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../API-Automation-Testing/Postman/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postman
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Performance Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Performance Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Gatling
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Gatling
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gatling-introduction" class="md-nav__link">
+    Gatling Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    Environment setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vscode-gradle-scala-version" class="md-nav__link">
+    VSCode + Gradle + Scala Version
+  </a>
+  
+    <nav class="md-nav" aria-label="VSCode + Gradle + Scala Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparation" class="md-nav__link">
+    Preparation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-plugins" class="md-nav__link">
+    install plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#official-demo-initialization-debugging" class="md-nav__link">
+    official demo initialization &amp; debugging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscode-maven-scala-version" class="md-nav__link">
+    VSCode + Maven + Scala version
+  </a>
+  
+    <nav class="md-nav" aria-label="VSCode + Maven + Scala version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparation_1" class="md-nav__link">
+    Preparation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-plugins_1" class="md-nav__link">
+    install plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#official-demo-initialization-debugging_1" class="md-nav__link">
+    Official demo initialization &amp; debugging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idea-gradle-scala-version" class="md-nav__link">
+    IDEA + Gradle + Scala version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idea-maven-scala-version" class="md-nav__link">
+    IDEA + Maven + Scala version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-your-own-gatling-project-from-0-to-1" class="md-nav__link">
+    Build your own Gatling project from 0 to 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Build your own Gatling project from 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradle-scala-versions" class="md-nav__link">
+    Gradle + Scala versions
+  </a>
+  
+    <nav class="md-nav" aria-label="Gradle + Scala versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-empty-gradle-project" class="md-nav__link">
+    Create an empty Gradle project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-project-buildgradle" class="md-nav__link">
+    Configure the project build.gradle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradle-build-project-and-initialize" class="md-nav__link">
+    gradle build project and initialize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-directory" class="md-nav__link">
+    Initialization Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-scripts" class="md-nav__link">
+    Writing Scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-scripts" class="md-nav__link">
+    Debugging Scripts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maven-scala-version" class="md-nav__link">
+    Maven + Scala version
+  </a>
+  
+    <nav class="md-nav" aria-label="Maven + Scala version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-empty-maven-project" class="md-nav__link">
+    Create an empty Maven project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-project-pomxml" class="md-nav__link">
+    Configure the project pom.xml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-directory_1" class="md-nav__link">
+    Initialization Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-scripts_1" class="md-nav__link">
+    Writing Scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-scripts_1" class="md-nav__link">
+    Debugging Scripts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-report-analysis" class="md-nav__link">
+    Test report analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Test report analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overall-view" class="md-nav__link">
+    Overall view
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-time-ranges" class="md-nav__link">
+    Response time ranges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-users-over-time" class="md-nav__link">
+    Active users over time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-time-distribution" class="md-nav__link">
+    Response time distribution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-time-percentiles-over-time" class="md-nav__link">
+    Response time percentiles over time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requests-per-second-over-time" class="md-nav__link">
+    Requests per second over time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-per-second-over-time" class="md-nav__link">
+    Response per second over time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-request-analysis-report" class="md-nav__link">
+    Single request analysis report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-scenario-setting" class="md-nav__link">
+    Performance Scenario Setting
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Scenario Setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#injection" class="md-nav__link">
+    Injection
+  </a>
+  
+    <nav class="md-nav" aria-label="Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-injection" class="md-nav__link">
+    What is Injection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-injection-scenario" class="md-nav__link">
+    Common Injection Scenario
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Injection Scenario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-model-scenario" class="md-nav__link">
+    Open Model Scenario
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closed-model-scenario" class="md-nav__link">
+    Closed Model Scenario
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meta-dsl-scenario" class="md-nav__link">
+    Meta DSL Scenario
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrent-scenario" class="md-nav__link">
+    Concurrent Scenario
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-scenarios" class="md-nav__link">
+    Other Scenarios
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    CI/CD Integration
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-github-action" class="md-nav__link">
+    Accessing github action
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing github action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradle-scala-version" class="md-nav__link">
+    Gradle + Scala version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maven-scala-version_1" class="md-nav__link">
+    Maven + Scala version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorder" class="md-nav__link">
+    Recorder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gatling-introduction" class="md-nav__link">
+    Gatling Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    Environment setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vscode-gradle-scala-version" class="md-nav__link">
+    VSCode + Gradle + Scala Version
+  </a>
+  
+    <nav class="md-nav" aria-label="VSCode + Gradle + Scala Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparation" class="md-nav__link">
+    Preparation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-plugins" class="md-nav__link">
+    install plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#official-demo-initialization-debugging" class="md-nav__link">
+    official demo initialization &amp; debugging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscode-maven-scala-version" class="md-nav__link">
+    VSCode + Maven + Scala version
+  </a>
+  
+    <nav class="md-nav" aria-label="VSCode + Maven + Scala version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparation_1" class="md-nav__link">
+    Preparation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-plugins_1" class="md-nav__link">
+    install plugins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#official-demo-initialization-debugging_1" class="md-nav__link">
+    Official demo initialization &amp; debugging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idea-gradle-scala-version" class="md-nav__link">
+    IDEA + Gradle + Scala version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idea-maven-scala-version" class="md-nav__link">
+    IDEA + Maven + Scala version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-your-own-gatling-project-from-0-to-1" class="md-nav__link">
+    Build your own Gatling project from 0 to 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Build your own Gatling project from 0 to 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradle-scala-versions" class="md-nav__link">
+    Gradle + Scala versions
+  </a>
+  
+    <nav class="md-nav" aria-label="Gradle + Scala versions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-empty-gradle-project" class="md-nav__link">
+    Create an empty Gradle project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-project-buildgradle" class="md-nav__link">
+    Configure the project build.gradle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradle-build-project-and-initialize" class="md-nav__link">
+    gradle build project and initialize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-directory" class="md-nav__link">
+    Initialization Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-scripts" class="md-nav__link">
+    Writing Scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-scripts" class="md-nav__link">
+    Debugging Scripts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maven-scala-version" class="md-nav__link">
+    Maven + Scala version
+  </a>
+  
+    <nav class="md-nav" aria-label="Maven + Scala version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-an-empty-maven-project" class="md-nav__link">
+    Create an empty Maven project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-the-project-pomxml" class="md-nav__link">
+    Configure the project pom.xml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-directory_1" class="md-nav__link">
+    Initialization Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-scripts_1" class="md-nav__link">
+    Writing Scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-scripts_1" class="md-nav__link">
+    Debugging Scripts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    Advanced Usage
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-report-analysis" class="md-nav__link">
+    Test report analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Test report analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overall-view" class="md-nav__link">
+    Overall view
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-time-ranges" class="md-nav__link">
+    Response time ranges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-users-over-time" class="md-nav__link">
+    Active users over time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-time-distribution" class="md-nav__link">
+    Response time distribution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-time-percentiles-over-time" class="md-nav__link">
+    Response time percentiles over time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requests-per-second-over-time" class="md-nav__link">
+    Requests per second over time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-per-second-over-time" class="md-nav__link">
+    Response per second over time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-request-analysis-report" class="md-nav__link">
+    Single request analysis report
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-scenario-setting" class="md-nav__link">
+    Performance Scenario Setting
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Scenario Setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#injection" class="md-nav__link">
+    Injection
+  </a>
+  
+    <nav class="md-nav" aria-label="Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-injection" class="md-nav__link">
+    What is Injection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-injection-scenario" class="md-nav__link">
+    Common Injection Scenario
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Injection Scenario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-model-scenario" class="md-nav__link">
+    Open Model Scenario
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closed-model-scenario" class="md-nav__link">
+    Closed Model Scenario
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meta-dsl-scenario" class="md-nav__link">
+    Meta DSL Scenario
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrent-scenario" class="md-nav__link">
+    Concurrent Scenario
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-scenarios" class="md-nav__link">
+    Other Scenarios
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    CI/CD Integration
+  </a>
+  
+    <nav class="md-nav" aria-label="CI/CD Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-github-action" class="md-nav__link">
+    Accessing github action
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing github action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradle-scala-version" class="md-nav__link">
+    Gradle + Scala version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maven-scala-version_1" class="md-nav__link">
+    Maven + Scala version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorder" class="md-nav__link">
+    Recorder
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="gatling">Gatling</h1>
+<p>An introduction to using the gatling tool for performance testing, including environment setup, project initialization, examples, advanced usage, and more!</p>
+<h2 id="gatling-introduction">Gatling Introduction</h2>
+<p>Gatling is an open source tool for performance and load testing, especially for testing web applications. It is a high-performance tool based on the Scala programming language for simulating and measuring the performance of applications under different loads.</p>
+<p>Here are some of the key features and benefits of Gatling:</p>
+<ul>
+<li>Based on Scala programming language: Gatling's test scripts are written in Scala, which makes it a powerful programming tool that allows users to write complex test scenarios and logic.</li>
+<li>High Performance: Gatling is designed as a high performance load testing tool. It uses non-blocking I/O and an asynchronous programming model that is capable of simulating large numbers of concurrent users to better mimic real-world load situations.</li>
+<li>Easy to learn and use: Although Gatling's test scripts are written in Scala, its DSL (Domain Specific Language) is very simple and easy to learn. Even if you are not familiar with Scala, you can quickly learn how to create test scripts.</li>
+<li>Rich Features: Gatling provides a rich set of features, including request and response processing, data extraction, conditional assertions, performance report generation, and more. These features enable you to create complex test scenarios and perform comprehensive evaluation of application performance.</li>
+<li>Multi-Protocol Support: In addition to HTTP and HTTPS, Gatling supports other protocols such as WebSocket, JMS, and SMTP, making it suitable for testing a wide range of different types of applications.</li>
+<li>Real-time results analysis: Gatling provides real-time performance data and graphical reports during test runs to help you quickly identify performance issues.</li>
+<li>Open source and active community: Gatling is an open source project with an active community that constantly updates and improves the tool.</li>
+<li>CI/CD Integration Support: Gatling can be integrated with CI/CD tools such as Jenkins to perform performance testing in continuous integration and continuous delivery processes.</li>
+</ul>
+<p>Overall, Gatling is a powerful performance testing tool for testing a wide range of application types, helping development teams identify and resolve performance issues to ensure consistent performance and scalability of applications in production environments.</p>
+<h2 id="environment-setup">Environment setup</h2>
+<blockquote>
+<p>Since I'm a macbook user, I'll use the macbook demo as an example in the introduction, but windows users can refer to it on their own.</p>
+</blockquote>
+<h3 id="vscode-gradle-scala-version">VSCode + Gradle + Scala Version</h3>
+<h4 id="preparation">Preparation</h4>
+<ul>
+<li>[x] Development tool: VSCode</li>
+<li>[x] Install Gradle version &gt;= 6.0, I am using Gradle 8.44.</li>
+<li>[x] Install JDK version &gt;= 8, I use JDK 19</li>
+</ul>
+<h4 id="install-plugins">install plugins</h4>
+<ul>
+<li>[x] VSCode search for Scala (Metals) plugin for installation</li>
+<li>[x] VSCode search for Gradle for Java plugin for installation</li>
+</ul>
+<h4 id="official-demo-initialization-debugging">official demo initialization &amp; debugging</h4>
+<blockquote>
+<p>We will use the official demo project for initialization and debugging first, and then we will introduce how to create your own project later.</p>
+</blockquote>
+<ul>
+<li>Clone the official demo project</li>
+</ul>
+<pre><code class="language-bash">git clone git@github.com:gatling/gatling-gradle-plugin-demo-scala.git
+</code></pre>
+<ul>
+<li>
+<p>Open the cloned official demo project with VSCode.</p>
+</li>
+<li>
+<p>Open the project's Terminal window with VSCode and execute the following command</p>
+</li>
+</ul>
+<pre><code class="language-bash">gradle build
+</code></pre>
+<p><img alt="readme-build" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-build.png" /></p>
+<ul>
+<li>Run the demo in the project</li>
+</ul>
+<pre><code class="language-bash">gradle gatlingRun
+</code></pre>
+<ul>
+<li>Viewing the results of a command line run</li>
+</ul>
+<p><img alt="readme-report" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report.png" /></p>
+<ul>
+<li>Click on the html report link in the command line report and open it with your browser to view the detailed report information</li>
+</ul>
+<p><img alt="readme-report1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report1.png" /></p>
+<h3 id="vscode-maven-scala-version">VSCode + Maven + Scala version</h3>
+<h4 id="preparation_1">Preparation</h4>
+<ul>
+<li>[x] Development tool: VSCode</li>
+<li>[x] Install Maven, I use Maven 3.9.5.</li>
+<li>[x] JDK version &gt;= 8, I use JDK 19</li>
+</ul>
+<h4 id="install-plugins_1">install plugins</h4>
+<ul>
+<li>[x] VSCode search for Scala (Metals) plugins to install</li>
+<li>[x] VSCode search for Maven for Java plugins to install</li>
+</ul>
+<h4 id="official-demo-initialization-debugging_1">Official demo initialization &amp; debugging</h4>
+<blockquote>
+<p>We will use the official demo project for initialization and debugging first, and then we will introduce how to create your own project.</p>
+</blockquote>
+<ul>
+<li>Clone the official demo project</li>
+</ul>
+<pre><code class="language-bash">git clone git@github.com:gatling/gatling-maven-plugin-demo-scala.git
+</code></pre>
+<ul>
+<li>
+<p>Use VSCode to open the cloned official demo project.</p>
+</li>
+<li>
+<p>Open the Terminal window of this project with VSCode and execute the following command to run the demo in the project</p>
+</li>
+</ul>
+<pre><code class="language-bash">mvn gatling:test
+</code></pre>
+<ul>
+<li>Viewing the results of a command line run</li>
+</ul>
+<p><img alt="readme-report2" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report2.png" /></p>
+<ul>
+<li>Click on the html report link in the command line report and open it with your browser to view the detailed report information</li>
+</ul>
+<p><img alt="readme-report1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report1.png" /></p>
+<h3 id="idea-gradle-scala-version">IDEA + Gradle + Scala version</h3>
+<p>This is similar to the VSCode version, so I won't repeat it here.</p>
+<p>The differences are as follows:</p>
+<ul>
+<li>IDEA searches for Scala plugins to install</li>
+<li>New way to run: right click and select Engine.scala file in the project directory, select Run 'Engine' to run the demo (you need to press enter to confirm the run).</li>
+</ul>
+<h3 id="idea-maven-scala-version">IDEA + Maven + Scala version</h3>
+<p>This is similar to the VSCode version, so I won't repeat it here.</p>
+<p>The differences are as follows:</p>
+<ul>
+<li>IDEA searches for Scala plugins to install</li>
+<li>New way to run: right-click the Engine.scala file in the project directory and select Run 'Engine' to run the demo (you need to press enter to confirm during the run).</li>
+</ul>
+<h2 id="build-your-own-gatling-project-from-0-to-1">Build your own Gatling project from 0 to 1</h2>
+<h3 id="gradle-scala-versions">Gradle + Scala versions</h3>
+<h4 id="create-an-empty-gradle-project">Create an empty Gradle project</h4>
+<pre><code class="language-bash">mkdir gatling-gradle-demo
+cd gatling-gradle-demo
+gradle init
+</code></pre>
+<h4 id="configure-the-project-buildgradle">Configure the project build.gradle</h4>
+<p>Add the following to the build.gradle file in the project</p>
+<blockquote>
+<p>You can copy the content of the build.gradle file in this project, for more configurations, please refer to the <a href="https://gatling.io/docs/gatling/reference/current/extensions/gradle_plugin/">official documentation</a>.</p>
+</blockquote>
+<pre><code class="language-groovy">// Plugin Configuration
+plugins {
+    id 'scala' // scala plugin declaration (based on the development tools plugin)
+    id 'io.gatling.gradle' version '3.9.5.6' // declaration of the version of the gradle-based gatling framework plugin
+}
+// Repository source configuration
+repositories {
+  // Use the maven central repository source
+  mavenCentral()
+}
+// gatling configuration
+gatling {
+  // logback root level, defaults to the Gatling console log level if logback.xml does not exist in the configuration folder
+  logLevel = 'WARN' 
+
+  // Enforce logging of HTTP requests at a level of detail
+  // set to 'ALL' for all HTTP traffic in TRACE, 'FAILURES' for failed HTTP traffic in DEBUG
+  logHttp = 'FAILURES' 
+
+  // Simulations filter
+  simulations = {
+      include &quot;**/simulation/*.scala&quot;
+  }
+}
+// Dependencies
+dependencies {     
+ // Charts library for generating report charts
+ gatling 'io.gatling.highcharts:gatling-charts-highcharts:3.8.3'
+ }
+</code></pre>
+<h4 id="gradle-build-project-and-initialize">gradle build project and initialize</h4>
+<ul>
+<li>Open the Terminal window of the project with an editor and execute the following command to confirm that the project build was successful</li>
+</ul>
+<pre><code class="language-bash">gradle build
+</code></pre>
+<ul>
+<li>Initialization complete: After completing the wizard, Gradle will generate a basic Gradle project structure in the project directory</li>
+</ul>
+<p><img alt="readme-project-tree1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-project-tree1.png" /></p>
+<h4 id="initialization-directory">Initialization Directory</h4>
+<p>Create a simulation directory in the src/gatling/scala directory to hold test scripts</p>
+<blockquote>
+<p>Gatling tests are usually located in the src/gatling directory. You need to manually create the src directory in the project root, and then create the gatling directory under the src directory. In the gatling directory, you can create your test simulation folder simulation, as well as other folders such as data, bodies, resources, and so on.</p>
+</blockquote>
+<h4 id="writing-scripts">Writing Scripts</h4>
+<ul>
+<li>
+<p>Create a demo.scala file in the simulation directory to write your test scripts.</p>
+</li>
+<li>
+<p>For reference, the following is a sample script</p>
+</li>
+</ul>
+<blockquote>
+<p>The script contains two scenarios, one for get requests and one for post requests.
+The get interface validates that the interface returns a status code of 200 and the post interface validates that the interface returns a status code of 201.
+The get interface uses rampUsers, the post interface uses constantConcurrentUsers.
+rampUsers: incrementally increase the number of concurrent users over a specified period of time, constantConcurrentUsers: keep the number of concurrent users constant over a specified period of time.
+The number of concurrent users is 10 for both interfaces, and the duration is 10 seconds for both interfaces.
+The request interval is 2 seconds for both interfaces.</p>
+</blockquote>
+<pre><code class="language-scala">package simulation 
+
+import scala.concurrent.duration._
+
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
+
+class demo extends Simulation { 
+
+  val httpProtocol = http
+    .baseUrl(&quot;https://jsonplaceholder.typicode.com&quot;) // 5
+  val scn = scenario(&quot;GetSimulation&quot;)
+    .exec(http(&quot;get_demo&quot;) 
+      .get(&quot;/posts/1&quot;)
+      .check(status.is(200)))
+    .pause(2)
+  val scn1 = scenario(&quot;PostSimulation&quot;)
+    .exec(http(&quot;post_demo&quot;)
+      .post(&quot;/posts&quot;)
+      .body(StringBody(&quot;&quot;&quot;{&quot;title&quot;: &quot;foo&quot;,&quot;body&quot;: &quot;bar&quot;,&quot;userId&quot;: 1}&quot;&quot;&quot;)).asJson
+      .check(status.is(201)))
+    .pause(2)
+
+  setUp( 
+    scn.inject(rampUsers(10) during(10 seconds)),
+    scn1.inject(constantConcurrentUsers(10) during(10 seconds))
+  ).protocols(httpProtocol)
+}
+</code></pre>
+<h4 id="debugging-scripts">Debugging Scripts</h4>
+<p>Execute the following command to run the test script and view the report</p>
+<pre><code class="language-bash">gradle gatlingRun
+</code></pre>
+<p><img alt="readme-report3" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report3.png" /></p>
+<h3 id="maven-scala-version">Maven + Scala version</h3>
+<h4 id="create-an-empty-maven-project">Create an empty Maven project</h4>
+<pre><code class="language-bash">mvn archetype:generate -DgroupId=demo.gatlin.maven -DartifactId=gatling-maven-demo
+</code></pre>
+<p>Initialization complete: After completing the wizard, Maven will create a new project directory and generate a basic Maven project structure in the</p>
+<p><img alt="readme-project-tree2" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-project-tree2.png" /></p>
+<h4 id="configure-the-project-pomxml">Configure the project pom.xml</h4>
+<p>Add the following contents to the pom.xml file in the project</p>
+<blockquote>
+<p>You can copy the contents of the pom.xml file in this project, for more configuration, please refer to the <a href="https://gatling.io/docs/gatling/reference/current/extensions/maven_plugin/">official documentation</a>.</p>
+</blockquote>
+<pre><code class="language-xml">&lt;!-- dependencies Configuration --&gt;
+&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;io.gatling.highcharts&lt;/groupId&gt;
+    &lt;artifactId&gt;gatling-charts-highcharts&lt;/artifactId&gt;
+    &lt;version&gt;3.9.5&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+&lt;!-- Plugin Configuration --&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;io.gatling&lt;/groupId&gt;
+        &lt;artifactId&gt;gatling-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;4.6.0&lt;/version&gt;
+      &lt;/plugin&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;net.alchim31.maven&lt;/groupId&gt;
+        &lt;artifactId&gt;scala-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;4.8.1&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;scalaVersion&gt;2.13.12&lt;/scalaVersion&gt;
+        &lt;/configuration&gt;
+        &lt;executions&gt;
+          &lt;execution&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;testCompile&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+              &lt;jvmArgs&gt;
+                &lt;jvmArg&gt;-Xss100M&lt;/jvmArg&gt;
+              &lt;/jvmArgs&gt;
+              &lt;args&gt;
+                &lt;arg&gt;-deprecation&lt;/arg&gt;
+                &lt;arg&gt;-feature&lt;/arg&gt;
+                &lt;arg&gt;-unchecked&lt;/arg&gt;
+                &lt;arg&gt;-language:implicitConversions&lt;/arg&gt;
+                &lt;arg&gt;-language:postfixOps&lt;/arg&gt;
+              &lt;/args&gt;
+            &lt;/configuration&gt;
+          &lt;/execution&gt;
+        &lt;/executions&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+</code></pre>
+<h4 id="initialization-directory_1">Initialization Directory</h4>
+<p>Create a simulation directory in the src/test/scala directory to hold the test scripts</p>
+<blockquote>
+<p>scala tests are usually located in the src/test directory. You need to create a scala directory under the project test directory. In the scala directory, you can create your test simulation folder simulation, as well as other folders such as data, bodies, resources, and so on.</p>
+</blockquote>
+<h4 id="writing-scripts_1">Writing Scripts</h4>
+<ul>
+<li>
+<p>Create a demo.scala file in the simulation directory to write your test scripts.</p>
+</li>
+<li>
+<p>For reference, the following is a sample script</p>
+</li>
+</ul>
+<blockquote>
+<p>The script contains two scenarios, one for get requests and one for post requests.
+The get interface validates that the interface returns a status code of 200 and the post interface validates that the interface returns a status code of 201.
+The get interface uses rampUsers, the post interface uses constantConcurrentUsers.
+rampUsers: incrementally increase the number of concurrent users over a specified period of time, constantConcurrentUsers: keep the number of concurrent users constant over a specified period of time.
+The number of concurrent users is 10 for both interfaces, and the duration is 10 seconds for both interfaces.
+The request interval is 2 seconds for both interfaces.</p>
+</blockquote>
+<pre><code class="language-scala">package simulation 
+
+import scala.concurrent.duration._
+
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
+
+class demo extends Simulation { 
+
+  val httpProtocol = http
+    .baseUrl(&quot;https://jsonplaceholder.typicode.com&quot;) // 5
+  val scn = scenario(&quot;GetSimulation&quot;)
+    .exec(http(&quot;get_demo&quot;) 
+      .get(&quot;/posts/1&quot;)
+      .check(status.is(200)))
+    .pause(2)
+  val scn1 = scenario(&quot;PostSimulation&quot;)
+    .exec(http(&quot;post_demo&quot;)
+      .post(&quot;/posts&quot;)
+      .body(StringBody(&quot;&quot;&quot;{&quot;title&quot;: &quot;foo&quot;,&quot;body&quot;: &quot;bar&quot;,&quot;userId&quot;: 1}&quot;&quot;&quot;)).asJson
+      .check(status.is(201)))
+    .pause(2)
+
+  setUp( 
+    scn.inject(rampUsers(10) during(10 seconds)),
+    scn1.inject(constantConcurrentUsers(10) during(10 seconds))
+  ).protocols(httpProtocol)
+}
+</code></pre>
+<h4 id="debugging-scripts_1">Debugging Scripts</h4>
+<p>Execute the following command to run the test script and view the report</p>
+<pre><code class="language-bash">mvn gatling:test
+</code></pre>
+<p><img alt="readme-report3" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-report3.png" /></p>
+<h2 id="advanced-usage">Advanced Usage</h2>
+<h3 id="test-report-analysis">Test report analysis</h3>
+<h4 id="overview">Overview</h4>
+<h5 id="overall-view">Overall view</h5>
+<blockquote>
+<p>Open the detailed html report after the performance test execution is finished;
+Your report can be analyzed by metrics, active users and requests/responses over time, as well as distributions</p>
+</blockquote>
+<p><img alt="readme-test-report1" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report1.png" /></p>
+<ul>
+<li>The name of Simulation is displayed in the center of the page in the header</li>
+<li>The list on the left side shows a menu of different types of reports, which can be switched by clicking on them.</li>
+<li>The middle of the page shows an overview of the performance test report, including: total number of requests, total number of successful requests, total number of unsuccessful requests, shortest response time, longest response time, average response time, throughput, standard deviation, percentage distribution, etc. It also shows the version of gatling and the time and duration of this report. The version of gatling and the time and duration of this report run are also displayed.</li>
+<li>The Global menu points to aggregate statistics.</li>
+<li>The Details menu points to statistics for each request type.</li>
+</ul>
+<h5 id="response-time-ranges">Response time ranges</h5>
+<p><img alt="readme-test-report2" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report2.png" /></p>
+<p>This chart shows the distribution of response times within the standard range
+The list on the left shows all requests and the distribution of request response times, with the red color representing failed requests.
+On the right, Number of requests represents the number of concurrent users, as well as the number of requests for each request and their success and failure status.</p>
+<blockquote>
+<p>These ranges can be configured in the gatling.conf file</p>
+</blockquote>
+<h5 id="summary">Summary</h5>
+<p><img alt="readme-test-report3" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report3.png" /></p>
+<p>This chart shows some standard statistics such as minimum, maximum, average, standard deviation and percentile for global and per request.
+stats shows the specific success and failure of all requests OK for success, KO for failure, and 99th pct for 99th percentile response time for total requests for this API.</p>
+<blockquote>
+<p>These percentiles can be configured in the gatling.conf file.</p>
+</blockquote>
+<h5 id="active-users-over-time">Active users over time</h5>
+<p><img alt="readme-test-report4" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report4.png" /></p>
+<p>This chart shows that the number of active users refers to the number of users who are making requests during the test time period. At the beginning of the test, the number of active users is 0. When users start sending requests, the number of active users starts to increase. When a user completes a request, the number of active users begins to decrease. The maximum number of active users is the number of users sending requests at the same time during the test period.</p>
+<h5 id="response-time-distribution">Response time distribution</h5>
+<p><img alt="readme-test-report5" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report5.png" /></p>
+<p>This chart shows the distribution of response times, including response times for successful requests and response times for failed requests.</p>
+<h5 id="response-time-percentiles-over-time">Response time percentiles over time</h5>
+<p><img alt="readme-test-report6" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report6.png" /></p>
+<p>This chart shows various response time percentiles over time, but only for successful requests. Since failed requests may end early or be caused by timeouts, they can have a huge impact on the percentile calculation.</p>
+<h5 id="requests-per-second-over-time">Requests per second over time</h5>
+<p><img alt="readme-test-report7" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report7.png" /></p>
+<p>This chart shows the number of requests per second, including the number of successful requests and the number of failed requests.</p>
+<h5 id="response-per-second-over-time">Response per second over time</h5>
+<p><img alt="readme-test-report8" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report8.png" /></p>
+<p>This chart shows the number of responses per second, including the number of successful responses and the number of failed responses.</p>
+<h4 id="single-request-analysis-report">Single request analysis report</h4>
+<blockquote>
+<p>You can click the details menu on the report page to switch to the details tab and view a detailed report for a single request.</p>
+</blockquote>
+<p><img alt="readme-test-report9" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-test-report9.png" /></p>
+<p>The Details page primarily shows per-request statistics, and similarly to the global report includes a graph of response time distribution, response time percentile, requests per second, and responses per second. The difference is that there is a graph at the bottom that depicts the response time of a single request relative to all requests globally. The horizontal coordinate of this graph is the number of all requests per second globally, and the vertical coordinate is the response time of a single request.</p>
+<h3 id="performance-scenario-setting">Performance Scenario Setting</h3>
+<h4 id="injection">Injection</h4>
+<h5 id="what-is-injection">What is Injection</h5>
+<p>In Gatling performance testing, "Injection" refers to a method of introducing virtual users (or load) into the system. It defines how simulated users are introduced into a test scenario, including the number, rate, and manner of users.Injection is a key concept used in Gatling to control load and concurrency, allowing you to simulate different user behaviors and load models.</p>
+<p>User injection profiles are defined using the injectOpen and injectClosed methods (inject in Scala). This method takes as arguments a sequence of injection steps that are processed sequentially. Each step defines a set of users and how these users are injected into the scene.</p>
+<p>More from the web site: <a href="https://gatling.io/docs/gatling/reference/current/core/injection/">https://gatling.io/docs/gatling/reference/current/core/injection/</a></p>
+<h5 id="common-injection-scenario">Common Injection Scenario</h5>
+<h6 id="open-model-scenario">Open Model Scenario</h6>
+<pre><code class="language-scala">setUp(
+  scn.inject(
+    nothingFor(4), // 1
+    atOnceUsers(10), // 2
+    rampUsers(10).during(5), // 3
+    constantUsersPerSec(20).during(15), // 4
+    constantUsersPerSec(20).during(15).randomized, // 5
+    rampUsersPerSec(10).to(20).during(10.minutes), // 6
+    rampUsersPerSec(10).to(20).during(10.minutes).randomized, // 7
+    stressPeakUsers(1000).during(20) // 8
+  ).protocols(httpProtocol)
+)
+</code></pre>
+<ol>
+<li>nothingFor(duration): set a period of time to stop, this time to do nothing</li>
+<li>atOnceUsers(nbUsers): immediately inject a certain number of virtual users</li>
+<li>rampUsers(nbUsers) during(duration): set a certain number of virtual users to be injected gradually during a specified period of time.</li>
+<li>constantUsersPerSec(rate) during(duration): Define a constant number of concurrent users per second for a specified period of time.</li>
+<li>constantUsersPerSec(rate) during(duration) randomized: defines a randomized concurrency increase/decrease around a specified number of concurrencies per second, for a specified period of time</li>
+<li>rampUsersPerSec(rate1) to (rate2) during(duration): defines a concurrency interval that runs for the specified time, with the concurrency growth period being a regular value.</li>
+<li>rampUsersPerSec(rate1) to (rate2) during(duration) randomized: define a concurrency interval, run for a specified time, the concurrency growth period is a random value</li>
+<li>stressPeakUsers(nbUsers).during(duration) : injects a given number of users according to a smooth approximation of a <a href="https://en.wikipedia.org/wiki/Heaviside_step_function">step function</a> that stretches to a given duration. users.</li>
+</ol>
+<h6 id="closed-model-scenario">Closed Model Scenario</h6>
+<pre><code class="language-scala">setUp(
+  scn.inject(
+    constantConcurrentUsers(10).during(10), // 1
+    rampConcurrentUsers(10).to(20).during(10) // 2
+  )
+)
+</code></pre>
+<ol>
+<li>constantConcurrentUsers(fromNbUsers).during(duration) : inject to make the number of concurrent users in the system constant</li>
+<li>rampConcurrentUsers(fromNbUsers).to(toNbUsers).during(duration) : inject so that the number of concurrent users in the system increases linearly from one number to the next</li>
+</ol>
+<h5 id="meta-dsl-scenario">Meta DSL Scenario</h5>
+<p>"Meta DSL is a special Domain Specific Language (DSL) for describing the metadata and global configuration of performance test scenarios.Meta DSL allows you to define a number of global settings and parameters in a performance test that affect the entire test process, rather than being specific to a particular scenario.</p>
+<p>The elements of the Meta DSL can be used to write tests in a simpler way. If you want to link levels and ramps to reach the limits of your application (a test sometimes referred to as a capacity load test), you can do this manually using the regular DSL and looping with map and flatMap.</p>
+<ul>
+<li>incrementUsersPerSec</li>
+</ul>
+<pre><code class="language-scala">setUp(
+  // Generate an open workload injection profile
+  // 10, 15, 20, 25 and 30 users arrive every second
+  // Each level lasts 10 seconds
+  // Each level lasts 10 seconds
+  scn.inject(
+    incrementUsersPerSec(5.0)
+      .times(5)
+      .eachLevelLasting(10)
+      .separatedByRampsLasting(10)
+      .startingFrom(10) // Double
+  )
+</code></pre>
+<ul>
+<li>incrementConcurrentUsers</li>
+</ul>
+<pre><code class="language-scala">setUp(
+  // Generate a closed workload injection profile
+  // Concurrent users at levels 10, 15, 20, 25, and 30
+  // Each level lasts 10 seconds
+  // Each level lasts 10 seconds
+  scn.inject(
+    incrementConcurrentUsers(5)
+      .times(5)
+      .eachLevelLasting(10)
+      .separatedByRampsLasting(10)
+      .startingFrom(10) // Int
+  )
+)
+</code></pre>
+<p>incrementUsersPerSec is used for open workloads, incrementConcurrentUsers is used for closed workloads (users/sec vs concurrent users).</p>
+<p>separatedByRampsLasting and startingFrom are both optional. If you do not specify a ramp, the test jumps from one level to another as soon as it finishes. If you do not specify the number of starting users, the test will start with 0 concurrent users or 0 users per second and move to the next step immediately.</p>
+<h5 id="concurrent-scenario">Concurrent Scenario</h5>
+<pre><code class="language-scala">setUp(
+  scenario1.inject(injectionProfile1),
+  scenario2.inject(injectionProfile2)
+)
+</code></pre>
+<p>You can configure multiple scenes to start simultaneously and execute concurrently in the same setUp block.</p>
+<h5 id="other-scenarios">Other Scenarios</h5>
+<p>Check out the website: <a href="https://gatling.io/docs/gatling/reference/current/core/injection/">https://gatling.io/docs/gatling/reference/current/core/injection/</a></p>
+<h3 id="cicd-integration">CI/CD Integration</h3>
+<h4 id="accessing-github-action">Accessing github action</h4>
+<p>Take github action as an example, and other CI tools as well.</p>
+<h5 id="gradle-scala-version">Gradle + Scala version</h5>
+<blockquote>
+<p>See the demo at <a href="https://github.com/Automation-Test-Starter/gatling-gradle-scala-demo">https://github.com/Automation-Test-Starter/gatling-gradle-scala-demo</a>.</p>
+</blockquote>
+<ul>
+<li>
+<p>Create the .github/workflows directory: In your GitHub repository, create a directory called .github/workflows. This will be where the GitHub Actions workflow files will be stored.</p>
+</li>
+<li>
+<p>Create the workflow file: Create a YAML-formatted workflow file, such as gatling.yml, in the .github/workflows directory.</p>
+</li>
+<li>Edit the gatling.yml file: Copy the following into the file.</li>
+</ul>
+<pre><code class="language-yaml">name: Gatling Performance Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  performance-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: 'adopt'
+
+      - name: Run Gatling tests
+        run: |
+          ./gradlew gatlingRun
+        env:
+          GATLING_SIMULATIONS_FOLDER: src/gatling/scala
+
+      - name: Archive Gatling results
+        uses: actions/upload-artifact@v2
+        with:
+          name: gatling-results
+          path: build/reports/gatling
+
+      - name: Upload Gatling results to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          name: gatling-results
+          path: build/reports/gatling
+</code></pre>
+<ul>
+<li>Commit the code: Add the gatling.yml file to your repository and commit.</li>
+<li>View the test report: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the Performance Test workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.</li>
+</ul>
+<p><img alt="readme-github-action-gradle" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-github-action-gradle.png" /></p>
+<h5 id="maven-scala-version_1">Maven + Scala version</h5>
+<blockquote>
+<p>See the demo at <a href="https://github.com/Automation-Test-Starter/gatling-maven-scala-demo">https://github.com/Automation-Test-Starter/gatling-maven-scala-demo</a></p>
+</blockquote>
+<ul>
+<li>
+<p>Create the .github/workflows directory: In your GitHub repository, create a directory called .github/workflows. This will be where the GitHub Actions workflow files will be stored.</p>
+</li>
+<li>
+<p>Create the workflow file: Create a YAML-formatted workflow file, such as gatling.yml, in the .github/workflows directory.</p>
+</li>
+<li>Edit the gatling.yml file: Copy the following into the file.</li>
+</ul>
+<pre><code class="language-yaml">name: Gatling Performance Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  performance-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: 'adopt'
+
+      - name: Run Gatling tests
+        run: |
+          mvn gatling:test
+        env:
+          GATLING_SIMULATIONS_FOLDER: src/test/scala
+
+      - name: Archive Gatling results
+        uses: actions/upload-artifact@v2
+        with:
+          name: gatling-results
+          path: target/gatling
+
+      - name: Upload Gatling results to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          name: gatling-results
+          path: target/gatling
+</code></pre>
+<ul>
+<li>Commit the code: Add the gatling.yml file to your repository and commit.</li>
+<li>View the test report: In GitHub, navigate to your repository. Click the Actions tab at the top and then click the Performance Test workflow on the left. You should see the workflow running, wait for the execution to complete and you can view the results.</li>
+</ul>
+<p><img alt="readme-github-action-maven" src="https://cdn.jsdelivr.net/gh/naodeng/blogimg@master/uPic/readme-github-action-maven.png" /></p>
+<h3 id="recorder">Recorder</h3>
+<blockquote>
+<p>To be completed</p>
+</blockquote>
+<h2 id="reference">reference</h2>
+<ul>
+<li>galting official website: <a href="https://gatling.io/">https://gatling.io/</a></li>
+<li>galting official documentation: <a href="https://gatling.io/docs/gatling/">https://gatling.io/docs/gatling/</a></li>
+<li>galting official github: <a href="https://github.com/gatling/">https://github.com/gatling/</a></li>
+</ul>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2016 - 2023 Automation Test Starter
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>
