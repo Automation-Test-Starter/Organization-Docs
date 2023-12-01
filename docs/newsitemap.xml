@@ -1,79 +1,87 @@
-This XML file does not appear to have any style information associated with it. The document tree is shown below.
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
 <url>
-<loc>https://automation-test-starter.pages.dev/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>1.00</priority>
+  <loc>https://automation-test-starter.pages.dev/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/.</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://automation-test-starter.pages.dev/.</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/zh/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://automation-test-starter.pages.dev/zh/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/API-Automation-Testing/SuperTest/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://automation-test-starter.pages.dev/API-Automation-Testing/SuperTest/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/Performance-Testing/Gatling/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://automation-test-starter.pages.dev/Performance-Testing/Gatling/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/API-Automation-Testing/RestAssured/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://automation-test-starter.pages.dev/API-Automation-Testing/RestAssured/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/API-Automation-Testing/Pytest/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://automation-test-starter.pages.dev/API-Automation-Testing/Pytest/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/API-Automation-Testing/Bruno/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://automation-test-starter.pages.dev/API-Automation-Testing/Bruno/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/API-Automation-Testing/Postman/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.80</priority>
+  <loc>https://automation-test-starter.pages.dev/API-Automation-Testing/Postman/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/SuperTest/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.64</priority>
+  <loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/SuperTest/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/zh/Performance-Testing/Gatling/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.64</priority>
+  <loc>https://automation-test-starter.pages.dev/zh/Performance-Testing/Gatling/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/RestAssured/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.64</priority>
+  <loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/RestAssured/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Pytest/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.64</priority>
+  <loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Pytest/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Bruno/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.64</priority>
+  <loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Bruno/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-<loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Postman/</loc>
-<lastmod>2023-12-01T03:53:12+00:00</lastmod>
-<priority>0.64</priority>
+  <loc>https://automation-test-starter.pages.dev/zh/API-Automation-Testing/Postman/</loc>
+  <lastmod>2023-12-01T03:53:12+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
+
+
 </urlset>
